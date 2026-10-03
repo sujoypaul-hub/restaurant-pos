@@ -1,0 +1,88 @@
+/*
+==================================================
+ORDER TYPE
+==================================================
+
+Current options:
+
+- Delivery
+- Dine In
+- Takeaway
+
+Later this will affect:
+
+- Delivery charge
+- Kitchen workflow
+- Customer address
+- Order channel
+- Reports
+
+==================================================
+*/
+
+
+let selectedOrderType =
+    "takeaway";
+
+
+function initializeOrderType() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".order-type-btn"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                selectedOrderType =
+                    button.dataset.orderType;
+
+
+                buttons.forEach(
+                    item => {
+
+                        item.classList.toggle(
+                            "active",
+                            item === button
+                        );
+
+                    }
+                );
+
+
+                /*
+                Later:
+
+                Delivery
+                    → address required
+                    → delivery charge
+
+                Dine In
+                    → table selection
+
+                Takeaway
+                    → no delivery charge
+                */
+
+            }
+        );
+
+    });
+
+}
+
+
+window.POSOrderType = {
+
+    get: () =>
+        selectedOrderType
+
+};
+
+
+initializeOrderType();
