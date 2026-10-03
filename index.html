@@ -1,16 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Restaurant POS</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>Restaurant POS</h1>
+    <div class="app">
 
-    <p>My POS application is working!</p>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h2>Restaurant POS</h2>
+
+            <button class="nav-btn active">🧾 Billing</button>
+            <button class="nav-btn">📦 Orders</button>
+            <button class="nav-btn">👥 Customers</button>
+            <button class="nav-btn">🍔 Products</button>
+            <button class="nav-btn">📊 Reports</button>
+            <button class="nav-btn">⚙️ Settings</button>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Billing</h1>
+                    <p>Create a new order</p>
+                </div>
+
+                <div class="connection-status">
+                    🟢 Online
+                </div>
+
+            </header>
+
+
+            <section class="billing-layout">
+
+                <!-- Products -->
+                <div class="products-section">
+
+                    <div class="categories">
+
+                        <button class="category active">
+                            All
+                        </button>
+
+                        <button class="category">
+                            Burgers
+                        </button>
+
+                        <button class="category">
+                            Chicken
+                        </button>
+
+                        <button class="category">
+                            Fries
+                        </button>
+
+                        <button class="category">
+                            Drinks
+                        </button>
+
+                    </div>
+
+
+                    <div class="products-grid">
+
+                        <div class="product-card">
+
+                            <div class="product-image">
+                                🍔
+                            </div>
+
+                            <h3>Classic Chicken Burger</h3>
+
+                            <p>₹99</p>
+
+                            <button class="add-btn">
+                                Add
+                            </button>
+
+                        </div>
+
+
+                        <div class="product-card">
+
+                            <div class="product-image">
+                                🍔
+                            </div>
+
+                            <h3>Classic Veg Burger</h3>
+
+                            <p>₹99</p>
+
+                            <button class="add-btn">
+                                Add
+                            </button>
+
+                        </div>
+
+
+                        <div class="product-card">
+
+                            <div class="product-image">
+                                🍗
+                            </div>
+
+                            <h3>4 Pc Fried Chicken</h3>
+
+                            <p>₹99</p>
+
+                            <button class="add-btn">
+                                Add
+                            </button>
+
+                        </div>
+
+
+                        <div class="product-card">
+
+                            <div class="product-image">
+                                🍟
+                            </div>
+
+                            <h3>Peri Peri Fries</h3>
+
+                            <p>₹99</p>
+
+                            <button class="add-btn">
+                                Add
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Cart -->
+                <div class="cart-section">
+
+                    <div class="cart-header">
+
+                        <h2>Current Order</h2>
+
+                        <span>Order #0001</span>
+
+                    </div>
+
+
+                    <div class="customer-section">
+
+                        <label>Customer Phone</label>
+
+                        <input
+                            type="tel"
+                            placeholder="Enter phone number"
+                        >
+
+                        <button class="no-phone-btn">
+                            Continue without phone
+                        </button>
+
+                    </div>
+
+
+                    <div class="cart-items">
+
+                        <p class="empty-cart">
+                            No items added yet
+                        </p>
+
+                    </div>
+
+
+                    <div class="cart-summary">
+
+                        <div>
+                            <span>Subtotal</span>
+                            <strong>₹0</strong>
+                        </div>
+
+                        <div>
+                            <span>Discount</span>
+                            <strong>₹0</strong>
+                        </div>
+
+                        <div class="total">
+
+                            <span>Total</span>
+
+                            <strong>₹0</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="payment-btn">
+                        Proceed to Payment
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
 
 </body>
+
 </html>
