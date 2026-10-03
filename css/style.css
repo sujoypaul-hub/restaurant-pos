@@ -55,7 +55,8 @@ body {
 
 .nav-btn:hover,
 .nav-btn.active {
-    background: #333;
+    background: var(--button-active);
+    color: var(--button-text-active);
 }
 
 /* Main */
