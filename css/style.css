@@ -72,20 +72,32 @@ body {
 }
 
 .topbar {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    margin-bottom: 25px;
+
+    margin-bottom: 18px;
+
 }
+
 
 .topbar h1 {
-    margin-bottom: 5px;
+
+    color:
+        var(--text);
+
 }
+
 
 .topbar p {
-    color: #777;
-}
 
+    color:
+        var(--muted);
+
+}
 .connection-status {
     background: #e8f8ed;
     color: #198754;
