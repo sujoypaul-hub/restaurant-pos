@@ -1,86 +1,123 @@
 /*
 ==================================================
-THEME VARIABLES
+RESTAURANT POS THEME SYSTEM
+==================================================
+
+LIGHT:
+- Completely white interface
+- Clean neutral text
+- Red accent
+
+DARK:
+- Reference-inspired charcoal/black interface
+- Soft layered surfaces
+- Red accent
+
 ==================================================
 */
 
+
+/* ==================================================
+   LIGHT THEME
+================================================== */
+
 :root {
 
-    --background:
-        #f5f6f8;
+    /* Page */
+    --background: #FFFFFF;
 
-    --surface:
-        #ffffff;
+    /* Cards / panels */
+    --surface: #FFFFFF;
 
-    --text:
-        #222222;
+    /* Slightly raised surface */
+    --surface-secondary: #FFFFFF;
 
-    --muted:
-        #777777;
+    /* Text */
+    --text: #222222;
 
-    --border:
-        #eeeeee;
+    --muted: #777777;
 
-    --sidebar:
-        #ffffff;
+    /* Borders */
+    --border: #EAEAEA;
 
-    --sidebar-text:
-        #000000;
+    /* Sidebar */
+    --sidebar: #FFFFFF;
 
-    --button:
-        #222222;
+    --sidebar-text: #222222;
 
-    --button-text:
-        #000000;
-    
-    --button-active:
-        #000000;
+    /* Navigation */
+    --nav-hover: #F5F5F5;
 
-    --button-text-active:
-        #ffffff;
+    --nav-active: #D9363E;
+
+    --nav-active-text: #FFFFFF;
+
+    /* Buttons */
+    --button: #222222;
+
+    --button-text: #FFFFFF;
+
+    /* Inputs */
+    --input-background: #FFFFFF;
+
+    --input-border: #E5E5E5;
+
+    /* Accent */
+    --accent: #D9363E;
+
+    --accent-light: #FDEBEC;
 
 }
 
 
-/*
-==================================================
-DARK THEME
-==================================================
-*/
+/* ==================================================
+   DARK THEME
+================================================== */
 
 :root[data-theme="dark"] {
 
-    --background:
-        #121212;
+    /* Page */
+    --background: #111111;
 
-    --surface:
-        #1e1e1e;
+    /* Cards / panels */
+    --surface: #181818;
 
-    --text:
-        #f1f1f1;
+    /* Secondary cards */
+    --surface-secondary: #222222;
 
-    --muted:
-        #aaaaaa;
+    /* Text */
+    --text: #F5F5F5;
 
-    --border:
-        #333333;
+    --muted: #9B9B9B;
 
-    --sidebar:
-        #0b0b0b;
+    /* Borders */
+    --border: #303030;
 
-    --sidebar-text:
-        #ffffff;
+    /* Sidebar */
+    --sidebar: #191919;
 
-    --button:
-        #fff000;
+    --sidebar-text: #F5F5F5;
 
-    --button-text:
-        #ffffff;
-    
-    --button-active:
-        #ffffff;
+    /* Navigation */
+    --nav-hover: #242424;
 
-    --button-text-active:
-        #000000;
+    --nav-active: #D9363E;
+
+    --nav-active-text: #FFFFFF;
+
+    /* Buttons */
+    --button: #2A2A2A;
+
+    --button-text: #FFFFFF;
+
+    /* Inputs */
+    --input-background: #222222;
+
+    --input-border: #363636;
+
+    /* Accent */
+    --accent: #E84B52;
+
+    --accent-light: #321B1D;
 
 }
