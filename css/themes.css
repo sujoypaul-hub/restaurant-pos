@@ -32,6 +32,12 @@ THEME VARIABLES
 
     --button-text:
         #000000;
+    
+    --button-active:
+        #000000;
+
+    --button-text-active:
+        #ffffff;
 
 }
 
@@ -70,5 +76,11 @@ DARK THEME
 
     --button-text:
         #ffffff;
+    
+    --button-active:
+        #ffffff;
+
+    --button-text-active:
+        #000000;
 
 }
