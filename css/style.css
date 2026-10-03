@@ -146,7 +146,15 @@ body {
 
     background:
         var(--surface);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
 }
+
 .product-image {
     font-size: 45px;
     text-align: center;
@@ -179,6 +187,13 @@ body {
 
     background:
         var(--surface);
+
+    color:
+        var(--text);
+
+    border:
+        1px solid var(--border);
+
 }
 
 .cart-header {
