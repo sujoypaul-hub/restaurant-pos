@@ -442,3 +442,67 @@ THEME SWITCH
         translateX(24px);
 
 }
+
+/* ==================================================
+   TOPBAR ACTIONS
+   ================================================== */
+
+.topbar-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+/* ==================================================
+   FORCE REFRESH BUTTON
+   ================================================== */
+
+.force-refresh-btn {
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+
+}
+
+
+.force-refresh-btn:hover {
+
+    background: var(--background);
+
+}
+
+
+.force-refresh-btn:active {
+
+    transform: scale(0.97);
+
+}
+
+
+.force-refresh-btn:disabled {
+
+    opacity: 0.6;
+
+    cursor: wait;
+
+}
