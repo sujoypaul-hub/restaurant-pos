@@ -46,7 +46,7 @@ body {
     margin-bottom: 8px;
     border: none;
     background: transparent;
-    color: white;
+    color: var(--button-text);
     text-align: left;
     border-radius: 8px;
     cursor: pointer;
