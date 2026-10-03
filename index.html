@@ -16,6 +16,10 @@
 
     <link  rel="stylesheet" href="css/style.css" >
 
+    <link rel="stylesheet"  href="css/sidebar.css">
+
+    <link  rel="stylesheet" href="css/cart.css" >
+
 </head>
 
 
@@ -24,20 +28,37 @@
 <div class="app">
 
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+    <!-- ==================================================
+     SIDEBAR
+================================================== -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <h2>Restaurant POS</h2>
+    <div class="sidebar-brand">
+
+        <div class="sidebar-logo">
+            🍗
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
 
 
         <button
             class="nav-btn active"
             data-tab="billing"
         >
-            🧾 Billing
+
+            <span class="nav-icon">
+                🧾
+            </span>
+
+            <span class="nav-label">
+                Billing
+            </span>
+
         </button>
 
 
@@ -45,7 +66,15 @@
             class="nav-btn"
             data-tab="orders"
         >
-            📦 Orders
+
+            <span class="nav-icon">
+                📦
+            </span>
+
+            <span class="nav-label">
+                Orders
+            </span>
+
         </button>
 
 
@@ -53,7 +82,15 @@
             class="nav-btn"
             data-tab="customers"
         >
-            👥 Customers
+
+            <span class="nav-icon">
+                👥
+            </span>
+
+            <span class="nav-label">
+                Customers
+            </span>
+
         </button>
 
 
@@ -61,7 +98,15 @@
             class="nav-btn"
             data-tab="products"
         >
-            🍔 Products
+
+            <span class="nav-icon">
+                🍔
+            </span>
+
+            <span class="nav-label">
+                Products
+            </span>
+
         </button>
 
 
@@ -69,7 +114,15 @@
             class="nav-btn"
             data-tab="reports"
         >
-            📊 Reports
+
+            <span class="nav-icon">
+                📊
+            </span>
+
+            <span class="nav-label">
+                Reports
+            </span>
+
         </button>
 
 
@@ -77,7 +130,15 @@
             class="nav-btn"
             data-tab="marketing"
         >
-            📢 Marketing
+
+            <span class="nav-icon">
+                📢
+            </span>
+
+            <span class="nav-label">
+                Marketing
+            </span>
+
         </button>
 
 
@@ -85,7 +146,15 @@
             class="nav-btn"
             data-tab="coming-soon"
         >
-            🚀 Coming Soon
+
+            <span class="nav-icon">
+                🚀
+            </span>
+
+            <span class="nav-label">
+                Coming Soon
+            </span>
+
         </button>
 
 
@@ -93,10 +162,40 @@
             class="nav-btn"
             data-tab="settings"
         >
-            ⚙️ Settings
+
+            <span class="nav-icon">
+                ⚙️
+            </span>
+
+            <span class="nav-label">
+                Settings
+            </span>
+
         </button>
 
-    </aside>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <button
+            class="sidebar-footer-btn"
+            title="Settings"
+        >
+            ⚙️
+        </button>
+
+        <button
+            class="sidebar-footer-btn"
+            title="Notifications"
+        >
+            🔔
+        </button>
+
+    </div>
+
+</aside>
 
 
 
@@ -273,101 +372,205 @@
 
 
 
-                <!-- Cart -->
+<!-- Cart -->
+<!-- ==================================================
+     CART
+================================================== -->
 
-                <div class="cart-section">
-
-                    <div class="cart-header">
-
-                        <h2>
-                            Current Order
-                        </h2>
-
-                        <span>
-                            Order #0001
-                        </span>
-
-                    </div>
+<div class="cart-section">
 
 
-                    <div class="customer-section">
+    <div class="cart-header">
 
-                        <label>
-                            Customer Phone
-                        </label>
+        <h2>
+            Current Order
+        </h2>
 
-                        <input
-                            type="tel"
-                            placeholder="Enter phone number"
-                        >
+        <span>
+            Order #0001
+        </span>
 
-
-                        <button class="no-phone-btn">
-                            Continue without phone
-                        </button>
-
-                    </div>
+    </div>
 
 
-                    <div class="cart-items">
+    <!-- Customer -->
 
-                        <p class="empty-cart">
-                            No items added yet
-                        </p>
+    <div class="customer-section">
 
-                    </div>
+        <div class="customer-heading">
 
+            <strong>
+                Customer
+            </strong>
 
-                    <div class="cart-summary">
+            <span>
+                Optional
+            </span>
 
-                        <div>
-
-                            <span>
-                                Subtotal
-                            </span>
-
-                            <strong>
-                                ₹0
-                            </strong>
-
-                        </div>
+        </div>
 
 
-                        <div>
-
-                            <span>
-                                Discount
-                            </span>
-
-                            <strong>
-                                ₹0
-                            </strong>
-
-                        </div>
+        <input
+            type="tel"
+            id="customer-phone"
+            placeholder="Enter customer phone number"
+        >
 
 
-                        <div class="total">
+        <button
+            class="no-phone-btn"
+            type="button"
+            style="
+                width:100%;
+                margin-top:8px;
+                padding:9px;
+                border:1px solid var(--border);
+                border-radius:10px;
+                background:transparent;
+                color:var(--text);
+                cursor:pointer;
+            "
+        >
+            Continue without phone
+        </button>
 
-                            <span>
-                                Total
-                            </span>
 
-                            <strong>
-                                ₹0
-                            </strong>
+        <!-- Order type -->
 
-                        </div>
+        <div class="order-type">
 
-                    </div>
+            <button
+                class="order-type-btn"
+                type="button"
+                data-order-type="delivery"
+            >
+                Delivery
+            </button>
+
+            <button
+                class="order-type-btn"
+                type="button"
+                data-order-type="dine-in"
+            >
+                Dine In
+            </button>
+
+            <button
+                class="order-type-btn active"
+                type="button"
+                data-order-type="takeaway"
+            >
+                Takeaway
+            </button>
+
+        </div>
+
+    </div>
 
 
-                    <button class="payment-btn">
+    <!-- Items -->
 
-                        Proceed to Payment
+    <div
+        class="cart-items"
+        id="cart-items"
+    >
 
-                    </button>
+        <p class="empty-cart">
+            No items added yet
+        </p>
 
-                </div>
+    </div>
+
+
+    <!-- Promotion -->
+
+    <div class="promotion-box">
+
+        <span>
+            Promotion Code
+        </span>
+
+        <button
+            class="promotion-btn"
+            type="button"
+        >
+            ADD CODE
+        </button>
+
+    </div>
+
+
+    <!-- Summary -->
+
+    <div class="cart-summary">
+
+        <div>
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong id="subtotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Discount
+            </span>
+
+            <strong id="discount">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Delivery Charge
+            </span>
+
+            <strong id="delivery-charge">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div class="total">
+
+            <span>
+                TOTAL
+            </span>
+
+            <strong id="total">
+                ₹0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="payment-btn"
+        type="button"
+    >
+        Confirm Order
+    </button>
+
+
+</div>
+
+
+
+                
 
             </div>
 
