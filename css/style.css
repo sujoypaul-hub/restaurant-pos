@@ -234,3 +234,64 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
+/* =========================
+   ONE-PAGE TABS
+========================= */
+
+.tab-content {
+    position: relative;
+}
+
+.tab-content:not(.active) {
+    position: absolute;
+    left: -99999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tab-content.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* =========================
+   GENERIC PAGE CARD
+========================= */
+
+.page-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    min-height: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.page-card h2 {
+    margin-bottom: 10px;
+}
+
+.page-card p {
+    color: #777;
+}
+
+.page-card ul {
+    padding-left: 20px;
+    line-height: 2;
+}
+
+
+/* =========================
+   COMING SOON
+========================= */
+
+.coming-soon-card {
+    text-align: center;
+    padding-top: 80px;
+}
+
+.coming-soon-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
