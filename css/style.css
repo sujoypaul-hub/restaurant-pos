@@ -5,9 +5,17 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f6f8;
-    color: #222;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
 }
 
 .app {
@@ -18,11 +26,14 @@ body {
 /* Sidebar */
 
 .sidebar {
+
     width: 230px;
-    background: #171717;
-    color: white;
-    padding: 25px 15px;
-}
+
+    background:
+        var(--sidebar);
+
+    color:
+        var(--sidebar-text);
 
 .sidebar h2 {
     margin-bottom: 30px;
@@ -50,8 +61,13 @@ body {
 /* Main */
 
 .main-content {
+
     flex: 1;
+
     padding: 25px;
+
+    background:
+        var(--background);
 }
 
 .topbar {
@@ -114,12 +130,10 @@ body {
 }
 
 .product-card {
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
 
+    background:
+        var(--surface);
+}
 .product-image {
     font-size: 45px;
     text-align: center;
@@ -149,9 +163,9 @@ body {
 /* Cart */
 
 .cart-section {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
+
+    background:
+        var(--surface);
 }
 
 .cart-header {
@@ -261,11 +275,9 @@ body {
 ========================= */
 
 .page-card {
-    background: white;
-    border-radius: 12px;
-    padding: 25px;
-    min-height: 300px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    background:
+        var(--surface);
 }
 
 .page-card h2 {
@@ -294,4 +306,139 @@ body {
 .coming-soon-icon {
     font-size: 60px;
     margin-bottom: 20px;
+}
+    /*
+==================================================
+SETTINGS
+==================================================
+*/
+
+.settings-group {
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.setting-info h3 {
+
+    margin-bottom: 6px;
+
+}
+
+
+.setting-info p {
+
+    color:
+        var(--muted);
+
+}
+
+
+/*
+==================================================
+THEME SWITCH
+==================================================
+*/
+
+.theme-control {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.switch {
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 52px;
+
+    height: 28px;
+
+}
+
+
+.switch input {
+
+    opacity: 0;
+
+    width: 0;
+
+    height: 0;
+
+}
+
+
+.slider {
+
+    position: absolute;
+
+    cursor: pointer;
+
+    inset: 0;
+
+    background: #777;
+
+    border-radius: 30px;
+
+    transition: 0.2s;
+
+}
+
+
+.slider::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+
+    height: 22px;
+
+    left: 3px;
+
+    top: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+
+}
+
+
+.switch input:checked + .slider {
+
+    background: #444;
+
+}
+
+
+.switch input:checked + .slider::before {
+
+    transform:
+        translateX(24px);
+
 }
