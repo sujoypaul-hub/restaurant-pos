@@ -1,1 +1,74 @@
+/*
+==================================================
+THEME VARIABLES
+==================================================
+*/
 
+:root {
+
+    --background:
+        #f5f6f8;
+
+    --surface:
+        #ffffff;
+
+    --text:
+        #222222;
+
+    --muted:
+        #777777;
+
+    --border:
+        #eeeeee;
+
+    --sidebar:
+        #171717;
+
+    --sidebar-text:
+        #ffffff;
+
+    --button:
+        #222222;
+
+    --button-text:
+        #ffffff;
+
+}
+
+
+/*
+==================================================
+DARK THEME
+==================================================
+*/
+
+:root[data-theme="dark"] {
+
+    --background:
+        #121212;
+
+    --surface:
+        #1e1e1e;
+
+    --text:
+        #f1f1f1;
+
+    --muted:
+        #aaaaaa;
+
+    --border:
+        #333333;
+
+    --sidebar:
+        #0b0b0b;
+
+    --sidebar-text:
+        #ffffff;
+
+    --button:
+        #ffffff;
+
+    --button-text:
+        #111111;
+
+}
