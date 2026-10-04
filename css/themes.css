@@ -1,52 +1,59 @@
 /* ==================================================
-   DEFAULT LIGHT
+   RESTAURANT POS
+   GLOBAL THEME SYSTEM
+   ================================================== */
+
+
+/* ==================================================
+   LIGHT DEFAULT — GREY
    ================================================== */
 
 :root {
-    --background: #F1F3F5;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #E2E5E9;
+    --surface-secondary: #F5F5F5;
 
-    --text: #212529;
-    --muted: #6C757D;
+    --text: #222222;
+    --muted: #777777;
 
-    --border: #D5D9DE;
+    --border: #E5E5E5;
 
-    --sidebar: #E9ECEF;
-    --sidebar-text: #212529;
+    --sidebar: #FFFFFF;
+    --sidebar-text: #222222;
 
-    --nav-hover: #DDE1E5;
-    --nav-active: #495057;
+    --nav-hover: #F3F3F3;
+    --nav-active: #555555;
     --nav-active-text: #FFFFFF;
 
-    --button: #495057;
+    --button: #555555;
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #CED4DA;
+    --input-border: #DCDCDC;
 
-    --accent: #495057;
-    --accent-light: #E2E5E9;
+    --accent: #555555;
+    --accent-light: #EEEEEE;
 }
+
 
 /* ==================================================
    LIGHT BLUE
    ================================================== */
 
 :root[data-theme="light-blue"] {
-    --background: #F2F7FF;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #E5F0FF;
+    --surface-secondary: #F5F9FF;
 
     --text: #17243A;
     --muted: #64748B;
 
-    --border: #D7E4F5;
+    --border: #DCE7F5;
 
     --sidebar: #FFFFFF;
     --sidebar-text: #17243A;
 
-    --nav-hover: #EAF3FF;
+    --nav-hover: #EEF5FF;
     --nav-active: #2563EB;
     --nav-active-text: #FFFFFF;
 
@@ -66,19 +73,19 @@
    ================================================== */
 
 :root[data-theme="light-green"] {
-    --background: #F1FAF4;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #E1F4E7;
+    --surface-secondary: #F3FAF5;
 
     --text: #173525;
     --muted: #66806F;
 
-    --border: #D2E8D9;
+    --border: #D7E9DC;
 
     --sidebar: #FFFFFF;
     --sidebar-text: #173525;
 
-    --nav-hover: #E7F7EC;
+    --nav-hover: #ECF8EF;
     --nav-active: #198754;
     --nav-active-text: #FFFFFF;
 
@@ -98,19 +105,19 @@
    ================================================== */
 
 :root[data-theme="light-red"] {
-    --background: #FFF5F5;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #FDE5E5;
+    --surface-secondary: #FFF5F5;
 
     --text: #3B1717;
     --muted: #826666;
 
-    --border: #F0D4D4;
+    --border: #F0D7D7;
 
     --sidebar: #FFFFFF;
     --sidebar-text: #3B1717;
 
-    --nav-hover: #FDEAEA;
+    --nav-hover: #FDEBEC;
     --nav-active: #D9363E;
     --nav-active-text: #FFFFFF;
 
@@ -130,19 +137,19 @@
    ================================================== */
 
 :root[data-theme="light-purple"] {
-    --background: #F8F5FF;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #EEE7FF;
+    --surface-secondary: #F8F5FF;
 
     --text: #281A40;
     --muted: #766A8A;
 
-    --border: #DED4F1;
+    --border: #E2D9F2;
 
     --sidebar: #FFFFFF;
     --sidebar-text: #281A40;
 
-    --nav-hover: #F0EAFE;
+    --nav-hover: #F2ECFF;
     --nav-active: #7C3AED;
     --nav-active-text: #FFFFFF;
 
@@ -159,13 +166,12 @@
 
 /* ==================================================
    LIGHT YELLOW
-   Clearly yellow - NOT white
    ================================================== */
 
 :root[data-theme="light-yellow"] {
     --background: #FFFFFF;
-    --surface: #FFFDF0;
-    --surface-secondary: #FFF3A6;
+    --surface: #FFFFFF;
+    --surface-secondary: #FFFDF0;
 
     --text: #332600;
     --muted: #75652D;
@@ -175,18 +181,18 @@
     --sidebar: #FFFFFF;
     --sidebar-text: #332600;
 
-    --nav-hover: #FFF0A3;
-    --nav-active: #E0A800;
+    --nav-hover: #FFF8D6;
+    --nav-active: #D9A400;
     --nav-active-text: #FFFFFF;
 
-    --button: #D89B00;
+    --button: #D9A400;
     --button-text: #FFFFFF;
 
-    --input-background: #FFFDF0;
+    --input-background: #FFFFFF;
     --input-border: #E3CF68;
 
-    --accent: #D89B00;
-    --accent-light: #FFF0A3;
+    --accent: #D9A400;
+    --accent-light: #FFF3B8;
 }
 
 
@@ -195,9 +201,9 @@
    ================================================== */
 
 :root[data-theme="light-orange"] {
-    --background: #FFF6ED;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #FFE9D2;
+    --surface-secondary: #FFF7F0;
 
     --text: #3D2413;
     --muted: #806A59;
@@ -227,9 +233,9 @@
    ================================================== */
 
 :root[data-theme="light-pink"] {
-    --background: #FFF5F8;
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #FCE5EC;
+    --surface-secondary: #FFF7FA;
 
     --text: #401C2B;
     --muted: #806A73;
@@ -260,8 +266,8 @@
 
 :root[data-theme="light-gold"] {
     --background: #FFFFFF;
-    --surface: #FFFDF7;
-    --surface-secondary: #F8E7A8;
+    --surface: #FFFFFF;
+    --surface-secondary: #FFFCF3;
 
     --text: #3D2B08;
     --muted: #806B3A;
@@ -271,14 +277,14 @@
     --sidebar: #FFFFFF;
     --sidebar-text: #3D2B08;
 
-    --nav-hover: #F9EDC3;
+    --nav-hover: #FBF3D8;
     --nav-active: #B8860B;
     --nav-active-text: #FFFFFF;
 
     --button: #B8860B;
     --button-text: #FFFFFF;
 
-    --input-background: #FFFDF7;
+    --input-background: #FFFFFF;
     --input-border: #DEC66E;
 
     --accent: #B8860B;
@@ -291,26 +297,26 @@
    ================================================== */
 
 :root[data-theme="light-brown"] {
-    --background: #F8F2EC;
-    --surface: #FFFDFC;
-    --surface-secondary: #EBDDD0;
+    --background: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-secondary: #FAF7F4;
 
     --text: #34251B;
     --muted: #76685D;
 
     --border: #DDCFC1;
 
-    --sidebar: #FBF5EF;
+    --sidebar: #FFFFFF;
     --sidebar-text: #34251B;
 
-    --nav-hover: #F0E4D8;
+    --nav-hover: #F3ECE6;
     --nav-active: #795548;
     --nav-active-text: #FFFFFF;
 
     --button: #795548;
     --button-text: #FFFFFF;
 
-    --input-background: #FFFDFC;
+    --input-background: #FFFFFF;
     --input-border: #DCCBBC;
 
     --accent: #795548;
@@ -318,67 +324,67 @@
 }
 
 
-
 /* ==================================================
    DARK DEFAULT — CHARCOAL
    ================================================== */
 
 :root[data-theme="dark-default"] {
-    --background: #181818;
-    --surface: #222222;
-    --surface-secondary: #2D2D2D;
+    --background: #000000;
+    --surface: #0D0D0D;
+    --surface-secondary: #171717;
 
     --text: #F5F5F5;
     --muted: #A6A6A6;
 
-    --border: #3A3A3A;
+    --border: #2B2B2B;
 
-    --sidebar: #202020;
+    --sidebar: #000000;
     --sidebar-text: #F5F5F5;
 
-    --nav-hover: #303030;
-    --nav-active: #555555;
+    --nav-hover: #1A1A1A;
+    --nav-active: #666666;
     --nav-active-text: #FFFFFF;
 
     --button: #555555;
     --button-text: #FFFFFF;
 
-    --input-background: #242424;
-    --input-border: #404040;
+    --input-background: #0D0D0D;
+    --input-border: #303030;
 
     --accent: #777777;
-    --accent-light: #343434;
+    --accent-light: #292929;
 }
+
 
 /* ==================================================
    DARK BLUE
    ================================================== */
 
 :root[data-theme="dark-blue"] {
-    --background: #0B1220;
-    --surface: #111C30;
-    --surface-secondary: #192942;
+    --background: #000000;
+    --surface: #0C0F14;
+    --surface-secondary: #141A23;
 
     --text: #F1F5FF;
     --muted: #9AA9C2;
 
-    --border: #293A57;
+    --border: #283544;
 
-    --sidebar: #0E1728;
+    --sidebar: #000000;
     --sidebar-text: #F1F5FF;
 
-    --nav-hover: #182943;
+    --nav-hover: #101A27;
     --nav-active: #3B82F6;
     --nav-active-text: #FFFFFF;
 
     --button: #2563EB;
     --button-text: #FFFFFF;
 
-    --input-background: #15233A;
+    --input-background: #0C0F14;
     --input-border: #304564;
 
     --accent: #3B82F6;
-    --accent-light: #172E55;
+    --accent-light: #162B4B;
 }
 
 
@@ -387,30 +393,30 @@
    ================================================== */
 
 :root[data-theme="dark-green"] {
-    --background: #0B1711;
-    --surface: #122219;
-    --surface-secondary: #1B3024;
+    --background: #000000;
+    --surface: #0B120E;
+    --surface-secondary: #121C16;
 
     --text: #F1FFF5;
     --muted: #9AB5A2;
 
-    --border: #2B4935;
+    --border: #294235;
 
-    --sidebar: #0E1D15;
+    --sidebar: #000000;
     --sidebar-text: #F1FFF5;
 
-    --nav-hover: #1B3325;
+    --nav-hover: #102218;
     --nav-active: #22A060;
     --nav-active-text: #FFFFFF;
 
     --button: #198754;
     --button-text: #FFFFFF;
 
-    --input-background: #17291E;
+    --input-background: #0B120E;
     --input-border: #31513C;
 
     --accent: #22A060;
-    --accent-light: #173A27;
+    --accent-light: #153523;
 }
 
 
@@ -419,30 +425,30 @@
    ================================================== */
 
 :root[data-theme="dark-red"] {
-    --background: #190D0E;
-    --surface: #251416;
-    --surface-secondary: #351B1E;
+    --background: #000000;
+    --surface: #140B0C;
+    --surface-secondary: #201113;
 
     --text: #FFF4F4;
     --muted: #C39A9D;
 
-    --border: #513034;
+    --border: #4A2A2E;
 
-    --sidebar: #1D1012;
+    --sidebar: #000000;
     --sidebar-text: #FFF4F4;
 
-    --nav-hover: #3A1D21;
+    --nav-hover: #271417;
     --nav-active: #E0444D;
     --nav-active-text: #FFFFFF;
 
     --button: #D9363E;
     --button-text: #FFFFFF;
 
-    --input-background: #2A1719;
+    --input-background: #140B0C;
     --input-border: #593439;
 
     --accent: #E84B52;
-    --accent-light: #421C20;
+    --accent-light: #3D181C;
 }
 
 
@@ -451,30 +457,30 @@
    ================================================== */
 
 :root[data-theme="dark-purple"] {
-    --background: #120D1C;
-    --surface: #1D152A;
-    --surface-secondary: #2B1F3D;
+    --background: #000000;
+    --surface: #100C15;
+    --surface-secondary: #191321;
 
     --text: #F9F4FF;
     --muted: #AB9DBB;
 
-    --border: #443458;
+    --border: #40304F;
 
-    --sidebar: #171021;
+    --sidebar: #000000;
     --sidebar-text: #F9F4FF;
 
-    --nav-hover: #302241;
+    --nav-hover: #21172D;
     --nav-active: #8B5CF6;
     --nav-active-text: #FFFFFF;
 
     --button: #7C3AED;
     --button-text: #FFFFFF;
 
-    --input-background: #231932;
+    --input-background: #100C15;
     --input-border: #49385E;
 
     --accent: #A78BFA;
-    --accent-light: #32234D;
+    --accent-light: #302047;
 }
 
 
@@ -483,30 +489,30 @@
    ================================================== */
 
 :root[data-theme="dark-yellow"] {
-    --background: #151209;
-    --surface: #211C0D;
-    --surface-secondary: #302812;
+    --background: #000000;
+    --surface: #131107;
+    --surface-secondary: #1F1A0B;
 
     --text: #FFF8D8;
     --muted: #C7B878;
 
-    --border: #54461A;
+    --border: #514419;
 
-    --sidebar: #191508;
+    --sidebar: #000000;
     --sidebar-text: #FFF8D8;
 
-    --nav-hover: #362C0E;
+    --nav-hover: #292109;
     --nav-active: #D9A400;
     --nav-active-text: #211800;
 
     --button: #D9A400;
     --button-text: #211800;
 
-    --input-background: #27200D;
+    --input-background: #131107;
     --input-border: #5A4A19;
 
     --accent: #E0AA00;
-    --accent-light: #3B300D;
+    --accent-light: #392E0A;
 }
 
 
@@ -515,30 +521,30 @@
    ================================================== */
 
 :root[data-theme="dark-orange"] {
-    --background: #1A1009;
-    --surface: #25170D;
-    --surface-secondary: #36200F;
+    --background: #000000;
+    --surface: #140C06;
+    --surface-secondary: #211309;
 
     --text: #FFF5EB;
     --muted: #C3A58B;
 
-    --border: #53361F;
+    --border: #50321C;
 
-    --sidebar: #1D120A;
+    --sidebar: #000000;
     --sidebar-text: #FFF5EB;
 
-    --nav-hover: #3A220F;
+    --nav-hover: #2B180A;
     --nav-active: #F97316;
     --nav-active-text: #FFFFFF;
 
     --button: #EA580C;
     --button-text: #FFFFFF;
 
-    --input-background: #2A1A0F;
+    --input-background: #140C06;
     --input-border: #5A3A20;
 
     --accent: #FB923C;
-    --accent-light: #45240E;
+    --accent-light: #43230D;
 }
 
 
@@ -547,30 +553,30 @@
    ================================================== */
 
 :root[data-theme="dark-pink"] {
-    --background: #1A0B12;
-    --surface: #27121B;
-    --surface-secondary: #381925;
+    --background: #000000;
+    --surface: #140A0F;
+    --surface-secondary: #211019;
 
     --text: #FFF1F7;
     --muted: #C19BAA;
 
-    --border: #54303F;
+    --border: #50303D;
 
-    --sidebar: #1D0D15;
+    --sidebar: #000000;
     --sidebar-text: #FFF1F7;
 
-    --nav-hover: #3A1A28;
+    --nav-hover: #2C1520;
     --nav-active: #EC4899;
     --nav-active-text: #FFFFFF;
 
     --button: #DB2777;
     --button-text: #FFFFFF;
 
-    --input-background: #2B151F;
+    --input-background: #140A0F;
     --input-border: #5A3343;
 
     --accent: #EC4899;
-    --accent-light: #451B31;
+    --accent-light: #431A2F;
 }
 
 
@@ -579,30 +585,30 @@
    ================================================== */
 
 :root[data-theme="dark-gold"] {
-    --background: #12100A;
-    --surface: #1D190E;
-    --surface-secondary: #2B2411;
+    --background: #000000;
+    --surface: #121006;
+    --surface-secondary: #1D180A;
 
     --text: #FFF7D6;
     --muted: #B9A66C;
 
     --border: #4B401D;
 
-    --sidebar: #161309;
+    --sidebar: #000000;
     --sidebar-text: #FFF7D6;
 
-    --nav-hover: #32290F;
+    --nav-hover: #29220D;
     --nav-active: #C9A227;
     --nav-active-text: #171205;
 
     --button: #C9A227;
     --button-text: #171205;
 
-    --input-background: #241F10;
+    --input-background: #121006;
     --input-border: #51451D;
 
     --accent: #D4AF37;
-    --accent-light: #3D3210;
+    --accent-light: #3A300F;
 }
 
 
@@ -611,26 +617,26 @@
    ================================================== */
 
 :root[data-theme="dark-brown"] {
-    --background: #140F0C;
-    --surface: #211813;
-    --surface-secondary: #30231B;
+    --background: #000000;
+    --surface: #120D09;
+    --surface-secondary: #1E1712;
 
     --text: #FFF5ED;
     --muted: #B6A095;
 
     --border: #49382D;
 
-    --sidebar: #18120E;
+    --sidebar: #000000;
     --sidebar-text: #FFF5ED;
 
-    --nav-hover: #36271D;
+    --nav-hover: #2C1F17;
     --nav-active: #9A6A4F;
     --nav-active-text: #FFFFFF;
 
     --button: #795548;
     --button-text: #FFFFFF;
 
-    --input-background: #281C15;
+    --input-background: #120D09;
     --input-border: #4E3B2F;
 
     --accent: #A8795C;
@@ -638,259 +644,4 @@
 }
 
 
-/* ==================================================
-   THEME PAGE UI
-   ================================================== */
 
-.theme-section {
-    margin-bottom: 32px;
-}
-
-.theme-section h3 {
-    margin-bottom: 16px;
-    color: var(--text);
-}
-
-.theme-grid {
-    display: grid;
-    grid-template-columns: repeat(
-        auto-fill,
-        minmax(180px, 1fr)
-    );
-
-    gap: 16px;
-}
-
-
-.theme-option {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 10px;
-
-    padding: 14px;
-
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.theme-option:hover {
-    transform: translateY(-2px);
-
-    border-color: var(--accent);
-}
-
-
-.theme-option input {
-    position: absolute;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-
-.theme-option:has(input:checked) {
-    border-color: var(--accent);
-
-    box-shadow:
-        0 0 0 2px var(--accent-light);
-}
-
-
-.theme-preview {
-    display: block;
-
-    width: 100%;
-
-    height: 80px;
-
-    border-radius: 7px;
-
-    border: 1px solid var(--border);
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-/* Preview backgrounds */
-
-.theme-preview.light-default {
-    background: linear-gradient(
-        135deg,
-        #FFFFFF 50%,
-        #F5F5F5 50%
-    );
-}
-
-.theme-preview.light-blue {
-    background: linear-gradient(
-        135deg,
-        #FFFFFF 50%,
-        #2563EB 50%
-    );
-}
-
-.theme-preview.light-green {
-    background: linear-gradient(
-        135deg,
-        #FFFFFF 50%,
-        #198754 50%
-    );
-}
-
-.theme-preview.light-red {
-    background: linear-gradient(
-        135deg,
-        #FFFFFF 50%,
-        #D9363E 50%
-    );
-}
-
-.theme-preview.light-purple {
-    background: linear-gradient(
-        135deg,
-        #FFFFFF 50%,
-        #7C3AED 50%
-    );
-}
-
-.theme-preview.light-yellow {
-    background: linear-gradient(
-        135deg,
-        #FFF8CC 50%,
-        #E0A800 50%
-    );
-}
-
-.theme-preview.light-orange {
-    background: linear-gradient(
-        135deg,
-        #FFF6ED 50%,
-        #EA580C 50%
-    );
-}
-
-.theme-preview.light-pink {
-    background: linear-gradient(
-        135deg,
-        #FFF5F8 50%,
-        #DB2777 50%
-    );
-}
-
-.theme-preview.light-gold {
-    background: linear-gradient(
-        135deg,
-        #FFF9E8 50%,
-        #B8860B 50%
-    );
-}
-
-.theme-preview.light-brown {
-    background: linear-gradient(
-        135deg,
-        #F8F2EC 50%,
-        #795548 50%
-    );
-}
-
-
-.theme-preview.dark-default {
-    background: linear-gradient(135deg, #111111 50%, #555555 50%);
-}
-
-.theme-preview.dark-blue {
-    background: linear-gradient(
-        135deg,
-        #0B1220 50%,
-        #3B82F6 50%
-    );
-}
-
-.theme-preview.dark-green {
-    background: linear-gradient(
-        135deg,
-        #0B1711 50%,
-        #22A060 50%
-    );
-}
-
-.theme-preview.dark-red {
-    background: linear-gradient(
-        135deg,
-        #190D0E 50%,
-        #E0444D 50%
-    );
-}
-
-.theme-preview.dark-purple {
-    background: linear-gradient(
-        135deg,
-        #120D1C 50%,
-        #8B5CF6 50%
-    );
-}
-
-.theme-preview.dark-yellow {
-    background: linear-gradient(
-        135deg,
-        #151209 50%,
-        #D9A400 50%
-    );
-}
-
-.theme-preview.dark-orange {
-    background: linear-gradient(
-        135deg,
-        #1A1009 50%,
-        #F97316 50%
-    );
-}
-
-.theme-preview.dark-pink {
-    background: linear-gradient(
-        135deg,
-        #1A0B12 50%,
-        #EC4899 50%
-    );
-}
-
-.theme-preview.dark-gold {
-    background: linear-gradient(
-        135deg,
-        #12100A 50%,
-        #D4AF37 50%
-    );
-}
-
-.theme-preview.dark-brown {
-    background: linear-gradient(
-        135deg,
-        #140F0C 50%,
-        #9A6A4F 50%
-    );
-}
-
-
-.theme-name {
-    color: var(--text);
-
-    font-size: 14px;
-
-    font-weight: 600;
-}
