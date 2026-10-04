@@ -811,11 +811,7 @@
 
 
 .theme-preview.dark-default {
-    background: linear-gradient(
-        135deg,
-        #111111 50%,
-        #D9363E 50%
-    );
+    background: linear-gradient(135deg, #111111 50%, #555555 50%);
 }
 
 .theme-preview.dark-blue {
