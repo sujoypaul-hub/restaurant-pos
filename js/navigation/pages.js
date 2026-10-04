@@ -1,48 +1,74 @@
 const loadedScripts = {};
 
-const pageScripts = {
-    billing: [
-        "js/billing/cart.js",
-        "js/billing/order-type.js",
-        "js/billing/customer-input.js",
-        "js/billing/billing.js"
-    ]
-};
 
+/*
+==================================================
+LOAD PAGE
+==================================================
+*/
 
-async function loadPage(page) {
+async function loadPage(pageConfig) {
 
     const container =
-        document.getElementById("page-container");
+        document.getElementById(
+            "page-container"
+        );
 
     try {
 
+        /*
+        ==========================================
+        LOAD HTML
+        ==========================================
+        */
+
         const response =
-            await fetch(`pages/${page}.html`);
+            await fetch(
+                `pages/${pageConfig.page}.html`
+            );
 
         if (!response.ok) {
-            throw new Error(`Page not found: ${page}`);
+
+            throw new Error(
+                `Page not found: ${pageConfig.page}`
+            );
+
         }
 
         const html =
             await response.text();
 
-        container.innerHTML = html;
+        container.innerHTML =
+            html;
 
 
         /*
-        Load page scripts only once
+        ==========================================
+        LOAD PAGE SCRIPTS
+        ==========================================
         */
 
-        if (pageScripts[page]) {
+        if (pageConfig.scripts) {
 
-            for (const scriptPath of pageScripts[page]) {
+            for (
+                const scriptPath
+                of pageConfig.scripts
+            ) {
 
-                if (!loadedScripts[scriptPath]) {
+                /*
+                Load each script only once.
+                */
 
-                    await loadScript(scriptPath);
+                if (
+                    !loadedScripts[scriptPath]
+                ) {
 
-                    loadedScripts[scriptPath] = true;
+                    await loadScript(
+                        scriptPath
+                    );
+
+                    loadedScripts[scriptPath] =
+                        true;
 
                 }
 
@@ -62,21 +88,36 @@ async function loadPage(page) {
 }
 
 
+/*
+==================================================
+LOAD JAVASCRIPT FILE
+==================================================
+*/
+
 function loadScript(src) {
 
-    return new Promise((resolve, reject) => {
+    return new Promise(
+        (resolve, reject) => {
 
-        const script =
-            document.createElement("script");
+            const script =
+                document.createElement(
+                    "script"
+                );
 
-        script.src = src;
+            script.src =
+                src;
 
-        script.onload = resolve;
+            script.onload =
+                resolve;
 
-        script.onerror = reject;
+            script.onerror =
+                reject;
 
-        document.body.appendChild(script);
+            document.body.appendChild(
+                script
+            );
 
-    });
+        }
+    );
 
 }
