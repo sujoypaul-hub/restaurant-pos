@@ -3,336 +3,481 @@
 RESTAURANT POS THEME SYSTEM
 ==================================================
 
-AVAILABLE THEMES:
+LIGHT
+- Light Default
+- Light Blue
+- Light Green
+- Light Red
+- Light Purple
 
-- Light
-- Dark
-- Purple
-- Green
-- Yellow
-- Red
-- Blue
-
-All themes use the same CSS variables.
-
-The application UI uses these variables so the
-entire application can change appearance without
-changing individual pages.
+DARK
+- Dark Default
+- Dark Blue
+- Dark Green
+- Dark Red
+- Dark Purple
 
 ==================================================
 */
 
 
 /* ==================================================
-   LIGHT THEME
+   LIGHT DEFAULT
 ================================================== */
 
 :root,
-:root[data-theme="light"] {
+:root[data-theme="light-default"] {
 
-    /* Page */
-    --background: #FFFFFF;
-
-    /* Cards / panels */
+    --background: #F5F5F5;
     --surface: #FFFFFF;
+    --surface-secondary: #FAFAFA;
 
-    /* Slightly raised surface */
-    --surface-secondary: #FFFFFF;
-
-    /* Text */
     --text: #222222;
-
     --muted: #777777;
 
-    /* Borders */
-    --border: #EAEAEA;
+    --border: #E2E2E2;
 
-    /* Sidebar */
     --sidebar: #FFFFFF;
-
     --sidebar-text: #222222;
 
-    /* Navigation */
-    --nav-hover: #F5F5F5;
-
-    --nav-active: #D9363E;
-
+    --nav-hover: #F0F0F0;
+    --nav-active: #666666;
     --nav-active-text: #FFFFFF;
 
-    /* Buttons */
-    --button: #222222;
-
+    --button: #444444;
     --button-text: #FFFFFF;
 
-    /* Inputs */
     --input-background: #FFFFFF;
+    --input-border: #DCDCDC;
 
-    --input-border: #E5E5E5;
-
-    /* Accent */
-    --accent: #D9363E;
-
-    --accent-light: #FDEBEC;
+    --accent: #666666;
+    --accent-light: #EEEEEE;
 }
 
 
 /* ==================================================
-   DARK THEME
+   LIGHT BLUE
 ================================================== */
 
-:root[data-theme="dark"] {
+:root[data-theme="light-blue"] {
 
-    /* Page */
-    --background: #111111;
-
-    /* Cards / panels */
-    --surface: #181818;
-
-    /* Secondary cards */
-    --surface-secondary: #222222;
-
-    /* Text */
-    --text: #F5F5F5;
-
-    --muted: #9B9B9B;
-
-    /* Borders */
-    --border: #303030;
-
-    /* Sidebar */
-    --sidebar: #191919;
-
-    --sidebar-text: #F5F5F5;
-
-    /* Navigation */
-    --nav-hover: #242424;
-
-    --nav-active: #D9363E;
-
-    --nav-active-text: #FFFFFF;
-
-    /* Buttons */
-    --button: #2A2A2A;
-
-    --button-text: #FFFFFF;
-
-    /* Inputs */
-    --input-background: #222222;
-
-    --input-border: #363636;
-
-    /* Accent */
-    --accent: #E84B52;
-
-    --accent-light: #321B1D;
-}
-
-
-/* ==================================================
-   PURPLE THEME
-================================================== */
-
-:root[data-theme="purple"] {
-
-    --background: #FAF7FF;
-
+    --background: #F4F8FF;
     --surface: #FFFFFF;
+    --surface-secondary: #EDF4FF;
 
-    --surface-secondary: #F5EEFF;
+    --text: #172033;
+    --muted: #68758A;
 
-    --text: #241238;
-
-    --muted: #756184;
-
-    --border: #E5D5F5;
+    --border: #D5E1F2;
 
     --sidebar: #FFFFFF;
+    --sidebar-text: #172033;
 
-    --sidebar-text: #241238;
+    --nav-hover: #EAF2FF;
+    --nav-active: #2563EB;
+    --nav-active-text: #FFFFFF;
 
-    --nav-hover: #F5EEFF;
+    --button: #2563EB;
+    --button-text: #FFFFFF;
 
+    --input-background: #FFFFFF;
+    --input-border: #C8D8F0;
+
+    --accent: #2563EB;
+    --accent-light: #E7EFFF;
+}
+
+
+/* ==================================================
+   LIGHT GREEN
+================================================== */
+
+:root[data-theme="light-green"] {
+
+    --background: #F4FBF6;
+    --surface: #FFFFFF;
+    --surface-secondary: #ECF8EF;
+
+    --text: #17271C;
+    --muted: #647469;
+
+    --border: #D2E5D7;
+
+    --sidebar: #FFFFFF;
+    --sidebar-text: #17271C;
+
+    --nav-hover: #E8F6EC;
+    --nav-active: #16A34A;
+    --nav-active-text: #FFFFFF;
+
+    --button: #16A34A;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+    --input-border: #C7E0CD;
+
+    --accent: #16A34A;
+    --accent-light: #E5F7EA;
+}
+
+
+/* ==================================================
+   LIGHT RED
+================================================== */
+
+:root[data-theme="light-red"] {
+
+    --background: #FFF6F6;
+    --surface: #FFFFFF;
+    --surface-secondary: #FFF0F0;
+
+    --text: #2A1515;
+    --muted: #795F5F;
+
+    --border: #EBCFCF;
+
+    --sidebar: #FFFFFF;
+    --sidebar-text: #2A1515;
+
+    --nav-hover: #FFE8E8;
+    --nav-active: #DC2626;
+    --nav-active-text: #FFFFFF;
+
+    --button: #DC2626;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+    --input-border: #E8C7C7;
+
+    --accent: #DC2626;
+    --accent-light: #FDE5E5;
+}
+
+
+/* ==================================================
+   LIGHT PURPLE
+================================================== */
+
+:root[data-theme="light-purple"] {
+
+    --background: #FAF7FF;
+    --surface: #FFFFFF;
+    --surface-secondary: #F4EDFF;
+
+    --text: #241735;
+    --muted: #766486;
+
+    --border: #E2D5F2;
+
+    --sidebar: #FFFFFF;
+    --sidebar-text: #241735;
+
+    --nav-hover: #F0E7FF;
     --nav-active: #7C3AED;
-
     --nav-active-text: #FFFFFF;
 
     --button: #7C3AED;
-
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-
-    --input-border: #DCC9F2;
+    --input-border: #D9C8F0;
 
     --accent: #7C3AED;
-
     --accent-light: #F0E7FF;
 }
 
 
 /* ==================================================
-   GREEN THEME
+   DARK DEFAULT
 ================================================== */
 
-:root[data-theme="green"] {
+:root[data-theme="dark-default"] {
 
-    --background: #F5FFF8;
+    --background: #111111;
+    --surface: #181818;
+    --surface-secondary: #222222;
 
-    --surface: #FFFFFF;
+    --text: #F5F5F5;
+    --muted: #9B9B9B;
 
-    --surface-secondary: #ECFDF3;
+    --border: #303030;
 
-    --text: #10251A;
+    --sidebar: #191919;
+    --sidebar-text: #F5F5F5;
 
-    --muted: #617568;
-
-    --border: #D2EAD9;
-
-    --sidebar: #FFFFFF;
-
-    --sidebar-text: #10251A;
-
-    --nav-hover: #ECFDF3;
-
-    --nav-active: #16A34A;
-
+    --nav-hover: #242424;
+    --nav-active: #666666;
     --nav-active-text: #FFFFFF;
 
-    --button: #16A34A;
-
+    --button: #2A2A2A;
     --button-text: #FFFFFF;
 
-    --input-background: #FFFFFF;
+    --input-background: #222222;
+    --input-border: #363636;
 
-    --input-border: #C8E4D0;
-
-    --accent: #16A34A;
-
-    --accent-light: #E7F8ED;
+    --accent: #888888;
+    --accent-light: #292929;
 }
 
 
 /* ==================================================
-   YELLOW THEME
+   DARK BLUE
 ================================================== */
 
-:root[data-theme="yellow"] {
+:root[data-theme="dark-blue"] {
 
-    --background: #FFFDF2;
+    --background: #0D1628;
+    --surface: #14213A;
+    --surface-secondary: #1B2C4A;
 
-    --surface: #FFFFFF;
+    --text: #F3F7FF;
+    --muted: #9EACC2;
 
-    --surface-secondary: #FFF8D8;
+    --border: #2A3D5D;
 
-    --text: #2B2508;
+    --sidebar: #101C31;
+    --sidebar-text: #F3F7FF;
 
-    --muted: #756C45;
-
-    --border: #EEE3A8;
-
-    --sidebar: #FFFFFF;
-
-    --sidebar-text: #2B2508;
-
-    --nav-hover: #FFF8D8;
-
-    --nav-active: #CA8A04;
-
-    --nav-active-text: #FFFFFF;
-
-    --button: #CA8A04;
-
-    --button-text: #FFFFFF;
-
-    --input-background: #FFFFFF;
-
-    --input-border: #E8D98B;
-
-    --accent: #CA8A04;
-
-    --accent-light: #FFF7CC;
-}
-
-
-/* ==================================================
-   RED THEME
-================================================== */
-
-:root[data-theme="red"] {
-
-    --background: #FFF7F7;
-
-    --surface: #FFFFFF;
-
-    --surface-secondary: #FFF0F0;
-
-    --text: #2B1111;
-
-    --muted: #765B5B;
-
-    --border: #F0CCCC;
-
-    --sidebar: #FFFFFF;
-
-    --sidebar-text: #2B1111;
-
-    --nav-hover: #FFF0F0;
-
-    --nav-active: #DC2626;
-
-    --nav-active-text: #FFFFFF;
-
-    --button: #DC2626;
-
-    --button-text: #FFFFFF;
-
-    --input-background: #FFFFFF;
-
-    --input-border: #EBCACA;
-
-    --accent: #DC2626;
-
-    --accent-light: #FDE8E8;
-}
-
-
-/* ==================================================
-   BLUE THEME
-================================================== */
-
-:root[data-theme="blue"] {
-
-    --background: #F5F9FF;
-
-    --surface: #FFFFFF;
-
-    --surface-secondary: #EDF4FF;
-
-    --text: #101C2E;
-
-    --muted: #607086;
-
-    --border: #D3E0F2;
-
-    --sidebar: #FFFFFF;
-
-    --sidebar-text: #101C2E;
-
-    --nav-hover: #EDF4FF;
-
-    --nav-active: #2563EB;
-
+    --nav-hover: #1C2D4A;
+    --nav-active: #3B82F6;
     --nav-active-text: #FFFFFF;
 
     --button: #2563EB;
-
     --button-text: #FFFFFF;
 
-    --input-background: #FFFFFF;
+    --input-background: #1B2C4A;
+    --input-border: #344B70;
 
-    --input-border: #C9D9F0;
+    --accent: #3B82F6;
+    --accent-light: #182F59;
+}
 
-    --accent: #2563EB;
 
-    --accent-light: #E8F0FF;
+/* ==================================================
+   DARK GREEN
+================================================== */
+
+:root[data-theme="dark-green"] {
+
+    --background: #0C1912;
+    --surface: #12251A;
+    --surface-secondary: #193421;
+
+    --text: #F1FBF4;
+    --muted: #9DB2A3;
+
+    --border: #294635;
+
+    --sidebar: #102018;
+    --sidebar-text: #F1FBF4;
+
+    --nav-hover: #1A3423;
+    --nav-active: #22C55E;
+    --nav-active-text: #FFFFFF;
+
+    --button: #16A34A;
+    --button-text: #FFFFFF;
+
+    --input-background: #193421;
+    --input-border: #31563E;
+
+    --accent: #22C55E;
+    --accent-light: #173C24;
+}
+
+
+/* ==================================================
+   DARK RED
+================================================== */
+
+:root[data-theme="dark-red"] {
+
+    --background: #1A0D0D;
+    --surface: #251313;
+    --surface-secondary: #351919;
+
+    --text: #FFF4F4;
+    --muted: #B99A9A;
+
+    --border: #4A2929;
+
+    --sidebar: #211010;
+    --sidebar-text: #FFF4F4;
+
+    --nav-hover: #381B1B;
+    --nav-active: #EF4444;
+    --nav-active-text: #FFFFFF;
+
+    --button: #DC2626;
+    --button-text: #FFFFFF;
+
+    --input-background: #351919;
+    --input-border: #563030;
+
+    --accent: #EF4444;
+    --accent-light: #451C1C;
+}
+
+
+/* ==================================================
+   DARK PURPLE
+================================================== */
+
+:root[data-theme="dark-purple"] {
+
+    --background: #160E22;
+    --surface: #211532;
+    --surface-secondary: #2D1D43;
+
+    --text: #FAF5FF;
+    --muted: #B5A6C4;
+
+    --border: #443158;
+
+    --sidebar: #1C122A;
+    --sidebar-text: #FAF5FF;
+
+    --nav-hover: #302044;
+    --nav-active: #A855F7;
+    --nav-active-text: #FFFFFF;
+
+    --button: #9333EA;
+    --button-text: #FFFFFF;
+
+    --input-background: #2D1D43;
+    --input-border: #4B3561;
+
+    --accent: #A855F7;
+    --accent-light: #3B2254;
+}
+
+
+/* ==================================================
+   THEME PAGE
+================================================== */
+
+.theme-section-title {
+
+    margin-top: 30px;
+    margin-bottom: 15px;
+
+    color: var(--text);
+
+}
+
+
+.theme-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px, 1fr)
+        );
+
+    gap: 15px;
+
+}
+
+
+.theme-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+
+}
+
+
+.theme-option:hover {
+
+    border-color: var(--accent);
+
+}
+
+
+.theme-option input {
+
+    accent-color: var(--accent);
+
+}
+
+
+.theme-preview {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    border: 2px solid var(--border);
+
+}
+
+
+/* Light previews */
+
+.theme-light-default {
+    background: #666666;
+}
+
+.theme-light-blue {
+    background: #2563EB;
+}
+
+.theme-light-green {
+    background: #16A34A;
+}
+
+.theme-light-red {
+    background: #DC2626;
+}
+
+.theme-light-purple {
+    background: #7C3AED;
+}
+
+
+/* Dark previews */
+
+.theme-dark-default {
+    background: #111111;
+}
+
+.theme-dark-blue {
+    background: #14213A;
+}
+
+.theme-dark-green {
+    background: #12251A;
+}
+
+.theme-dark-red {
+    background: #251313;
+}
+
+.theme-dark-purple {
+    background: #211532;
 }
