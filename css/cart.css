@@ -197,6 +197,27 @@
 
 }
 
+/* ==================================================
+   DISABLED NO-PHONE OPTION
+================================================== */
+
+.no-phone-option input:disabled {
+
+    cursor:
+        not-allowed;
+
+}
+
+
+.no-phone-option:has(input:disabled) {
+
+    opacity:
+        0.4;
+
+    cursor:
+        not-allowed;
+
+}
 
 /* ==================================================
    ORDER TYPE
