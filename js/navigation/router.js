@@ -3,7 +3,9 @@
 APPLICATION ROUTER
 ==================================================
 
-This file handles:
+This file is the ROUTING ENGINE.
+
+It handles:
 
 - URL navigation
 - Nested pages
@@ -11,10 +13,12 @@ This file handles:
 - Page titles
 - Browser Back / Forward
 - Initial page loading
+- Internal page navigation
 
 Page information comes from routes.js.
 
-DO NOT add individual page logic here.
+This file should NOT contain individual page
+definitions or page-specific logic.
 
 ==================================================
 */
@@ -36,6 +40,7 @@ function getRouteFromURL() {
     const route =
         params.get("route");
 
+
     /*
     No route means Billing.
     */
@@ -45,6 +50,7 @@ function getRouteFromURL() {
         return ["billing"];
 
     }
+
 
     return route
         .split("/")
@@ -64,13 +70,18 @@ function findRoute(routeParts) {
     let currentRoutes =
         appRoutes;
 
-    let routeConfig = null;
+    let routeConfig =
+        null;
 
 
     for (
         const part
         of routeParts
     ) {
+
+        /*
+        Route does not exist.
+        */
 
         if (
             !currentRoutes[part]
@@ -81,9 +92,17 @@ function findRoute(routeParts) {
         }
 
 
+        /*
+        Get current route.
+        */
+
         routeConfig =
             currentRoutes[part];
 
+
+        /*
+        Move into child routes.
+        */
 
         currentRoutes =
             routeConfig.children || {};
@@ -118,7 +137,7 @@ function updateSidebar(
             button.classList.toggle(
                 "active",
 
-                button.dataset.tab ===
+                button.dataset.route ===
                 topLevelRoute
             );
 
@@ -140,7 +159,7 @@ async function navigateTo(
 ) {
 
     /*
-    Convert string to array if necessary.
+    Convert string route into array.
     */
 
     const routeParts =
@@ -160,7 +179,9 @@ async function navigateTo(
 
 
     /*
-    Invalid route.
+    ==============================================
+    INVALID ROUTE
+    ==============================================
     */
 
     if (!routeConfig) {
@@ -190,7 +211,7 @@ async function navigateTo(
 
 
         /*
-        Remove old routing system.
+        Remove old tab-based URL.
         */
 
         url.searchParams.delete(
@@ -199,7 +220,7 @@ async function navigateTo(
 
 
         /*
-        Add new route.
+        Set new route.
         */
 
         url.searchParams.set(
@@ -207,6 +228,10 @@ async function navigateTo(
             routeParts.join("/")
         );
 
+
+        /*
+        Add browser history entry.
+        */
 
         history.pushState(
             {
@@ -237,12 +262,20 @@ async function navigateTo(
         );
 
 
-    pageTitle.textContent =
-        routeConfig.title;
+    if (pageTitle) {
+
+        pageTitle.textContent =
+            routeConfig.title;
+
+    }
 
 
-    pageDescription.textContent =
-        routeConfig.description;
+    if (pageDescription) {
+
+        pageDescription.textContent =
+            routeConfig.description;
+
+    }
 
 
     /*
@@ -271,41 +304,29 @@ async function navigateTo(
 
 /*
 ==================================================
-SIDEBAR CLICK EVENTS
+ALL ROUTE LINKS
 ==================================================
-*/
 
-const navButtons =
-    document.querySelectorAll(
-        ".nav-btn"
-    );
+Every element that contains:
 
+data-route="..."
 
-navButtons.forEach(
-    button => {
+automatically becomes a navigation link.
 
-        button.addEventListener(
-            "click",
-            () => {
+Examples:
 
-                const route =
-                    button.dataset.tab;
+data-route="settings"
 
+data-route="settings/theme"
 
-                navigateTo(
-                    route
-                );
+data-route="marketing/ad"
 
-            }
-        );
+data-route="marketing/ad/social-media-ad"
 
-    }
-);
+data-route="marketing/ad/social-media-ad/instagram"
 
+No individual click handler is required.
 
-/*
-==================================================
-INTERNAL ROUTE LINKS
 ==================================================
 */
 
@@ -318,8 +339,15 @@ document.addEventListener(
                 "[data-route]"
             );
 
+
+        /*
+        Click was not on a route element.
+        */
+
         if (!routeElement) {
+
             return;
+
         }
 
 
@@ -327,16 +355,41 @@ document.addEventListener(
             routeElement.dataset.route;
 
 
+        /*
+        No route specified.
+        */
+
         if (!route) {
+
             return;
+
         }
 
 
-        navigateTo(route);
+        /*
+        Prevent normal link behavior
+        if this is an <a> element.
+        */
+
+        if (
+            routeElement.tagName === "A"
+        ) {
+
+            event.preventDefault();
+
+        }
+
+
+        /*
+        Navigate.
+        */
+
+        navigateTo(
+            route
+        );
 
     }
 );
-
 
 
 /*
@@ -360,7 +413,7 @@ window.addEventListener(
 
 /*
 ==================================================
-INITIAL LOAD
+INITIAL APPLICATION ROUTE
 ==================================================
 */
 
