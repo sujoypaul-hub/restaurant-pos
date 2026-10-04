@@ -163,7 +163,7 @@
    ================================================== */
 
 :root[data-theme="light-yellow"] {
-    --background: #FFF8CC;
+    --background: #FFFFFF;
     --surface: #FFFDF0;
     --surface-secondary: #FFF3A6;
 
@@ -172,7 +172,7 @@
 
     --border: #E8D77A;
 
-    --sidebar: #FFF9D9;
+    --sidebar: #FFFFFF;
     --sidebar-text: #332600;
 
     --nav-hover: #FFF0A3;
@@ -259,7 +259,7 @@
    ================================================== */
 
 :root[data-theme="light-gold"] {
-    --background: #FFF9E8;
+    --background: #FFFFFF;
     --surface: #FFFDF7;
     --surface-secondary: #F8E7A8;
 
@@ -268,7 +268,7 @@
 
     --border: #E5CD78;
 
-    --sidebar: #FFF8DF;
+    --sidebar: #FFFFFF;
     --sidebar-text: #3D2B08;
 
     --nav-hover: #F9EDC3;
