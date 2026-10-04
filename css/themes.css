@@ -3,15 +3,21 @@
 RESTAURANT POS THEME SYSTEM
 ==================================================
 
-LIGHT:
-- Completely white interface
-- Clean neutral text
-- Red accent
+AVAILABLE THEMES:
 
-DARK:
-- Reference-inspired charcoal/black interface
-- Soft layered surfaces
-- Red accent
+- Light
+- Dark
+- Purple
+- Green
+- Yellow
+- Red
+- Blue
+
+All themes use the same CSS variables.
+
+The application UI uses these variables so the
+entire application can change appearance without
+changing individual pages.
 
 ==================================================
 */
@@ -21,7 +27,8 @@ DARK:
    LIGHT THEME
 ================================================== */
 
-:root {
+:root,
+:root[data-theme="light"] {
 
     /* Page */
     --background: #FFFFFF;
@@ -66,7 +73,6 @@ DARK:
     --accent: #D9363E;
 
     --accent-light: #FDEBEC;
-
 }
 
 
@@ -119,5 +125,214 @@ DARK:
     --accent: #E84B52;
 
     --accent-light: #321B1D;
+}
 
+
+/* ==================================================
+   PURPLE THEME
+================================================== */
+
+:root[data-theme="purple"] {
+
+    --background: #FAF7FF;
+
+    --surface: #FFFFFF;
+
+    --surface-secondary: #F5EEFF;
+
+    --text: #241238;
+
+    --muted: #756184;
+
+    --border: #E5D5F5;
+
+    --sidebar: #FFFFFF;
+
+    --sidebar-text: #241238;
+
+    --nav-hover: #F5EEFF;
+
+    --nav-active: #7C3AED;
+
+    --nav-active-text: #FFFFFF;
+
+    --button: #7C3AED;
+
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+
+    --input-border: #DCC9F2;
+
+    --accent: #7C3AED;
+
+    --accent-light: #F0E7FF;
+}
+
+
+/* ==================================================
+   GREEN THEME
+================================================== */
+
+:root[data-theme="green"] {
+
+    --background: #F5FFF8;
+
+    --surface: #FFFFFF;
+
+    --surface-secondary: #ECFDF3;
+
+    --text: #10251A;
+
+    --muted: #617568;
+
+    --border: #D2EAD9;
+
+    --sidebar: #FFFFFF;
+
+    --sidebar-text: #10251A;
+
+    --nav-hover: #ECFDF3;
+
+    --nav-active: #16A34A;
+
+    --nav-active-text: #FFFFFF;
+
+    --button: #16A34A;
+
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+
+    --input-border: #C8E4D0;
+
+    --accent: #16A34A;
+
+    --accent-light: #E7F8ED;
+}
+
+
+/* ==================================================
+   YELLOW THEME
+================================================== */
+
+:root[data-theme="yellow"] {
+
+    --background: #FFFDF2;
+
+    --surface: #FFFFFF;
+
+    --surface-secondary: #FFF8D8;
+
+    --text: #2B2508;
+
+    --muted: #756C45;
+
+    --border: #EEE3A8;
+
+    --sidebar: #FFFFFF;
+
+    --sidebar-text: #2B2508;
+
+    --nav-hover: #FFF8D8;
+
+    --nav-active: #CA8A04;
+
+    --nav-active-text: #FFFFFF;
+
+    --button: #CA8A04;
+
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+
+    --input-border: #E8D98B;
+
+    --accent: #CA8A04;
+
+    --accent-light: #FFF7CC;
+}
+
+
+/* ==================================================
+   RED THEME
+================================================== */
+
+:root[data-theme="red"] {
+
+    --background: #FFF7F7;
+
+    --surface: #FFFFFF;
+
+    --surface-secondary: #FFF0F0;
+
+    --text: #2B1111;
+
+    --muted: #765B5B;
+
+    --border: #F0CCCC;
+
+    --sidebar: #FFFFFF;
+
+    --sidebar-text: #2B1111;
+
+    --nav-hover: #FFF0F0;
+
+    --nav-active: #DC2626;
+
+    --nav-active-text: #FFFFFF;
+
+    --button: #DC2626;
+
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+
+    --input-border: #EBCACA;
+
+    --accent: #DC2626;
+
+    --accent-light: #FDE8E8;
+}
+
+
+/* ==================================================
+   BLUE THEME
+================================================== */
+
+:root[data-theme="blue"] {
+
+    --background: #F5F9FF;
+
+    --surface: #FFFFFF;
+
+    --surface-secondary: #EDF4FF;
+
+    --text: #101C2E;
+
+    --muted: #607086;
+
+    --border: #D3E0F2;
+
+    --sidebar: #FFFFFF;
+
+    --sidebar-text: #101C2E;
+
+    --nav-hover: #EDF4FF;
+
+    --nav-active: #2563EB;
+
+    --nav-active-text: #FFFFFF;
+
+    --button: #2563EB;
+
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+
+    --input-border: #C9D9F0;
+
+    --accent: #2563EB;
+
+    --accent-light: #E8F0FF;
 }
