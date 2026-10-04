@@ -1,7 +1,6 @@
 const THEME_STORAGE_KEY = "restaurant_pos_theme";
 
 const AVAILABLE_THEMES = [
-    // Light themes
     "light-default",
     "light-blue",
     "light-green",
@@ -13,7 +12,6 @@ const AVAILABLE_THEMES = [
     "light-gold",
     "light-brown",
 
-    // Dark themes
     "dark-default",
     "dark-blue",
     "dark-green",
@@ -26,33 +24,25 @@ const AVAILABLE_THEMES = [
     "dark-brown"
 ];
 
-
-// --------------------------------------------------
-// Get saved theme
-// --------------------------------------------------
-
 function getSavedTheme() {
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
-    if (savedTheme && AVAILABLE_THEMES.includes(savedTheme)) {
+    if (AVAILABLE_THEMES.includes(savedTheme)) {
         return savedTheme;
     }
 
     return "light-default";
 }
 
-
-// --------------------------------------------------
-// Apply theme
-// --------------------------------------------------
-
 function applyTheme(theme) {
-
     if (!AVAILABLE_THEMES.includes(theme)) {
         theme = "light-default";
     }
 
-    document.documentElement.dataset.theme = theme;
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
 
     localStorage.setItem(
         THEME_STORAGE_KEY,
@@ -62,104 +52,56 @@ function applyTheme(theme) {
     updateThemeSelection(theme);
 }
 
-
-// --------------------------------------------------
-// Update radio selection
-// --------------------------------------------------
-
 function updateThemeSelection(theme) {
-
-    const themeInputs =
-        document.querySelectorAll(
-            'input[name="theme"]'
-        );
-
-    themeInputs.forEach(input => {
-
-        input.checked =
-            input.value === theme;
-
-    });
+    document
+        .querySelectorAll('input[name="theme"]')
+        .forEach(input => {
+            input.checked = input.value === theme;
+        });
 }
-
-
-// --------------------------------------------------
-// Initialize Theme page
-// --------------------------------------------------
 
 function initializeThemePage() {
 
-    const themeInputs =
+    const inputs =
         document.querySelectorAll(
             'input[name="theme"]'
         );
 
-    if (!themeInputs.length) {
+    if (!inputs.length) {
         return;
     }
 
-    const currentTheme =
-        getSavedTheme();
+    const currentTheme = getSavedTheme();
 
-    updateThemeSelection(
-        currentTheme
-    );
+    updateThemeSelection(currentTheme);
 
-    themeInputs.forEach(input => {
+    inputs.forEach(input => {
 
-        input.addEventListener(
-            "change",
-            () => {
+        input.addEventListener("change", function () {
 
-                if (input.checked) {
-                    applyTheme(
-                        input.value
-                    );
-                }
-
+            if (this.checked) {
+                applyTheme(this.value);
             }
-        );
+
+        });
 
     });
 }
 
-
-// --------------------------------------------------
-// Initialize saved theme
-// --------------------------------------------------
-
 function initializeSavedTheme() {
 
-    const savedTheme =
-        getSavedTheme();
+    const theme = getSavedTheme();
 
-    document.documentElement.dataset.theme =
-        savedTheme;
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
 }
 
-
-// --------------------------------------------------
-// Start
-// --------------------------------------------------
-
 initializeSavedTheme();
-
-
-// --------------------------------------------------
-// Theme page initialization
-// --------------------------------------------------
-
 initializeThemePage();
 
-
-// --------------------------------------------------
-// Public API
-// --------------------------------------------------
-
 window.POSTheme = {
-
     get: getSavedTheme,
-
     set: applyTheme
-
 };
