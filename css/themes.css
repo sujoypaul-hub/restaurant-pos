@@ -3,32 +3,31 @@
    ================================================== */
 
 :root {
-    --background: #FFFFFF;
+    --background: #F1F3F5;
     --surface: #FFFFFF;
-    --surface-secondary: #F5F5F5;
+    --surface-secondary: #E2E5E9;
 
-    --text: #222222;
-    --muted: #777777;
+    --text: #212529;
+    --muted: #6C757D;
 
-    --border: #EAEAEA;
+    --border: #D5D9DE;
 
-    --sidebar: #FFFFFF;
-    --sidebar-text: #222222;
+    --sidebar: #E9ECEF;
+    --sidebar-text: #212529;
 
-    --nav-hover: #F5F5F5;
-    --nav-active: #D9363E;
+    --nav-hover: #DDE1E5;
+    --nav-active: #495057;
     --nav-active-text: #FFFFFF;
 
-    --button: #222222;
+    --button: #495057;
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #E5E5E5;
+    --input-border: #CED4DA;
 
-    --accent: #D9363E;
-    --accent-light: #FDEBEC;
+    --accent: #495057;
+    --accent-light: #E2E5E9;
 }
-
 
 /* ==================================================
    LIGHT BLUE
