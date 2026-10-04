@@ -1,40 +1,55 @@
 /*
 ==================================================
-CUSTOMER PHONE INPUT
+CUSTOMER INPUT MODULE
 ==================================================
 
-Controls:
+Handles:
 
 - Customer phone number
-- No phone checkbox
+- No-phone checkbox
+- Delivery phone requirement
 
-When "No phone" is selected:
+Rules:
 
-- Phone input is disabled
-- Existing number is cleared
-- Customer is treated as a walk-in customer
+Delivery:
+    Phone REQUIRED
+    No phone DISABLED
 
-When unchecked:
+Dine In:
+    Phone optional
+    No phone enabled
 
-- Phone input becomes available again
+Takeaway:
+    Phone optional
+    No phone enabled
 
 ==================================================
 */
 
 
-function initializeCustomerInput() {
+let customerPhone = "";
 
-    const phoneInput =
-        document.getElementById(
-            "customer-phone"
-        );
+let noPhoneSelected = false;
 
 
-    const noPhoneCheckbox =
-        document.getElementById(
-            "no-phone-checkbox"
-        );
+/*
+==================================================
+ELEMENTS
+==================================================
+*/
 
+let phoneInput = null;
+
+let noPhoneCheckbox = null;
+
+
+/*
+==================================================
+UPDATE PHONE RULE BASED ON ORDER TYPE
+==================================================
+*/
+
+function updatePhoneRules(orderType) {
 
     if (
         !phoneInput ||
@@ -46,45 +61,314 @@ function initializeCustomerInput() {
     }
 
 
-    noPhoneCheckbox.addEventListener(
-        "change",
-        () => {
+    /*
+    ==============================================
+    DELIVERY
+    ==============================================
+    */
 
-            if (
-                noPhoneCheckbox.checked
-            ) {
+    if (
+        orderType === "delivery"
+    ) {
 
-                /*
-                    No customer phone.
-                */
+        /*
+        Delivery always requires a phone number.
+        */
 
-                phoneInput.value = "";
+        noPhoneCheckbox.checked =
+            false;
 
-                phoneInput.disabled = true;
+        noPhoneCheckbox.disabled =
+            true;
 
-                phoneInput.placeholder =
-                    "Walk-in customer";
+        noPhoneSelected =
+            false;
 
 
-            } else {
+        phoneInput.disabled =
+            false;
 
-                /*
-                    Phone number available.
-                */
+        phoneInput.required =
+            true;
 
-                phoneInput.disabled = false;
+        phoneInput.placeholder =
+            "Enter customer phone number";
 
-                phoneInput.placeholder =
-                    "Enter customer phone number";
 
+        /*
+        Put focus into the phone field.
+        */
+
+        setTimeout(
+            () => {
                 phoneInput.focus();
+            },
+            0
+        );
 
-            }
+
+        return;
+
+    }
+
+
+    /*
+    ==============================================
+    DINE IN / TAKEAWAY
+    ==============================================
+    */
+
+    noPhoneCheckbox.disabled =
+        false;
+
+
+    phoneInput.required =
+        false;
+
+
+    /*
+    Keep phone input behaviour according
+    to whether No Phone is selected.
+    */
+
+    if (
+        noPhoneCheckbox.checked
+    ) {
+
+        phoneInput.disabled =
+            true;
+
+        phoneInput.placeholder =
+            "Walk-in customer";
+
+    } else {
+
+        phoneInput.disabled =
+            false;
+
+        phoneInput.placeholder =
+            "Enter customer phone number";
+
+    }
+
+}
+
+
+/*
+==================================================
+NO PHONE CHECKBOX
+==================================================
+*/
+
+function handleNoPhoneChange() {
+
+    if (
+        noPhoneCheckbox.checked
+    ) {
+
+        /*
+        No phone selected.
+        */
+
+        noPhoneSelected =
+            true;
+
+        customerPhone =
+            "";
+
+        phoneInput.value =
+            "";
+
+        phoneInput.disabled =
+            true;
+
+        phoneInput.required =
+            false;
+
+        phoneInput.placeholder =
+            "Walk-in customer";
+
+
+    } else {
+
+        /*
+        Phone number can be entered.
+        */
+
+        noPhoneSelected =
+            false;
+
+        phoneInput.disabled =
+            false;
+
+        phoneInput.required =
+            false;
+
+        phoneInput.placeholder =
+            "Enter customer phone number";
+
+    }
+
+}
+
+
+/*
+==================================================
+PHONE INPUT
+==================================================
+*/
+
+function handlePhoneInput() {
+
+    /*
+    Keep only digits.
+
+    This is especially useful for Indian
+    10-digit mobile numbers.
+    */
+
+    phoneInput.value =
+        phoneInput.value.replace(
+            /\D/g,
+            ""
+        );
+
+
+    customerPhone =
+        phoneInput.value;
+
+}
+
+
+/*
+==================================================
+ORDER TYPE CHANGE LISTENER
+==================================================
+*/
+
+function initializeOrderTypeListener() {
+
+    document.addEventListener(
+
+        "posOrderTypeChanged",
+
+        event => {
+
+            const orderType =
+                event.detail.orderType;
+
+
+            updatePhoneRules(
+                orderType
+            );
 
         }
+
     );
 
 }
+
+
+/*
+==================================================
+INITIALIZE
+==================================================
+*/
+
+function initializeCustomerInput() {
+
+    phoneInput =
+        document.getElementById(
+            "customer-phone"
+        );
+
+
+    noPhoneCheckbox =
+        document.getElementById(
+            "no-phone-checkbox"
+        );
+
+
+    if (
+        !phoneInput ||
+        !noPhoneCheckbox
+    ) {
+
+        console.warn(
+            "Customer input elements not found."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    Phone input
+    */
+
+    phoneInput.addEventListener(
+        "input",
+        handlePhoneInput
+    );
+
+
+    /*
+    No-phone checkbox
+    */
+
+    noPhoneCheckbox.addEventListener(
+        "change",
+        handleNoPhoneChange
+    );
+
+
+    /*
+    Listen for Delivery /
+    Dine In / Takeaway changes.
+    */
+
+    initializeOrderTypeListener();
+
+
+    /*
+    Apply the current order type
+    immediately.
+
+    Usually this will be Takeaway.
+    */
+
+    const currentOrderType =
+        window.POSOrderType
+            ? window.POSOrderType.get()
+            : "takeaway";
+
+
+    updatePhoneRules(
+        currentOrderType
+    );
+
+}
+
+
+/*
+==================================================
+PUBLIC CUSTOMER API
+==================================================
+*/
+
+window.POSCustomerInput = {
+
+    getPhone: () =>
+        customerPhone,
+
+    hasPhone: () =>
+        customerPhone.length > 0,
+
+    isNoPhone: () =>
+        noPhoneSelected
+
+};
 
 
 /*
