@@ -1,14 +1,23 @@
 /*
 ==================================================
-THEME MANAGEMENT
+RESTAURANT POS THEME MANAGER
 ==================================================
 
-Handles:
+THEMES:
 
-- Theme selection
-- Theme persistence
-- Applying themes
-- Theme page controls
+LIGHT
+- light-default
+- light-blue
+- light-green
+- light-red
+- light-purple
+
+DARK
+- dark-default
+- dark-blue
+- dark-green
+- dark-red
+- dark-purple
 
 ==================================================
 */
@@ -19,13 +28,19 @@ const THEME_STORAGE_KEY =
 
 
 const AVAILABLE_THEMES = [
-    "light",
-    "dark",
-    "purple",
-    "green",
-    "yellow",
-    "red",
-    "blue"
+
+    "light-default",
+    "light-blue",
+    "light-green",
+    "light-red",
+    "light-purple",
+
+    "dark-default",
+    "dark-blue",
+    "dark-green",
+    "dark-red",
+    "dark-purple"
+
 ];
 
 
@@ -54,7 +69,7 @@ function getSavedTheme() {
     }
 
 
-    return "light";
+    return "light-default";
 
 }
 
@@ -71,7 +86,8 @@ function applyTheme(theme) {
         !AVAILABLE_THEMES.includes(theme)
     ) {
 
-        theme = "light";
+        theme =
+            "light-default";
 
     }
 
@@ -86,14 +102,16 @@ function applyTheme(theme) {
     );
 
 
-    updateThemeSelection(theme);
+    updateThemeSelection(
+        theme
+    );
 
 }
 
 
 /*
 ==================================================
-UPDATE THEME SELECTION
+UPDATE SELECTED THEME
 ==================================================
 */
 
@@ -169,7 +187,7 @@ function initializeThemePage() {
 
 /*
 ==================================================
-APPLY SAVED THEME ON APPLICATION START
+APPLY SAVED THEME ON APP START
 ==================================================
 */
 
