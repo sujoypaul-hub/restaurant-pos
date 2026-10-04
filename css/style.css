@@ -100,12 +100,28 @@ body {
         var(--muted);
 
 }
+
+/* ==================================================
+   TOPBAR ACTIONS
+   ================================================== */
+
+.topbar-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
 .connection-status {
     background: #e8f8ed;
     color: #198754;
     padding: 10px 15px;
     border-radius: 20px;
 }
+
 
 /* Billing */
 
@@ -365,161 +381,4 @@ SETTINGS
 }
 
 
-/*
-==================================================
-THEME SWITCH
-==================================================
-*/
 
-.theme-control {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-}
-
-
-.switch {
-
-    position: relative;
-
-    display: inline-block;
-
-    width: 52px;
-
-    height: 28px;
-
-}
-
-
-.switch input {
-
-    opacity: 0;
-
-    width: 0;
-
-    height: 0;
-
-}
-
-
-.slider {
-
-    position: absolute;
-
-    cursor: pointer;
-
-    inset: 0;
-
-    background: #777;
-
-    border-radius: 30px;
-
-    transition: 0.2s;
-
-}
-
-
-.slider::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 22px;
-
-    height: 22px;
-
-    left: 3px;
-
-    top: 3px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    transition: 0.2s;
-
-}
-
-
-.switch input:checked + .slider {
-
-    background: #444;
-
-}
-
-
-.switch input:checked + .slider::before {
-
-    transform:
-        translateX(24px);
-
-}
-
-/* ==================================================
-   TOPBAR ACTIONS
-   ================================================== */
-
-.topbar-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-}
-
-
-/* ==================================================
-   FORCE REFRESH BUTTON
-   ================================================== */
-
-.force-refresh-btn {
-
-    border: 1px solid var(--border);
-
-    background: var(--surface);
-
-    color: var(--text);
-
-    padding: 10px 14px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-size: 14px;
-
-    transition:
-        background 0.2s ease,
-        transform 0.1s ease;
-
-}
-
-
-.force-refresh-btn:hover {
-
-    background: var(--background);
-
-}
-
-
-.force-refresh-btn:active {
-
-    transform: scale(0.97);
-
-}
-
-
-.force-refresh-btn:disabled {
-
-    opacity: 0.6;
-
-    cursor: wait;
-
-}
