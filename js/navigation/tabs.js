@@ -2,25 +2,7 @@
 ==================================================
 TAB NAVIGATION
 ==================================================
-
-Controls:
-
-- Sidebar navigation
-- URL
-- Browser Back
-- Browser Forward
-- Page refresh
-
-Example:
-
-?tab=billing
-?tab=orders
-?tab=customers
-?tab=marketing
-
-==================================================
 */
-
 
 const tabs = {
 
@@ -76,9 +58,6 @@ ELEMENTS
 const navButtons =
     document.querySelectorAll(".nav-btn");
 
-const tabContents =
-    document.querySelectorAll(".tab-content");
-
 const pageTitle =
     document.getElementById("page-title");
 
@@ -100,19 +79,11 @@ function getTabFromURL() {
     const tab =
         params.get("tab");
 
-
-    if (!tab) {
+    if (!tab || !tabs[tab]) {
         return "billing";
     }
-
-
-    if (!tabs[tab]) {
-        return "billing";
-    }
-
 
     return tab;
-
 }
 
 
@@ -122,7 +93,7 @@ ACTIVATE TAB
 ==================================================
 */
 
-function activateTab(
+async function activateTab(
     tabName,
     updateURL = true
 ) {
@@ -141,20 +112,6 @@ function activateTab(
         button.classList.toggle(
             "active",
             button.dataset.tab === tabName
-        );
-
-    });
-
-
-    /*
-    Page sections
-    */
-
-    tabContents.forEach(content => {
-
-        content.classList.toggle(
-            "active",
-            content.dataset.tabContent === tabName
         );
 
     });
@@ -185,7 +142,6 @@ function activateTab(
             tabName
         );
 
-
         history.pushState(
             {
                 tab: tabName
@@ -195,6 +151,13 @@ function activateTab(
         );
 
     }
+
+
+    /*
+    Load Page
+    */
+
+    await loadPage(tabName);
 
 }
 
