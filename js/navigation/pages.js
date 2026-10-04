@@ -1,3 +1,13 @@
+const pageScripts = {
+    billing: [
+        "js/billing/cart.js",
+        "js/billing/order-type.js",
+        "js/billing/customer-input.js",
+        "js/billing/billing.js"
+    ]
+};
+
+
 async function loadPage(page) {
 
     const container =
@@ -17,6 +27,21 @@ async function loadPage(page) {
 
         container.innerHTML = html;
 
+
+        /*
+        Load page-specific JavaScript
+        */
+
+        if (pageScripts[page]) {
+
+            for (const scriptPath of pageScripts[page]) {
+
+                await loadScript(scriptPath);
+
+            }
+
+        }
+
     } catch (error) {
 
         console.error(error);
@@ -25,5 +50,25 @@ async function loadPage(page) {
             "<p>Unable to load page.</p>";
 
     }
+
+}
+
+
+function loadScript(src) {
+
+    return new Promise((resolve, reject) => {
+
+        const script =
+            document.createElement("script");
+
+        script.src = src;
+
+        script.onload = resolve;
+
+        script.onerror = reject;
+
+        document.body.appendChild(script);
+
+    });
 
 }
