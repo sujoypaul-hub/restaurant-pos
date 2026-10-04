@@ -305,6 +305,42 @@ navButtons.forEach(
 
 /*
 ==================================================
+INTERNAL ROUTE LINKS
+==================================================
+*/
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const routeElement =
+            event.target.closest(
+                "[data-route]"
+            );
+
+        if (!routeElement) {
+            return;
+        }
+
+
+        const route =
+            routeElement.dataset.route;
+
+
+        if (!route) {
+            return;
+        }
+
+
+        navigateTo(route);
+
+    }
+);
+
+
+
+/*
+==================================================
 BROWSER BACK / FORWARD
 ==================================================
 */
