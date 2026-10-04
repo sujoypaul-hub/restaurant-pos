@@ -413,6 +413,62 @@ window.addEventListener(
 
 /*
 ==================================================
+UNIVERSAL APPLICATION BACK BUTTON
+==================================================
+
+The application has one universal Back button.
+
+It uses the browser history, so it works with:
+
+Settings → Theme
+Marketing → AD
+Marketing → AD → Social Media AD
+etc.
+
+Individual pages do not need their own
+Back button.
+
+==================================================
+*/
+
+function initializeAppBackButton() {
+
+    const backButton =
+        document.getElementById(
+            "app-back-button"
+        );
+
+
+    if (!backButton) {
+
+        return;
+
+    }
+
+
+    backButton.addEventListener(
+        "click",
+        () => {
+
+            history.back();
+
+        }
+    );
+
+}
+
+
+/*
+==================================================
+INITIALIZE UNIVERSAL BACK BUTTON
+==================================================
+*/
+
+initializeAppBackButton();
+
+
+/*
+==================================================
 INITIAL APPLICATION ROUTE
 ==================================================
 */
