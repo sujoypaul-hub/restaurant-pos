@@ -1,79 +1,53 @@
-/*
-==================================================
-RESTAURANT POS THEME SYSTEM
-==================================================
-
-LIGHT
-- Light Default
-- Light Blue
-- Light Green
-- Light Red
-- Light Purple
-
-DARK
-- Dark Default
-- Dark Blue
-- Dark Green
-- Dark Red
-- Dark Purple
-
-==================================================
-*/
-
-
 /* ==================================================
-   LIGHT DEFAULT
-================================================== */
+   DEFAULT LIGHT
+   ================================================== */
 
-:root,
-:root[data-theme="light-default"] {
-
-    --background: #F5F5F5;
+:root {
+    --background: #FFFFFF;
     --surface: #FFFFFF;
-    --surface-secondary: #FAFAFA;
+    --surface-secondary: #F5F5F5;
 
     --text: #222222;
     --muted: #777777;
 
-    --border: #E2E2E2;
+    --border: #EAEAEA;
 
     --sidebar: #FFFFFF;
     --sidebar-text: #222222;
 
-    --nav-hover: #F0F0F0;
-    --nav-active: #666666;
+    --nav-hover: #F5F5F5;
+    --nav-active: #D9363E;
     --nav-active-text: #FFFFFF;
 
-    --button: #444444;
+    --button: #222222;
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #DCDCDC;
+    --input-border: #E5E5E5;
 
-    --accent: #666666;
-    --accent-light: #EEEEEE;
+    --accent: #D9363E;
+    --accent-light: #FDEBEC;
 }
 
 
 /* ==================================================
    LIGHT BLUE
-================================================== */
+   ================================================== */
 
 :root[data-theme="light-blue"] {
-
-    --background: #F4F8FF;
+    --background: #F2F7FF;
     --surface: #FFFFFF;
-    --surface-secondary: #EDF4FF;
+    --surface-secondary: #E5F0FF;
 
-    --text: #172033;
-    --muted: #68758A;
+    --text: #17243A;
+    --muted: #64748B;
 
-    --border: #D5E1F2;
+    --border: #D7E4F5;
 
     --sidebar: #FFFFFF;
-    --sidebar-text: #172033;
+    --sidebar-text: #17243A;
 
-    --nav-hover: #EAF2FF;
+    --nav-hover: #EAF3FF;
     --nav-active: #2563EB;
     --nav-active-text: #FFFFFF;
 
@@ -81,98 +55,95 @@ DARK
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #C8D8F0;
+    --input-border: #CBDCF3;
 
     --accent: #2563EB;
-    --accent-light: #E7EFFF;
+    --accent-light: #E8F0FF;
 }
 
 
 /* ==================================================
    LIGHT GREEN
-================================================== */
+   ================================================== */
 
 :root[data-theme="light-green"] {
-
-    --background: #F4FBF6;
+    --background: #F1FAF4;
     --surface: #FFFFFF;
-    --surface-secondary: #ECF8EF;
+    --surface-secondary: #E1F4E7;
 
-    --text: #17271C;
-    --muted: #647469;
+    --text: #173525;
+    --muted: #66806F;
 
-    --border: #D2E5D7;
+    --border: #D2E8D9;
 
     --sidebar: #FFFFFF;
-    --sidebar-text: #17271C;
+    --sidebar-text: #173525;
 
-    --nav-hover: #E8F6EC;
-    --nav-active: #16A34A;
+    --nav-hover: #E7F7EC;
+    --nav-active: #198754;
     --nav-active-text: #FFFFFF;
 
-    --button: #16A34A;
+    --button: #198754;
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #C7E0CD;
+    --input-border: #CFE3D5;
 
-    --accent: #16A34A;
-    --accent-light: #E5F7EA;
+    --accent: #198754;
+    --accent-light: #E4F5EA;
 }
 
 
 /* ==================================================
    LIGHT RED
-================================================== */
+   ================================================== */
 
 :root[data-theme="light-red"] {
-
-    --background: #FFF6F6;
+    --background: #FFF5F5;
     --surface: #FFFFFF;
-    --surface-secondary: #FFF0F0;
+    --surface-secondary: #FDE5E5;
 
-    --text: #2A1515;
-    --muted: #795F5F;
+    --text: #3B1717;
+    --muted: #826666;
 
-    --border: #EBCFCF;
+    --border: #F0D4D4;
 
     --sidebar: #FFFFFF;
-    --sidebar-text: #2A1515;
+    --sidebar-text: #3B1717;
 
-    --nav-hover: #FFE8E8;
-    --nav-active: #DC2626;
+    --nav-hover: #FDEAEA;
+    --nav-active: #D9363E;
     --nav-active-text: #FFFFFF;
 
-    --button: #DC2626;
+    --button: #D9363E;
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #E8C7C7;
+    --input-border: #EBCFCF;
 
-    --accent: #DC2626;
-    --accent-light: #FDE5E5;
+    --accent: #D9363E;
+    --accent-light: #FDE4E5;
 }
 
 
 /* ==================================================
    LIGHT PURPLE
-================================================== */
+   ================================================== */
 
 :root[data-theme="light-purple"] {
-
-    --background: #FAF7FF;
+    --background: #F8F5FF;
     --surface: #FFFFFF;
-    --surface-secondary: #F4EDFF;
+    --surface-secondary: #EEE7FF;
 
-    --text: #241735;
-    --muted: #766486;
+    --text: #281A40;
+    --muted: #766A8A;
 
-    --border: #E2D5F2;
+    --border: #DED4F1;
 
     --sidebar: #FFFFFF;
-    --sidebar-text: #241735;
+    --sidebar-text: #281A40;
 
-    --nav-hover: #F0E7FF;
+    --nav-hover: #F0EAFE;
     --nav-active: #7C3AED;
     --nav-active-text: #FFFFFF;
 
@@ -180,19 +151,179 @@ DARK
     --button-text: #FFFFFF;
 
     --input-background: #FFFFFF;
-    --input-border: #D9C8F0;
+    --input-border: #DCD0F0;
 
     --accent: #7C3AED;
-    --accent-light: #F0E7FF;
+    --accent-light: #EEE7FF;
+}
+
+
+/* ==================================================
+   LIGHT YELLOW
+   Clearly yellow - NOT white
+   ================================================== */
+
+:root[data-theme="light-yellow"] {
+    --background: #FFF8CC;
+    --surface: #FFFDF0;
+    --surface-secondary: #FFF3A6;
+
+    --text: #332600;
+    --muted: #75652D;
+
+    --border: #E8D77A;
+
+    --sidebar: #FFF9D9;
+    --sidebar-text: #332600;
+
+    --nav-hover: #FFF0A3;
+    --nav-active: #E0A800;
+    --nav-active-text: #FFFFFF;
+
+    --button: #D89B00;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFDF0;
+    --input-border: #E3CF68;
+
+    --accent: #D89B00;
+    --accent-light: #FFF0A3;
+}
+
+
+/* ==================================================
+   LIGHT ORANGE
+   ================================================== */
+
+:root[data-theme="light-orange"] {
+    --background: #FFF6ED;
+    --surface: #FFFFFF;
+    --surface-secondary: #FFE9D2;
+
+    --text: #3D2413;
+    --muted: #806A59;
+
+    --border: #F0D8C0;
+
+    --sidebar: #FFFFFF;
+    --sidebar-text: #3D2413;
+
+    --nav-hover: #FFF0E0;
+    --nav-active: #EA580C;
+    --nav-active-text: #FFFFFF;
+
+    --button: #EA580C;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+    --input-border: #EDD3B9;
+
+    --accent: #EA580C;
+    --accent-light: #FFE8D2;
+}
+
+
+/* ==================================================
+   LIGHT PINK
+   ================================================== */
+
+:root[data-theme="light-pink"] {
+    --background: #FFF5F8;
+    --surface: #FFFFFF;
+    --surface-secondary: #FCE5EC;
+
+    --text: #401C2B;
+    --muted: #806A73;
+
+    --border: #F0D3DD;
+
+    --sidebar: #FFFFFF;
+    --sidebar-text: #401C2B;
+
+    --nav-hover: #FDEAF0;
+    --nav-active: #DB2777;
+    --nav-active-text: #FFFFFF;
+
+    --button: #DB2777;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFFFF;
+    --input-border: #EBCFD9;
+
+    --accent: #DB2777;
+    --accent-light: #FCE5EC;
+}
+
+
+/* ==================================================
+   LIGHT GOLD
+   ================================================== */
+
+:root[data-theme="light-gold"] {
+    --background: #FFF9E8;
+    --surface: #FFFDF7;
+    --surface-secondary: #F8E7A8;
+
+    --text: #3D2B08;
+    --muted: #806B3A;
+
+    --border: #E5CD78;
+
+    --sidebar: #FFF8DF;
+    --sidebar-text: #3D2B08;
+
+    --nav-hover: #F9EDC3;
+    --nav-active: #B8860B;
+    --nav-active-text: #FFFFFF;
+
+    --button: #B8860B;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFDF7;
+    --input-border: #DEC66E;
+
+    --accent: #B8860B;
+    --accent-light: #F8E7A8;
+}
+
+
+/* ==================================================
+   LIGHT BROWN
+   ================================================== */
+
+:root[data-theme="light-brown"] {
+    --background: #F8F2EC;
+    --surface: #FFFDFC;
+    --surface-secondary: #EBDDD0;
+
+    --text: #34251B;
+    --muted: #76685D;
+
+    --border: #DDCFC1;
+
+    --sidebar: #FBF5EF;
+    --sidebar-text: #34251B;
+
+    --nav-hover: #F0E4D8;
+    --nav-active: #795548;
+    --nav-active-text: #FFFFFF;
+
+    --button: #795548;
+    --button-text: #FFFFFF;
+
+    --input-background: #FFFDFC;
+    --input-border: #DCCBBC;
+
+    --accent: #795548;
+    --accent-light: #EBDDD0;
 }
 
 
 /* ==================================================
    DARK DEFAULT
-================================================== */
+   ================================================== */
 
 :root[data-theme="dark-default"] {
-
     --background: #111111;
     --surface: #181818;
     --surface-secondary: #222222;
@@ -206,7 +337,7 @@ DARK
     --sidebar-text: #F5F5F5;
 
     --nav-hover: #242424;
-    --nav-active: #666666;
+    --nav-active: #D9363E;
     --nav-active-text: #FFFFFF;
 
     --button: #2A2A2A;
@@ -215,269 +346,556 @@ DARK
     --input-background: #222222;
     --input-border: #363636;
 
-    --accent: #888888;
-    --accent-light: #292929;
+    --accent: #E84B52;
+    --accent-light: #321B1D;
 }
 
 
 /* ==================================================
    DARK BLUE
-================================================== */
+   ================================================== */
 
 :root[data-theme="dark-blue"] {
+    --background: #0B1220;
+    --surface: #111C30;
+    --surface-secondary: #192942;
 
-    --background: #0D1628;
-    --surface: #14213A;
-    --surface-secondary: #1B2C4A;
+    --text: #F1F5FF;
+    --muted: #9AA9C2;
 
-    --text: #F3F7FF;
-    --muted: #9EACC2;
+    --border: #293A57;
 
-    --border: #2A3D5D;
+    --sidebar: #0E1728;
+    --sidebar-text: #F1F5FF;
 
-    --sidebar: #101C31;
-    --sidebar-text: #F3F7FF;
-
-    --nav-hover: #1C2D4A;
+    --nav-hover: #182943;
     --nav-active: #3B82F6;
     --nav-active-text: #FFFFFF;
 
     --button: #2563EB;
     --button-text: #FFFFFF;
 
-    --input-background: #1B2C4A;
-    --input-border: #344B70;
+    --input-background: #15233A;
+    --input-border: #304564;
 
     --accent: #3B82F6;
-    --accent-light: #182F59;
+    --accent-light: #172E55;
 }
 
 
 /* ==================================================
    DARK GREEN
-================================================== */
+   ================================================== */
 
 :root[data-theme="dark-green"] {
+    --background: #0B1711;
+    --surface: #122219;
+    --surface-secondary: #1B3024;
 
-    --background: #0C1912;
-    --surface: #12251A;
-    --surface-secondary: #193421;
+    --text: #F1FFF5;
+    --muted: #9AB5A2;
 
-    --text: #F1FBF4;
-    --muted: #9DB2A3;
+    --border: #2B4935;
 
-    --border: #294635;
+    --sidebar: #0E1D15;
+    --sidebar-text: #F1FFF5;
 
-    --sidebar: #102018;
-    --sidebar-text: #F1FBF4;
-
-    --nav-hover: #1A3423;
-    --nav-active: #22C55E;
+    --nav-hover: #1B3325;
+    --nav-active: #22A060;
     --nav-active-text: #FFFFFF;
 
-    --button: #16A34A;
+    --button: #198754;
     --button-text: #FFFFFF;
 
-    --input-background: #193421;
-    --input-border: #31563E;
+    --input-background: #17291E;
+    --input-border: #31513C;
 
-    --accent: #22C55E;
-    --accent-light: #173C24;
+    --accent: #22A060;
+    --accent-light: #173A27;
 }
 
 
 /* ==================================================
    DARK RED
-================================================== */
+   ================================================== */
 
 :root[data-theme="dark-red"] {
-
-    --background: #1A0D0D;
-    --surface: #251313;
-    --surface-secondary: #351919;
+    --background: #190D0E;
+    --surface: #251416;
+    --surface-secondary: #351B1E;
 
     --text: #FFF4F4;
-    --muted: #B99A9A;
+    --muted: #C39A9D;
 
-    --border: #4A2929;
+    --border: #513034;
 
-    --sidebar: #211010;
+    --sidebar: #1D1012;
     --sidebar-text: #FFF4F4;
 
-    --nav-hover: #381B1B;
-    --nav-active: #EF4444;
+    --nav-hover: #3A1D21;
+    --nav-active: #E0444D;
     --nav-active-text: #FFFFFF;
 
-    --button: #DC2626;
+    --button: #D9363E;
     --button-text: #FFFFFF;
 
-    --input-background: #351919;
-    --input-border: #563030;
+    --input-background: #2A1719;
+    --input-border: #593439;
 
-    --accent: #EF4444;
-    --accent-light: #451C1C;
+    --accent: #E84B52;
+    --accent-light: #421C20;
 }
 
 
 /* ==================================================
    DARK PURPLE
-================================================== */
+   ================================================== */
 
 :root[data-theme="dark-purple"] {
+    --background: #120D1C;
+    --surface: #1D152A;
+    --surface-secondary: #2B1F3D;
 
-    --background: #160E22;
-    --surface: #211532;
-    --surface-secondary: #2D1D43;
+    --text: #F9F4FF;
+    --muted: #AB9DBB;
 
-    --text: #FAF5FF;
-    --muted: #B5A6C4;
+    --border: #443458;
 
-    --border: #443158;
+    --sidebar: #171021;
+    --sidebar-text: #F9F4FF;
 
-    --sidebar: #1C122A;
-    --sidebar-text: #FAF5FF;
-
-    --nav-hover: #302044;
-    --nav-active: #A855F7;
+    --nav-hover: #302241;
+    --nav-active: #8B5CF6;
     --nav-active-text: #FFFFFF;
 
-    --button: #9333EA;
+    --button: #7C3AED;
     --button-text: #FFFFFF;
 
-    --input-background: #2D1D43;
-    --input-border: #4B3561;
+    --input-background: #231932;
+    --input-border: #49385E;
 
-    --accent: #A855F7;
-    --accent-light: #3B2254;
+    --accent: #A78BFA;
+    --accent-light: #32234D;
 }
 
 
 /* ==================================================
-   THEME PAGE
-================================================== */
+   DARK YELLOW / AMBER
+   ================================================== */
 
-.theme-section-title {
+:root[data-theme="dark-yellow"] {
+    --background: #151209;
+    --surface: #211C0D;
+    --surface-secondary: #302812;
 
-    margin-top: 30px;
-    margin-bottom: 15px;
+    --text: #FFF8D8;
+    --muted: #C7B878;
 
-    color: var(--text);
+    --border: #54461A;
 
+    --sidebar: #191508;
+    --sidebar-text: #FFF8D8;
+
+    --nav-hover: #362C0E;
+    --nav-active: #D9A400;
+    --nav-active-text: #211800;
+
+    --button: #D9A400;
+    --button-text: #211800;
+
+    --input-background: #27200D;
+    --input-border: #5A4A19;
+
+    --accent: #E0AA00;
+    --accent-light: #3B300D;
 }
 
 
+/* ==================================================
+   DARK ORANGE
+   ================================================== */
+
+:root[data-theme="dark-orange"] {
+    --background: #1A1009;
+    --surface: #25170D;
+    --surface-secondary: #36200F;
+
+    --text: #FFF5EB;
+    --muted: #C3A58B;
+
+    --border: #53361F;
+
+    --sidebar: #1D120A;
+    --sidebar-text: #FFF5EB;
+
+    --nav-hover: #3A220F;
+    --nav-active: #F97316;
+    --nav-active-text: #FFFFFF;
+
+    --button: #EA580C;
+    --button-text: #FFFFFF;
+
+    --input-background: #2A1A0F;
+    --input-border: #5A3A20;
+
+    --accent: #FB923C;
+    --accent-light: #45240E;
+}
+
+
+/* ==================================================
+   DARK PINK
+   ================================================== */
+
+:root[data-theme="dark-pink"] {
+    --background: #1A0B12;
+    --surface: #27121B;
+    --surface-secondary: #381925;
+
+    --text: #FFF1F7;
+    --muted: #C19BAA;
+
+    --border: #54303F;
+
+    --sidebar: #1D0D15;
+    --sidebar-text: #FFF1F7;
+
+    --nav-hover: #3A1A28;
+    --nav-active: #EC4899;
+    --nav-active-text: #FFFFFF;
+
+    --button: #DB2777;
+    --button-text: #FFFFFF;
+
+    --input-background: #2B151F;
+    --input-border: #5A3343;
+
+    --accent: #EC4899;
+    --accent-light: #451B31;
+}
+
+
+/* ==================================================
+   DARK GOLD
+   ================================================== */
+
+:root[data-theme="dark-gold"] {
+    --background: #12100A;
+    --surface: #1D190E;
+    --surface-secondary: #2B2411;
+
+    --text: #FFF7D6;
+    --muted: #B9A66C;
+
+    --border: #4B401D;
+
+    --sidebar: #161309;
+    --sidebar-text: #FFF7D6;
+
+    --nav-hover: #32290F;
+    --nav-active: #C9A227;
+    --nav-active-text: #171205;
+
+    --button: #C9A227;
+    --button-text: #171205;
+
+    --input-background: #241F10;
+    --input-border: #51451D;
+
+    --accent: #D4AF37;
+    --accent-light: #3D3210;
+}
+
+
+/* ==================================================
+   DARK BROWN
+   ================================================== */
+
+:root[data-theme="dark-brown"] {
+    --background: #140F0C;
+    --surface: #211813;
+    --surface-secondary: #30231B;
+
+    --text: #FFF5ED;
+    --muted: #B6A095;
+
+    --border: #49382D;
+
+    --sidebar: #18120E;
+    --sidebar-text: #FFF5ED;
+
+    --nav-hover: #36271D;
+    --nav-active: #9A6A4F;
+    --nav-active-text: #FFFFFF;
+
+    --button: #795548;
+    --button-text: #FFFFFF;
+
+    --input-background: #281C15;
+    --input-border: #4E3B2F;
+
+    --accent: #A8795C;
+    --accent-light: #3D2A20;
+}
+
+
+/* ==================================================
+   THEME PAGE UI
+   ================================================== */
+
+.theme-section {
+    margin-bottom: 32px;
+}
+
+.theme-section h3 {
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
 .theme-grid {
-
     display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(180px, 1fr)
+    );
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(200px, 1fr)
-        );
-
-    gap: 15px;
-
+    gap: 16px;
 }
 
 
 .theme-option {
+    position: relative;
 
     display: flex;
+    flex-direction: column;
 
-    align-items: center;
+    gap: 10px;
 
-    gap: 12px;
+    padding: 14px;
 
-    padding: 15px;
+    background: var(--surface);
 
     border: 1px solid var(--border);
 
     border-radius: 10px;
 
-    background: var(--surface);
-
-    color: var(--text);
-
     cursor: pointer;
 
     transition:
-        border-color 0.2s,
-        background 0.2s;
-
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 
 .theme-option:hover {
+    transform: translateY(-2px);
 
     border-color: var(--accent);
-
 }
 
 
 .theme-option input {
+    position: absolute;
 
-    accent-color: var(--accent);
+    opacity: 0;
 
+    pointer-events: none;
+}
+
+
+.theme-option:has(input:checked) {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 2px var(--accent-light);
 }
 
 
 .theme-preview {
+    display: block;
 
-    width: 30px;
+    width: 100%;
 
-    height: 30px;
+    height: 80px;
 
-    border-radius: 50%;
+    border-radius: 7px;
 
-    flex-shrink: 0;
+    border: 1px solid var(--border);
 
-    border: 2px solid var(--border);
+    position: relative;
 
+    overflow: hidden;
 }
 
 
-/* Light previews */
+/* Preview backgrounds */
 
-.theme-light-default {
-    background: #666666;
+.theme-preview.light-default {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #F5F5F5 50%
+    );
 }
 
-.theme-light-blue {
-    background: #2563EB;
+.theme-preview.light-blue {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #2563EB 50%
+    );
 }
 
-.theme-light-green {
-    background: #16A34A;
+.theme-preview.light-green {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #198754 50%
+    );
 }
 
-.theme-light-red {
-    background: #DC2626;
+.theme-preview.light-red {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #D9363E 50%
+    );
 }
 
-.theme-light-purple {
-    background: #7C3AED;
+.theme-preview.light-purple {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #7C3AED 50%
+    );
+}
+
+.theme-preview.light-yellow {
+    background: linear-gradient(
+        135deg,
+        #FFF8CC 50%,
+        #E0A800 50%
+    );
+}
+
+.theme-preview.light-orange {
+    background: linear-gradient(
+        135deg,
+        #FFF6ED 50%,
+        #EA580C 50%
+    );
+}
+
+.theme-preview.light-pink {
+    background: linear-gradient(
+        135deg,
+        #FFF5F8 50%,
+        #DB2777 50%
+    );
+}
+
+.theme-preview.light-gold {
+    background: linear-gradient(
+        135deg,
+        #FFF9E8 50%,
+        #B8860B 50%
+    );
+}
+
+.theme-preview.light-brown {
+    background: linear-gradient(
+        135deg,
+        #F8F2EC 50%,
+        #795548 50%
+    );
 }
 
 
-/* Dark previews */
-
-.theme-dark-default {
-    background: #111111;
+.theme-preview.dark-default {
+    background: linear-gradient(
+        135deg,
+        #111111 50%,
+        #D9363E 50%
+    );
 }
 
-.theme-dark-blue {
-    background: #14213A;
+.theme-preview.dark-blue {
+    background: linear-gradient(
+        135deg,
+        #0B1220 50%,
+        #3B82F6 50%
+    );
 }
 
-.theme-dark-green {
-    background: #12251A;
+.theme-preview.dark-green {
+    background: linear-gradient(
+        135deg,
+        #0B1711 50%,
+        #22A060 50%
+    );
 }
 
-.theme-dark-red {
-    background: #251313;
+.theme-preview.dark-red {
+    background: linear-gradient(
+        135deg,
+        #190D0E 50%,
+        #E0444D 50%
+    );
 }
 
-.theme-dark-purple {
-    background: #211532;
+.theme-preview.dark-purple {
+    background: linear-gradient(
+        135deg,
+        #120D1C 50%,
+        #8B5CF6 50%
+    );
+}
+
+.theme-preview.dark-yellow {
+    background: linear-gradient(
+        135deg,
+        #151209 50%,
+        #D9A400 50%
+    );
+}
+
+.theme-preview.dark-orange {
+    background: linear-gradient(
+        135deg,
+        #1A1009 50%,
+        #F97316 50%
+    );
+}
+
+.theme-preview.dark-pink {
+    background: linear-gradient(
+        135deg,
+        #1A0B12 50%,
+        #EC4899 50%
+    );
+}
+
+.theme-preview.dark-gold {
+    background: linear-gradient(
+        135deg,
+        #12100A 50%,
+        #D4AF37 50%
+    );
+}
+
+.theme-preview.dark-brown {
+    background: linear-gradient(
+        135deg,
+        #140F0C 50%,
+        #9A6A4F 50%
+    );
+}
+
+
+.theme-name {
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
 }
