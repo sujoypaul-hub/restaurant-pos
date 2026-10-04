@@ -395,77 +395,75 @@
 
     <!-- Customer -->
 
-    <div class="customer-section">
+    <!-- Customer -->
 
-        <div class="customer-heading">
+<div class="customer-section">
 
-            <strong>
-                Customer
-            </strong>
+    <div class="customer-heading">
+
+        <strong>
+            Customer
+        </strong>
+
+
+        <label class="no-phone-option">
+
+            <input
+                type="checkbox"
+                id="no-phone-checkbox"
+            >
 
             <span>
-                Optional
+                No phone
             </span>
 
-        </div>
+        </label>
+
+    </div>
 
 
-        <input
-            type="tel"
-            id="customer-phone"
-            placeholder="Enter customer phone number"
-        >
+    <input
+        type="tel"
+        id="customer-phone"
+        placeholder="Enter customer phone number"
+        inputmode="numeric"
+        maxlength="10"
+    >
 
+
+    <!-- Order type -->
+
+    <div class="order-type">
 
         <button
-            class="no-phone-btn"
+            class="order-type-btn"
             type="button"
-            style="
-                width:100%;
-                margin-top:8px;
-                padding:9px;
-                border:1px solid var(--border);
-                border-radius:10px;
-                background:transparent;
-                color:var(--text);
-                cursor:pointer;
-            "
+            data-order-type="delivery"
         >
-            Continue without phone
+            Delivery
         </button>
 
 
-        <!-- Order type -->
+        <button
+            class="order-type-btn"
+            type="button"
+            data-order-type="dine-in"
+        >
+            Dine In
+        </button>
 
-        <div class="order-type">
 
-            <button
-                class="order-type-btn"
-                type="button"
-                data-order-type="delivery"
-            >
-                Delivery
-            </button>
-
-            <button
-                class="order-type-btn"
-                type="button"
-                data-order-type="dine-in"
-            >
-                Dine In
-            </button>
-
-            <button
-                class="order-type-btn active"
-                type="button"
-                data-order-type="takeaway"
-            >
-                Takeaway
-            </button>
-
-        </div>
+        <button
+            class="order-type-btn active"
+            type="button"
+            data-order-type="takeaway"
+        >
+            Takeaway
+        </button>
 
     </div>
+
+</div>
 
 
     <!-- Items -->
