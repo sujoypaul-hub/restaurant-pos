@@ -318,37 +318,37 @@
 }
 
 
+
 /* ==================================================
-   DARK DEFAULT
+   DARK DEFAULT — CHARCOAL
    ================================================== */
 
 :root[data-theme="dark-default"] {
-    --background: #111111;
-    --surface: #181818;
-    --surface-secondary: #222222;
+    --background: #181818;
+    --surface: #222222;
+    --surface-secondary: #2D2D2D;
 
     --text: #F5F5F5;
-    --muted: #9B9B9B;
+    --muted: #A6A6A6;
 
-    --border: #303030;
+    --border: #3A3A3A;
 
-    --sidebar: #191919;
+    --sidebar: #202020;
     --sidebar-text: #F5F5F5;
 
-    --nav-hover: #242424;
-    --nav-active: #D9363E;
+    --nav-hover: #303030;
+    --nav-active: #555555;
     --nav-active-text: #FFFFFF;
 
-    --button: #2A2A2A;
+    --button: #555555;
     --button-text: #FFFFFF;
 
-    --input-background: #222222;
-    --input-border: #363636;
+    --input-background: #242424;
+    --input-border: #404040;
 
-    --accent: #E84B52;
-    --accent-light: #321B1D;
+    --accent: #777777;
+    --accent-light: #343434;
 }
-
 
 /* ==================================================
    DARK BLUE
