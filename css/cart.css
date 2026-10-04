@@ -91,7 +91,7 @@
 
     align-items: center;
 
-    margin-bottom: 8px;
+    margin-bottom: 9px;
 
 }
 
@@ -99,15 +99,6 @@
 .customer-heading strong {
 
     font-size: 14px;
-
-}
-
-
-.customer-heading span {
-
-    font-size: 12px;
-
-    color: var(--muted);
 
 }
 
@@ -695,5 +686,47 @@
         margin: 0;
 
     }
+
+}
+
+/* ==================================================
+   NO PHONE OPTION
+================================================== */
+
+.no-phone-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+
+.no-phone-option input {
+
+    width: 15px;
+
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: var(--accent);
+
+    cursor: pointer;
+
+}
+
+
+.no-phone-option span {
+
+    white-space: nowrap;
 
 }
