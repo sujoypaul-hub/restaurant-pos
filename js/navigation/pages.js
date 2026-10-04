@@ -1,3 +1,5 @@
+const loadedScripts = {};
+
 const pageScripts = {
     billing: [
         "js/billing/cart.js",
@@ -29,14 +31,20 @@ async function loadPage(page) {
 
 
         /*
-        Load page-specific JavaScript
+        Load page scripts only once
         */
 
         if (pageScripts[page]) {
 
             for (const scriptPath of pageScripts[page]) {
 
-                await loadScript(scriptPath);
+                if (!loadedScripts[scriptPath]) {
+
+                    await loadScript(scriptPath);
+
+                    loadedScripts[scriptPath] = true;
+
+                }
 
             }
 
