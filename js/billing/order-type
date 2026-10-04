@@ -1,29 +1,140 @@
 /*
 ==================================================
-ORDER TYPE
+ORDER TYPE MODULE
 ==================================================
 
-Current options:
+Available order types:
 
 - Delivery
 - Dine In
 - Takeaway
 
-Later this will affect:
+Rules:
 
-- Delivery charge
-- Kitchen workflow
-- Customer address
-- Order channel
-- Reports
+DELIVERY
+→ Customer phone is required
+→ "No phone" option is disabled
+
+DINE IN
+→ Customer phone is optional
+
+TAKEAWAY
+→ Customer phone is optional
+
+The module also broadcasts an event whenever
+the order type changes.
 
 ==================================================
 */
 
 
-let selectedOrderType =
-    "takeaway";
+/*
+==================================================
+CURRENT ORDER TYPE
+==================================================
+*/
 
+let selectedOrderType = null;
+
+
+/*
+==================================================
+SET ORDER TYPE
+==================================================
+*/
+
+function setOrderType(orderType) {
+
+    const validTypes = [
+        "delivery",
+        "dine-in",
+        "takeaway"
+    ];
+
+
+    /*
+    Safety check
+    */
+
+    if (
+        !validTypes.includes(orderType)
+    ) {
+
+        return;
+
+    }
+
+
+    selectedOrderType =
+        orderType;
+
+
+    /*
+    Update button appearance
+    */
+
+    const buttons =
+        document.querySelectorAll(
+            ".order-type-btn"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.classList.toggle(
+
+            "active",
+
+            button.dataset.orderType ===
+                selectedOrderType
+
+        );
+
+    });
+
+
+    /*
+    Tell other modules that the order
+    type has changed.
+
+    customer-input.js listens to this event.
+    */
+
+    document.dispatchEvent(
+
+        new CustomEvent(
+            "posOrderTypeChanged",
+            {
+                detail: {
+                    orderType:
+                        selectedOrderType
+                }
+            }
+        )
+
+    );
+
+}
+
+
+/*
+==================================================
+GET CURRENT ORDER TYPE
+==================================================
+*/
+
+function getOrderType() {
+
+    return selectedOrderType;
+
+}
+
+
+/*
+==================================================
+INITIALIZE ORDER TYPE
+==================================================
+*/
 
 function initializeOrderType() {
 
@@ -39,50 +150,47 @@ function initializeOrderType() {
             "click",
             () => {
 
-                selectedOrderType =
-                    button.dataset.orderType;
-
-
-                buttons.forEach(
-                    item => {
-
-                        item.classList.toggle(
-                            "active",
-                            item === button
-                        );
-
-                    }
+                setOrderType(
+                    button.dataset.orderType
                 );
-
-
-                /*
-                Later:
-
-                Delivery
-                    → address required
-                    → delivery charge
-
-                Dine In
-                    → table selection
-
-                Takeaway
-                    → no delivery charge
-                */
 
             }
         );
 
     });
 
+
+    /*
+    Start with Takeaway because your current
+    UI already uses it as the default selection.
+    */
+
+    setOrderType("takeaway");
+
 }
 
 
+/*
+==================================================
+PUBLIC API
+==================================================
+*/
+
 window.POSOrderType = {
 
-    get: () =>
-        selectedOrderType
+    get:
+        getOrderType,
+
+    set:
+        setOrderType
 
 };
 
+
+/*
+==================================================
+START
+==================================================
+*/
 
 initializeOrderType();
