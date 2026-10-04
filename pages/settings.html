@@ -1,47 +1,56 @@
-<!-- ==================================
-     SETTINGS TAB
-=================================== -->
+<div class="settings-page">
 
-<section class="page-content">
-
-    <div class="page-card">
-
-
-        <!-- Theme -->
+    <div class="list-type-layout">
 
         <button
-            class="setting-option List-type-layout"
+            class="setting-option"
             data-route="settings/theme"
+            type="button"
         >
 
-            <div>
-                <h3>🎨 Theme</h3>
+            <span class="setting-icon">
+                🎨
+            </span>
 
-                <p>
-                    Choose Light or Dark theme.
-                </p>
-            </div>
+            <span class="setting-content">
+
+                <span class="setting-title">
+                    Appearance
+                </span>
+
+                <span class="setting-description">
+                    Choose your application theme.
+                </span>
+
+            </span>
 
         </button>
 
 
-        <!-- Force Refresh -->
-
         <button
-            class="setting-option List-type-layout"
-            id="force-refresh"
+            class="setting-option"
+            id="force-refresh-button"
+            type="button"
         >
 
-            <div>
-                <h3>🔄 Force Refresh</h3>
+            <span class="setting-icon">
+                ↻
+            </span>
 
-                <p>
-                    Refresh the application and clear cache.
-                </p>
-            </div>
+            <span class="setting-content">
+
+                <span class="setting-title">
+                    Refresh
+                </span>
+
+                <span class="setting-description">
+                    Reload the application and refresh its data.
+                </span>
+
+            </span>
 
         </button>
 
     </div>
 
-</section>
+</div>
