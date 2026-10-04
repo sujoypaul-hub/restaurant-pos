@@ -185,7 +185,7 @@ const appRoutes = {
 
                 page: "theme",
 
-                title: "Theme",
+                title: "Appearance",
 
                 description:
                     "Choose your application theme",
