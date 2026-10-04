@@ -1,150 +1,217 @@
 /*
 ==================================================
-TAB NAVIGATION
+APPLICATION ROUTER
+==================================================
+
+This file handles:
+
+- URL navigation
+- Nested pages
+- Sidebar active state
+- Page titles
+- Browser Back / Forward
+- Initial page loading
+
+Page information comes from routes.js.
+
+DO NOT add individual page logic here.
+
 ==================================================
 */
-
-const tabs = {
-
-    billing: {
-        title: "Billing",
-        description: "Create a new order"
-    },
-
-    orders: {
-        title: "Orders",
-        description: "View and manage restaurant orders"
-    },
-
-    customers: {
-        title: "Customers",
-        description: "Manage customers and order history"
-    },
-
-    products: {
-        title: "Products",
-        description: "Manage restaurant products"
-    },
-
-    reports: {
-        title: "Reports",
-        description: "View sales and business reports"
-    },
-
-    marketing: {
-        title: "Marketing",
-        description: "Manage customer marketing and campaigns"
-    },
-
-    "coming-soon": {
-        title: "Coming Soon",
-        description: "New features are coming soon"
-    },
-
-    settings: {
-        title: "Settings",
-        description: "Application settings"
-    }
-
-};
 
 
 /*
 ==================================================
-ELEMENTS
+GET ROUTE FROM URL
 ==================================================
 */
 
-const navButtons =
-    document.querySelectorAll(".nav-btn");
-
-const pageTitle =
-    document.getElementById("page-title");
-
-const pageDescription =
-    document.getElementById("page-description");
-
-
-/*
-==================================================
-GET TAB FROM URL
-==================================================
-*/
-
-function getTabFromURL() {
+function getRouteFromURL() {
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
-    const tab =
-        params.get("tab");
+    const route =
+        params.get("route");
 
-    if (!tab || !tabs[tab]) {
-        return "billing";
+    /*
+    No route means Billing.
+    */
+
+    if (!route) {
+
+        return ["billing"];
+
     }
 
-    return tab;
+    return route
+        .split("/")
+        .filter(Boolean);
+
 }
 
 
 /*
 ==================================================
-ACTIVATE TAB
+FIND ROUTE CONFIGURATION
 ==================================================
 */
 
-async function activateTab(
-    tabName,
+function findRoute(routeParts) {
+
+    let currentRoutes =
+        appRoutes;
+
+    let routeConfig = null;
+
+
+    for (
+        const part
+        of routeParts
+    ) {
+
+        if (
+            !currentRoutes[part]
+        ) {
+
+            return null;
+
+        }
+
+
+        routeConfig =
+            currentRoutes[part];
+
+
+        currentRoutes =
+            routeConfig.children || {};
+
+    }
+
+
+    return routeConfig;
+
+}
+
+
+/*
+==================================================
+UPDATE SIDEBAR
+==================================================
+*/
+
+function updateSidebar(
+    topLevelRoute
+) {
+
+    const navButtons =
+        document.querySelectorAll(
+            ".nav-btn"
+        );
+
+
+    navButtons.forEach(
+        button => {
+
+            button.classList.toggle(
+                "active",
+
+                button.dataset.tab ===
+                topLevelRoute
+            );
+
+        }
+    );
+
+}
+
+
+/*
+==================================================
+NAVIGATE
+==================================================
+*/
+
+async function navigateTo(
+    route,
     updateURL = true
 ) {
 
-    if (!tabs[tabName]) {
-        tabName = "billing";
+    /*
+    Convert string to array if necessary.
+    */
+
+    const routeParts =
+        Array.isArray(route)
+            ? route
+            : route
+                .split("/")
+                .filter(Boolean);
+
+
+    /*
+    Find route configuration.
+    */
+
+    const routeConfig =
+        findRoute(routeParts);
+
+
+    /*
+    Invalid route.
+    */
+
+    if (!routeConfig) {
+
+        navigateTo(
+            ["billing"],
+            false
+        );
+
+        return;
+
     }
 
 
     /*
-    Sidebar
-    */
-
-    navButtons.forEach(button => {
-
-        button.classList.toggle(
-            "active",
-            button.dataset.tab === tabName
-        );
-
-    });
-
-
-    /*
-    Header
-    */
-
-    pageTitle.textContent =
-        tabs[tabName].title;
-
-    pageDescription.textContent =
-        tabs[tabName].description;
-
-
-    /*
-    URL
+    ==============================================
+    UPDATE URL
+    ==============================================
     */
 
     if (updateURL) {
 
         const url =
-            new URL(window.location.href);
+            new URL(
+                window.location.href
+            );
+
+
+        /*
+        Remove old routing system.
+        */
+
+        url.searchParams.delete(
+            "tab"
+        );
+
+
+        /*
+        Add new route.
+        */
 
         url.searchParams.set(
-            "tab",
-            tabName
+            "route",
+            routeParts.join("/")
         );
+
 
         history.pushState(
             {
-                tab: tabName
+                route:
+                    routeParts.join("/")
             },
             "",
             url
@@ -154,34 +221,86 @@ async function activateTab(
 
 
     /*
-    Load Page
+    ==============================================
+    UPDATE HEADER
+    ==============================================
     */
 
-    await loadPage(tabName);
+    const pageTitle =
+        document.getElementById(
+            "page-title"
+        );
+
+    const pageDescription =
+        document.getElementById(
+            "page-description"
+        );
+
+
+    pageTitle.textContent =
+        routeConfig.title;
+
+
+    pageDescription.textContent =
+        routeConfig.description;
+
+
+    /*
+    ==============================================
+    UPDATE SIDEBAR
+    ==============================================
+    */
+
+    updateSidebar(
+        routeParts[0]
+    );
+
+
+    /*
+    ==============================================
+    LOAD PAGE
+    ==============================================
+    */
+
+    await loadPage(
+        routeConfig
+    );
 
 }
 
 
 /*
 ==================================================
-CLICK EVENTS
+SIDEBAR CLICK EVENTS
 ==================================================
 */
 
-navButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            activateTab(
-                button.dataset.tab
-            );
-
-        }
+const navButtons =
+    document.querySelectorAll(
+        ".nav-btn"
     );
 
-});
+
+navButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const route =
+                    button.dataset.tab;
+
+
+                navigateTo(
+                    route
+                );
+
+            }
+        );
+
+    }
+);
 
 
 /*
@@ -194,8 +313,8 @@ window.addEventListener(
     "popstate",
     () => {
 
-        activateTab(
-            getTabFromURL(),
+        navigateTo(
+            getRouteFromURL(),
             false
         );
 
@@ -209,7 +328,24 @@ INITIAL LOAD
 ==================================================
 */
 
-activateTab(
-    getTabFromURL(),
+navigateTo(
+    getRouteFromURL(),
     false
 );
+
+
+/*
+==================================================
+PUBLIC ROUTER API
+==================================================
+*/
+
+window.POSRouter = {
+
+    navigate:
+        navigateTo,
+
+    getCurrentRoute:
+        getRouteFromURL
+
+};
