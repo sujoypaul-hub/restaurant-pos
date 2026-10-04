@@ -286,19 +286,6 @@ body {
     position: relative;
 }
 
-.tab-content:not(.active) {
-    position: absolute;
-    left: -99999px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.tab-content.active {
-    position: relative;
-    opacity: 1;
-    pointer-events: auto;
-}
-
 
 /* =========================
    GENERIC PAGE CARD
