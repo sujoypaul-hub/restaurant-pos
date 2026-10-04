@@ -381,6 +381,264 @@ SETTINGS
 }
 
 /* ==================================================
+   THEME PAGE UI
+   ================================================== */
+
+.theme-section {
+    margin-bottom: 32px;
+}
+
+.theme-section h3 {
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(180px, 1fr)
+    );
+
+    gap: 16px;
+}
+
+
+.theme-option {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.theme-option:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--accent);
+}
+
+
+.theme-option input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.theme-option:has(input:checked) {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 2px var(--accent-light);
+}
+
+
+.theme-preview {
+    display: block;
+
+    width: 100%;
+
+    height: 80px;
+
+    border-radius: 7px;
+
+    border: 1px solid var(--border);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Preview backgrounds */
+
+.theme-preview.light-default {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #F5F5F5 50%
+    );
+}
+
+.theme-preview.light-blue {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #2563EB 50%
+    );
+}
+
+.theme-preview.light-green {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #198754 50%
+    );
+}
+
+.theme-preview.light-red {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #D9363E 50%
+    );
+}
+
+.theme-preview.light-purple {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF 50%,
+        #7C3AED 50%
+    );
+}
+
+.theme-preview.light-yellow {
+    background: linear-gradient(
+        135deg,
+        #FFF8CC 50%,
+        #E0A800 50%
+    );
+}
+
+.theme-preview.light-orange {
+    background: linear-gradient(
+        135deg,
+        #FFF6ED 50%,
+        #EA580C 50%
+    );
+}
+
+.theme-preview.light-pink {
+    background: linear-gradient(
+        135deg,
+        #FFF5F8 50%,
+        #DB2777 50%
+    );
+}
+
+.theme-preview.light-gold {
+    background: linear-gradient(
+        135deg,
+        #FFF9E8 50%,
+        #B8860B 50%
+    );
+}
+
+.theme-preview.light-brown {
+    background: linear-gradient(
+        135deg,
+        #F8F2EC 50%,
+        #795548 50%
+    );
+}
+
+
+.theme-preview.dark-default {
+    background: linear-gradient(135deg, #111111 50%, #555555 50%);
+}
+
+.theme-preview.dark-blue {
+    background: linear-gradient(
+        135deg,
+        #0B1220 50%,
+        #3B82F6 50%
+    );
+}
+
+.theme-preview.dark-green {
+    background: linear-gradient(
+        135deg,
+        #0B1711 50%,
+        #22A060 50%
+    );
+}
+
+.theme-preview.dark-red {
+    background: linear-gradient(
+        135deg,
+        #190D0E 50%,
+        #E0444D 50%
+    );
+}
+
+.theme-preview.dark-purple {
+    background: linear-gradient(
+        135deg,
+        #120D1C 50%,
+        #8B5CF6 50%
+    );
+}
+
+.theme-preview.dark-yellow {
+    background: linear-gradient(
+        135deg,
+        #151209 50%,
+        #D9A400 50%
+    );
+}
+
+.theme-preview.dark-orange {
+    background: linear-gradient(
+        135deg,
+        #1A1009 50%,
+        #F97316 50%
+    );
+}
+
+.theme-preview.dark-pink {
+    background: linear-gradient(
+        135deg,
+        #1A0B12 50%,
+        #EC4899 50%
+    );
+}
+
+.theme-preview.dark-gold {
+    background: linear-gradient(
+        135deg,
+        #12100A 50%,
+        #D4AF37 50%
+    );
+}
+
+.theme-preview.dark-brown {
+    background: linear-gradient(
+        135deg,
+        #140F0C 50%,
+        #9A6A4F 50%
+    );
+}
+
+
+.theme-name {
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* ==================================================
    GLOBAL LIST TYPE LAYOUT
    Reusable across the entire application
    ================================================== */
