@@ -1,3 +1,4 @@
+```javascript
 const THEME_STORAGE_KEY = "restaurant_pos_theme";
 
 const AVAILABLE_THEMES = [
@@ -24,8 +25,15 @@ const AVAILABLE_THEMES = [
     "dark-brown"
 ];
 
+
+/* ==========================================
+   GET SAVED THEME
+   ========================================== */
+
 function getSavedTheme() {
-    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    const savedTheme =
+        localStorage.getItem(THEME_STORAGE_KEY);
 
     if (AVAILABLE_THEMES.includes(savedTheme)) {
         return savedTheme;
@@ -34,7 +42,13 @@ function getSavedTheme() {
     return "light-default";
 }
 
+
+/* ==========================================
+   APPLY THEME
+   ========================================== */
+
 function applyTheme(theme) {
+
     if (!AVAILABLE_THEMES.includes(theme)) {
         theme = "light-default";
     }
@@ -52,13 +66,27 @@ function applyTheme(theme) {
     updateThemeSelection(theme);
 }
 
+
+/* ==========================================
+   UPDATE RADIO SELECTION
+   ========================================== */
+
 function updateThemeSelection(theme) {
+
     document
         .querySelectorAll('input[name="theme"]')
         .forEach(input => {
-            input.checked = input.value === theme;
+
+            input.checked =
+                input.value === theme;
+
         });
 }
+
+
+/* ==========================================
+   INITIALIZE THEME PAGE
+   ========================================== */
 
 function initializeThemePage() {
 
@@ -71,26 +99,36 @@ function initializeThemePage() {
         return;
     }
 
-    const currentTheme = getSavedTheme();
+    const currentTheme =
+        getSavedTheme();
 
     updateThemeSelection(currentTheme);
 
     inputs.forEach(input => {
 
-        input.addEventListener("change", function () {
+        input.addEventListener(
+            "change",
+            function () {
 
-            if (this.checked) {
-                applyTheme(this.value);
+                if (this.checked) {
+                    applyTheme(this.value);
+                }
+
             }
-
-        });
+        );
 
     });
 }
 
+
+/* ==========================================
+   APPLY SAVED THEME
+   ========================================== */
+
 function initializeSavedTheme() {
 
-    const theme = getSavedTheme();
+    const theme =
+        getSavedTheme();
 
     document.documentElement.setAttribute(
         "data-theme",
@@ -98,10 +136,35 @@ function initializeSavedTheme() {
     );
 }
 
+
+/* ==========================================
+   PAGE INITIALIZER REGISTRATION
+   ========================================== */
+
+window.POSPageInitializers =
+    window.POSPageInitializers || {};
+
+window.POSPageInitializers[
+    "js/settings/theme.js"
+] = initializeThemePage;
+
+
+/* ==========================================
+   INITIALIZE GLOBAL THEME
+   ========================================== */
+
 initializeSavedTheme();
-initializeThemePage();
+
+
+/* ==========================================
+   PUBLIC THEME API
+   ========================================== */
 
 window.POSTheme = {
+
     get: getSavedTheme,
+
     set: applyTheme
+
 };
+```
