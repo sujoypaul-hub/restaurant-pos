@@ -407,6 +407,22 @@ window.addEventListener(
             false
         );
 
+
+        /*
+        Refresh universal tabs
+        after route navigation.
+        */
+
+        setTimeout(() => {
+
+            if (window.POSTabs) {
+
+                window.POSTabs.refresh();
+
+            }
+
+        }, 0);
+
     }
 );
 
