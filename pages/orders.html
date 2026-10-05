@@ -11,42 +11,58 @@
     <div class="orders-main">
 
         <!-- Order Status Tabs -->
+    <div
+    class="orders-tabs"
+    data-tabs="orders"
+    data-default-tab="new"
+    data-tab-content="orders-content"
+>
 
-        <div class="orders-tabs">
+    <button
+        class="orders-tab"
+        type="button"
+        data-tab="new"
+        data-tab-page="orders/new"
+        aria-selected="false"
+    >
+        New
+    </button>
 
-            <button
-                class="orders-tab active"
-                type="button"
-                data-order-status="new"
-            >
-                New
-            </button>
 
-            <button
-                class="orders-tab"
-                type="button"
-                data-order-status="ongoing"
-            >
-                On going
-            </button>
+    <button
+        class="orders-tab"
+        type="button"
+        data-tab="ongoing"
+        data-tab-page="orders/ongoing"
+        aria-selected="false"
+    >
+        On going
+    </button>
 
-            <button
-                class="orders-tab"
-                type="button"
-                data-order-status="ready"
-            >
-                Ready
-            </button>
 
-            <button
-                class="orders-tab"
-                type="button"
-                data-order-status="closed"
-            >
-                Closed
-            </button>
+    <button
+        class="orders-tab"
+        type="button"
+        data-tab="ready"
+        data-tab-page="orders/ready"
+        aria-selected="false"
+    >
+        Ready
+    </button>
 
-        </div>
+
+    <button
+        class="orders-tab"
+        type="button"
+        data-tab="closed"
+        data-tab-page="orders/closed"
+        aria-selected="false"
+    >
+        Closed
+    </button>
+
+</div>
+        
 
 
         <!-- Orders Content -->
