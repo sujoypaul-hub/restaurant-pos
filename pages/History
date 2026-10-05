@@ -1,0 +1,33 @@
+<div class="list-type-layout">
+
+    <div class="list-items">
+
+        <button
+            class="list-item"
+            type="button"
+        >
+
+            <span class="list-item-icon">
+                🧾
+            </span>
+
+            <span class="list-item-content">
+
+                <span class="list-item-title">
+                    Order History
+                </span>
+
+                <span class="list-item-description">
+                    View previous orders, bills and order details.
+                </span>
+
+            </span>
+
+            <span class="list-item-right">
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
