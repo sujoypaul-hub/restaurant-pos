@@ -55,9 +55,7 @@ function updatePhoneRules(orderType) {
         !phoneInput ||
         !noPhoneCheckbox
     ) {
-
         return;
-
     }
 
 
@@ -70,10 +68,6 @@ function updatePhoneRules(orderType) {
     if (
         orderType === "delivery"
     ) {
-
-        /*
-        Delivery always requires a phone number.
-        */
 
         noPhoneCheckbox.checked =
             false;
@@ -101,14 +95,17 @@ function updatePhoneRules(orderType) {
 
         setTimeout(
             () => {
-                phoneInput.focus();
+
+                if (phoneInput) {
+                    phoneInput.focus();
+                }
+
             },
             0
         );
 
 
         return;
-
     }
 
 
@@ -121,15 +118,9 @@ function updatePhoneRules(orderType) {
     noPhoneCheckbox.disabled =
         false;
 
-
     phoneInput.required =
         false;
 
-
-    /*
-    Keep phone input behaviour according
-    to whether No Phone is selected.
-    */
 
     if (
         noPhoneCheckbox.checked
@@ -150,7 +141,6 @@ function updatePhoneRules(orderType) {
             "Enter customer phone number";
 
     }
-
 }
 
 
@@ -163,12 +153,16 @@ NO PHONE CHECKBOX
 function handleNoPhoneChange() {
 
     if (
+        !phoneInput ||
+        !noPhoneCheckbox
+    ) {
+        return;
+    }
+
+
+    if (
         noPhoneCheckbox.checked
     ) {
-
-        /*
-        No phone selected.
-        */
 
         noPhoneSelected =
             true;
@@ -191,10 +185,6 @@ function handleNoPhoneChange() {
 
     } else {
 
-        /*
-        Phone number can be entered.
-        */
-
         noPhoneSelected =
             false;
 
@@ -208,7 +198,6 @@ function handleNoPhoneChange() {
             "Enter customer phone number";
 
     }
-
 }
 
 
@@ -220,11 +209,13 @@ PHONE INPUT
 
 function handlePhoneInput() {
 
+    if (!phoneInput) {
+        return;
+    }
+
+
     /*
     Keep only digits.
-
-    This is especially useful for Indian
-    10-digit mobile numbers.
     */
 
     phoneInput.value =
@@ -244,14 +235,30 @@ function handlePhoneInput() {
 ==================================================
 ORDER TYPE CHANGE LISTENER
 ==================================================
+
+IMPORTANT:
+
+This listener belongs to the document and must
+only be created once.
+
+The actual phoneInput / noPhoneCheckbox
+variables are global and are updated every time
+Billing is opened again.
+
+==================================================
 */
 
 function initializeOrderTypeListener() {
 
+    if (
+        window.POSCustomerOrderTypeListenerInitialized
+    ) {
+        return;
+    }
+
+
     document.addEventListener(
-
         "posOrderTypeChanged",
-
         event => {
 
             const orderType =
@@ -263,19 +270,26 @@ function initializeOrderTypeListener() {
             );
 
         }
-
     );
 
+
+    window.POSCustomerOrderTypeListenerInitialized =
+        true;
 }
 
 
 /*
 ==================================================
-INITIALIZE
+INITIALIZE CUSTOMER INPUT
 ==================================================
 */
 
 function initializeCustomerInput() {
+
+    /*
+    Get the NEW elements from the newly loaded
+    Billing HTML.
+    */
 
     phoneInput =
         document.getElementById(
@@ -299,8 +313,18 @@ function initializeCustomerInput() {
         );
 
         return;
-
     }
+
+
+    /*
+    Reset customer state for the new Billing page.
+    */
+
+    customerPhone =
+        "";
+
+    noPhoneSelected =
+        noPhoneCheckbox.checked;
 
 
     /*
@@ -324,18 +348,14 @@ function initializeCustomerInput() {
 
 
     /*
-    Listen for Delivery /
-    Dine In / Takeaway changes.
+    Create the order-type listener only once.
     */
 
     initializeOrderTypeListener();
 
 
     /*
-    Apply the current order type
-    immediately.
-
-    Usually this will be Takeaway.
+    Apply the current order type immediately.
     */
 
     const currentOrderType =
@@ -347,7 +367,6 @@ function initializeCustomerInput() {
     updatePhoneRules(
         currentOrderType
     );
-
 }
 
 
@@ -373,14 +392,9 @@ window.POSCustomerInput = {
 
 /*
 ==================================================
-START
+PAGE INITIALIZER REGISTRATION
 ==================================================
 */
-
-```javascript
-/* ==========================================
-   PAGE INITIALIZER REGISTRATION
-   ========================================== */
 
 window.POSPageInitializers =
     window.POSPageInitializers || {};
@@ -388,5 +402,3 @@ window.POSPageInitializers =
 window.POSPageInitializers[
     "js/billing/customer-input.js"
 ] = initializeCustomerInput;
-```
-
