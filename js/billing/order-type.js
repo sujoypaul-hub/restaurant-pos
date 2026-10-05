@@ -56,17 +56,12 @@ function setOrderType(orderType) {
     Safety check
     */
 
-    if (
-        !validTypes.includes(orderType)
-    ) {
-
+    if (!validTypes.includes(orderType)) {
         return;
-
     }
 
 
-    selectedOrderType =
-        orderType;
+    selectedOrderType = orderType;
 
 
     /*
@@ -82,12 +77,9 @@ function setOrderType(orderType) {
     buttons.forEach(button => {
 
         button.classList.toggle(
-
             "active",
-
             button.dataset.orderType ===
                 selectedOrderType
-
         );
 
     });
@@ -101,7 +93,6 @@ function setOrderType(orderType) {
     */
 
     document.dispatchEvent(
-
         new CustomEvent(
             "posOrderTypeChanged",
             {
@@ -111,9 +102,7 @@ function setOrderType(orderType) {
                 }
             }
         )
-
     );
-
 }
 
 
@@ -144,6 +133,13 @@ function initializeOrderType() {
         );
 
 
+    /*
+    The page HTML has just been inserted,
+    so these are fresh buttons.
+
+    Attach listeners to the current buttons.
+    */
+
     buttons.forEach(button => {
 
         button.addEventListener(
@@ -161,8 +157,7 @@ function initializeOrderType() {
 
 
     /*
-    Start with Takeaway because your current
-    UI already uses it as the default selection.
+    Start with Takeaway.
     */
 
     setOrderType("takeaway");
@@ -178,25 +173,18 @@ PUBLIC API
 
 window.POSOrderType = {
 
-    get:
-        getOrderType,
+    get: getOrderType,
 
-    set:
-        setOrderType
+    set: setOrderType
 
 };
 
 
 /*
 ==================================================
-START
+PAGE INITIALIZER REGISTRATION
 ==================================================
 */
-
-```javascript
-/* ==========================================
-   PAGE INITIALIZER REGISTRATION
-   ========================================== */
 
 window.POSPageInitializers =
     window.POSPageInitializers || {};
@@ -204,5 +192,3 @@ window.POSPageInitializers =
 window.POSPageInitializers[
     "js/billing/order-type.js"
 ] = initializeOrderType;
-```
-
