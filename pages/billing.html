@@ -4,326 +4,533 @@
 
 
 <section
-            class="tab-content active"
-            data-tab-content="billing"
-        >
+    class="tab-content active"
+    data-tab-content="billing"
+>
 
-            <div class="billing-layout">
+    <div class="billing-layout">
 
 
-                <!-- Products -->
+        <!-- Products -->
 
-                <div class="products-section">
+        <div class="products-section">
 
-                    <div class="categories">
+            <div class="categories">
 
-                        <button class="category active">
-                            All
-                        </button>
+                <button class="category active">
+                    All
+                </button>
 
-                        <button class="category">
-                            Burgers
-                        </button>
+                <button class="category">
+                    Burgers
+                </button>
 
-                        <button class="category">
-                            Chicken
-                        </button>
+                <button class="category">
+                    Chicken
+                </button>
 
-                        <button class="category">
-                            Fries
-                        </button>
+                <button class="category">
+                    Fries
+                </button>
 
-                        <button class="category">
-                            Drinks
-                        </button>
+                <button class="category">
+                    Drinks
+                </button>
 
+            </div>
+
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <div class="product-image">
+                        🍔
                     </div>
 
+                    <h3>
+                        Classic Chicken Burger
+                    </h3>
 
-                    <div class="products-grid">
+                    <p>₹99</p>
 
-
-                        <div class="product-card">
-
-                            <div class="product-image">
-                                🍔
-                            </div>
-
-                            <h3>
-                                Classic Chicken Burger
-                            </h3>
-
-                            <p>₹99</p>
-
-                            <button class="add-btn">
-                                Add
-                            </button>
-
-                        </div>
-
-
-
-                        <div class="product-card">
-
-                            <div class="product-image">
-                                🍔
-                            </div>
-
-                            <h3>
-                                Classic Veg Burger
-                            </h3>
-
-                            <p>₹99</p>
-
-                            <button class="add-btn">
-                                Add
-                            </button>
-
-                        </div>
-
-
-
-                        <div class="product-card">
-
-                            <div class="product-image">
-                                🍗
-                            </div>
-
-                            <h3>
-                                4 Pc Fried Chicken
-                            </h3>
-
-                            <p>₹99</p>
-
-                            <button class="add-btn">
-                                Add
-                            </button>
-
-                        </div>
-
-
-
-                        <div class="product-card">
-
-                            <div class="product-image">
-                                🍟
-                            </div>
-
-                            <h3>
-                                Peri Peri Fries
-                            </h3>
-
-                            <p>₹99</p>
-
-                            <button class="add-btn">
-                                Add
-                            </button>
-
-                        </div>
-
-                    </div>
+                    <button class="add-btn">
+                        Add
+                    </button>
 
                 </div>
 
 
 
-<!-- Cart -->
-<!-- ==================================================
-     CART
-================================================== -->
+                <div class="product-card">
 
-<div class="cart-section">
+                    <div class="product-image">
+                        🍔
+                    </div>
 
+                    <h3>
+                        Classic Veg Burger
+                    </h3>
 
-    <div class="cart-header">
+                    <p>₹99</p>
 
-        <h2>
-            Current Order
-        </h2>
+                    <button class="add-btn">
+                        Add
+                    </button>
 
-        <span>
-            Order #0001
-        </span>
-
-    </div>
+                </div>
 
 
-    <!-- Customer -->
 
-    <!-- Customer -->
+                <div class="product-card">
 
-<div class="customer-section">
+                    <div class="product-image">
+                        🍗
+                    </div>
 
-    <div class="customer-heading">
+                    <h3>
+                        4 Pc Fried Chicken
+                    </h3>
 
-        <strong>
-            Customer
-        </strong>
+                    <p>₹99</p>
+
+                    <button class="add-btn">
+                        Add
+                    </button>
+
+                </div>
 
 
-        <label class="no-phone-option">
 
-            <input
-                type="checkbox"
-                id="no-phone-checkbox"
+                <div class="product-card">
+
+                    <div class="product-image">
+                        🍟
+                    </div>
+
+                    <h3>
+                        Peri Peri Fries
+                    </h3>
+
+                    <p>₹99</p>
+
+                    <button class="add-btn">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             CART
+        ================================================== -->
+
+        <div class="cart-section">
+
+
+            <div class="cart-header">
+
+                <h2>
+                    Current Order
+                </h2>
+
+                <span>
+                    Order #0001
+                </span>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 CUSTOMER
+            ================================================== -->
+
+            <div class="customer-section">
+
+
+                <div class="customer-heading">
+
+                    <strong>
+                        Customer
+                    </strong>
+
+
+                    <label class="no-phone-option">
+
+                        <input
+                            type="checkbox"
+                            id="no-phone-checkbox"
+                        >
+
+                        <span>
+                            No phone
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- Customer Name -->
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    class="customer-name-input"
+                    placeholder="Enter customer name"
+                    autocomplete="name"
+                >
+
+
+
+                <!-- Customer Phone -->
+
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Enter customer phone number"
+                    inputmode="numeric"
+                    maxlength="10"
+                >
+
+
+
+                <!-- Order type -->
+
+                <div class="order-type">
+
+                    <button
+                        class="order-type-btn"
+                        type="button"
+                        data-order-type="delivery"
+                    >
+                        Delivery
+                    </button>
+
+
+                    <button
+                        class="order-type-btn"
+                        type="button"
+                        data-order-type="dine-in"
+                    >
+                        Dine In
+                    </button>
+
+
+                    <button
+                        class="order-type-btn active"
+                        type="button"
+                        data-order-type="takeaway"
+                    >
+                        Takeaway
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ITEMS
+            ================================================== -->
+
+            <div
+                class="cart-items"
+                id="cart-items"
             >
 
-            <span>
-                No phone
-            </span>
+                <p class="empty-cart">
+                    No items added yet
+                </p>
 
-        </label>
+            </div>
+
+
+
+            <!-- ==================================================
+                 PROMOTION
+            ================================================== -->
+
+            <div class="promotion-box">
+
+                <span>
+                    Promotion Code
+                </span>
+
+
+                <button
+                    class="promotion-btn"
+                    id="promotion-btn"
+                    type="button"
+                >
+                    ADD CODE
+                </button>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SPECIAL SUGGESTION
+            ================================================== -->
+
+            <div class="special-suggestion">
+
+                <label
+                    for="special-suggestion-input"
+                >
+                    Special Suggestion
+                </label>
+
+
+                <textarea
+                    id="special-suggestion-input"
+                    placeholder="Any special request? e.g. Less spicy, extra mayo, no onion..."
+                    rows="3"
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SUMMARY
+            ================================================== -->
+
+            <div class="cart-summary">
+
+                <div>
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Discount
+                    </span>
+
+                    <strong id="discount">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Delivery Charge
+                    </span>
+
+                    <strong id="delivery-charge">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="total">
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 CONFIRM ORDER
+            ================================================== -->
+
+            <button
+                class="payment-btn"
+                type="button"
+            >
+                Confirm Order
+            </button>
+
+
+        </div>
+
 
     </div>
 
+</section>
 
-    <input
-        type="tel"
-        id="customer-phone"
-        placeholder="Enter customer phone number"
-        inputmode="numeric"
-        maxlength="10"
+
+
+<!-- ==================================================
+     PROMOTION POPUP
+================================================== -->
+
+<div
+    class="promo-modal"
+    id="promo-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="promo-modal-overlay"
+        data-promo-close
+    ></div>
+
+
+    <div
+        class="promo-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="promo-modal-title"
     >
 
+        <div class="promo-modal-header">
 
-    <!-- Order type -->
+            <div>
 
-    <div class="order-type">
+                <h3 id="promo-modal-title">
+                    Select Promotion
+                </h3>
 
-        <button
-            class="order-type-btn"
-            type="button"
-            data-order-type="delivery"
+                <p>
+                    Choose a promotion code for this order.
+                </p>
+
+            </div>
+
+
+            <button
+                class="promo-modal-close"
+                type="button"
+                data-promo-close
+                aria-label="Close promotion popup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- Promo List -->
+
+        <div
+            class="promo-list"
+            id="promo-list"
         >
-            Delivery
-        </button>
 
 
-        <button
-            class="order-type-btn"
-            type="button"
-            data-order-type="dine-in"
-        >
-            Dine In
-        </button>
+            <!-- Promo 1 -->
+
+            <button
+                class="promo-option"
+                type="button"
+                data-promo-code="SAVE20"
+                data-promo-discount="20"
+            >
+
+                <span class="promo-option-content">
+
+                    <strong>
+                        SAVE20
+                    </strong>
+
+                    <small>
+                        ₹20 off on this order
+                    </small>
+
+                </span>
+
+                <span class="promo-option-arrow">
+                    →
+                </span>
+
+            </button>
 
 
-        <button
-            class="order-type-btn active"
-            type="button"
-            data-order-type="takeaway"
-        >
-            Takeaway
-        </button>
+
+            <!-- Promo 2 -->
+
+            <button
+                class="promo-option"
+                type="button"
+                data-promo-code="WELCOME50"
+                data-promo-discount="50"
+            >
+
+                <span class="promo-option-content">
+
+                    <strong>
+                        WELCOME50
+                    </strong>
+
+                    <small>
+                        ₹50 off on this order
+                    </small>
+
+                </span>
+
+                <span class="promo-option-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+
+            <!-- Remove Promo -->
+
+            <button
+                class="promo-option promo-remove"
+                type="button"
+                data-promo-remove
+            >
+
+                <span class="promo-option-content">
+
+                    <strong>
+                        Remove Promotion
+                    </strong>
+
+                    <small>
+                        Remove the currently selected promotion
+                    </small>
+
+                </span>
+
+                <span class="promo-option-arrow">
+                    ×
+                </span>
+
+            </button>
+
+
+        </div>
 
     </div>
 
 </div>
-
-
-    <!-- Items -->
-
-    <div
-        class="cart-items"
-        id="cart-items"
-    >
-
-        <p class="empty-cart">
-            No items added yet
-        </p>
-
-    </div>
-
-
-    <!-- Promotion -->
-
-    <div class="promotion-box">
-
-        <span>
-            Promotion Code
-        </span>
-
-        <button
-            class="promotion-btn"
-            type="button"
-        >
-            ADD CODE
-        </button>
-
-    </div>
-
-
-    <!-- Summary -->
-
-    <div class="cart-summary">
-
-        <div>
-
-            <span>
-                Subtotal
-            </span>
-
-            <strong id="subtotal">
-                ₹0
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <span>
-                Discount
-            </span>
-
-            <strong id="discount">
-                ₹0
-            </strong>
-
-        </div>
-
-
-        <div>
-
-            <span>
-                Delivery Charge
-            </span>
-
-            <strong id="delivery-charge">
-                ₹0
-            </strong>
-
-        </div>
-
-
-        <div class="total">
-
-            <span>
-                TOTAL
-            </span>
-
-            <strong id="total">
-                ₹0
-            </strong>
-
-        </div>
-
-    </div>
-
-
-    <button
-        class="payment-btn"
-        type="button"
-    >
-        Confirm Order
-    </button>
-
-
- </div>
-
-
-
-                
-
-            </div> 
-</section>
