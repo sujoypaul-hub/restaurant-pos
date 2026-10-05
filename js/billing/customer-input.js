@@ -377,4 +377,16 @@ START
 ==================================================
 */
 
-initializeCustomerInput();
+```javascript
+/* ==========================================
+   PAGE INITIALIZER REGISTRATION
+   ========================================== */
+
+window.POSPageInitializers =
+    window.POSPageInitializers || {};
+
+window.POSPageInitializers[
+    "js/billing/customer-input.js"
+] = initializeCustomerInput;
+```
+
