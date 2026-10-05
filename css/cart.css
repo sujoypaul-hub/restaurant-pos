@@ -220,6 +220,16 @@
 }
 
 /* ==================================================
+   CUSTOMER NAME
+================================================== */
+
+.customer-name-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
    ORDER TYPE
 ================================================== */
 
@@ -563,6 +573,259 @@
 
 }
 
+
+
+/* ==================================================
+   SPECIAL SUGGESTION
+================================================== */
+
+.special-suggestion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.special-suggestion label {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.special-suggestion textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+
+    background: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    resize: vertical;
+}
+
+.special-suggestion textarea::placeholder {
+    color: var(--muted);
+}
+
+
+
+/* ==================================================
+   PROMO BUTTON
+================================================== */
+
+.promotion-btn {
+    cursor: pointer;
+}
+
+.promotion-btn.promo-applied {
+    font-weight: 600;
+}
+
+
+
+/* ==================================================
+   PROMO MODAL
+================================================== */
+
+.promo-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    z-index: 1000;
+}
+
+.promo-modal.active {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Overlay */
+
+.promo-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+
+/* Modal */
+
+.promo-modal-content {
+    position: relative;
+
+    width: min(
+        500px,
+        calc(100% - 32px)
+    );
+
+    max-height: calc(100vh - 64px);
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    z-index: 1;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.20);
+}
+
+
+/* Header */
+
+.promo-modal-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+.promo-modal-header h3 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 18px;
+}
+
+.promo-modal-header p {
+    margin: 5px 0 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* Close */
+
+.promo-modal-close {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.promo-modal-close:hover {
+    background: var(--nav-hover);
+    color: var(--text);
+}
+
+
+/* Promo List */
+
+.promo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Promo Option */
+
+.promo-option {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    color: var(--text);
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.promo-option:hover {
+    background: var(--nav-hover);
+    border-color: var(--accent);
+}
+
+
+/* Promo Text */
+
+.promo-option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.promo-option-content strong {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.promo-option-content small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* Arrow */
+
+.promo-option-arrow {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+
+/* Remove */
+
+.promo-remove {
+    color: var(--muted);
+}
 
 /* ==================================================
    SUMMARY
