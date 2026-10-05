@@ -2,21 +2,113 @@
              ORDERS TAB
 =================================== -->
 
-        <section
-            class="tab-content"
-            data-tab-content="orders"
-        >
+<div class="orders-layout">
 
-            <div class="page-card">
+    <!-- ==========================================
+         ORDERS MAIN AREA
+         ========================================== -->
 
-                <h2>
-                    Orders
-                </h2>
+    <div class="orders-main">
 
-                <p>
-                    All restaurant orders will appear here.
-                </p>
+        <!-- Order Status Tabs -->
+
+        <div class="orders-tabs">
+
+            <button
+                class="orders-tab active"
+                type="button"
+                data-order-status="new"
+            >
+                New
+            </button>
+
+            <button
+                class="orders-tab"
+                type="button"
+                data-order-status="ongoing"
+            >
+                On going
+            </button>
+
+            <button
+                class="orders-tab"
+                type="button"
+                data-order-status="ready"
+            >
+                Ready
+            </button>
+
+            <button
+                class="orders-tab"
+                type="button"
+                data-order-status="closed"
+            >
+                Closed
+            </button>
+
+        </div>
+
+
+        <!-- Orders Content -->
+
+        <div class="orders-content">
+
+            <div class="orders-empty-state">
+
+                <div class="orders-empty-icon">
+                    🧾
+                </div>
+
+                <div class="orders-empty-title">
+                    No orders
+                </div>
+
+                <div class="orders-empty-description">
+                    Orders will appear here.
+                </div>
 
             </div>
 
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+         ========================================== -->
+
+    <aside class="orders-sidebar">
+
+        <!-- Section 1 -->
+
+        <section class="orders-sidebar-section">
+
+            <h3 class="orders-sidebar-title">
+                Order Summary
+            </h3>
+
+            <div class="orders-sidebar-content">
+                <!-- Reserved for future use -->
+            </div>
+
         </section>
+
+
+        <!-- Section 2 -->
+
+        <section class="orders-sidebar-section">
+
+            <h3 class="orders-sidebar-title">
+                Quick Actions
+            </h3>
+
+            <div class="orders-sidebar-content">
+                <!-- Reserved for future use -->
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
