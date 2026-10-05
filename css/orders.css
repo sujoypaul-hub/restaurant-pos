@@ -1,0 +1,221 @@
+/* ==========================================
+   ORDERS PAGE
+   ========================================== */
+
+.orders-layout {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   ORDERS MAIN
+   ========================================== */
+
+.orders-main {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* ==========================================
+   ORDER STATUS TABS
+   ========================================== */
+
+.orders-tabs {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.orders-tab {
+    padding: 10px 18px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.orders-tab:hover {
+    background: var(--nav-hover);
+
+    color: var(--text);
+}
+
+
+.orders-tab.active {
+    background: var(--nav-active);
+
+    color: var(--nav-active-text);
+
+    border-color: var(--nav-active);
+}
+
+
+/* ==========================================
+   ORDERS CONTENT
+   ========================================== */
+
+.orders-content {
+    min-height: 400px;
+
+    padding: 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   EMPTY STATE
+   ========================================== */
+
+.orders-empty-state {
+    min-height: 320px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+.orders-empty-icon {
+    font-size: 36px;
+
+    margin-bottom: 12px;
+}
+
+
+.orders-empty-title {
+    color: var(--text);
+
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-bottom: 6px;
+}
+
+
+.orders-empty-description {
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   RIGHT SIDEBAR
+   ========================================== */
+
+.orders-sidebar {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+
+.orders-sidebar-section {
+    padding: 16px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+
+.orders-sidebar-title {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.orders-sidebar-content {
+    min-height: 80px;
+
+    margin-top: 14px;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 800px) {
+
+    .orders-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .orders-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .orders-tabs {
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+    }
+
+
+    .orders-tab {
+        flex-shrink: 0;
+
+        padding: 9px 14px;
+    }
+
+
+    .orders-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+}
