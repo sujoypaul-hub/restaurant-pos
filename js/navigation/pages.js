@@ -89,6 +89,18 @@ async function loadPage(pageConfig) {
             }
         }
 
+       /*
+      ==========================================
+      INITIALIZE UNIVERSAL TABS
+      ==========================================
+      */
+      
+      if (window.POSTabs) {
+      
+          window.POSTabs.initialize();
+      
+      }
+
     } catch (error) {
 
         console.error(
