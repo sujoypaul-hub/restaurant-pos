@@ -193,4 +193,16 @@ START
 ==================================================
 */
 
-initializeOrderType();
+```javascript
+/* ==========================================
+   PAGE INITIALIZER REGISTRATION
+   ========================================== */
+
+window.POSPageInitializers =
+    window.POSPageInitializers || {};
+
+window.POSPageInitializers[
+    "js/billing/order-type.js"
+] = initializeOrderType;
+```
+
