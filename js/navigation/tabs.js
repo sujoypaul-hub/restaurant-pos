@@ -3,20 +3,37 @@
 UNIVERSAL TAB SYSTEM
 ==================================================
 
-This file handles reusable page-level tabs.
+This file handles all tab-based interfaces.
 
-Example:
+Features:
 
-?route=orders&tab=new
-?route=orders&tab=ongoing
+- Universal tab initialization
+- Default tab
+- URL-based tab state
+- Browser Back / Forward support
+- Loads tab content dynamically
+- No page-specific IDs required
+- No page-specific tab logic
 
-The system is NOT page-specific.
+Required HTML structure:
 
-Any page can use:
+<div data-tabs="example" data-default-tab="first">
 
-data-tabs="group-name"
+    <div class="tabs">
+        <button data-tab="first" data-tab-page="example/first">
+            First
+        </button>
 
-and define its tabs through HTML.
+        <button data-tab="second" data-tab-page="example/second">
+            Second
+        </button>
+    </div>
+
+    <div class="tab-content">
+        <!-- Dynamic content loads here -->
+    </div>
+
+</div>
 
 ==================================================
 */
@@ -24,7 +41,7 @@ and define its tabs through HTML.
 
 /*
 ==================================================
-INITIALIZE TABS
+INITIALIZE ALL TAB CONTAINERS
 ==================================================
 */
 
@@ -53,22 +70,15 @@ function initializeTabContainer(
     container
 ) {
 
-    const tabGroup =
-        container.dataset.tabs;
-
-
-    if (!tabGroup) {
-
-        return;
-
-    }
-
-
     const tabs =
         container.querySelectorAll(
             "[data-tab]"
         );
 
+
+    /*
+    No tabs found.
+    */
 
     if (!tabs.length) {
 
@@ -78,9 +88,10 @@ function initializeTabContainer(
 
 
     /*
-    ==============================================
-    FIND DEFAULT TAB
-    ==============================================
+    Find default tab.
+
+    If data-default-tab is not provided,
+    use the first tab.
     */
 
     const defaultTab =
@@ -89,9 +100,7 @@ function initializeTabContainer(
 
 
     /*
-    ==============================================
-    GET CURRENT TAB FROM URL
-    ==============================================
+    Read tab from URL.
     */
 
     const params =
@@ -105,41 +114,31 @@ function initializeTabContainer(
 
 
     /*
-    ==============================================
-    DETERMINE ACTIVE TAB
-    ==============================================
+    Check whether URL tab exists
+    inside this tab group.
     */
 
-    let activeTab =
-        urlTab;
+    const validUrlTab =
+        Array.from(tabs).some(
+            tab =>
+                tab.dataset.tab ===
+                urlTab
+        );
 
 
     /*
-    URL tab must actually exist
-    in this tab group.
+    Use URL tab if valid.
+    Otherwise use default tab.
     */
 
-    const validTab =
-        Array.from(tabs)
-            .some(
-                tab =>
-                    tab.dataset.tab ===
-                    activeTab
-            );
-
-
-    if (!validTab) {
-
-        activeTab =
-            defaultTab;
-
-    }
+    const activeTab =
+        validUrlTab
+            ? urlTab
+            : defaultTab;
 
 
     /*
-    ==============================================
-    ACTIVATE TAB
-    ==============================================
+    Activate initial tab.
     */
 
     activateTab(
@@ -150,17 +149,14 @@ function initializeTabContainer(
 
 
     /*
-    ==============================================
-    TAB CLICK EVENTS
-    ==============================================
+    Add click listeners.
     */
 
     tabs.forEach(
         tab => {
 
             /*
-            Prevent duplicate listeners
-            when the page is opened again.
+            Prevent duplicate listeners.
             */
 
             if (
@@ -205,7 +201,7 @@ ACTIVATE TAB
 async function activateTab(
     container,
     tabName,
-    updateURL
+    updateURL = true
 ) {
 
     const tabs =
@@ -214,16 +210,23 @@ async function activateTab(
         );
 
 
-    const tab =
-        Array.from(tabs)
-            .find(
-                item =>
-                    item.dataset.tab ===
-                    tabName
-            );
+    /*
+    Find selected tab.
+    */
+
+    const selectedTab =
+        Array.from(tabs).find(
+            tab =>
+                tab.dataset.tab ===
+                tabName
+        );
 
 
-    if (!tab) {
+    /*
+    Invalid tab.
+    */
+
+    if (!selectedTab) {
 
         return;
 
@@ -231,22 +234,25 @@ async function activateTab(
 
 
     /*
-    ==============================================
-    UPDATE ACTIVE BUTTON
-    ==============================================
+    Update tab visual state.
     */
 
     tabs.forEach(
-        item => {
+        tab => {
 
-            item.classList.toggle(
+            const isActive =
+                tab === selectedTab;
+
+
+            tab.classList.toggle(
                 "active",
-                item === tab
+                isActive
             );
 
-            item.setAttribute(
+
+            tab.setAttribute(
                 "aria-selected",
-                item === tab
+                isActive
                     ? "true"
                     : "false"
             );
@@ -256,29 +262,44 @@ async function activateTab(
 
 
     /*
-    ==============================================
-    LOAD TAB CONTENT
-    ==============================================
+    Find tab content automatically.
+
+    IMPORTANT:
+
+    No ID is required.
+
+    The system simply looks for:
+
+        .tab-content
+
+    inside the current tab container.
     */
 
     const contentTarget =
-        container.dataset.tabContent;
+        container.querySelector(
+            ".tab-content"
+        );
 
 
-    if (contentTarget) {
+    /*
+    Load tab page.
+    */
+
+    if (
+        contentTarget &&
+        selectedTab.dataset.tabPage
+    ) {
 
         await loadTabContent(
             contentTarget,
-            tab.dataset.tabPage
+            selectedTab.dataset.tabPage
         );
 
     }
 
 
     /*
-    ==============================================
-    UPDATE URL
-    ==============================================
+    Update URL.
     */
 
     if (updateURL) {
@@ -294,6 +315,10 @@ async function activateTab(
             tabName
         );
 
+
+        /*
+        Add browser history entry.
+        */
 
         history.pushState(
             {
@@ -320,17 +345,14 @@ LOAD TAB CONTENT
 */
 
 async function loadTabContent(
-    targetId,
+    target,
     pagePath
 ) {
 
-    const target =
-        document.getElementById(
-            targetId
-        );
-
-
-    if (!target || !pagePath) {
+    if (
+        !target ||
+        !pagePath
+    ) {
 
         return;
 
@@ -354,20 +376,38 @@ async function loadTabContent(
         }
 
 
-        target.innerHTML =
+        const html =
             await response.text();
+
+
+        /*
+        Insert tab page.
+        */
+
+        target.innerHTML =
+            html;
 
 
     } catch (error) {
 
         console.error(
-            "Tab content loading error:",
+            "Tab loading error:",
             error
         );
 
 
         target.innerHTML =
-            "<p>Unable to load tab content.</p>";
+            `
+            <div class="orders-empty-state">
+                <div class="orders-empty-title">
+                    Unable to load content
+                </div>
+
+                <div class="orders-empty-description">
+                    Please try again.
+                </div>
+            </div>
+            `;
 
     }
 
@@ -376,12 +416,7 @@ async function loadTabContent(
 
 /*
 ==================================================
-BROWSER BACK / FORWARD
-==================================================
-
-When browser navigation happens, reload
-the currently selected tab.
-
+REFRESH TABS
 ==================================================
 */
 
@@ -394,7 +429,7 @@ function refreshCurrentTabs() {
 
 /*
 ==================================================
-PUBLIC API
+PUBLIC TAB API
 ==================================================
 */
 
