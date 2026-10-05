@@ -1,4 +1,3 @@
-```javascript
 const THEME_STORAGE_KEY = "restaurant_pos_theme";
 
 const AVAILABLE_THEMES = [
@@ -79,60 +78,64 @@ function updateThemeSelection(theme) {
 
             input.checked =
                 input.value === theme;
-
         });
 }
 
 
 /* ==========================================
-   INITIALIZE THEME PAGE
+   THEME PAGE INITIALIZER
    ========================================== */
 
 function initializeThemePage() {
 
-    const inputs =
-        document.querySelectorAll(
-            'input[name="theme"]'
-        );
-
-    if (!inputs.length) {
-        return;
-    }
-
-    const currentTheme =
-        getSavedTheme();
-
-    updateThemeSelection(currentTheme);
-
-    inputs.forEach(input => {
-
-        input.addEventListener(
-            "change",
-            function () {
-
-                if (this.checked) {
-                    applyTheme(this.value);
-                }
-
-            }
-        );
-
-    });
+    updateThemeSelection(
+        getSavedTheme()
+    );
 }
 
 
 /* ==========================================
-   APPLY SAVED THEME
+   GLOBAL THEME LISTENER
+   ========================================== */
+
+function initializeThemeListener() {
+
+    if (window.POSThemeListenerInitialized) {
+        return;
+    }
+
+    document.addEventListener(
+        "change",
+        function (event) {
+
+            const input = event.target;
+
+            if (
+                input.matches(
+                    'input[name="theme"]'
+                )
+            ) {
+
+                if (input.checked) {
+                    applyTheme(input.value);
+                }
+            }
+        }
+    );
+
+    window.POSThemeListenerInitialized = true;
+}
+
+
+/* ==========================================
+   INITIALIZE SAVED THEME
    ========================================== */
 
 function initializeSavedTheme() {
 
-    const theme =
-        getSavedTheme();
-
     document.documentElement.setAttribute(
         "data-theme",
-        theme
+        getSavedTheme()
     );
 }
 
@@ -150,14 +153,16 @@ window.POSPageInitializers[
 
 
 /* ==========================================
-   INITIALIZE GLOBAL THEME
+   START
    ========================================== */
 
 initializeSavedTheme();
 
+initializeThemeListener();
+
 
 /* ==========================================
-   PUBLIC THEME API
+   PUBLIC API
    ========================================== */
 
 window.POSTheme = {
@@ -167,4 +172,3 @@ window.POSTheme = {
     set: applyTheme
 
 };
-```
