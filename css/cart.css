@@ -184,6 +184,7 @@ All customer inputs
 
     font-size:
         12px;
+   margin-bottom: 12px;
 
 }
 
@@ -191,16 +192,15 @@ All customer inputs
 .no-phone-option input {
 
     width:
-        15px;
+        13px;
 
     height:
-        15px;
+        13px;
 
     padding:
         0;
 
-    margin:
-        0;
+    margin: 0 0 0 10px;
 
     border:
         none;
@@ -221,7 +221,13 @@ All customer inputs
 
 
 .no-phone-option span {
+    top: -3px;
     white-space: nowrap;
+    position: relative;
+    font-size: 11px;
+    font-weight: bold;
+    left: 5px;
+    color: var(--nav-active);
 }
 
 /* ==================================================
