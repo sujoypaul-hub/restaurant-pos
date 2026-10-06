@@ -2,21 +2,6 @@
 ==================================================
 PROMOTION SYSTEM
 ==================================================
-
-Handles:
-
-- Promotion popup
-- Promotion selection
-- Promotion removal
-- Selected promotion state
-- Discount value
-- Promotion button display
-
-Future database integration can replace the
-temporary promo list without changing the
-Billing HTML structure.
-
-==================================================
 */
 
 
@@ -33,17 +18,11 @@ OPEN PROMO POPUP
 function openPromoPopup() {
 
     const modal =
-        document.getElementById(
-            "promo-modal"
-        );
-
+        document.getElementById("promo-modal");
 
     if (!modal) {
-
         return;
-
     }
-
 
     modal.classList.add("active");
 
@@ -51,7 +30,6 @@ function openPromoPopup() {
         "aria-hidden",
         "false"
     );
-
 }
 
 
@@ -64,17 +42,11 @@ CLOSE PROMO POPUP
 function closePromoPopup() {
 
     const modal =
-        document.getElementById(
-            "promo-modal"
-        );
-
+        document.getElementById("promo-modal");
 
     if (!modal) {
-
         return;
-
     }
-
 
     modal.classList.remove("active");
 
@@ -82,7 +54,6 @@ function closePromoPopup() {
         "aria-hidden",
         "true"
     );
-
 }
 
 
@@ -104,16 +75,12 @@ function selectPromo(
         Number(discount) || 0;
 
 
-    updatePromoButton();
+    updatePromoDisplay();
 
     updateDiscountDisplay();
 
     closePromoPopup();
 
-
-    /*
-    Notify the rest of the Billing system.
-    */
 
     document.dispatchEvent(
         new CustomEvent(
@@ -129,7 +96,6 @@ function selectPromo(
             }
         )
     );
-
 }
 
 
@@ -148,11 +114,9 @@ function removePromo() {
         0;
 
 
-    updatePromoButton();
+    updatePromoDisplay();
 
     updateDiscountDisplay();
-
-    closePromoPopup();
 
 
     document.dispatchEvent(
@@ -166,17 +130,21 @@ function removePromo() {
             }
         )
     );
-
 }
 
 
 /*
 ==================================================
-UPDATE PROMO BUTTON
+UPDATE PROMO DISPLAY
 ==================================================
 */
 
-function updatePromoButton() {
+function updatePromoDisplay() {
+
+    const input =
+        document.getElementById(
+            "selected-promo-code"
+        );
 
     const button =
         document.getElementById(
@@ -184,39 +152,64 @@ function updatePromoButton() {
         );
 
 
-    if (!button) {
-
+    if (!input || !button) {
         return;
-
     }
 
 
     if (selectedPromoCode) {
 
-        button.textContent =
+        /*
+        Show selected promo code.
+        */
+
+        input.value =
             selectedPromoCode;
 
+
+        /*
+        Button becomes Remove.
+        */
+
+        button.textContent =
+            "REMOVE";
+
         button.classList.add(
-            "promo-applied"
+            "promo-remove-btn"
         );
 
     } else {
 
+        /*
+        Clear promo input.
+        */
+
+        input.value =
+            "";
+
+
+        input.placeholder =
+            "No promo code selected";
+
+
+        /*
+        Button returns to Add Promo.
+        */
+
         button.textContent =
-            "ADD CODE";
+            "ADD PROMO";
 
         button.classList.remove(
-            "promo-applied"
+            "promo-remove-btn"
         );
 
     }
-
 }
 
 
 /*
 ==================================================
-UPDATE DISCOUNT DISPLAY
+UPDATE DISCOUNT
 ==================================================
 */
 
@@ -227,17 +220,13 @@ function updateDiscountDisplay() {
             "discount"
         );
 
-
     if (!discountElement) {
-
         return;
-
     }
 
 
     discountElement.textContent =
         `₹${selectedPromoDiscount}`;
-
 }
 
 
@@ -254,7 +243,6 @@ function initializePromo() {
             "promotion-btn"
         );
 
-
     const modal =
         document.getElementById(
             "promo-modal"
@@ -265,24 +253,44 @@ function initializePromo() {
         !promotionButton ||
         !modal
     ) {
-
         return;
-
     }
 
 
     /*
-    Open popup.
+    ==============================================
+    PROMO BUTTON
+    ==============================================
     */
 
     promotionButton.addEventListener(
         "click",
-        openPromoPopup
+        () => {
+
+            /*
+            If a promo already exists,
+            button works as Remove.
+            */
+
+            if (selectedPromoCode) {
+
+                removePromo();
+
+                return;
+
+            }
+
+
+            openPromoPopup();
+
+        }
     );
 
 
     /*
-    Close popup buttons/overlay.
+    ==============================================
+    CLOSE POPUP
+    ==============================================
     */
 
     modal
@@ -302,7 +310,9 @@ function initializePromo() {
 
 
     /*
-    Promo selection.
+    ==============================================
+    SELECT PROMO
+    ==============================================
     */
 
     modal
@@ -332,27 +342,9 @@ function initializePromo() {
 
 
     /*
-    Remove promotion.
-    */
-
-    const removeButton =
-        modal.querySelector(
-            "[data-promo-remove]"
-        );
-
-
-    if (removeButton) {
-
-        removeButton.addEventListener(
-            "click",
-            removePromo
-        );
-
-    }
-
-
-    /*
-    Escape key closes popup.
+    ==============================================
+    ESCAPE KEY
+    ==============================================
     */
 
     document.addEventListener(
@@ -370,12 +362,19 @@ function initializePromo() {
         }
     );
 
+
+    /*
+    Initial display.
+    */
+
+    updatePromoDisplay();
+
 }
 
 
 /*
 ==================================================
-PUBLIC PROMOTION API
+PUBLIC API
 ==================================================
 */
 
