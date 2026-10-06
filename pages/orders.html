@@ -8,66 +8,69 @@
          ORDERS MAIN AREA
          ========================================== -->
 
-    <div class="orders-main">
-
-        <!-- Order Status Tabs -->
     <div
-    class="orders-tabs"
-    data-tabs="orders"
-    data-default-tab="new"
-    data-tab-content="orders-content"
->
-
-    <button
-        class="orders-tab"
-        type="button"
-        data-tab="new"
-        data-tab-page="orders/new"
-        aria-selected="false"
+        class="orders-main"
+        data-tabs="orders"
+        data-default-tab="new"
     >
-        New
-    </button>
+
+        <!-- ==========================================
+             ORDER STATUS TABS
+             ========================================== -->
+
+        <div class="orders-tabs">
+
+            <button
+                class="orders-tab"
+                type="button"
+                data-tab="new"
+                data-tab-page="orders/new"
+                aria-selected="false"
+            >
+                New
+            </button>
 
 
-    <button
-        class="orders-tab"
-        type="button"
-        data-tab="ongoing"
-        data-tab-page="orders/ongoing"
-        aria-selected="false"
-    >
-        On going
-    </button>
+            <button
+                class="orders-tab"
+                type="button"
+                data-tab="ongoing"
+                data-tab-page="orders/ongoing"
+                aria-selected="false"
+            >
+                On going
+            </button>
 
 
-    <button
-        class="orders-tab"
-        type="button"
-        data-tab="ready"
-        data-tab-page="orders/ready"
-        aria-selected="false"
-    >
-        Ready
-    </button>
+            <button
+                class="orders-tab"
+                type="button"
+                data-tab="ready"
+                data-tab-page="orders/ready"
+                aria-selected="false"
+            >
+                Ready
+            </button>
 
 
-    <button
-        class="orders-tab"
-        type="button"
-        data-tab="closed"
-        data-tab-page="orders/closed"
-        aria-selected="false"
-    >
-        Closed
-    </button>
+            <button
+                class="orders-tab"
+                type="button"
+                data-tab="closed"
+                data-tab-page="orders/closed"
+                aria-selected="false"
+            >
+                Closed
+            </button>
 
-</div>
-        
+        </div>
 
 
-        <!-- Orders Content -->
+        <!-- ==========================================
+             ORDERS CONTENT
+             ========================================== -->
 
-        <div class="orders-content" id="orders-content">
+        <div class="orders-content tab-content">
 
             <div class="orders-empty-state">
 
@@ -76,7 +79,7 @@
                 </div>
 
                 <div class="orders-empty-title">
-                    No-orders
+                    No orders
                 </div>
 
                 <div class="orders-empty-description">
