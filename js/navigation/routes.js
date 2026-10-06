@@ -45,6 +45,7 @@ const appRoutes = {
             "js/billing/customer-input.js",
             "js/billing/promo.js",
             "js/billing/table.js",
+            "js/billing/address.js"
             "js/billing/billing.js"
 
         ]
