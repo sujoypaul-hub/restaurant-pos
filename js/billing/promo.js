@@ -17,19 +17,16 @@ OPEN PROMO POPUP
 
 function openPromoPopup() {
 
-    const modal =
-        document.getElementById("promo-modal");
+    if (
+        window.POSPopup
+    ) {
 
-    if (!modal) {
-        return;
+        window.POSPopup.open(
+            "promo-modal"
+        );
+
     }
 
-    modal.classList.add("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
 }
 
 
@@ -41,21 +38,17 @@ CLOSE PROMO POPUP
 
 function closePromoPopup() {
 
-    const modal =
-        document.getElementById("promo-modal");
+    if (
+        window.POSPopup
+    ) {
 
-    if (!modal) {
-        return;
+        window.POSPopup.close(
+            "promo-modal"
+        );
+
     }
 
-    modal.classList.remove("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
 }
-
 
 /*
 ==================================================
@@ -295,7 +288,7 @@ function initializePromo() {
 
     modal
         .querySelectorAll(
-            "[data-promo-close]"
+            "[data-popup-close]"
         )
         .forEach(
             element => {
