@@ -12,7 +12,6 @@ Dine In is selected.
 
 let selectedTableNumber = null;
 
-
 /*
 ==================================================
 OPEN TABLE POPUP
@@ -21,21 +20,16 @@ OPEN TABLE POPUP
 
 function openTablePopup() {
 
-    const modal =
-        document.getElementById(
+    if (
+        window.POSPopup
+    ) {
+
+        window.POSPopup.open(
             "table-modal"
         );
 
-    if (!modal) {
-        return;
     }
 
-    modal.classList.add("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
 }
 
 
@@ -47,21 +41,16 @@ CLOSE TABLE POPUP
 
 function closeTablePopup() {
 
-    const modal =
-        document.getElementById(
+    if (
+        window.POSPopup
+    ) {
+
+        window.POSPopup.close(
             "table-modal"
         );
 
-    if (!modal) {
-        return;
     }
 
-    modal.classList.remove("active");
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
 }
 
 
@@ -239,7 +228,7 @@ function initializeTable() {
 
     modal
         .querySelectorAll(
-            "[data-table-close]"
+            "[data-popup-close]"
         )
         .forEach(
             element => {
