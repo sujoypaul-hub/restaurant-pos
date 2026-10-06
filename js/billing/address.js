@@ -13,6 +13,15 @@ Handles:
 - Delivery-only visibility
 - Universal popup integration
 
+IMPORTANT:
+
+This system does NOT create or declare its own
+customer phone input.
+
+It always reads the existing Billing field:
+
+    #customer-phone
+
 Later, localStorage can be replaced by the
 customer database without changing the Billing UI.
 
@@ -41,8 +50,6 @@ let addressStateInput = null;
 let addressPincodeInput = null;
 let addressFormError = null;
 
-let phoneInput = null;
-
 
 /*
 ==================================================
@@ -59,18 +66,33 @@ function getAddressStorageKey(phone) {
 
 /*
 ==================================================
-GET CURRENT PHONE
+GET CURRENT CUSTOMER PHONE
+==================================================
+
+Reads the existing Billing phone field.
+
+No separate phone input or global phone
+variable is used here.
+
 ==================================================
 */
 
 function getCurrentPhone() {
 
-    if (!phoneInput) {
+    const customerPhoneField =
+        document.getElementById(
+            "customer-phone"
+        );
+
+
+    if (!customerPhoneField) {
+
         return "";
+
     }
 
 
-    return phoneInput.value
+    return customerPhoneField.value
         .replace(/\D/g, "")
         .trim();
 
@@ -116,7 +138,9 @@ function getSavedAddresses() {
 
 
         const addresses =
-            JSON.parse(saved);
+            JSON.parse(
+                saved
+            );
 
 
         if (
@@ -310,7 +334,9 @@ RENDER SAVED ADDRESSES
 function renderAddressList() {
 
     if (!addressList) {
+
         return;
+
     }
 
 
@@ -416,7 +442,8 @@ function renderAddressList() {
 
                         const index =
                             Number(
-                                button.dataset
+                                button
+                                    .dataset
                                     .addressIndex
                             );
 
@@ -497,7 +524,9 @@ UPDATE CART BUTTON
 function updateDeliveryAddressButton() {
 
     if (!addressButton) {
+
         return;
+
     }
 
 
@@ -506,12 +535,17 @@ function updateDeliveryAddressButton() {
 
 
     /*
-    Delivery requires a valid phone.
+    Delivery address requires
+    a valid 10-digit phone number.
     */
 
     addressButton.disabled =
         phone.length !== 10;
 
+
+    /*
+    Selected address exists.
+    */
 
     if (
         selectedDeliveryAddress
@@ -549,6 +583,10 @@ function updateDeliveryAddressButton() {
 
     }
 
+
+    /*
+    No address selected yet.
+    */
 
     addressButton.innerHTML = `
 
@@ -591,6 +629,11 @@ function openDeliveryAddressPopup() {
         getCurrentPhone();
 
 
+    /*
+    Delivery requires a valid
+    10-digit customer phone.
+    */
+
     if (
         phone.length !== 10
     ) {
@@ -626,8 +669,10 @@ SHOW SAVED ADDRESS VIEW
 
 function showAddressSelectorView() {
 
-    if (!addressSelectorView ||
-        !newAddressView) {
+    if (
+        !addressSelectorView ||
+        !newAddressView
+    ) {
 
         return;
 
@@ -651,8 +696,10 @@ SHOW NEW ADDRESS VIEW
 
 function showNewAddressView() {
 
-    if (!addressSelectorView ||
-        !newAddressView) {
+    if (
+        !addressSelectorView ||
+        !newAddressView
+    ) {
 
         return;
 
@@ -687,7 +734,9 @@ CLEAR FORM
 function clearAddressForm() {
 
     if (!newAddressForm) {
+
         return;
+
     }
 
 
@@ -709,7 +758,9 @@ function showAddressFormError(
 ) {
 
     if (!addressFormError) {
+
         return;
+
     }
 
 
@@ -722,7 +773,9 @@ function showAddressFormError(
 function clearAddressFormError() {
 
     if (!addressFormError) {
+
         return;
+
     }
 
 
@@ -751,6 +804,11 @@ function handleAddressFormSubmit(
     const phone =
         getCurrentPhone();
 
+
+    /*
+    Phone is taken from the existing
+    Billing field.
+    */
 
     if (
         phone.length !== 10
@@ -805,7 +863,9 @@ function handleAddressFormSubmit(
 
 
     /*
-    Validation
+    ==============================================
+    VALIDATION
+    ==============================================
     */
 
     if (!label) {
@@ -876,7 +936,9 @@ function handleAddressFormSubmit(
 
 
     /*
-    Create address object.
+    ==============================================
+    CREATE ADDRESS OBJECT
+    ==============================================
     */
 
     const newAddress = {
@@ -908,9 +970,19 @@ function handleAddressFormSubmit(
     };
 
 
+    /*
+    ==============================================
+    GET EXISTING ADDRESSES
+    ==============================================
+    */
+
     const addresses =
         getSavedAddresses();
 
+
+    /*
+    Put newest address first.
+    */
 
     addresses.unshift(
         newAddress
@@ -918,7 +990,7 @@ function handleAddressFormSubmit(
 
 
     /*
-    Keep a reasonable local limit.
+    Keep maximum 20 saved addresses.
     */
 
     const limitedAddresses =
@@ -927,6 +999,11 @@ function handleAddressFormSubmit(
             20
         );
 
+
+    /*
+    Save addresses for this
+    customer's phone number.
+    */
 
     const saved =
         saveAddresses(
@@ -946,7 +1023,9 @@ function handleAddressFormSubmit(
 
 
     /*
-    Immediately use the new address.
+    ==============================================
+    IMMEDIATELY SELECT NEW ADDRESS
+    ==============================================
     */
 
     selectDeliveryAddress(
@@ -961,17 +1040,22 @@ function handleAddressFormSubmit(
 
 /*
 ==================================================
-ADDRESS PHONE INPUT
+CUSTOMER PHONE CHANGED
+==================================================
+
+Uses the existing Billing phone input.
+
+When the phone number changes:
+
+- Previous selected address is cleared.
+- Address button is refreshed.
+- The next popup opening reads addresses
+  for the new phone number.
+
 ==================================================
 */
 
-function handleAddressPhoneInput() {
-
-    /*
-    Changing customer phone means
-    the previously selected address
-    may belong to another customer.
-    */
+function handleCustomerPhoneChange() {
 
     selectedDeliveryAddress =
         null;
@@ -993,9 +1077,17 @@ function updateDeliveryAddressVisibility(
 ) {
 
     if (!addressSelection) {
+
         return;
+
     }
 
+
+    /*
+    ==============================================
+    DELIVERY
+    ==============================================
+    */
 
     if (
         orderType === "delivery"
@@ -1005,7 +1097,9 @@ function updateDeliveryAddressVisibility(
             "active"
         );
 
+
         updateDeliveryAddressButton();
+
 
         return;
 
@@ -1013,8 +1107,9 @@ function updateDeliveryAddressVisibility(
 
 
     /*
-    Hide and clear address when
-    switching away from Delivery.
+    ==============================================
+    NOT DELIVERY
+    ==============================================
     */
 
     addressSelection.classList.remove(
@@ -1027,7 +1122,6 @@ function updateDeliveryAddressVisibility(
 
 
     updateDeliveryAddressButton();
-
 
 }
 
@@ -1053,6 +1147,16 @@ function initializeAddressOrderTypeListener() {
         "posOrderTypeChanged",
         event => {
 
+            if (
+                !event.detail ||
+                !event.detail.orderType
+            ) {
+
+                return;
+
+            }
+
+
             updateDeliveryAddressVisibility(
                 event.detail.orderType
             );
@@ -1074,6 +1178,12 @@ INITIALIZE ADDRESS SYSTEM
 */
 
 function initializeDeliveryAddress() {
+
+    /*
+    ==============================================
+    GET BILLING ELEMENTS
+    ==============================================
+    */
 
     addressButton =
         document.getElementById(
@@ -1165,18 +1275,39 @@ function initializeDeliveryAddress() {
         );
 
 
-    phoneInput =
+    /*
+    ==============================================
+    EXISTING BILLING PHONE FIELD
+    ==============================================
+
+    IMPORTANT:
+
+    This is only a local reference.
+
+    It does NOT create another phone field
+    and does NOT create a global variable.
+
+    ==============================================
+    */
+
+    const customerPhoneField =
         document.getElementById(
             "customer-phone"
         );
 
+
+    /*
+    ==============================================
+    REQUIRED ELEMENT CHECK
+    ==============================================
+    */
 
     if (
         !addressButton ||
         !addressSelection ||
         !addressList ||
         !newAddressForm ||
-        !phoneInput
+        !customerPhoneField
     ) {
 
         console.warn(
@@ -1189,7 +1320,9 @@ function initializeDeliveryAddress() {
 
 
     /*
-    Fresh Billing page state.
+    ==============================================
+    FRESH BILLING PAGE STATE
+    ==============================================
     */
 
     selectedDeliveryAddress =
@@ -1197,7 +1330,9 @@ function initializeDeliveryAddress() {
 
 
     /*
-    Open popup.
+    ==============================================
+    OPEN ADDRESS POPUP
+    ==============================================
     */
 
     addressButton.addEventListener(
@@ -1207,39 +1342,57 @@ function initializeDeliveryAddress() {
 
 
     /*
-    Add new address.
+    ==============================================
+    ADD NEW ADDRESS
+    ==============================================
     */
 
-    addNewAddressButton.addEventListener(
-        "click",
-        () => {
+    if (
+        addNewAddressButton
+    ) {
 
-            clearAddressForm();
+        addNewAddressButton.addEventListener(
+            "click",
+            () => {
 
-            showNewAddressView();
+                clearAddressForm();
 
-        }
-    );
+                showNewAddressView();
+
+            }
+        );
+
+    }
 
 
     /*
-    Back to saved addresses.
+    ==============================================
+    BACK TO SAVED ADDRESSES
+    ==============================================
     */
 
-    addressBackButton.addEventListener(
-        "click",
-        () => {
+    if (
+        addressBackButton
+    ) {
 
-            showAddressSelectorView();
+        addressBackButton.addEventListener(
+            "click",
+            () => {
 
-            renderAddressList();
+                showAddressSelectorView();
 
-        }
-    );
+                renderAddressList();
+
+            }
+        );
+
+    }
 
 
     /*
-    Save address.
+    ==============================================
+    SAVE ADDRESS
+    ==============================================
     */
 
     newAddressForm.addEventListener(
@@ -1249,44 +1402,58 @@ function initializeDeliveryAddress() {
 
 
     /*
-    Phone changes.
+    ==============================================
+    EXISTING CUSTOMER PHONE CHANGED
+    ==============================================
     */
 
-    phoneInput.addEventListener(
+    customerPhoneField.addEventListener(
         "input",
-        handleAddressPhoneInput
+        handleCustomerPhoneChange
     );
 
 
     /*
-    Pincode digits only.
+    ==============================================
+    PINCODE DIGITS ONLY
+    ==============================================
     */
 
-    addressPincodeInput.addEventListener(
-        "input",
-        () => {
+    if (
+        addressPincodeInput
+    ) {
 
-            addressPincodeInput.value =
-                addressPincodeInput
-                    .value
-                    .replace(
-                        /\D/g,
-                        ""
-                    );
+        addressPincodeInput.addEventListener(
+            "input",
+            () => {
 
-        }
-    );
+                addressPincodeInput.value =
+                    addressPincodeInput
+                        .value
+                        .replace(
+                            /\D/g,
+                            ""
+                        );
+
+            }
+        );
+
+    }
 
 
     /*
-    Order type listener only once.
+    ==============================================
+    ORDER TYPE LISTENER
+    ==============================================
     */
 
     initializeAddressOrderTypeListener();
 
 
     /*
-    Apply current order type.
+    ==============================================
+    APPLY CURRENT ORDER TYPE
+    ==============================================
     */
 
     const currentOrderType =
@@ -1314,15 +1481,18 @@ window.POSDeliveryAddress = {
         () =>
             selectedDeliveryAddress,
 
+
     clear:
         () => {
 
             selectedDeliveryAddress =
                 null;
 
+
             updateDeliveryAddressButton();
 
         },
+
 
     open:
         openDeliveryAddressPopup
