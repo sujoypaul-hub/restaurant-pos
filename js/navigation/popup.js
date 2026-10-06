@@ -3,30 +3,30 @@
 UNIVERSAL POPUP SYSTEM
 ==================================================
 
-Provides one reusable popup controller for the app.
+Handles:
 
-Any popup using:
+- Opening popups
+- Closing popups
+- One popup at a time
+- Escape key
+- Overlay / close buttons
+- Focus management
 
-    class="pos-modal"
+Used by:
 
-can be opened with:
-
-    POSPopup.open("popup-id");
-
-and closed with:
-
-    POSPopup.close("popup-id");
-
-Close buttons / overlays can use:
-
-    data-popup-close
-
-Only one popup remains open at a time.
+- Table selection
+- Promotions
+- Delivery address
+- Payment
+- Future popups
 
 ==================================================
 */
 
+
 let activePopupId = null;
+
+let popupPreviousFocus = null;
 
 
 /*
@@ -42,9 +42,27 @@ function openPopup(popupId) {
             popupId
         );
 
+
     if (!popup) {
+
+        console.warn(
+            `Popup not found: ${popupId}`
+        );
+
         return;
+
     }
+
+
+    /*
+    Remember what currently has focus.
+
+    We will return focus here when
+    the popup closes.
+    */
+
+    popupPreviousFocus =
+        document.activeElement;
 
 
     /*
@@ -62,13 +80,8 @@ function openPopup(popupId) {
                     otherPopup !== popup
                 ) {
 
-                    otherPopup.classList.remove(
-                        "active"
-                    );
-
-                    otherPopup.setAttribute(
-                        "aria-hidden",
-                        "true"
+                    closePopup(
+                        otherPopup.id
                     );
 
                 }
@@ -78,12 +91,17 @@ function openPopup(popupId) {
 
 
     /*
-    Open requested popup.
+    Show popup.
     */
 
     popup.classList.add(
         "active"
     );
+
+
+    /*
+    Set accessibility state.
+    */
 
     popup.setAttribute(
         "aria-hidden",
@@ -93,6 +111,33 @@ function openPopup(popupId) {
 
     activePopupId =
         popupId;
+
+
+    /*
+    Move focus into popup.
+
+    This makes keyboard navigation
+    behave correctly.
+    */
+
+    const firstFocusable =
+        popup.querySelector(
+            "button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled])"
+        );
+
+
+    if (firstFocusable) {
+
+        setTimeout(
+            () => {
+
+                firstFocusable.focus();
+
+            },
+            0
+        );
+
+    }
 
 }
 
@@ -110,14 +155,59 @@ function closePopup(popupId) {
             popupId
         );
 
+
     if (!popup) {
         return;
     }
 
 
+    /*
+    IMPORTANT:
+
+    If focus is currently inside the popup,
+    move it OUT before applying aria-hidden.
+
+    This prevents the browser accessibility
+    warning we just encountered.
+    */
+
+    const focusedElement =
+        document.activeElement;
+
+
+    if (
+        focusedElement &&
+        popup.contains(
+            focusedElement
+        )
+    ) {
+
+        if (
+            popupPreviousFocus &&
+            document.contains(
+                popupPreviousFocus
+            )
+        ) {
+
+            popupPreviousFocus.focus();
+
+        } else {
+
+            focusedElement.blur();
+
+        }
+
+    }
+
+
+    /*
+    Now hide the popup.
+    */
+
     popup.classList.remove(
         "active"
     );
+
 
     popup.setAttribute(
         "aria-hidden",
@@ -125,12 +215,19 @@ function closePopup(popupId) {
     );
 
 
+    /*
+    Clear active popup state.
+    */
+
     if (
         activePopupId ===
         popupId
     ) {
 
         activePopupId =
+            null;
+
+        popupPreviousFocus =
             null;
 
     }
@@ -149,6 +246,7 @@ function closeActivePopup() {
     if (!activePopupId) {
         return;
     }
+
 
     closePopup(
         activePopupId
@@ -172,6 +270,7 @@ document.addEventListener(
                 "[data-popup-close]"
             );
 
+
         if (!closeButton) {
             return;
         }
@@ -181,6 +280,7 @@ document.addEventListener(
             closeButton.closest(
                 ".pos-modal"
             );
+
 
         if (!popup) {
             return;
@@ -212,6 +312,7 @@ document.addEventListener(
             return;
 
         }
+
 
         closeActivePopup();
 
