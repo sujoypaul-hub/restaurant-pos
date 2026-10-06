@@ -5,7 +5,7 @@
 .cart-section {
         width: 390px;
         min-width: 390px;
-        height: calc(100vh - 50px);
+        height: 100%;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -14,12 +14,10 @@
         overflow-x: hidden;
         background: var(--surface);
         color: var(--text);
-        border-radius: 28px;
-        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
-        border: 1px solid var(--border);
+        border-left: 1px solid var(--border);
         position: fixed;
-        right: 20px;
-        top: 20px;
+        right: 0;
+        top: 0;
         }
 
 
