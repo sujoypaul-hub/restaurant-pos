@@ -11,7 +11,9 @@
     <div class="billing-layout">
 
 
-        <!-- Products -->
+        <!-- ==========================================
+             PRODUCTS
+        ========================================== -->
 
         <div class="products-section">
 
@@ -155,28 +157,31 @@
             <div class="customer-section">
 
 
-                <div class="customer-heading">
+                <!-- Customer Phone -->
 
-                    <strong>
-                        Customer
-                    </strong>
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Enter customer phone number"
+                    inputmode="numeric"
+                    maxlength="10"
+                >
 
 
-                    <label class="no-phone-option">
+                <!-- Continue Without Phone -->
 
-                        <input
-                            type="checkbox"
-                            id="no-phone-checkbox"
-                        >
+                <label class="no-phone-option">
 
-                        <span>
-                            No phone
-                        </span>
+                    <input
+                        type="checkbox"
+                        id="no-phone-checkbox"
+                    >
 
-                    </label>
+                    <span>
+                        Continue without phone number
+                    </span>
 
-                </div>
-
+                </label>
 
 
                 <!-- Customer Name -->
@@ -190,20 +195,7 @@
                 >
 
 
-
-                <!-- Customer Phone -->
-
-                <input
-                    type="tel"
-                    id="customer-phone"
-                    placeholder="Enter customer phone number"
-                    inputmode="numeric"
-                    maxlength="10"
-                >
-
-
-
-                <!-- Order type -->
+                <!-- Order Type -->
 
                 <div class="order-type">
 
@@ -236,6 +228,34 @@
                 </div>
 
 
+                <!-- ==========================================
+                     TABLE SELECTION
+                     ========================================== -->
+
+                <div
+                    class="table-selection"
+                    id="table-selection"
+                >
+
+                    <button
+                        class="table-selection-btn"
+                        id="table-selection-btn"
+                        type="button"
+                    >
+
+                        <span>
+                            Select Table
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+
             </div>
 
 
@@ -249,9 +269,77 @@
                 id="cart-items"
             >
 
-                <p class="empty-cart">
-                    No items added yet
-                </p>
+
+                <!-- Demo Item 1 -->
+
+                <div class="cart-item">
+
+                    <div class="cart-item-info">
+
+                        <strong>
+                            Classic Chicken Burger
+                        </strong>
+
+                        <span>
+                            ₹99 × 1
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        ₹99
+                    </strong>
+
+                </div>
+
+
+
+                <!-- Demo Item 2 -->
+
+                <div class="cart-item">
+
+                    <div class="cart-item-info">
+
+                        <strong>
+                            4 Pc Fried Chicken
+                        </strong>
+
+                        <span>
+                            ₹99 × 1
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        ₹99
+                    </strong>
+
+                </div>
+
+
+
+                <!-- Demo Item 3 -->
+
+                <div class="cart-item">
+
+                    <div class="cart-item-info">
+
+                        <strong>
+                            Peri Peri Fries
+                        </strong>
+
+                        <span>
+                            ₹99 × 1
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        ₹99
+                    </strong>
+
+                </div>
+
 
             </div>
 
@@ -263,9 +351,13 @@
 
             <div class="promotion-box">
 
-                <span>
-                    Promotion Code
-                </span>
+                <input
+                    type="text"
+                    id="selected-promo-code"
+                    class="selected-promo-code"
+                    placeholder="No promo code selected"
+                    readonly
+                >
 
 
                 <button
@@ -273,7 +365,7 @@
                     id="promotion-btn"
                     type="button"
                 >
-                    ADD CODE
+                    ADD PROMO
                 </button>
 
             </div>
@@ -316,7 +408,7 @@
                     </span>
 
                     <strong id="subtotal">
-                        ₹0
+                        ₹297
                     </strong>
 
                 </div>
@@ -355,7 +447,7 @@
                     </span>
 
                     <strong id="total">
-                        ₹0
+                        ₹297
                     </strong>
 
                 </div>
@@ -436,15 +528,11 @@
 
 
 
-        <!-- Promo List -->
-
         <div
             class="promo-list"
             id="promo-list"
         >
 
-
-            <!-- Promo 1 -->
 
             <button
                 class="promo-option"
@@ -473,8 +561,6 @@
 
 
 
-            <!-- Promo 2 -->
-
             <button
                 class="promo-option"
                 type="button"
@@ -500,34 +586,137 @@
 
             </button>
 
+        </div>
+
+    </div>
+
+</div>
 
 
-            <!-- Remove Promo -->
+
+<!-- ==================================================
+     TABLE SELECTION POPUP
+================================================== -->
+
+<div
+    class="table-modal"
+    id="table-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="table-modal-overlay"
+        data-table-close
+    ></div>
+
+
+    <div
+        class="table-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="table-modal-title"
+    >
+
+        <div class="table-modal-header">
+
+            <div>
+
+                <h3 id="table-modal-title">
+                    Select Table
+                </h3>
+
+                <p>
+                    Choose the table for this order.
+                </p>
+
+            </div>
+
 
             <button
-                class="promo-option promo-remove"
+                class="table-modal-close"
                 type="button"
-                data-promo-remove
+                data-table-close
+                aria-label="Close table selection"
             >
-
-                <span class="promo-option-content">
-
-                    <strong>
-                        Remove Promotion
-                    </strong>
-
-                    <small>
-                        Remove the currently selected promotion
-                    </small>
-
-                </span>
-
-                <span class="promo-option-arrow">
-                    ×
-                </span>
-
+                ×
             </button>
 
+        </div>
+
+
+        <div class="table-list">
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="1"
+            >
+                Table 1
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="2"
+            >
+                Table 2
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="3"
+            >
+                Table 3
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="4"
+            >
+                Table 4
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="5"
+            >
+                Table 5
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="6"
+            >
+                Table 6
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="7"
+            >
+                Table 7
+            </button>
+
+
+            <button
+                class="table-option"
+                type="button"
+                data-table-number="8"
+            >
+                Table 8
+            </button>
 
         </div>
 
