@@ -18,14 +18,18 @@
 
     flex-direction: column;
 
-    background: var(--surface);
+    background:
+        var(--surface);
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    border-radius: 28px;
+    border-radius:
+        28px;
 
     box-shadow:
         0 18px 50px rgba(0, 0, 0, 0.16);
+
     border:
         1px solid var(--border);
 
@@ -60,7 +64,8 @@
 
     font-size: 12px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
 }
 
@@ -78,7 +83,8 @@
     background:
         var(--background);
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
 }
 
@@ -103,16 +109,27 @@
 }
 
 
+/*
+--------------------------------------------------
+All customer inputs
+--------------------------------------------------
+*/
+
 .customer-section input {
 
     width: 100%;
 
-    padding: 11px 12px;
+    padding:
+        11px 12px;
+
+    box-sizing:
+        border-box;
 
     border:
         1px solid var(--input-border);
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     background:
         var(--input-background);
@@ -120,7 +137,8 @@
     color:
         var(--text);
 
-    outline: none;
+    outline:
+        none;
 
 }
 
@@ -132,12 +150,15 @@
 
 }
 
+
 .customer-section input::placeholder {
 
     color:
         var(--muted);
 
 }
+
+
 .customer-section input:disabled {
 
     background:
@@ -161,41 +182,66 @@
 
 .no-phone-option {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 6px;
+    gap:
+        6px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
 }
 
 
 .no-phone-option input {
 
-    width: 15px;
+    width:
+        15px;
 
-    height: 15px;
+    height:
+        15px;
 
-    margin: 0;
+    padding:
+        0;
 
-    accent-color: var(--accent);
+    margin:
+        0;
 
-    cursor: pointer;
+    border:
+        none;
+
+    border-radius:
+        0;
+
+    background:
+        transparent;
+
+    accent-color:
+        var(--accent);
+
+    cursor:
+        pointer;
 
 }
 
 
 .no-phone-option span {
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
 
 }
+
 
 /* ==================================================
    DISABLED NO-PHONE OPTION
@@ -219,13 +265,19 @@
 
 }
 
+
 /* ==================================================
    CUSTOMER NAME
 ================================================== */
 
 .customer-name-input {
-    width: 100%;
-    box-sizing: border-box;
+
+    width:
+        100%;
+
+    box-sizing:
+        border-box;
+
 }
 
 
@@ -235,16 +287,20 @@
 
 .order-type {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap: 5px;
+    gap:
+        5px;
 
-    padding: 4px;
+    padding:
+        4px;
 
-    margin-top: 10px;
+    margin-top:
+        10px;
 
     background:
         var(--surface-secondary);
@@ -252,7 +308,8 @@
     border:
         1px solid var(--border);
 
-    border-radius: 11px;
+    border-radius:
+        11px;
 
 }
 
@@ -262,9 +319,11 @@
     padding:
         8px 5px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
     background:
         transparent;
@@ -272,9 +331,11 @@
     color:
         var(--muted);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
 }
 
@@ -291,29 +352,118 @@
 
 
 /* ==================================================
-   EMPTY CART
+   TABLE SELECTION
 ================================================== */
 
-.cart-items {
+.table-selection {
 
-    flex: 1;
+    display:
+        none;
 
-    min-height: 0;
-
-    overflow-y: auto;
-
-    padding-right: 3px;
+    margin-top:
+        10px;
 
 }
 
 
+.table-selection.active {
+
+    display:
+        block;
+
+}
+
+
+.table-selection-btn {
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid var(--input-border);
+
+    border-radius:
+        10px;
+
+    background:
+        var(--input-background);
+
+    color:
+        var(--text);
+
+    font-size:
+        12px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.table-selection-btn:hover {
+
+    border-color:
+        var(--accent);
+
+    background:
+        var(--nav-hover);
+
+}
+
+
+/* ==================================================
+   CART ITEMS
+================================================== */
+
+/*
+Cart itself is NOT independently scrollable.
+
+The panel can grow naturally with the order.
+*/
+
+.cart-items {
+
+    flex:
+        0 0 auto;
+
+    min-height:
+        0;
+
+    overflow:
+        visible;
+
+    padding-right:
+        3px;
+
+}
+
+
+/* ==================================================
+   EMPTY CART
+================================================== */
+
 .empty-cart {
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    padding: 70px 20px;
+    padding:
+        70px 20px;
 
 }
 
@@ -324,16 +474,20 @@
 
 .cart-item {
 
-    position: relative;
+    position:
+        relative;
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
         1fr auto;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    padding: 13px 0;
+    padding:
+        13px 0;
 
     border-bottom:
         1px solid var(--border);
@@ -341,90 +495,124 @@
 }
 
 
+/* ==================================================
+   CART ITEM INFORMATION
+================================================== */
+
 .cart-item-info {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    min-width: 0;
+    min-width:
+        0;
 
 }
 
 
 .cart-item-icon {
 
-    width: 43px;
+    width:
+        43px;
 
-    height: 43px;
+    height:
+        43px;
 
-    min-width: 43px;
+    min-width:
+        43px;
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    align-items: center;
+    align-items:
+        center;
 
-    border-radius: 13px;
+    border-radius:
+        13px;
 
     background:
         var(--background);
 
-    font-size: 23px;
+    font-size:
+        23px;
 
 }
 
 
 .cart-item-info h4 {
 
-    margin: 0 0 4px;
+    margin:
+        0 0 4px;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    line-height: 1.3;
+    line-height:
+        1.3;
 
 }
 
 
 .cart-item-info p {
 
-    margin: 0;
+    margin:
+        0;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
 }
 
 
+/* ==================================================
+   CART ITEM CONTROLS
+================================================== */
+
 .cart-item-controls {
 
-    grid-column: 1 / -1;
+    grid-column:
+        1 / -1;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 6px;
+    gap:
+        6px;
 
-    margin-left: 53px;
+    margin-left:
+        53px;
 
 }
 
 
 .quantity-btn {
 
-    width: 28px;
+    width:
+        28px;
 
-    height: 28px;
+    height:
+        28px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
     background:
         var(--surface);
@@ -432,91 +620,87 @@
     color:
         var(--text);
 
-    cursor: pointer;
+    cursor:
+        pointer;
+
+}
+
+
+.quantity-btn:hover {
+
+    background:
+        var(--nav-hover);
 
 }
 
 
 .quantity {
 
-    min-width: 25px;
+    min-width:
+        25px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
 }
 
 
 .remove-item-btn {
 
-    margin-left: auto;
+    margin-left:
+        auto;
 
-    width: 28px;
+    width:
+        28px;
 
-    height: 28px;
+    height:
+        28px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: transparent;
+    background:
+        transparent;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 18px;
+    font-size:
+        18px;
+
+}
+
+
+.remove-item-btn:hover {
+
+    background:
+        var(--nav-hover);
+
+    color:
+        var(--text);
 
 }
 
 
 .cart-item-total {
 
-    align-self: start;
+    align-self:
+        start;
 
-    font-size: 14px;
-
-}
-
-.payment-btn {
-
-    width: 100%;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 14px;
-
-    background:
-        var(--button);
-
-    color:
-        var(--button-text);
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    cursor: pointer;
+    font-size:
+        14px;
 
 }
 
-
-:root[data-theme="dark"] .payment-btn {
-
-    background:
-        linear-gradient(
-            135deg,
-            #E84B52,
-            #C92632
-        );
-
-    color:
-        #FFFFFF;
-
-}
 
 /* ==================================================
    PROMOTION
@@ -524,19 +708,26 @@
 
 .promotion-box {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    padding: 13px 14px;
+    padding:
+        13px 14px;
 
-    margin-top: 12px;
+    margin-top:
+        12px;
 
-    border-radius: 13px;
+    border-radius:
+        13px;
 
     background:
         var(--background);
@@ -544,22 +735,78 @@
 }
 
 
-.promotion-box span {
+/*
+Selected promo code input
+*/
 
-    font-size: 12px;
+.selected-promo-code {
 
-    color: var(--muted);
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    height:
+        34px;
+
+    padding:
+        0 10px;
+
+    box-sizing:
+        border-box;
+
+    border:
+        1px solid var(--input-border);
+
+    border-radius:
+        8px;
+
+    background:
+        var(--input-background);
+
+    color:
+        var(--text);
+
+    font-size:
+        12px;
+
+    outline:
+        none;
 
 }
 
 
+.selected-promo-code::placeholder {
+
+    color:
+        var(--muted);
+
+}
+
+
+.selected-promo-code:focus {
+
+    border-color:
+        var(--accent);
+
+}
+
+
+/*
+Promo button
+*/
+
 .promotion-btn {
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    padding: 7px 12px;
+    padding:
+        7px 12px;
 
     background:
         var(--button);
@@ -567,12 +814,43 @@
     color:
         var(--button-text);
 
-    font-size: 11px;
+    font-size:
+        11px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
+
+    white-space:
+        nowrap;
 
 }
 
+
+.promotion-btn:hover {
+
+    opacity:
+        0.9;
+
+}
+
+
+/*
+When a promo is selected,
+ADD PROMO becomes REMOVE.
+*/
+
+.promotion-btn.promo-remove-btn {
+
+    background:
+        transparent;
+
+    color:
+        var(--accent);
+
+    border:
+        1px solid var(--accent);
+
+}
 
 
 /* ==================================================
@@ -580,54 +858,91 @@
 ================================================== */
 
 .special-suggestion {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 16px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+    margin-top:
+        16px;
+
 }
+
 
 .special-suggestion label {
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
+
+    color:
+        var(--text);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
 }
+
 
 .special-suggestion textarea {
-    width: 100%;
-    min-height: 80px;
-    padding: 10px 12px;
-    box-sizing: border-box;
 
-    background: var(--input-background);
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
+    width:
+        100%;
 
-    color: var(--text);
+    min-height:
+        80px;
 
-    font-family: inherit;
-    font-size: 14px;
+    padding:
+        10px 12px;
 
-    resize: vertical;
+    box-sizing:
+        border-box;
+
+    background:
+        var(--input-background);
+
+    border:
+        1px solid var(--input-border);
+
+    border-radius:
+        8px;
+
+    color:
+        var(--text);
+
+    font-family:
+        inherit;
+
+    font-size:
+        14px;
+
+    resize:
+        vertical;
+
+    outline:
+        none;
+
 }
+
+
+.special-suggestion textarea:focus {
+
+    border-color:
+        var(--accent);
+
+}
+
 
 .special-suggestion textarea::placeholder {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
 }
-
-
-
-/* ==================================================
-   PROMO BUTTON
-================================================== */
-
-.promotion-btn {
-    cursor: pointer;
-}
-
-.promotion-btn.promo-applied {
-    font-weight: 600;
-}
-
 
 
 /* ==================================================
@@ -635,197 +950,588 @@
 ================================================== */
 
 .promo-modal {
-    position: fixed;
-    inset: 0;
 
-    display: none;
+    position:
+        fixed;
 
-    z-index: 1000;
+    inset:
+        0;
+
+    display:
+        none;
+
+    z-index:
+        1000;
+
 }
+
 
 .promo-modal.active {
-    display: flex;
 
-    align-items: center;
-    justify-content: center;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
 }
 
 
-/* Overlay */
+/* ==================================================
+   PROMO MODAL OVERLAY
+================================================== */
 
 .promo-modal-overlay {
-    position: absolute;
-    inset: 0;
 
-    background: rgba(0, 0, 0, 0.45);
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
 }
 
 
-/* Modal */
+/* ==================================================
+   PROMO MODAL CONTENT
+================================================== */
 
 .promo-modal-content {
-    position: relative;
 
-    width: min(
-        500px,
-        calc(100% - 32px)
-    );
+    position:
+        relative;
 
-    max-height: calc(100vh - 64px);
+    width:
+        min(500px, calc(100% - 32px));
 
-    overflow-y: auto;
+    max-height:
+        calc(100vh - 64px);
 
-    box-sizing: border-box;
+    overflow-y:
+        auto;
 
-    background: var(--surface);
+    box-sizing:
+        border-box;
 
-    border: 1px solid var(--border);
+    background:
+        var(--surface);
 
-    border-radius: 12px;
+    border:
+        1px solid var(--border);
 
-    padding: 20px;
+    border-radius:
+        12px;
 
-    z-index: 1;
+    padding:
+        20px;
+
+    z-index:
+        1;
 
     box-shadow:
-        0 20px 50px
-        rgba(0, 0, 0, 0.20);
+        0 20px 50px rgba(0, 0, 0, 0.20);
+
 }
 
 
-/* Header */
+/* ==================================================
+   PROMO MODAL HEADER
+================================================== */
 
 .promo-modal-header {
-    display: flex;
 
-    align-items: flex-start;
-    justify-content: space-between;
+    display:
+        flex;
 
-    gap: 16px;
+    align-items:
+        flex-start;
 
-    margin-bottom: 20px;
+    justify-content:
+        space-between;
+
+    gap:
+        16px;
+
+    margin-bottom:
+        20px;
+
 }
+
 
 .promo-modal-header h3 {
-    margin: 0;
 
-    color: var(--text);
+    margin:
+        0;
 
-    font-size: 18px;
+    color:
+        var(--text);
+
+    font-size:
+        18px;
+
 }
+
 
 .promo-modal-header p {
-    margin: 5px 0 0;
 
-    color: var(--muted);
+    margin:
+        5px 0 0;
 
-    font-size: 13px;
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
 }
 
 
-/* Close */
+/* ==================================================
+   PROMO MODAL CLOSE
+================================================== */
 
 .promo-modal-close {
-    width: 32px;
-    height: 32px;
 
-    flex-shrink: 0;
+    width:
+        32px;
 
-    border: 0;
-    border-radius: 8px;
+    height:
+        32px;
 
-    background: transparent;
+    flex-shrink:
+        0;
 
-    color: var(--muted);
+    border:
+        0;
 
-    font-size: 24px;
-    line-height: 1;
+    border-radius:
+        8px;
 
-    cursor: pointer;
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        24px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
 }
+
 
 .promo-modal-close:hover {
-    background: var(--nav-hover);
-    color: var(--text);
+
+    background:
+        var(--nav-hover);
+
+    color:
+        var(--text);
+
 }
 
 
-/* Promo List */
+/* ==================================================
+   PROMO LIST
+================================================== */
 
 .promo-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
 }
 
 
-/* Promo Option */
+/* ==================================================
+   PROMO OPTION
+================================================== */
 
 .promo-option {
-    width: 100%;
 
-    display: flex;
+    width:
+        100%;
 
-    align-items: center;
-    justify-content: space-between;
+    display:
+        flex;
 
-    gap: 16px;
+    align-items:
+        center;
 
-    padding: 14px;
+    justify-content:
+        space-between;
 
-    box-sizing: border-box;
+    gap:
+        16px;
 
-    background: var(--surface);
+    padding:
+        14px;
 
-    border: 1px solid var(--border);
+    box-sizing:
+        border-box;
 
-    border-radius: 10px;
+    background:
+        var(--surface);
 
-    color: var(--text);
+    border:
+        1px solid var(--border);
 
-    text-align: left;
+    border-radius:
+        10px;
 
-    cursor: pointer;
+    color:
+        var(--text);
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
 }
+
 
 .promo-option:hover {
-    background: var(--nav-hover);
-    border-color: var(--accent);
+
+    background:
+        var(--nav-hover);
+
+    border-color:
+        var(--accent);
+
 }
 
 
-/* Promo Text */
+/* ==================================================
+   PROMO TEXT
+================================================== */
 
 .promo-option-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+
 }
+
 
 .promo-option-content strong {
-    color: var(--text);
-    font-size: 14px;
+
+    color:
+        var(--text);
+
+    font-size:
+        14px;
+
 }
+
 
 .promo-option-content small {
-    color: var(--muted);
-    font-size: 12px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
 }
 
 
-/* Arrow */
+/* ==================================================
+   PROMO ARROW
+================================================== */
 
 .promo-option-arrow {
-    color: var(--accent);
-    font-size: 18px;
+
+    color:
+        var(--accent);
+
+    font-size:
+        18px;
+
 }
 
 
-/* Remove */
+/* ==================================================
+   TABLE MODAL
+================================================== */
 
-.promo-remove {
-    color: var(--muted);
+.table-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    z-index:
+        1000;
+
 }
+
+
+.table-modal.active {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+}
+
+
+/* ==================================================
+   TABLE MODAL OVERLAY
+================================================== */
+
+.table-modal-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* ==================================================
+   TABLE MODAL CONTENT
+================================================== */
+
+.table-modal-content {
+
+    position:
+        relative;
+
+    width:
+        min(420px, calc(100% - 32px));
+
+    max-height:
+        calc(100vh - 64px);
+
+    overflow-y:
+        auto;
+
+    box-sizing:
+        border-box;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+
+    padding:
+        20px;
+
+    z-index:
+        1;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.20);
+
+}
+
+
+/* ==================================================
+   TABLE MODAL HEADER
+================================================== */
+
+.table-modal-header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        16px;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.table-modal-header h3 {
+
+    margin:
+        0;
+
+    color:
+        var(--text);
+
+    font-size:
+        18px;
+
+}
+
+
+.table-modal-header p {
+
+    margin:
+        5px 0 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+}
+
+
+/* ==================================================
+   TABLE MODAL CLOSE
+================================================== */
+
+.table-modal-close {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    flex-shrink:
+        0;
+
+    border:
+        0;
+
+    border-radius:
+        8px;
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        24px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+}
+
+
+.table-modal-close:hover {
+
+    background:
+        var(--nav-hover);
+
+    color:
+        var(--text);
+
+}
+
+
+/* ==================================================
+   TABLE LIST
+================================================== */
+
+.table-list {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        10px;
+
+}
+
+
+/* ==================================================
+   TABLE OPTION
+================================================== */
+
+.table-option {
+
+    min-height:
+        54px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        10px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+}
+
+
+.table-option:hover {
+
+    background:
+        var(--nav-hover);
+
+    border-color:
+        var(--accent);
+
+}
+
 
 /* ==================================================
    SUMMARY
@@ -833,41 +1539,50 @@
 
 .cart-summary {
 
-    padding: 16px 0 8px;
+    padding:
+        16px 0 8px;
 
 }
 
 
 .cart-summary > div {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
 }
 
 
 .cart-summary .total {
 
-    margin-top: 12px;
+    margin-top:
+        12px;
 
-    padding-top: 14px;
+    padding-top:
+        14px;
 
     border-top:
         1px dashed var(--border);
 
-    font-size: 17px;
+    font-size:
+        17px;
 
 }
 
 
 .cart-summary .total strong {
 
-    font-size: 22px;
+    font-size:
+        22px;
 
 }
 
@@ -878,13 +1593,17 @@
 
 .payment-btn {
 
-    width: 100%;
+    width:
+        100%;
 
-    padding: 15px;
+    padding:
+        15px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 14px;
+    border-radius:
+        14px;
 
     background:
         linear-gradient(
@@ -893,13 +1612,17 @@
             #111111
         );
 
-    color: white;
+    color:
+        white;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 600;
+    font-weight:
+        600;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
         0 12px 25px rgba(0, 0, 0, 0.18);
@@ -926,6 +1649,7 @@
 
 }
 
+
 /* ==================================================
    RESPONSIVE
 ================================================== */
@@ -934,18 +1658,22 @@
 
     .sidebar {
 
-        width: 200px;
+        width:
+            200px;
 
-        min-width: 200px;
+        min-width:
+            200px;
 
     }
 
 
     .cart-section {
 
-        width: 350px;
+        width:
+            350px;
 
-        min-width: 350px;
+        min-width:
+            350px;
 
     }
 
@@ -956,78 +1684,131 @@
 
     .app {
 
-        flex-direction: column;
+        flex-direction:
+            column;
 
     }
 
 
     .sidebar {
 
-        width: auto;
+        width:
+            auto;
 
-        min-width: 0;
+        min-width:
+            0;
 
-        height: auto;
+        height:
+            auto;
 
-        margin: 10px;
+        margin:
+            10px;
 
-        border-radius: 20px;
+        border-radius:
+            20px;
 
     }
 
 
     .sidebar-nav {
 
-        flex-direction: row;
+        flex-direction:
+            row;
 
-        overflow-x: auto;
+        overflow-x:
+            auto;
 
     }
 
 
     .nav-btn {
 
-        width: auto;
+        width:
+            auto;
 
-        min-width: 110px;
+        min-width:
+            110px;
 
     }
 
 
     .sidebar-footer {
 
-        display: none;
+        display:
+            none;
 
     }
 
 
     .main-content {
 
-        padding: 0 10px 10px;
+        padding:
+            0 10px 10px;
 
     }
 
 
     .billing-layout {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
 
 
     .cart-section {
 
-        width: auto;
+        width:
+            auto;
 
-        min-width: 0;
+        min-width:
+            0;
 
-        height: auto;
+        height:
+            auto;
 
-        min-height: 600px;
+        min-height:
+            600px;
 
-        margin: 0;
+        margin:
+            0;
 
     }
 
 }
 
+
+@media (max-width: 500px) {
+
+    .promotion-box {
+
+        gap:
+            7px;
+
+    }
+
+
+    .selected-promo-code {
+
+        min-width:
+            0;
+
+    }
+
+
+    .promotion-btn {
+
+        padding:
+            7px 10px;
+
+    }
+
+
+    .table-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
