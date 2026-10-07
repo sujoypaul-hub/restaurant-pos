@@ -788,6 +788,55 @@ a.list-item:focus-visible {
     align-items: center;
 }
 
+/* ==========================================
+   PAGE Layout
+   ========================================== */
+
+.page-layout {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   RIGHT SIDEBAR
+   ========================================== */
+
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+
+.right-sidebar-section {
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+
+.right-sidebar-title {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.right-sidebar-content {
+    min-height: 80px;
+    margin-top: 14px;
+}
+
 
 /* ==================================================
    MOBILE
@@ -813,5 +862,14 @@ a.list-item:focus-visible {
 
         margin-right: 12px;
     }
+    
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
 
+    .right-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
+
