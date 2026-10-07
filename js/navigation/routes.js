@@ -122,6 +122,176 @@ const appRoutes = {
 
     /*
     ==============================================
+    INVENTORY
+    ==============================================
+    */
+    
+    inventory: {
+
+    page: "inventory",
+
+    title: "Inventory",
+
+    description:
+        "Monitor stock, purchases and inventory",
+
+    children: {
+
+        purchase: {
+
+            page: "inventory/purchase",
+
+            title: "Purchase",
+
+            description:
+                "Manage inventory purchases",
+
+            children: {
+
+                new: {
+
+                    page: "inventory/purchase/new",
+
+                    title: "New Purchase",
+
+                    description:
+                        "Record a new inventory purchase"
+
+                },
+
+                history: {
+
+                    page: "inventory/purchase-history",
+
+                    title: "Purchase History",
+
+                    description:
+                        "View previous inventory purchases"
+
+                }
+
+            }
+
+        },
+
+
+        stock: {
+
+            page: "inventory/stock",
+
+            title: "Stock",
+
+            description:
+                "Monitor and reconcile current stock",
+
+            children: {
+
+                current: {
+
+                    page: "inventory/stock/current",
+
+                    title: "Current Stock",
+
+                    description:
+                        "View current inventory levels"
+
+                },
+
+                reconcile: {
+
+                    page: "inventory/stock/reconcile",
+
+                    title: "Stock Count",
+
+                    description:
+                        "Count and reconcile physical stock"
+
+                },
+
+                movements: {
+
+                    page: "inventory/stock/movements",
+
+                    title: "Stock Movement",
+
+                    description:
+                        "View inventory stock movements"
+
+                }
+
+            }
+
+        },
+
+
+        recipes: {
+
+            page: "inventory/recipes",
+
+            title: "Recipes",
+
+            description:
+                "Manage ingredient usage for menu items"
+
+        },
+
+
+        wastage: {
+
+            page: "inventory/wastage",
+
+            title: "Wastage",
+
+            description:
+                "Record and review inventory wastage",
+
+            children: {
+
+                record: {
+
+                    page: "inventory/wastage/record",
+
+                    title: "Record Wastage",
+
+                    description:
+                        "Record damaged, spoiled or wasted stock"
+
+                },
+
+                history: {
+
+                    page: "inventory/wastage-history",
+
+                    title: "Wastage History",
+
+                    description:
+                        "View previous inventory wastage"
+
+                }
+
+            }
+
+        },
+
+
+        suppliers: {
+
+            page: "inventory/suppliers",
+
+            title: "Suppliers",
+
+            description:
+                "Manage inventory suppliers"
+
+        }
+
+    }
+
+},
+    
+
+    /*
+    ==============================================
     REPORTS
     ==============================================
     */
