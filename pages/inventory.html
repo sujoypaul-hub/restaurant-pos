@@ -20,221 +20,167 @@
 
 
                 <!-- Purchase -->
-            <div class="list-items">
-               <button class="list-item" type="button" >
+            <!-- ==========================================
+     INVENTORY ITEMS
+========================================== -->
 
-                     <span class="list-item-icon"> 🧾 </span>
-                     <span class="list-item-content">
-                              <span class="list-item-title"> Order History </span>
-                              <span class="list-item-description"> View previous orders, bills and order details. </span>
-                    </span>
-                    <span class="list-item-right"> </span>
-                </button>
-            </div>
+<div class="list-items">
 
+    <!-- Purchase -->
 
-            <div class="list-items">
-               <button class="list-item" type="button" >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/purchase"
+    >
 
-                     <span class="list-item-icon"> 🧾 </span>
-                     <span class="list-item-content">
-                              <span class="list-item-title"> Order History </span>
-                              <span class="list-item-description"> View previous orders, bills and order details. </span>
-                    </span>
-                    <span class="list-item-right"> </span>
-                </button>
-            </div>
+        <span class="list-item-icon">
+            🛒
+        </span>
 
-            <div class="list-items">
-               <button class="list-item" type="button" >
+        <span class="list-item-content">
 
-                     <span class="list-item-icon"> 🧾 </span>
-                     <span class="list-item-content">
-                              <span class="list-item-title"> Order History </span>
-                              <span class="list-item-description"> View previous orders, bills and order details. </span>
-                    </span>
-                    <span class="list-item-right"> </span>
-                </button>
-            </div>
-                      
-            <div class="list-items">
-               <button class="list-item" type="button" >
+            <span class="list-item-title">
+                Purchase
+            </span>
 
-                     <span class="list-item-icon"> 🧾 </span>
-                     <span class="list-item-content">
-                              <span class="list-item-title"> Order History </span>
-                              <span class="list-item-description"> View previous orders, bills and order details. </span>
-                    </span>
-                    <span class="list-item-right"> → </span>
-                </button>
-            </div>
+            <span class="list-item-description">
+                Record new purchases and view purchase history.
+            </span>
 
-            <div class="list-items">
-               <button class="list-item" type="button" >
+        </span>
 
-                     <span class="list-item-icon"> 🧾 </span>
-                     <span class="list-item-content">
-                              <span class="list-item-title"> Order History </span>
-                              <span class="list-item-description"> View previous orders, bills and order details. </span>
-                    </span>
-                    <span class="list-item-right"> → </span>
-                </button>
-            </div>
+        <span class="list-item-right">
+            →
+        </span>
+
+    </button>
 
 
-                      
-                <button
-                    class="inventory-module"
-                    type="button"
-                    data-route="inventory/purchase"
-                >
+    <!-- Stock -->
 
-                    <span class="inventory-module-icon">
-                        🛒
-                    </span>
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/stock"
+    >
 
-                    <span class="inventory-module-content">
+        <span class="list-item-icon">
+            📦
+        </span>
 
-                        <strong>
-                            Purchase
-                        </strong>
+        <span class="list-item-content">
 
-                        <small>
-                            Record purchases and view purchase history.
-                        </small>
+            <span class="list-item-title">
+                Stock
+            </span>
 
-                    </span>
+            <span class="list-item-description">
+                Monitor current stock, count and reconcile inventory.
+            </span>
 
-                    <span class="inventory-module-arrow">
-                        →
-                    </span>
+        </span>
 
-                </button>
+        <span class="list-item-right">
+            →
+        </span>
 
-
-                <!-- Stock -->
-
-                <button
-                    class="inventory-module"
-                    type="button"
-                    data-route="inventory/stock"
-                >
-
-                    <span class="inventory-module-icon">
-                        📦
-                    </span>
-
-                    <span class="inventory-module-content">
-
-                        <strong>
-                            Stock
-                        </strong>
-
-                        <small>
-                            Monitor current stock, count and reconcile inventory.
-                        </small>
-
-                    </span>
-
-                    <span class="inventory-module-arrow">
-                        →
-                    </span>
-
-                </button>
+    </button>
 
 
-                <!-- Recipes -->
+    <!-- Recipes -->
 
-                <button
-                    class="inventory-module"
-                    type="button"
-                    data-route="inventory/recipes"
-                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/recipes"
+    >
 
-                    <span class="inventory-module-icon">
-                        🍳
-                    </span>
+        <span class="list-item-icon">
+            🍳
+        </span>
 
-                    <span class="inventory-module-content">
+        <span class="list-item-content">
 
-                        <strong>
-                            Recipes
-                        </strong>
+            <span class="list-item-title">
+                Recipes
+            </span>
 
-                        <small>
-                            Define ingredient consumption for menu items.
-                        </small>
+            <span class="list-item-description">
+                Define ingredient consumption for each menu item.
+            </span>
 
-                    </span>
+        </span>
 
-                    <span class="inventory-module-arrow">
-                        →
-                    </span>
+        <span class="list-item-right">
+            →
+        </span>
 
-                </button>
-
-
-                <!-- Wastage -->
-
-                <button
-                    class="inventory-module"
-                    type="button"
-                    data-route="inventory/wastage"
-                >
-
-                    <span class="inventory-module-icon">
-                        🗑️
-                    </span>
-
-                    <span class="inventory-module-content">
-
-                        <strong>
-                            Wastage
-                        </strong>
-
-                        <small>
-                            Record spoiled, damaged and wasted stock.
-                        </small>
-
-                    </span>
-
-                    <span class="inventory-module-arrow">
-                        →
-                    </span>
-
-                </button>
+    </button>
 
 
-                <!-- Suppliers -->
+    <!-- Wastage -->
 
-                <button
-                    class="inventory-module"
-                    type="button"
-                    data-route="inventory/suppliers"
-                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/wastage"
+    >
 
-                    <span class="inventory-module-icon">
-                        🚚
-                    </span>
+        <span class="list-item-icon">
+            🗑️
+        </span>
 
-                    <span class="inventory-module-content">
+        <span class="list-item-content">
 
-                        <strong>
-                            Suppliers
-                        </strong>
+            <span class="list-item-title">
+                Wastage
+            </span>
 
-                        <small>
-                            Manage suppliers and purchasing relationships.
-                        </small>
+            <span class="list-item-description">
+                Record spoiled, damaged and wasted inventory.
+            </span>
 
-                    </span>
+        </span>
 
-                    <span class="inventory-module-arrow">
-                        →
-                    </span>
+        <span class="list-item-right">
+            →
+        </span>
 
-                </button>
+    </button>
 
+
+    <!-- Suppliers -->
+
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/suppliers"
+    >
+
+        <span class="list-item-icon">
+            🚚
+        </span>
+
+        <span class="list-item-content">
+
+            <span class="list-item-title">
+                Suppliers
+            </span>
+
+            <span class="list-item-description">
+                Manage suppliers and purchasing relationships.
+            </span>
+
+        </span>
+
+        <span class="list-item-right">
+            →
+        </span>
+
+    </button>
+
+</div>
 
             </div>
 
