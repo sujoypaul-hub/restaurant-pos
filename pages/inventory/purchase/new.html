@@ -1,100 +1,452 @@
 <!-- ==================================
-        NEW INVENTORY PURCHASE
+        NEW PURCHASE
 =================================== -->
 
-<div class="list-type-layout">
+<div class="inventory-purchase-layout">
 
-    <div class="list-items">
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
 
-        <!-- Supplier -->
+    <main class="inventory-purchase-main">
 
-        <button
-            class="list-item"
-            type="button"
-        >
+        <div class="inventory-page-header">
 
-            <span class="list-item-icon">
-                🚚
-            </span>
+            <div>
 
-            <span class="list-item-content">
+                <h2>
+                    New Purchase
+                </h2>
 
-                <span class="list-item-title">
-                    Supplier
-                </span>
+                <p>
+                    Record a new purchase and add received stock.
+                </p>
 
-                <span class="list-item-description">
-                    Select the supplier for this purchase.
-                </span>
+            </div>
 
-            </span>
-
-            <span class="list-item-right">
-                →
-            </span>
-
-        </button>
+        </div>
 
 
-        <!-- Purchase Items -->
+        <!-- ==========================================
+             PURCHASE INFORMATION
+             ========================================== -->
 
-        <button
-            class="list-item"
-            type="button"
-        >
+        <section class="inventory-form-section">
 
-            <span class="list-item-icon">
-                📦
-            </span>
-
-            <span class="list-item-content">
-
-                <span class="list-item-title">
-                    Purchase Items
-                </span>
-
-                <span class="list-item-description">
-                    Add ingredients, packaging or other stock purchased.
-                </span>
-
-            </span>
-
-            <span class="list-item-right">
-                →
-            </span>
-
-        </button>
+            <h3>
+                Purchase Information
+            </h3>
 
 
-        <!-- Purchase Details -->
+            <div class="inventory-form-grid">
 
-        <button
-            class="list-item"
-            type="button"
-        >
+                <!-- Purchase Date -->
 
-            <span class="list-item-icon">
-                🧾
-            </span>
+                <label class="inventory-form-field">
 
-            <span class="list-item-content">
+                    <span>
+                        Purchase Date
+                    </span>
 
-                <span class="list-item-title">
-                    Purchase Details
-                </span>
+                    <input
+                        type="date"
+                        id="purchase-date"
+                    >
 
-                <span class="list-item-description">
-                    Enter invoice number, date, payment and purchase notes.
-                </span>
+                </label>
 
-            </span>
 
-            <span class="list-item-right">
-                →
-            </span>
+                <!-- Supplier -->
 
-        </button>
+                <label class="inventory-form-field">
 
-    </div>
+                    <span>
+                        Supplier
+                    </span>
+
+                    <select id="purchase-supplier">
+
+                        <option value="">
+                            Select Supplier
+                        </option>
+
+                        <option value="supplier-1">
+                            ABC Foods
+                        </option>
+
+                        <option value="supplier-2">
+                            Fresh Chicken Supplier
+                        </option>
+
+                        <option value="supplier-3">
+                            Local Wholesale
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <!-- Invoice Number -->
+
+                <label class="inventory-form-field">
+
+                    <span>
+                        Invoice / Bill Number
+                    </span>
+
+                    <input
+                        type="text"
+                        id="purchase-invoice"
+                        placeholder="Enter invoice number"
+                    >
+
+                </label>
+
+
+                <!-- Payment Status -->
+
+                <label class="inventory-form-field">
+
+                    <span>
+                        Payment Status
+                    </span>
+
+                    <select id="purchase-payment-status">
+
+                        <option value="paid">
+                            Paid
+                        </option>
+
+                        <option value="due">
+                            Due
+                        </option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             PURCHASE ITEMS
+             ========================================== -->
+
+        <section class="inventory-form-section">
+
+            <div class="inventory-section-header">
+
+                <div>
+
+                    <h3>
+                        Purchase Items
+                    </h3>
+
+                    <p>
+                        Add each ingredient or stock item received.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="inventory-primary-small-btn"
+                    type="button"
+                    id="add-purchase-item"
+                >
+                    + Add Item
+                </button>
+
+            </div>
+
+
+            <!-- Purchase Table -->
+
+            <div class="purchase-items-table">
+
+                <div class="purchase-table-header">
+
+                    <span>
+                        Item
+                    </span>
+
+                    <span>
+                        Quantity
+                    </span>
+
+                    <span>
+                        Unit
+                    </span>
+
+                    <span>
+                        Rate
+                    </span>
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                    </span>
+
+                </div>
+
+
+                <!-- Demo Item -->
+
+                <div class="purchase-item-row">
+
+                    <div>
+
+                        <strong>
+                            Chicken
+                        </strong>
+
+                    </div>
+
+
+                    <input
+                        type="number"
+                        value="20"
+                        min="0"
+                        step="0.01"
+                    >
+
+
+                    <select>
+
+                        <option>
+                            kg
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        value="250"
+                        min="0"
+                        step="0.01"
+                    >
+
+
+                    <strong class="purchase-item-total">
+                        ₹5,000
+                    </strong>
+
+
+                    <button
+                        class="purchase-remove-btn"
+                        type="button"
+                        aria-label="Remove item"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <!-- Demo Item -->
+
+                <div class="purchase-item-row">
+
+                    <div>
+
+                        <strong>
+                            Cooking Oil
+                        </strong>
+
+                    </div>
+
+
+                    <input
+                        type="number"
+                        value="10"
+                        min="0"
+                        step="0.01"
+                    >
+
+
+                    <select>
+
+                        <option>
+                            L
+                        </option>
+
+                    </select>
+
+
+                    <input
+                        type="number"
+                        value="150"
+                        min="0"
+                        step="0.01"
+                    >
+
+
+                    <strong class="purchase-item-total">
+                        ₹1,500
+                    </strong>
+
+
+                    <button
+                        class="purchase-remove-btn"
+                        type="button"
+                        aria-label="Remove item"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             NOTES
+             ========================================== -->
+
+        <section class="inventory-form-section">
+
+            <h3>
+                Notes
+            </h3>
+
+            <textarea
+                class="inventory-notes"
+                id="purchase-notes"
+                placeholder="Add any purchase notes..."
+                rows="4"
+            ></textarea>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+         ========================================== -->
+
+    <aside class="right-sidebar inventory-purchase-sidebar">
+
+
+        <!-- Purchase Summary -->
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Purchase Summary
+            </h3>
+
+
+            <div class="purchase-summary">
+
+                <div>
+
+                    <span>
+                        Items
+                    </span>
+
+                    <strong>
+                        2
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong>
+                        ₹6,500
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Other Charges
+                    </span>
+
+                    <strong>
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-summary-total">
+
+                    <span>
+                        Grand Total
+                    </span>
+
+                    <strong>
+                        ₹6,500
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Payment -->
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Payment
+            </h3>
+
+
+            <div class="purchase-payment">
+
+                <select id="purchase-payment-method">
+
+                    <option value="cash">
+                        Cash
+                    </option>
+
+                    <option value="upi">
+                        UPI
+                    </option>
+
+                    <option value="card">
+                        Card
+                    </option>
+
+                    <option value="bank">
+                        Bank Transfer
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="inventory-save-btn"
+                    type="button"
+                >
+                    Save Purchase
+                </button>
+
+            </div>
+
+        </section>
+
+    </aside>
 
 </div>
