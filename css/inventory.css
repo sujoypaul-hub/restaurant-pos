@@ -1,5 +1,10 @@
 /* ==================================================
-   NEW PURCHASE LAYOUT
+   INVENTORY PURCHASE PAGE
+================================================== */
+
+
+/* ==================================================
+   MAIN PAGE LAYOUT
 ================================================== */
 
 .inventory-purchase-layout {
@@ -14,11 +19,13 @@
 
     gap: 20px;
 
+    box-sizing: border-box;
+
 }
 
 
 /* ==================================================
-   MAIN
+   MAIN PURCHASE AREA
 ================================================== */
 
 .inventory-purchase-main {
@@ -29,66 +36,164 @@
 
     flex-direction: column;
 
-    gap: 18px;
+    gap: 14px;
 
 }
 
 
 /* ==================================================
-   HEADER
+   PAGE HEADER
 ================================================== */
 
-.inventory-page-header h2 {
+.inventory-purchase-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+}
+
+
+.inventory-purchase-title {
 
     margin: 0;
 
     color: var(--text);
 
-    font-size: 22px;
+    font-size: 21px;
+
+    font-weight: 650;
 
 }
 
 
-.inventory-page-header p {
+.inventory-purchase-description {
 
-    margin: 5px 0 0;
+    margin: 4px 0 0;
 
     color: var(--muted);
 
-    font-size: 13px;
+    font-size: 12px;
+
+    line-height: 1.4;
 
 }
 
 
 /* ==================================================
-   FORM SECTION
+   PURCHASE SECTIONS
 ================================================== */
 
-.inventory-form-section {
+.inventory-purchase-section {
 
-    padding: 18px;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 15px;
 
     background: var(--surface);
 
     border: 1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
 }
 
 
-.inventory-form-section h3 {
+/* ==================================================
+   PURCHASE DETAILS
+================================================== */
 
-    margin: 0 0 14px;
+.purchase-details-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        150px
+        minmax(180px, 1fr)
+        minmax(160px, 1fr);
+
+    gap: 10px;
+
+}
+
+
+.purchase-field {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.purchase-field > span {
 
     color: var(--text);
 
-    font-size: 15px;
+    font-size: 11px;
+
+    font-weight: 600;
 
 }
 
 
-.inventory-section-header {
+.purchase-field input,
+.purchase-field select,
+.purchase-field textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 9px;
+
+    border: 1px solid var(--input-border);
+
+    border-radius: 8px;
+
+    background: var(--input-background);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    outline: none;
+
+}
+
+
+.purchase-field input::placeholder,
+.purchase-field textarea::placeholder {
+
+    color: var(--muted);
+
+}
+
+
+.purchase-field input:focus,
+.purchase-field select:focus,
+.purchase-field textarea:focus {
+
+    border-color: var(--accent);
+
+}
+
+
+/* ==================================================
+   PURCHASE ITEMS HEADER
+================================================== */
+
+.purchase-items-header {
 
     display: flex;
 
@@ -98,99 +203,33 @@
 
     gap: 12px;
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
 }
 
 
-.inventory-section-header h3 {
+.purchase-items-header h3 {
 
     margin: 0;
 
-}
-
-
-.inventory-section-header p {
-
-    margin: 4px 0 0;
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-}
-
-
-/* ==================================================
-   FORM GRID
-================================================== */
-
-.inventory-form-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 14px;
-
-}
-
-
-.inventory-form-field {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 6px;
-
-}
-
-
-.inventory-form-field span {
-
     color: var(--text);
 
-    font-size: 12px;
+    font-size: 14px;
 
     font-weight: 600;
 
 }
 
 
-.inventory-form-field input,
-.inventory-form-field select,
-.purchase-payment select {
+.purchase-items-header p {
 
-    width: 100%;
+    margin: 3px 0 0;
 
-    box-sizing: border-box;
+    color: var(--muted);
 
-    padding: 10px 11px;
+    font-size: 10px;
 
-    border: 1px solid var(--input-border);
-
-    border-radius: 9px;
-
-    background: var(--input-background);
-
-    color: var(--text);
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    outline: none;
-
-}
-
-
-.inventory-form-field input:focus,
-.inventory-form-field select:focus,
-.purchase-payment select:focus {
-
-    border-color: var(--accent);
+    line-height: 1.4;
 
 }
 
@@ -199,9 +238,13 @@
    ADD ITEM BUTTON
 ================================================== */
 
-.inventory-primary-small-btn {
+.purchase-add-item-btn {
 
-    padding: 9px 13px;
+    flex-shrink: 0;
+
+    min-height: 36px;
+
+    padding: 8px 12px;
 
     border: none;
 
@@ -220,6 +263,20 @@
 }
 
 
+.purchase-add-item-btn:hover {
+
+    opacity: 0.92;
+
+}
+
+
+.purchase-add-item-btn:active {
+
+    transform: scale(0.985);
+
+}
+
+
 /* ==================================================
    PURCHASE ITEMS TABLE
 ================================================== */
@@ -230,34 +287,46 @@
 
     overflow-x: auto;
 
+    scrollbar-width: thin;
+
 }
 
 
-.purchase-table-header,
+/* ==================================================
+   TABLE HEADER + ROW
+================================================== */
+
+.purchase-table-head,
 .purchase-item-row {
 
-    min-width: 700px;
+    min-width: 620px;
 
     display: grid;
 
     grid-template-columns:
-        minmax(150px, 1.5fr)
+        minmax(150px, 1.7fr)
         90px
-        80px
+        70px
+        95px
         100px
-        100px
-        35px;
+        30px;
 
-    gap: 10px;
+    gap: 8px;
 
     align-items: center;
 
 }
 
 
-.purchase-table-header {
+/* ==================================================
+   TABLE HEADER
+================================================== */
 
-    padding: 0 0 9px;
+.purchase-table-head {
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid var(--border);
 
     color: var(--muted);
 
@@ -265,14 +334,29 @@
 
     font-weight: 600;
 
-    border-bottom: 1px solid var(--border);
+}
+
+
+/* ==================================================
+   PURCHASE ITEMS
+================================================== */
+
+.purchase-items {
+
+    display: flex;
+
+    flex-direction: column;
 
 }
 
 
+/* ==================================================
+   PURCHASE ITEM ROW
+================================================== */
+
 .purchase-item-row {
 
-    padding: 11px 0;
+    padding: 9px 0;
 
     border-bottom: 1px solid var(--border);
 
@@ -286,23 +370,20 @@
 }
 
 
-.purchase-item-row strong {
+/* ==================================================
+   ITEM INPUTS
+================================================== */
 
-    color: var(--text);
-
-    font-size: 12px;
-
-}
-
-
-.purchase-item-row input,
-.purchase-item-row select {
+.purchase-item-row select,
+.purchase-item-row input {
 
     width: 100%;
 
     box-sizing: border-box;
 
-    padding: 8px;
+    min-height: 32px;
+
+    padding: 7px 8px;
 
     border: 1px solid var(--input-border);
 
@@ -312,6 +393,8 @@
 
     color: var(--text);
 
+    font-family: inherit;
+
     font-size: 11px;
 
     outline: none;
@@ -319,18 +402,44 @@
 }
 
 
-.purchase-item-total {
+.purchase-item-row select:focus,
+.purchase-item-row input:focus {
 
-    text-align: right;
+    border-color: var(--accent);
 
 }
 
+
+/* ==================================================
+   ITEM TOTAL
+================================================== */
+
+.purchase-item-total {
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-align: right;
+
+    white-space: nowrap;
+
+}
+
+
+/* ==================================================
+   REMOVE ITEM
+================================================== */
 
 .purchase-remove-btn {
 
     width: 28px;
 
     height: 28px;
+
+    padding: 0;
 
     border: none;
 
@@ -340,7 +449,9 @@
 
     color: var(--muted);
 
-    font-size: 18px;
+    font-size: 17px;
+
+    line-height: 1;
 
     cursor: pointer;
 
@@ -357,39 +468,50 @@
 
 
 /* ==================================================
-   NOTES
+   PAYMENT
 ================================================== */
 
-.inventory-notes {
+.purchase-payment-grid {
 
-    width: 100%;
+    display: grid;
 
-    box-sizing: border-box;
+    grid-template-columns:
+        1fr
+        1fr;
 
-    padding: 10px 11px;
-
-    border: 1px solid var(--input-border);
-
-    border-radius: 9px;
-
-    background: var(--input-background);
-
-    color: var(--text);
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    resize: vertical;
-
-    outline: none;
+    gap: 10px;
 
 }
 
 
-.inventory-notes:focus {
+/* ==================================================
+   NOTES
+================================================== */
 
-    border-color: var(--accent);
+#purchase-notes {
+
+    min-height: 72px;
+
+    resize: vertical;
+
+}
+
+
+/* ==================================================
+   FORM MESSAGE
+================================================== */
+
+.purchase-form-message {
+
+    min-height: 18px;
+
+    margin-top: 10px;
+
+    color: var(--accent);
+
+    font-size: 11px;
+
+    line-height: 1.4;
 
 }
 
@@ -398,60 +520,91 @@
    PURCHASE SUMMARY
 ================================================== */
 
-.purchase-summary {
+.purchase-summary-header {
 
     display: flex;
 
-    flex-direction: column;
-
-    gap: 10px;
-
-}
-
-
-.purchase-summary > div {
-
-    display: flex;
+    align-items: center;
 
     justify-content: space-between;
 
     gap: 10px;
 
-    font-size: 12px;
+    margin-bottom: 12px;
 
 }
 
 
-.purchase-summary span {
+.purchase-summary-header h3 {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+.purchase-summary-header span {
 
     color: var(--muted);
 
+    font-size: 10px;
+
 }
 
 
-.purchase-summary strong {
+.purchase-summary-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.4fr;
+
+    gap: 10px;
+
+}
+
+
+.purchase-summary-item {
+
+    min-width: 0;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: var(--background);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.purchase-summary-item span {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+}
+
+
+.purchase-summary-item strong {
 
     color: var(--text);
 
-}
-
-
-.purchase-summary-total {
-
-    margin-top: 5px;
-
-    padding-top: 13px;
-
-    border-top: 1px dashed var(--border);
-
-}
-
-
-.purchase-summary-total span {
-
-    color: var(--text);
-
-    font-weight: 600;
+    font-size: 14px;
 
 }
 
@@ -464,35 +617,37 @@
 
 
 /* ==================================================
-   PAYMENT
+   PURCHASE SUMMARY ACTIONS
 ================================================== */
 
-.purchase-payment {
+.purchase-summary-actions {
 
     display: flex;
 
-    flex-direction: column;
+    justify-content: flex-end;
 
-    gap: 10px;
+    margin-top: 10px;
 
 }
 
 
-.inventory-save-btn {
+.purchase-save-btn {
 
-    width: 100%;
+    min-width: 150px;
 
-    min-height: 44px;
+    min-height: 42px;
+
+    padding: 10px 16px;
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
     background: var(--button);
 
     color: var(--button-text);
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 600;
 
@@ -501,9 +656,174 @@
 }
 
 
-.inventory-save-btn:hover {
+.purchase-save-btn:hover {
 
     opacity: 0.92;
+
+}
+
+
+.purchase-save-btn:active {
+
+    transform: scale(0.985);
+
+}
+
+
+.purchase-save-btn:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==================================================
+   RIGHT SIDEBAR
+================================================== */
+
+.inventory-purchase-sidebar {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+
+/* ==================================================
+   LIVE INVENTORY UPDATE
+================================================== */
+
+.purchase-stock-preview {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+}
+
+
+.purchase-preview-empty {
+
+    padding: 20px 8px;
+
+    color: var(--muted);
+
+    text-align: center;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ==================================================
+   STOCK PREVIEW ITEM
+================================================== */
+
+.purchase-stock-preview-item {
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.purchase-stock-preview-item:last-child {
+
+    padding-bottom: 0;
+
+    border-bottom: none;
+
+}
+
+
+/* ==================================================
+   STOCK PREVIEW HEADER
+================================================== */
+
+.purchase-stock-preview-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+}
+
+
+.purchase-stock-preview-header strong {
+
+    min-width: 0;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.purchase-stock-preview-header small {
+
+    flex-shrink: 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+}
+
+
+/* ==================================================
+   STOCK PREVIEW VALUES
+================================================== */
+
+.purchase-stock-preview-values {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+}
+
+
+.purchase-stock-preview-values .new-stock {
+
+    color: var(--text);
+
+    font-weight: 700;
+
+}
+
+
+.purchase-stock-arrow {
+
+    color: var(--accent);
 
 }
 
@@ -512,7 +832,33 @@
    RESPONSIVE
 ================================================== */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
+
+    .inventory-purchase-layout {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            240px;
+
+        gap: 14px;
+
+    }
+
+
+    .purchase-details-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+    }
+
+}
+
+
+@media (max-width: 750px) {
 
     .inventory-purchase-layout {
 
@@ -520,14 +866,57 @@
 
     }
 
+
+    .inventory-purchase-sidebar {
+
+        order: 2;
+
+    }
+
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
 
-    .inventory-form-grid {
+    .purchase-details-grid,
+    .purchase-payment-grid {
 
         grid-template-columns: 1fr;
+
+    }
+
+
+    .purchase-summary-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .purchase-items-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .purchase-add-item-btn {
+
+        min-height: 34px;
+
+    }
+
+
+    .purchase-summary-actions {
+
+        justify-content: stretch;
+
+    }
+
+
+    .purchase-save-btn {
+
+        width: 100%;
 
     }
 
