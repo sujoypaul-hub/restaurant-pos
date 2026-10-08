@@ -1,0 +1,534 @@
+/* ==================================================
+   NEW PURCHASE LAYOUT
+================================================== */
+
+.inventory-purchase-layout {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        280px;
+
+    gap: 20px;
+
+}
+
+
+/* ==================================================
+   MAIN
+================================================== */
+
+.inventory-purchase-main {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.inventory-page-header h2 {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 22px;
+
+}
+
+
+.inventory-page-header p {
+
+    margin: 5px 0 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+/* ==================================================
+   FORM SECTION
+================================================== */
+
+.inventory-form-section {
+
+    padding: 18px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+}
+
+
+.inventory-form-section h3 {
+
+    margin: 0 0 14px;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+}
+
+
+.inventory-section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+
+}
+
+
+.inventory-section-header h3 {
+
+    margin: 0;
+
+}
+
+
+.inventory-section-header p {
+
+    margin: 4px 0 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+}
+
+
+/* ==================================================
+   FORM GRID
+================================================== */
+
+.inventory-form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+}
+
+
+.inventory-form-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.inventory-form-field span {
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.inventory-form-field input,
+.inventory-form-field select,
+.purchase-payment select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 11px;
+
+    border: 1px solid var(--input-border);
+
+    border-radius: 9px;
+
+    background: var(--input-background);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+}
+
+
+.inventory-form-field input:focus,
+.inventory-form-field select:focus,
+.purchase-payment select:focus {
+
+    border-color: var(--accent);
+
+}
+
+
+/* ==================================================
+   ADD ITEM BUTTON
+================================================== */
+
+.inventory-primary-small-btn {
+
+    padding: 9px 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--button);
+
+    color: var(--button-text);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* ==================================================
+   PURCHASE ITEMS TABLE
+================================================== */
+
+.purchase-items-table {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+.purchase-table-header,
+.purchase-item-row {
+
+    min-width: 700px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(150px, 1.5fr)
+        90px
+        80px
+        100px
+        100px
+        35px;
+
+    gap: 10px;
+
+    align-items: center;
+
+}
+
+
+.purchase-table-header {
+
+    padding: 0 0 9px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.purchase-item-row {
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.purchase-item-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.purchase-item-row strong {
+
+    color: var(--text);
+
+    font-size: 12px;
+
+}
+
+
+.purchase-item-row input,
+.purchase-item-row select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px;
+
+    border: 1px solid var(--input-border);
+
+    border-radius: 7px;
+
+    background: var(--input-background);
+
+    color: var(--text);
+
+    font-size: 11px;
+
+    outline: none;
+
+}
+
+
+.purchase-item-total {
+
+    text-align: right;
+
+}
+
+
+.purchase-remove-btn {
+
+    width: 28px;
+
+    height: 28px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+}
+
+
+.purchase-remove-btn:hover {
+
+    background: var(--nav-hover);
+
+    color: var(--text);
+
+}
+
+
+/* ==================================================
+   NOTES
+================================================== */
+
+.inventory-notes {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 11px;
+
+    border: 1px solid var(--input-border);
+
+    border-radius: 9px;
+
+    background: var(--input-background);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    resize: vertical;
+
+    outline: none;
+
+}
+
+
+.inventory-notes:focus {
+
+    border-color: var(--accent);
+
+}
+
+
+/* ==================================================
+   PURCHASE SUMMARY
+================================================== */
+
+.purchase-summary {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.purchase-summary > div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+}
+
+
+.purchase-summary span {
+
+    color: var(--muted);
+
+}
+
+
+.purchase-summary strong {
+
+    color: var(--text);
+
+}
+
+
+.purchase-summary-total {
+
+    margin-top: 5px;
+
+    padding-top: 13px;
+
+    border-top: 1px dashed var(--border);
+
+}
+
+
+.purchase-summary-total span {
+
+    color: var(--text);
+
+    font-weight: 600;
+
+}
+
+
+.purchase-summary-total strong {
+
+    font-size: 18px;
+
+}
+
+
+/* ==================================================
+   PAYMENT
+================================================== */
+
+.purchase-payment {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.inventory-save-btn {
+
+    width: 100%;
+
+    min-height: 44px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--button);
+
+    color: var(--button-text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+.inventory-save-btn:hover {
+
+    opacity: 0.92;
+
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 850px) {
+
+    .inventory-purchase-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .inventory-form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
