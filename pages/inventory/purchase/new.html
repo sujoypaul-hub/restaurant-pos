@@ -192,70 +192,124 @@
 
 
         <!-- ==========================================
-             PAYMENT
-             ========================================== -->
+     PAYMENT DETAILS
+========================================== -->
 
-        <section class="inventory-purchase-section">
+<section class="inventory-purchase-section">
 
-            <div class="purchase-payment-grid">
+    <h3 class="purchase-payment-title">
+        Payment Details
+    </h3>
 
-                <!-- Payment Status -->
+    <div class="purchase-payment-grid">
 
-                <label class="purchase-field">
+        <!-- Payment Status -->
 
-                    <span>
-                        Payment Status
-                    </span>
+        <label class="purchase-field">
 
-                    <select id="purchase-payment-status">
+            <span>Payment Status</span>
 
-                        <option value="paid">
-                            Paid
-                        </option>
+            <select id="purchase-payment-status">
 
-                        <option value="due">
-                            Due
-                        </option>
+                <option value="paid">
+                    Paid
+                </option>
 
-                    </select>
+                <option value="partially-paid">
+                    Partially Paid
+                </option>
 
-                </label>
+                <option value="due">
+                    Due
+                </option>
+
+            </select>
+
+        </label>
 
 
-                <!-- Payment Method -->
+        <!-- Payment Method -->
 
-                <label class="purchase-field">
+        <label class="purchase-field">
 
-                    <span>
-                        Payment Method
-                    </span>
+            <span>Payment Method</span>
 
-                    <select id="purchase-payment-method">
+            <select id="purchase-payment-method">
 
-                        <option value="cash">
-                            Cash
-                        </option>
+                <option value="cash">Cash</option>
+                <option value="upi">UPI</option>
+                <option value="card">Card</option>
+                <option value="bank">Bank Transfer</option>
 
-                        <option value="upi">
-                            UPI
-                        </option>
+            </select>
 
-                        <option value="card">
-                            Card
-                        </option>
+        </label>
 
-                        <option value="bank">
-                            Bank Transfer
-                        </option>
+    </div>
 
-                    </select>
 
-                </label>
+    <!-- ======================================
+         PAYMENT BREAKDOWN
+         Shown for Partially Paid and Due
+    ======================================= -->
 
-            </div>
+    <div
+        id="purchase-payment-details"
+        class="purchase-payment-details"
+        hidden
+    >
 
-        </section>
+        <!-- Amount Paid -->
 
+        <label class="purchase-field">
+
+            <span>Paid Amount (₹)</span>
+
+            <input
+                type="number"
+                id="purchase-paid-amount"
+                min="0"
+                step="0.01"
+                value="0"
+                placeholder="Enter amount paid"
+            >
+
+        </label>
+
+
+        <!-- Remaining Amount -->
+
+        <label class="purchase-field">
+
+            <span>Remaining Due (₹)</span>
+
+            <input
+                type="number"
+                id="purchase-due-amount"
+                value="0"
+                readonly
+            >
+
+        </label>
+
+
+        <!-- Payment Due Date -->
+
+        <label class="purchase-field">
+
+            <span>Due Date</span>
+
+            <input
+                type="date"
+                id="purchase-due-date"
+            >
+
+        </label>
+
+    </div>
+
+</section>
+            
 
         <!-- ==========================================
              NOTES
