@@ -155,8 +155,8 @@ const appRoutes = {
                     title: "New Purchase",
 
                     description:
-                        "Record a new inventory purchase"
-
+                        "Record a new inventory purchase",
+                    scripts: [ "js/inventory/purchase/new.js"] 
                 },
 
                 history: {
