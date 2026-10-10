@@ -197,7 +197,19 @@ const appRoutes = {
                         "js/inventory/purchase/returns.js"
                     ]
         
+                },
+
+                returns: {
+        
+                    page: "inventory/purchase/plan-order",
+        
+                    title: "Plan Orders",
+        
+                    description: "Prepare orders before buying, track expected deliveries and record what actually arrives.",
+        
+        
                 }
+
 
             }
 
