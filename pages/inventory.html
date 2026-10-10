@@ -1,382 +1,135 @@
-<!-- ==================================
-          INVENTORY PAGE
-=================================== -->
-
-<div class="inventory-layout page-layout" >
-
-    <!-- ==========================================
-         MAIN CONTENT
-         ========================================== -->
-
-    <main class="inventory-main">
-
-
-        <!-- ==========================================
-             INVENTORY MODULES
-             ========================================== -->
-
-        <section class="inventory-section">
-            <div class="inventory-module-list">
-
-
-                <!-- Purchase -->
-            <!-- ==========================================
-     INVENTORY ITEMS
+!-- ==========================================
+     INVENTORY PURCHASE
 ========================================== -->
 
-<div class="list-items">
+<div class="list-type-layout">
 
-    <!-- Purchase -->
+    <div class="list-items">
 
-    <button
-        class="list-item"
-        type="button"
-        data-route="inventory/purchase"
-    >
+        <!-- New Purchase -->
 
-        <span class="list-item-icon">
-            🛒
-        </span>
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/new"
+        >
 
-        <span class="list-item-content">
+            <span class="list-item-icon">🛒</span>
 
-            <span class="list-item-title">
-                Purchase
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    New Purchase
+                </span>
+
+                <span class="list-item-description">
+                    Record purchases and add received quantities to inventory.
+                </span>
             </span>
 
-            <span class="list-item-description">
-                Record new purchases and view purchase history.
+            <span class="list-item-right">→</span>
+
+        </button>
+
+
+        <!-- Purchase History -->
+
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/history"
+        >
+
+            <span class="list-item-icon">🧾</span>
+
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Purchase History
+                </span>
+
+                <span class="list-item-description">
+                    Review invoices, purchase details and payment history.
+                </span>
             </span>
 
-        </span>
+            <span class="list-item-right">→</span>
 
-        <span class="list-item-right">
-            →
-        </span>
-
-    </button>
+        </button>
 
 
-    <!-- Stock -->
+        <!-- Supplier Dues & Payments -->
 
-    <button
-        class="list-item"
-        type="button"
-        data-route="inventory/stock"
-    >
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/dues"
+        >
 
-        <span class="list-item-icon">
-            📦
-        </span>
+            <span class="list-item-icon">💰</span>
 
-        <span class="list-item-content">
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Supplier Dues & Payments
+                </span>
 
-            <span class="list-item-title">
-                Stock
+                <span class="list-item-description">
+                    Track outstanding supplier balances and record payments.
+                </span>
             </span>
 
-            <span class="list-item-description">
-                Monitor current stock, count and reconcile inventory.
+            <span class="list-item-right">→</span>
+
+        </button>
+
+
+        <!-- Purchase Returns -->
+
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/returns"
+        >
+
+            <span class="list-item-icon">↩️</span>
+
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Purchase Returns
+                </span>
+
+                <span class="list-item-description">
+                    Record returned goods, reduce stock and track supplier credits.
+                </span>
             </span>
 
-        </span>
+            <span class="list-item-right">→</span>
 
-        <span class="list-item-right">
-            →
-        </span>
-
-    </button>
+        </button>
 
 
-    <!-- Recipes -->
+          <!-- Purchase Orders -->
 
-    <button
-        class="list-item"
-        type="button"
-        data-route="inventory/recipes"
-    >
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/purchase-orders"
+        >
 
-        <span class="list-item-icon">
-            🍳
-        </span>
+            <span class="list-item-icon">↩️</span>
 
-        <span class="list-item-content">
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Purchase Orders
+                </span>
 
-            <span class="list-item-title">
-                Recipes
+                <span class="list-item-description">
+                    Prepare orders before buying, track expected deliveries and record what actually arrives.
+                </span>
             </span>
 
-            <span class="list-item-description">
-                Define ingredient consumption for each menu item.
-            </span>
+            <span class="list-item-right">→</span>
 
-        </span>
+        </button>
 
-        <span class="list-item-right">
-            →
-        </span>
-
-    </button>
-
-
-    <!-- Wastage -->
-
-    <button
-        class="list-item"
-        type="button"
-        data-route="inventory/wastage"
-    >
-
-        <span class="list-item-icon">
-            🗑️
-        </span>
-
-        <span class="list-item-content">
-
-            <span class="list-item-title">
-                Wastage
-            </span>
-
-            <span class="list-item-description">
-                Record spoiled, damaged and wasted inventory.
-            </span>
-
-        </span>
-
-        <span class="list-item-right">
-            →
-        </span>
-
-    </button>
-
-
-    <!-- Suppliers -->
-
-    <button
-        class="list-item"
-        type="button"
-        data-route="inventory/suppliers"
-    >
-
-        <span class="list-item-icon">
-            🚚
-        </span>
-
-        <span class="list-item-content">
-
-            <span class="list-item-title">
-                Suppliers
-            </span>
-
-            <span class="list-item-description">
-                Manage suppliers and purchasing relationships.
-            </span>
-
-        </span>
-
-        <span class="list-item-right">
-            →
-        </span>
-
-    </button>
-
-</div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ==========================================
-         RIGHT SIDEBAR
-         ========================================== -->
-
-    <aside class="right-sidebar inventory-sidebar">
-
-
-        <!-- ==========================================
-             LOW STOCK
-             ========================================== -->
-
-        <section class="right-sidebar-section">
-
-            <h3 class="right-sidebar-title">
-                Low Stock
-            </h3>
-
-            <div
-                class="right-sidebar-content inventory-low-stock"
-            >
-
-                <!-- Demo item -->
-
-                <div class="inventory-stock-alert">
-
-                    <div class="inventory-stock-info">
-
-                        <strong>
-                            Chicken
-                        </strong>
-
-                        <small>
-                            2.0 kg remaining
-                        </small>
-
-                    </div>
-
-                    <span class="inventory-stock-status">
-                        Low
-                    </span>
-
-                </div>
-
-
-                <div class="inventory-stock-alert">
-
-                    <div class="inventory-stock-info">
-
-                        <strong>
-                            Mayonnaise
-                        </strong>
-
-                        <small>
-                            1.2 kg remaining
-                        </small>
-
-                    </div>
-
-                    <span class="inventory-stock-status">
-                        Low
-                    </span>
-
-                </div>
-
-
-                <div class="inventory-stock-alert">
-
-                    <div class="inventory-stock-info">
-
-                        <strong>
-                            Cooking Oil
-                        </strong>
-
-                        <small>
-                            2.5 L remaining
-                        </small>
-
-                    </div>
-
-                    <span class="inventory-stock-status">
-                        Low
-                    </span>
-
-                </div>
-
-
-                <button
-                    class="inventory-sidebar-action"
-                    type="button"
-                    data-route="inventory/stock/current"
-                >
-                    View All Stock →
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==========================================
-             RECENT ACTIVITY
-             ========================================== -->
-
-        <section class="right-sidebar-section">
-
-            <h3 class="right-sidebar-title">
-                Recent Activity
-            </h3>
-
-            <div
-                class="right-sidebar-content inventory-activity"
-            >
-
-                <div class="inventory-activity-item">
-
-                    <span class="inventory-activity-icon">
-                        🛒
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Chicken Purchase
-                        </strong>
-
-                        <small>
-                            +20 kg
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="inventory-activity-item">
-
-                    <span class="inventory-activity-icon">
-                        📦
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            POS Consumption
-                        </strong>
-
-                        <small>
-                            -15 chicken patties
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="inventory-activity-item">
-
-                    <span class="inventory-activity-icon">
-                        ⚖️
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Stock Adjustment
-                        </strong>
-
-                        <small>
-                            -0.30 kg chicken
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="inventory-sidebar-action"
-                    type="button"
-                    data-route="inventory/stock/movements"
-                >
-                    View All Activity →
-                </button>
-
-            </div>
-
-        </section>
-
-    </aside>
+    </div>
 
 </div>
