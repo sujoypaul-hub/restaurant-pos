@@ -1294,23 +1294,26 @@ Rules:
 
         const updatedPurchase = {
 
-            ...originalPurchase,
+    ...originalPurchase,
 
-            supplierCreditAmount:
-                updatedSupplierCredit,
+    paidAmount:
+        paidAmount(originalPurchase),
 
-            dueAmount:
-                newInvoiceDue,
+    supplierCreditAmount:
+        updatedSupplierCredit,
 
-            paymentStatus:
-                newInvoiceDue <= 0
-                    ? "paid"
-                    : paidAmount(originalPurchase) > 0 ||
-                        updatedSupplierCredit > 0
-                        ? "partially-paid"
-                        : "due"
+    dueAmount:
+        newInvoiceDue,
 
-        };
+    paymentStatus:
+        newInvoiceDue <= 0
+            ? "paid"
+            : paidAmount(originalPurchase) > 0 ||
+                updatedSupplierCredit > 0
+                ? "partially-paid"
+                : "due"
+
+};
 
 
         purchaseRecords[purchaseIndex] =
