@@ -1,135 +1,330 @@
-!-- ==========================================
-     INVENTORY PURCHASE
+
+
+<!-- Purchase -->
+            <div class="list-items">
+               <button class="list-item" type="button" >
+            <!-- ==========================================
+     INVENTORY ITEMS
 ========================================== -->
 
-<div class="list-type-layout">
+                     <span class="list-item-icon"> 🧾 </span>
+                     <span class="list-item-content">
+                              <span class="list-item-title"> Order History </span>
+                              <span class="list-item-description"> View previous orders, bills and order details. </span>
+                    </span>
+                    <span class="list-item-right"> </span>
+                </button>
+            </div>
 
-    <div class="list-items">
 
-        <!-- New Purchase -->
+            <div class="list-items">
+               <button class="list-item" type="button" >
 
-        <button
-            class="list-item"
-            type="button"
-            data-route="inventory/purchase/new"
-        >
+                     <span class="list-item-icon"> 🧾 </span>
+                     <span class="list-item-content">
+                              <span class="list-item-title"> Order History </span>
+                              <span class="list-item-description"> View previous orders, bills and order details. </span>
+                    </span>
+                    <span class="list-item-right"> </span>
+                </button>
+            </div>
 
-            <span class="list-item-icon">🛒</span>
+            <div class="list-items">
+               <button class="list-item" type="button" >
 
-            <span class="list-item-content">
-                <span class="list-item-title">
-                    New Purchase
-                </span>
+                     <span class="list-item-icon"> 🧾 </span>
+                     <span class="list-item-content">
+                              <span class="list-item-title"> Order History </span>
+                              <span class="list-item-description"> View previous orders, bills and order details. </span>
+                    </span>
+                    <span class="list-item-right"> </span>
+                </button>
+            </div>
+                      
+            <div class="list-items">
+               <button class="list-item" type="button" >
 
-                <span class="list-item-description">
-                    Record purchases and add received quantities to inventory.
-                </span>
+                     <span class="list-item-icon"> 🧾 </span>
+                     <span class="list-item-content">
+                              <span class="list-item-title"> Order History </span>
+                              <span class="list-item-description"> View previous orders, bills and order details. </span>
+                    </span>
+                    <span class="list-item-right"> → </span>
+                </button>
+            </div>
+
+            <div class="list-items">
+               <button class="list-item" type="button" >
+
+                     <span class="list-item-icon"> 🧾 </span>
+                     <span class="list-item-content">
+                              <span class="list-item-title"> Order History </span>
+                              <span class="list-item-description"> View previous orders, bills and order details. </span>
+                    </span>
+                    <span class="list-item-right"> → </span>
+                </button>
+            </div>
+<div class="list-items">
+
+    <!-- Purchase -->
+
+                      
+                <button
+                    class="inventory-module"
+                    type="button"
+                    data-route="inventory/purchase"
+                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/purchase"
+    >
+
+                    <span class="inventory-module-icon">
+                        🛒
+                    </span>
+        <span class="list-item-icon">
+            🛒
+        </span>
+
+                    <span class="inventory-module-content">
+        <span class="list-item-content">
+
+                        <strong>
+                            Purchase
+                        </strong>
+            <span class="list-item-title">
+                Purchase
             </span>
 
-            <span class="list-item-right">→</span>
-
-        </button>
-
-
-        <!-- Purchase History -->
-
-        <button
-            class="list-item"
-            type="button"
-            data-route="inventory/purchase/history"
-        >
-
-            <span class="list-item-icon">🧾</span>
-
-            <span class="list-item-content">
-                <span class="list-item-title">
-                    Purchase History
-                </span>
-
-                <span class="list-item-description">
-                    Review invoices, purchase details and payment history.
-                </span>
+                        <small>
+                            Record purchases and view purchase history.
+                        </small>
+            <span class="list-item-description">
+                Record new purchases and view purchase history.
             </span>
 
-            <span class="list-item-right">→</span>
+                    </span>
+        </span>
 
-        </button>
+                    <span class="inventory-module-arrow">
+                        →
+                    </span>
+        <span class="list-item-right">
+            →
+        </span>
+
+                </button>
+    </button>
 
 
-        <!-- Supplier Dues & Payments -->
+                <!-- Stock -->
+    <!-- Stock -->
 
-        <button
-            class="list-item"
-            type="button"
-            data-route="inventory/purchase/dues"
-        >
+                <button
+                    class="inventory-module"
+                    type="button"
+                    data-route="inventory/stock"
+                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/stock"
+    >
 
-            <span class="list-item-icon">💰</span>
+                    <span class="inventory-module-icon">
+                        📦
+                    </span>
+        <span class="list-item-icon">
+            📦
+        </span>
 
-            <span class="list-item-content">
-                <span class="list-item-title">
-                    Supplier Dues & Payments
-                </span>
+                    <span class="inventory-module-content">
+        <span class="list-item-content">
 
-                <span class="list-item-description">
-                    Track outstanding supplier balances and record payments.
-                </span>
+                        <strong>
+                            Stock
+                        </strong>
+            <span class="list-item-title">
+                Stock
             </span>
 
-            <span class="list-item-right">→</span>
-
-        </button>
-
-
-        <!-- Purchase Returns -->
-
-        <button
-            class="list-item"
-            type="button"
-            data-route="inventory/purchase/returns"
-        >
-
-            <span class="list-item-icon">↩️</span>
-
-            <span class="list-item-content">
-                <span class="list-item-title">
-                    Purchase Returns
-                </span>
-
-                <span class="list-item-description">
-                    Record returned goods, reduce stock and track supplier credits.
-                </span>
+                        <small>
+                            Monitor current stock, count and reconcile inventory.
+                        </small>
+            <span class="list-item-description">
+                Monitor current stock, count and reconcile inventory.
             </span>
 
-            <span class="list-item-right">→</span>
+                    </span>
+        </span>
 
-        </button>
+                    <span class="inventory-module-arrow">
+                        →
+                    </span>
+        <span class="list-item-right">
+            →
+        </span>
+
+                </button>
+    </button>
 
 
-          <!-- Purchase Orders -->
+                <!-- Recipes -->
+    <!-- Recipes -->
 
-        <button
-            class="list-item"
-            type="button"
-            data-route="inventory/purchase/purchase-orders"
-        >
+                <button
+                    class="inventory-module"
+                    type="button"
+                    data-route="inventory/recipes"
+                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/recipes"
+    >
 
-            <span class="list-item-icon">↩️</span>
+                    <span class="inventory-module-icon">
+                        🍳
+                    </span>
+        <span class="list-item-icon">
+            🍳
+        </span>
 
-            <span class="list-item-content">
-                <span class="list-item-title">
-                    Purchase Orders
-                </span>
+                    <span class="inventory-module-content">
+        <span class="list-item-content">
 
-                <span class="list-item-description">
-                    Prepare orders before buying, track expected deliveries and record what actually arrives.
-                </span>
+                        <strong>
+                            Recipes
+                        </strong>
+            <span class="list-item-title">
+                Recipes
             </span>
 
-            <span class="list-item-right">→</span>
+                        <small>
+                            Define ingredient consumption for menu items.
+                        </small>
+            <span class="list-item-description">
+                Define ingredient consumption for each menu item.
+            </span>
 
-        </button>
+                    </span>
+        </span>
 
-    </div>
+                    <span class="inventory-module-arrow">
+                        →
+                    </span>
+        <span class="list-item-right">
+            →
+        </span>
+
+                </button>
+    </button>
+
+
+                <!-- Wastage -->
+    <!-- Wastage -->
+
+                <button
+                    class="inventory-module"
+                    type="button"
+                    data-route="inventory/wastage"
+                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/wastage"
+    >
+
+                    <span class="inventory-module-icon">
+                        🗑️
+                    </span>
+        <span class="list-item-icon">
+            🗑️
+        </span>
+
+                    <span class="inventory-module-content">
+        <span class="list-item-content">
+
+                        <strong>
+                            Wastage
+                        </strong>
+            <span class="list-item-title">
+                Wastage
+            </span>
+
+                        <small>
+                            Record spoiled, damaged and wasted stock.
+                        </small>
+            <span class="list-item-description">
+                Record spoiled, damaged and wasted inventory.
+            </span>
+
+                    </span>
+        </span>
+
+                    <span class="inventory-module-arrow">
+                        →
+                    </span>
+        <span class="list-item-right">
+            →
+        </span>
+
+                </button>
+    </button>
+
+
+                <!-- Suppliers -->
+    <!-- Suppliers -->
+
+                <button
+                    class="inventory-module"
+                    type="button"
+                    data-route="inventory/suppliers"
+                >
+    <button
+        class="list-item"
+        type="button"
+        data-route="inventory/suppliers"
+    >
+
+                    <span class="inventory-module-icon">
+                        🚚
+                    </span>
+        <span class="list-item-icon">
+            🚚
+        </span>
+
+                    <span class="inventory-module-content">
+        <span class="list-item-content">
+
+                        <strong>
+                            Suppliers
+                        </strong>
+            <span class="list-item-title">
+                Suppliers
+            </span>
+
+                        <small>
+                            Manage suppliers and purchasing relationships.
+                        </small>
+            <span class="list-item-description">
+                Manage suppliers and purchasing relationships.
+            </span>
+
+                    </span>
+        </span>
+
+                    <span class="inventory-module-arrow">
+                        →
+                    </span>
+        <span class="list-item-right">
+            →
+        </span>
+
+                </button>
+    </button>
+
+</div>
 
 </div>
