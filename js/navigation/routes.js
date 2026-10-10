@@ -161,7 +161,7 @@ const appRoutes = {
 
                 history: {
 
-                    page: "inventory/purchase-history",
+                    page: "inventory/purchase/history",
 
                     title: "Purchase History",
 
