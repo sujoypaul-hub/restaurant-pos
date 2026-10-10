@@ -1,0 +1,407 @@
+<!-- ==========================================
+     PURCHASE RETURNS
+========================================== -->
+
+<div class="purchase-returns-layout">
+
+    <main class="purchase-returns-main">
+
+        <div class="purchase-returns-header">
+
+            <div>
+                <h2 class="purchase-returns-title">
+                    Purchase Returns
+                </h2>
+
+                <p class="purchase-returns-description">
+                    Return purchased goods and track supplier credits or refunds.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div
+            id="purchase-return-message"
+            class="purchase-return-message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- ======================================
+             RETURN FORM
+        ======================================= -->
+
+        <section class="inventory-purchase-section">
+
+            <h3 class="purchase-return-section-title">
+                Return Details
+            </h3>
+
+
+            <form id="purchase-return-form">
+
+                <div class="purchase-return-form-grid">
+
+                    <label class="purchase-history-field">
+
+                        <span>Original Purchase</span>
+
+                        <select
+                            id="return-purchase-select"
+                            required
+                        >
+                            <option value="">
+                                Select purchase
+                            </option>
+                        </select>
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Supplier</span>
+
+                        <input
+                            type="text"
+                            id="return-supplier"
+                            readonly
+                            placeholder="Selected from purchase"
+                        >
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Item to Return</span>
+
+                        <select
+                            id="return-item-select"
+                            required
+                            disabled
+                        >
+                            <option value="">
+                                Select purchase first
+                            </option>
+                        </select>
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Return Date</span>
+
+                        <input
+                            type="date"
+                            id="return-date"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Quantity to Return</span>
+
+                        <input
+                            type="number"
+                            id="return-quantity"
+                            min="0.001"
+                            step="0.001"
+                            required
+                            disabled
+                            placeholder="Enter quantity"
+                        >
+
+                        <small
+                            id="return-quantity-help"
+                            class="purchase-return-help"
+                        >
+                            Select an item first.
+                        </small>
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Original Purchase Rate (₹)</span>
+
+                        <input
+                            type="number"
+                            id="return-rate"
+                            readonly
+                        >
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Return Reason</span>
+
+                        <select
+                            id="return-reason"
+                            required
+                        >
+                            <option value="">
+                                Select reason
+                            </option>
+
+                            <option value="Damaged">
+                                Damaged goods
+                            </option>
+
+                            <option value="Spoiled">
+                                Spoiled or expired
+                            </option>
+
+                            <option value="Wrong Item">
+                                Wrong item delivered
+                            </option>
+
+                            <option value="Excess Quantity">
+                                Excess quantity delivered
+                            </option>
+
+                            <option value="Quality Issue">
+                                Quality issue
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+                        </select>
+
+                    </label>
+
+
+                    <label class="purchase-history-field">
+
+                        <span>Settlement Type</span>
+
+                        <select
+                            id="return-settlement"
+                            required
+                        >
+                            <option value="supplier-credit">
+                                Supplier Credit
+                            </option>
+
+                            <option value="refund-received">
+                                Refund Already Received
+                            </option>
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <label class="purchase-history-field">
+
+                    <span>Notes (Optional)</span>
+
+                    <textarea
+                        id="return-notes"
+                        rows="3"
+                        placeholder="Add a return reference or notes..."
+                    ></textarea>
+
+                </label>
+
+
+                <div
+                    id="purchase-return-error"
+                    class="purchase-return-error"
+                    aria-live="polite"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="purchase-return-save-btn"
+                    id="save-purchase-return"
+                >
+                    Save Purchase Return
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ======================================
+             PREVIOUS RETURNS
+        ======================================= -->
+
+        <section class="inventory-purchase-section">
+
+            <div class="purchase-returns-history-header">
+
+                <h3 class="purchase-return-section-title">
+                    Recent Returns
+                </h3>
+
+                <span id="purchase-returns-count">
+                    0 returns
+                </span>
+
+            </div>
+
+
+            <div class="purchase-returns-table-wrap">
+
+                <table class="purchase-returns-table">
+
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Supplier</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Value</th>
+                            <th>Settlement</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="purchase-returns-tbody">
+
+                        <tr>
+                            <td colspan="6">
+                                Loading returns...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+    ========================================== -->
+
+    <aside class="right-sidebar purchase-returns-sidebar">
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Return Summary
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="purchase-return-preview-main">
+
+                    <span>Return Value</span>
+
+                    <strong id="return-value">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-return-preview-row">
+
+                    <span>Current Stock</span>
+
+                    <strong id="return-stock-before">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-return-preview-row">
+
+                    <span>Stock Deducted</span>
+
+                    <strong id="return-stock-deduction">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-return-preview-row">
+
+                    <span>Stock After Return</span>
+
+                    <strong id="return-stock-after">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Financial Impact
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="purchase-return-preview-row">
+
+                    <span>Invoice Due Before</span>
+
+                    <strong id="return-due-before">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-return-preview-row">
+
+                    <span>Credit Applied to Invoice</span>
+
+                    <strong id="return-credit-applied">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="purchase-return-preview-row">
+
+                    <span>New Invoice Due</span>
+
+                    <strong id="return-due-after">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <p
+                    id="return-financial-note"
+                    class="purchase-return-financial-note"
+                >
+                    Choose a purchase and item to see the impact.
+                </p>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
