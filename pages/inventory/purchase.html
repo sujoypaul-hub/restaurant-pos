@@ -1,6 +1,6 @@
-<!-- ==================================
-          INVENTORY PURCHASE
-=================================== -->
+!-- ==========================================
+     INVENTORY PURCHASE
+========================================== -->
 
 <div class="list-type-layout">
 
@@ -14,25 +14,19 @@
             data-route="inventory/purchase/new"
         >
 
-            <span class="list-item-icon">
-                🛒
-            </span>
+            <span class="list-item-icon">🛒</span>
 
             <span class="list-item-content">
-
                 <span class="list-item-title">
                     New Purchase
                 </span>
 
                 <span class="list-item-description">
-                    Record a new purchase and add the received quantity to stock.
+                    Record purchases and add received quantities to inventory.
                 </span>
-
             </span>
 
-            <span class="list-item-right">
-                →
-            </span>
+            <span class="list-item-right">→</span>
 
         </button>
 
@@ -45,25 +39,94 @@
             data-route="inventory/purchase/history"
         >
 
-            <span class="list-item-icon">
-                🧾
-            </span>
+            <span class="list-item-icon">🧾</span>
 
             <span class="list-item-content">
-
                 <span class="list-item-title">
                     Purchase History
                 </span>
 
                 <span class="list-item-description">
-                    View previous purchases, suppliers, quantities and costs.
+                    Review invoices, purchase details and payment history.
+                </span>
+            </span>
+
+            <span class="list-item-right">→</span>
+
+        </button>
+
+
+        <!-- Supplier Dues & Payments -->
+
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/dues"
+        >
+
+            <span class="list-item-icon">💰</span>
+
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Supplier Dues & Payments
                 </span>
 
+                <span class="list-item-description">
+                    Track outstanding supplier balances and record payments.
+                </span>
             </span>
 
-            <span class="list-item-right">
-                →
+            <span class="list-item-right">→</span>
+
+        </button>
+
+
+        <!-- Purchase Returns -->
+
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/returns"
+        >
+
+            <span class="list-item-icon">↩️</span>
+
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Purchase Returns
+                </span>
+
+                <span class="list-item-description">
+                    Record returned goods, reduce stock and track supplier credits.
+                </span>
             </span>
+
+            <span class="list-item-right">→</span>
+
+        </button>
+
+
+          <!-- Purchase Orders -->
+
+        <button
+            class="list-item"
+            type="button"
+            data-route="inventory/purchase/purchase-orders"
+        >
+
+            <span class="list-item-icon">↩️</span>
+
+            <span class="list-item-content">
+                <span class="list-item-title">
+                    Purchase Orders
+                </span>
+
+                <span class="list-item-description">
+                    Prepare orders before buying, track expected deliveries and record what actually arrives.
+                </span>
+            </span>
+
+            <span class="list-item-right">→</span>
 
         </button>
 
