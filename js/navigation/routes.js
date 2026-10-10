@@ -199,14 +199,13 @@ const appRoutes = {
         
                 },
 
-                returns: {
+                "requirement-list": {
         
-                    page: "inventory/purchase/plan-order",
+                    page: "inventory/purchase/requirement-list",
         
-                    title: "Plan Orders",
+                    title: "Requirement List",
         
                     description: "Prepare orders before buying, track expected deliveries and record what actually arrives.",
-        
         
                 }
 
