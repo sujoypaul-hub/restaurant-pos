@@ -166,7 +166,8 @@ const appRoutes = {
                     title: "Purchase History",
 
                     description:
-                        "View previous inventory purchases"
+                        "View previous inventory purchases",
+                    scripts: [ "js/inventory/purchase/history.js" ]
 
                 }
 
