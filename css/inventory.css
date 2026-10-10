@@ -1792,3 +1792,562 @@
         width: 100%;
     }
 }
+/* ==================================================
+   SUPPLIER DUES & PURCHASE RETURNS
+================================================== */
+
+
+/* ==================================================
+   PAGE LAYOUTS
+================================================== */
+
+.supplier-dues-layout,
+.purchase-returns-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.supplier-dues-main,
+.purchase-returns-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.supplier-dues-sidebar,
+.purchase-returns-sidebar {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* ==================================================
+   PAGE HEADERS
+================================================== */
+
+.supplier-dues-header,
+.purchase-returns-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.supplier-dues-title,
+.purchase-returns-title {
+    margin: 0;
+    color: var(--text);
+    font-size: 21px;
+    font-weight: 650;
+}
+
+.supplier-dues-description,
+.purchase-returns-description {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.supplier-dues-new-btn {
+    flex-shrink: 0;
+    min-height: 38px;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--button);
+    color: var(--button-text);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   MESSAGES
+================================================== */
+
+.supplier-dues-message,
+.purchase-return-message {
+    display: none;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.supplier-dues-message:not(:empty),
+.purchase-return-message:not(:empty) {
+    display: block;
+}
+
+.supplier-dues-message[data-status="error"],
+.purchase-return-message[data-status="error"] {
+    border-color: #d9363e;
+    color: #d9363e;
+}
+
+.supplier-dues-message[data-status="success"],
+.purchase-return-message[data-status="success"] {
+    border-color: var(--accent);
+}
+
+
+/* ==================================================
+   FILTERS
+================================================== */
+
+.supplier-dues-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 170px;
+    gap: 10px;
+}
+
+.supplier-dues-filters input,
+.supplier-dues-filters select {
+    width: 100%;
+    min-width: 0;
+    min-height: 39px;
+    box-sizing: border-box;
+    padding: 9px 11px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-background);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+.supplier-dues-filters input:focus,
+.supplier-dues-filters select:focus {
+    border-color: var(--accent);
+}
+
+
+/* ==================================================
+   SUPPLIER DUES TABLE
+================================================== */
+
+.supplier-dues-table-section,
+.purchase-returns-history {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: var(--surface);
+}
+
+.supplier-dues-table-wrap,
+.purchase-returns-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.supplier-dues-table,
+.purchase-returns-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.supplier-dues-table {
+    min-width: 790px;
+}
+
+.purchase-returns-table {
+    min-width: 650px;
+}
+
+.supplier-dues-table th,
+.purchase-returns-table th {
+    padding: 12px 10px;
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.supplier-dues-table td,
+.purchase-returns-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.supplier-dues-table tbody tr:last-child td,
+.purchase-returns-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.supplier-dues-date {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.supplier-dues-amount {
+    font-weight: 700;
+}
+
+.supplier-dues-date-overdue {
+    color: #d9363e;
+    font-weight: 600;
+}
+
+.supplier-dues-overdue-label {
+    display: block;
+    margin-top: 3px;
+    color: #d9363e;
+    font-size: 10px;
+}
+
+
+/* ==================================================
+   RECORD PAYMENT BUTTON
+================================================== */
+
+.supplier-dues-pay-btn {
+    min-height: 32px;
+    padding: 7px 9px;
+    border: 1px solid var(--accent);
+    border-radius: 7px;
+    background: var(--surface);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.supplier-dues-pay-btn:hover {
+    background: var(--nav-hover);
+}
+
+
+/* ==================================================
+   TABLE FOOTER
+================================================== */
+
+.supplier-dues-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.supplier-dues-empty {
+    padding: 28px 14px;
+    text-align: center;
+}
+
+.supplier-dues-empty[hidden] {
+    display: none !important;
+}
+
+.supplier-dues-empty-icon {
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.supplier-dues-empty strong {
+    color: var(--text);
+    font-size: 13px;
+}
+
+.supplier-dues-empty p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   SUPPLIER PAYABLES SIDEBAR
+================================================== */
+
+.supplier-dues-sidebar .right-sidebar-content,
+.purchase-returns-sidebar .right-sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.supplier-dues-total {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.supplier-dues-total span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.supplier-dues-total strong {
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 650;
+}
+
+.supplier-dues-summary-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.supplier-dues-summary-row span {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.supplier-dues-summary-row strong {
+    color: var(--text);
+    font-size: 11px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.supplier-dues-summary-row .supplier-dues-overdue {
+    color: #d9363e;
+}
+
+.supplier-credit-description {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   PURCHASE RETURN FORM
+================================================== */
+
+.purchase-return-section-title {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.purchase-return-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 12px;
+}
+
+.purchase-history-field {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.purchase-history-field > span {
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.purchase-history-field input,
+.purchase-history-field select,
+.purchase-history-field textarea {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px 11px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-background);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+.purchase-history-field input:focus,
+.purchase-history-field select:focus,
+.purchase-history-field textarea:focus {
+    border-color: var(--accent);
+}
+
+.purchase-history-field input:disabled,
+.purchase-history-field select:disabled,
+.purchase-history-field input:read-only {
+    opacity: 0.75;
+}
+
+.purchase-history-field textarea {
+    resize: vertical;
+}
+
+.purchase-return-help {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.purchase-return-error {
+    min-height: 18px;
+    margin: 0 0 9px;
+    color: #d9363e;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.purchase-return-save-btn {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 9px;
+    background: var(--button);
+    color: var(--button-text);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.purchase-return-save-btn:hover {
+    opacity: 0.92;
+}
+
+
+/* ==================================================
+   PURCHASE RETURNS HISTORY
+================================================== */
+
+.purchase-returns-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.purchase-returns-history-header .purchase-return-section-title {
+    margin: 0;
+}
+
+.purchase-returns-history-header > span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+
+/* ==================================================
+   RETURN SUMMARY SIDEBAR
+================================================== */
+
+.purchase-return-preview-main {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.purchase-return-preview-main > span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.purchase-return-preview-main > strong {
+    color: var(--text);
+    font-size: 25px;
+    font-weight: 650;
+}
+
+.purchase-return-preview-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.purchase-return-preview-row span {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.purchase-return-preview-row strong {
+    color: var(--text);
+    font-size: 11px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.purchase-return-financial-note {
+    margin: 0;
+    padding-top: 11px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 950px) {
+    .supplier-dues-layout,
+    .purchase-returns-layout {
+        grid-template-columns: minmax(0, 1fr) 240px;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 780px) {
+    .supplier-dues-layout,
+    .purchase-returns-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .supplier-dues-sidebar,
+    .purchase-returns-sidebar {
+        order: 2;
+    }
+}
+
+@media (max-width: 520px) {
+    .supplier-dues-header,
+    .purchase-returns-header {
+        flex-direction: column;
+    }
+
+    .supplier-dues-new-btn {
+        width: 100%;
+    }
+
+    .supplier-dues-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .purchase-return-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
