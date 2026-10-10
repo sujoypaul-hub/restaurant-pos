@@ -1,0 +1,460 @@
+<!-- ==========================================
+     INVENTORY PURCHASE HISTORY
+========================================== -->
+
+<div class="purchase-history-layout">
+
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="purchase-history-main">
+
+        <!-- Header -->
+
+        <div class="purchase-history-header">
+
+            <div>
+                <h2 class="purchase-history-title">
+                    Purchase History
+                </h2>
+
+                <p class="purchase-history-description">
+                    Review purchases, invoices and supplier payments.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="purchase-history-new-btn"
+                data-route="inventory/purchase/new"
+            >
+                + New Purchase
+            </button>
+
+        </div>
+
+
+        <!-- Success / Error Message -->
+
+        <div
+            id="purchase-history-message"
+            class="purchase-history-message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- ======================================
+             SEARCH AND FILTERS
+        ======================================= -->
+
+        <section class="purchase-history-filters">
+
+            <input
+                type="search"
+                id="purchase-history-search"
+                placeholder="Search supplier, invoice or item..."
+                aria-label="Search purchase history"
+            >
+
+            <select
+                id="purchase-history-status-filter"
+                aria-label="Filter by payment status"
+            >
+                <option value="all">All Payments</option>
+                <option value="due">Due</option>
+                <option value="partially-paid">Partially Paid</option>
+                <option value="paid">Paid</option>
+            </select>
+
+        </section>
+
+
+        <!-- ======================================
+             PURCHASE TABLE
+        ======================================= -->
+
+        <section class="purchase-history-table-section">
+
+            <div class="purchase-history-table-wrap">
+
+                <table class="purchase-history-table">
+
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Purchase</th>
+                            <th>Supplier</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Payment Status</th>
+                            <th>Remaining Due</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="purchase-history-tbody">
+
+                        <tr>
+                            <td colspan="8">
+                                Loading purchase history...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div
+                id="purchase-history-empty"
+                class="purchase-history-empty"
+                hidden
+            >
+                <div class="purchase-history-empty-icon">
+                    🧾
+                </div>
+
+                <strong>
+                    No purchases found
+                </strong>
+
+                <p>
+                    Saved purchases will appear here.
+                </p>
+
+                <button
+                    type="button"
+                    class="purchase-history-empty-btn"
+                    data-route="inventory/purchase/new"
+                >
+                    Create First Purchase
+                </button>
+            </div>
+
+            <div class="purchase-history-footer">
+                <span id="purchase-history-result-count">
+                    0 purchases
+                </span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+    ========================================== -->
+
+    <aside class="right-sidebar purchase-history-sidebar">
+
+        <!-- Supplier Payables -->
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Supplier Payables
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="payable-summary-main">
+                    <span>Total Outstanding</span>
+
+                    <strong id="purchase-total-outstanding">
+                        ₹0
+                    </strong>
+                </div>
+
+                <div class="payable-summary-row">
+                    <span>Unpaid Purchases</span>
+
+                    <strong id="purchase-unpaid-count">
+                        0
+                    </strong>
+                </div>
+
+                <div class="payable-summary-row">
+                    <span>Overdue Amount</span>
+
+                    <strong
+                        id="purchase-overdue-amount"
+                        class="payable-overdue"
+                    >
+                        ₹0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Purchase Overview -->
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Purchase Overview
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="payable-summary-row">
+                    <span>Total Purchases</span>
+
+                    <strong id="purchase-history-count">
+                        0
+                    </strong>
+                </div>
+
+                <div class="payable-summary-row">
+                    <span>Total Purchase Value</span>
+
+                    <strong id="purchase-history-value">
+                        ₹0
+                    </strong>
+                </div>
+
+                <div class="payable-summary-row">
+                    <span>Total Paid</span>
+
+                    <strong id="purchase-history-paid">
+                        ₹0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
+
+
+<!-- ==============================================
+     PURCHASE DETAILS POPUP
+============================================== -->
+
+<div
+    class="purchase-history-modal pos-modal"
+    id="purchase-details-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="purchase-history-modal-overlay"
+        data-popup-close
+    ></div>
+
+    <div
+        class="purchase-history-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="purchase-details-title"
+    >
+
+        <div class="purchase-history-modal-header">
+
+            <div>
+                <h3 id="purchase-details-title">
+                    Purchase Details
+                </h3>
+
+                <p>
+                    Invoice, purchased items and payment history.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="purchase-history-modal-close"
+                data-popup-close
+                aria-label="Close purchase details"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div id="purchase-detail-content">
+            <!-- Generated by history.js -->
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==============================================
+     RECORD SUPPLIER PAYMENT POPUP
+============================================== -->
+
+<div
+    class="purchase-history-modal pos-modal"
+    id="supplier-payment-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="purchase-history-modal-overlay"
+        data-popup-close
+    ></div>
+
+    <div
+        class="purchase-history-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="supplier-payment-title"
+    >
+
+        <div class="purchase-history-modal-header">
+
+            <div>
+                <h3 id="supplier-payment-title">
+                    Record Supplier Payment
+                </h3>
+
+                <p id="supplier-payment-description">
+                    Record a payment against this purchase.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="purchase-history-modal-close"
+                data-popup-close
+                aria-label="Close payment popup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="supplier-payment-balance">
+
+            <span>Remaining Due</span>
+
+            <strong id="supplier-payment-remaining">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <form id="supplier-payment-form">
+
+            <input
+                type="hidden"
+                id="supplier-payment-purchase-id"
+            >
+
+            <label class="purchase-history-field">
+
+                <span>Payment Amount (₹)</span>
+
+                <input
+                    type="number"
+                    id="supplier-payment-amount"
+                    min="0.01"
+                    step="0.01"
+                    required
+                    placeholder="Enter payment amount"
+                >
+
+            </label>
+
+
+            <div class="supplier-payment-after">
+
+                <span>Due After This Payment</span>
+
+                <strong id="supplier-payment-after-remaining">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="supplier-payment-form-grid">
+
+                <label class="purchase-history-field">
+
+                    <span>Payment Date</span>
+
+                    <input
+                        type="date"
+                        id="supplier-payment-date"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="purchase-history-field">
+
+                    <span>Payment Method</span>
+
+                    <select
+                        id="supplier-payment-method"
+                        required
+                    >
+                        <option value="cash">Cash</option>
+                        <option value="upi">UPI</option>
+                        <option value="card">Card</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <label class="purchase-history-field">
+
+                <span>Note (Optional)</span>
+
+                <textarea
+                    id="supplier-payment-note"
+                    rows="2"
+                    placeholder="Payment reference or notes"
+                ></textarea>
+
+            </label>
+
+
+            <div
+                id="supplier-payment-error"
+                class="supplier-payment-error"
+                aria-live="polite"
+            ></div>
+
+
+            <div class="supplier-payment-actions">
+
+                <button
+                    type="button"
+                    class="supplier-payment-cancel"
+                    data-popup-close
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="supplier-payment-save"
+                >
+                    Record Payment
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
