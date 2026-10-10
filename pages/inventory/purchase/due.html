@@ -1,0 +1,378 @@
+<!-- ==========================================
+     SUPPLIER DUES & PAYMENTS
+========================================== -->
+
+<div class="supplier-dues-layout">
+
+    <main class="supplier-dues-main">
+
+        <div class="supplier-dues-header">
+
+            <div>
+                <h2 class="supplier-dues-title">
+                    Supplier Dues & Payments
+                </h2>
+
+                <p class="supplier-dues-description">
+                    Track outstanding purchase balances and settle supplier dues.
+                </p>
+            </div>
+
+            <button
+                class="supplier-dues-new-btn"
+                type="button"
+                data-route="inventory/purchase/new"
+            >
+                + New Purchase
+            </button>
+
+        </div>
+
+
+        <div
+            id="supplier-dues-message"
+            class="supplier-dues-message"
+            aria-live="polite"
+        ></div>
+
+
+        <section class="supplier-dues-filters">
+
+            <input
+                type="search"
+                id="supplier-dues-search"
+                placeholder="Search supplier or invoice..."
+                aria-label="Search supplier dues"
+            >
+
+            <select
+                id="supplier-dues-filter"
+                aria-label="Filter supplier dues"
+            >
+                <option value="all">All Outstanding</option>
+                <option value="overdue">Overdue</option>
+                <option value="due-soon">Due Today or Later</option>
+            </select>
+
+        </section>
+
+
+        <section class="supplier-dues-table-section">
+
+            <div class="supplier-dues-table-wrap">
+
+                <table class="supplier-dues-table">
+
+                    <thead>
+                        <tr>
+                            <th>Supplier</th>
+                            <th>Purchase</th>
+                            <th>Total</th>
+                            <th>Paid</th>
+                            <th>Outstanding</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="supplier-dues-tbody">
+
+                        <tr>
+                            <td colspan="7">
+                                Loading supplier dues...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                id="supplier-dues-empty"
+                class="supplier-dues-empty"
+                hidden
+            >
+
+                <div class="supplier-dues-empty-icon">
+                    ✅
+                </div>
+
+                <strong>
+                    No outstanding supplier dues
+                </strong>
+
+                <p>
+                    Unpaid and partially paid purchases will appear here.
+                </p>
+
+            </div>
+
+
+            <div class="supplier-dues-footer">
+
+                <span id="supplier-dues-result-count">
+                    0 outstanding purchases
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+    ========================================== -->
+
+    <aside class="right-sidebar supplier-dues-sidebar">
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Outstanding Payables
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="supplier-dues-total">
+
+                    <span>Total Outstanding</span>
+
+                    <strong id="supplier-dues-total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+                <div class="supplier-dues-summary-row">
+                    <span>Open Purchases</span>
+
+                    <strong id="supplier-dues-count">
+                        0
+                    </strong>
+                </div>
+
+                <div class="supplier-dues-summary-row">
+                    <span>Overdue</span>
+
+                    <strong
+                        id="supplier-dues-overdue"
+                        class="supplier-dues-overdue"
+                    >
+                        ₹0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Supplier Credits
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="supplier-dues-total">
+
+                    <span>Available Credit</span>
+
+                    <strong id="supplier-credit-total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+                <p class="supplier-credit-description">
+                    Credits from returns that have not yet been applied to another purchase.
+                </p>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
+
+
+<!-- ==========================================
+     RECORD SUPPLIER PAYMENT POPUP
+========================================== -->
+
+<div
+    class="purchase-history-modal pos-modal"
+    id="supplier-payment-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="purchase-history-modal-overlay"
+        data-popup-close
+    ></div>
+
+
+    <div
+        class="purchase-history-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="supplier-payment-title"
+    >
+
+        <div class="purchase-history-modal-header">
+
+            <div>
+
+                <h3 id="supplier-payment-title">
+                    Record Supplier Payment
+                </h3>
+
+                <p id="supplier-payment-description">
+                    Record a payment against this purchase.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="purchase-history-modal-close"
+                data-popup-close
+                aria-label="Close payment popup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="supplier-payment-balance">
+
+            <span>Remaining Due</span>
+
+            <strong id="supplier-payment-remaining">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <form id="supplier-payment-form">
+
+            <input
+                type="hidden"
+                id="supplier-payment-purchase-id"
+            >
+
+
+            <label class="purchase-history-field">
+
+                <span>Payment Amount (₹)</span>
+
+                <input
+                    type="number"
+                    id="supplier-payment-amount"
+                    min="0.01"
+                    step="0.01"
+                    required
+                    placeholder="Enter payment amount"
+                >
+
+            </label>
+
+
+            <div class="supplier-payment-after">
+
+                <span>Due After Payment</span>
+
+                <strong id="supplier-payment-after-remaining">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="supplier-payment-form-grid">
+
+                <label class="purchase-history-field">
+
+                    <span>Payment Date</span>
+
+                    <input
+                        type="date"
+                        id="supplier-payment-date"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="purchase-history-field">
+
+                    <span>Payment Method</span>
+
+                    <select
+                        id="supplier-payment-method"
+                        required
+                    >
+                        <option value="cash">Cash</option>
+                        <option value="upi">UPI</option>
+                        <option value="card">Card</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <label class="purchase-history-field">
+
+                <span>Note (Optional)</span>
+
+                <textarea
+                    id="supplier-payment-note"
+                    rows="2"
+                    placeholder="Payment reference or notes"
+                ></textarea>
+
+            </label>
+
+
+            <div
+                id="supplier-payment-error"
+                class="supplier-payment-error"
+                aria-live="polite"
+            ></div>
+
+
+            <div class="supplier-payment-actions">
+
+                <button
+                    type="button"
+                    class="supplier-payment-cancel"
+                    data-popup-close
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="supplier-payment-save"
+                >
+                    Record Payment
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
