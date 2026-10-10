@@ -285,26 +285,28 @@ decrease inventory stock.
 
     function getDueAmount(purchase) {
 
-        const total =
-            getPurchaseTotal(purchase);
+    const total =
+        getPurchaseTotal(purchase);
 
-        const paid =
-            getPaidAmount(purchase);
+    const paid =
+        getPaidAmount(purchase);
 
-
-        /*
-        Calculate due from the total and paid amount.
-        This avoids stale balances after payments.
-        */
-
-        return roundMoney(
-            Math.max(
-                0,
-                total - paid
-            )
+    const supplierCredit =
+        Math.max(
+            0,
+            Number(
+                purchase.supplierCreditAmount
+            ) || 0
         );
 
-    }
+    return roundMoney(
+        Math.max(
+            0,
+            total - paid - supplierCredit
+        )
+    );
+
+}
 
 
     function getPaymentStatus(purchase) {
