@@ -169,6 +169,34 @@ const appRoutes = {
                         "View previous inventory purchases",
                     scripts: [ "js/inventory/purchase/history.js" ]
 
+                },
+
+                dues: {
+
+                    page: "inventory/purchase/dues",
+        
+                    title: "Supplier Dues & Payments",
+        
+                    description: "Manage outstanding supplier balances",
+        
+                    scripts: [
+                        "js/inventory/purchase/dues.js"
+                    ]
+        
+                },
+        
+                returns: {
+        
+                    page: "inventory/purchase/returns",
+        
+                    title: "Purchase Returns",
+        
+                    description: "Manage returns and supplier credits",
+        
+                    scripts: [
+                        "js/inventory/purchase/returns.js"
+                    ]
+        
                 }
 
             }
