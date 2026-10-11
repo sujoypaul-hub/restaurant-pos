@@ -1,515 +1,108 @@
-/*
-==================================================
-APPLICATION ROUTER
-==================================================
 
-This file is the ROUTING ENGINE.
-
-It handles:
-
-- URL navigation
-- Nested pages
-- Sidebar active state
-- Page titles
-- Browser Back / Forward
-- Initial page loading
-- Internal page navigation
-
-Page information comes from routes.js.
-
-This file should NOT contain individual page
-definitions or page-specific logic.
-
-==================================================
-*/
-
-
-/*
-==================================================
-GET ROUTE FROM URL
-==================================================
-*/
+/* =====================================================
+   APPLICATION ROUTER
+   Handles routes, navigation, history and Back button.
+===================================================== */
 
 function getRouteFromURL() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const route =
-        params.get("route");
-
-
-    /*
-    No route means Billing.
-    */
-
-    if (!route) {
-
-        return ["billing"];
-
-    }
-
-
-    return route
-        .split("/")
-        .filter(Boolean);
-
+    const route = new URLSearchParams(location.search).get("route");
+    return route ? route.split("/").filter(Boolean) : ["billing"];
 }
-
-
-/*
-==================================================
-FIND ROUTE CONFIGURATION
-==================================================
-*/
 
 function findRoute(routeParts) {
+    let routes = appRoutes;
+    let config = null;
 
-    let currentRoutes =
-        appRoutes;
-
-    let routeConfig =
-        null;
-
-
-    for (
-        const part
-        of routeParts
-    ) {
-
-        /*
-        Route does not exist.
-        */
-
-        if (
-            !currentRoutes[part]
-        ) {
-
-            return null;
-
-        }
-
-
-        /*
-        Get current route.
-        */
-
-        routeConfig =
-            currentRoutes[part];
-
-
-        /*
-        Move into child routes.
-        */
-
-        currentRoutes =
-            routeConfig.children || {};
-
+    for (const part of routeParts) {
+        if (!routes[part]) return null;
+        config = routes[part];
+        routes = config.children || {};
     }
 
-
-    return routeConfig;
-
+    return config;
 }
 
-
-/*
-==================================================
-UPDATE SIDEBAR
-==================================================
-*/
-
-function updateSidebar(
-    topLevelRoute
-) {
-
-    const navButtons =
-        document.querySelectorAll(
-            ".nav-btn"
-        );
-
-
-    navButtons.forEach(
-        button => {
-
-            button.classList.toggle(
-                "active",
-
-                button.dataset.route ===
-                topLevelRoute
-            );
-
-        }
-    );
-
+function updateSidebar(topLevelRoute) {
+    document.querySelectorAll(".nav-btn").forEach(button => {
+        button.classList.toggle("active", button.dataset.route === topLevelRoute);
+    });
 }
 
+async function navigateTo(route, updateURL = true) {
+    const parts = Array.isArray(route) ? route : route.split("/").filter(Boolean);
+    const config = findRoute(parts);
 
-/*
-==================================================
-NAVIGATE
-==================================================
-*/
-
-async function navigateTo(
-    route,
-    updateURL = true
-) {
-
-    /*
-    Convert string route into array.
-    */
-
-    const routeParts =
-        Array.isArray(route)
-            ? route
-            : route
-                .split("/")
-                .filter(Boolean);
-
-
-    /*
-    Find route configuration.
-    */
-
-    const routeConfig =
-        findRoute(routeParts);
-
-
-    /*
-    ==============================================
-    INVALID ROUTE
-    ==============================================
-    */
-
-    if (!routeConfig) {
-
-        navigateTo(
-            ["billing"],
-            false
-        );
-
-        return;
-
+    if (!config) {
+        return navigateTo(["billing"], false);
     }
 
-
-    /*
-    ==============================================
-    UPDATE URL
-    ==============================================
-    */
+    const routeString = parts.join("/");
 
     if (updateURL) {
-
-        const url =
-            new URL(
-                window.location.href
-            );
-
-
-        /*
-        Remove old tab-based URL.
-        */
-
-        url.searchParams.delete(
-            "tab"
-        );
-
-
-        /*
-        Set new route.
-        */
-
-        url.searchParams.set(
-            "route",
-            routeParts.join("/")
-        );
-
-
-        /*
-        Add browser history entry.
-        */
-
-        history.pushState(
-            {
-                route:
-                    routeParts.join("/")
-            },
-            "",
-            url
-        );
-
-    }
-    
-    if (window.POSShellReady) {
-        await window.POSShellReady;
+        const url = new URL(location.href);
+        url.searchParams.delete("tab");
+        url.searchParams.set("route", routeString);
+        history.pushState({ posRoute: routeString, posInternal: true }, "", url);
     }
 
-    /*
-    ==============================================
-    UPDATE HEADER
-    ==============================================
-    */
+    // Wait for the dynamically loaded header and sidebar.
+    if (window.POSShellReady) await window.POSShellReady;
 
-    const pageTitle =
-        document.getElementById(
-            "page-title"
-        );
+    const title = document.getElementById("page-title");
+    const description = document.getElementById("page-description");
 
-    const pageDescription =
-        document.getElementById(
-            "page-description"
-        );
+    if (title) title.textContent = config.title || "";
+    if (description) description.textContent = config.description || "";
 
+    updateSidebar(parts[0]);
 
-    if (pageTitle) {
+    const container = document.getElementById("page-container");
+    if (!container) return;
 
-        pageTitle.textContent =
-            routeConfig.title;
-
-    }
-
-
-    if (pageDescription) {
-
-        pageDescription.textContent =
-            routeConfig.description;
-
-    }
-
-
-    /*
-    ==============================================
-    UPDATE SIDEBAR
-    ==============================================
-    */
-
-    updateSidebar(
-        routeParts[0]
-    );
-
-
-    /*
-    ==============================================
-    LOAD PAGE
-    ==============================================
-    */
-
-    await loadPage(
-        routeConfig
-    );
-
+    await loadHTML(container, `pages/${config.page}.html`, {
+        pageConfig: config
+    });
 }
 
+// Delegated click handling also works for dynamically loaded elements.
+document.addEventListener("click", event => {
+    const backButton = event.target.closest("#app-back-button");
 
-/*
-==================================================
-ALL ROUTE LINKS
-==================================================
+    if (backButton) {
+        event.preventDefault();
 
-Every element that contains:
+        // Use browser history when this route was added by our router.
+        if (history.state?.posInternal) {
+            history.back();
+        } else {
+            // Useful fallback when the app was opened directly on a nested route.
+            const parts = getRouteFromURL();
 
-data-route="..."
-
-automatically becomes a navigation link.
-
-Examples:
-
-data-route="settings"
-
-data-route="settings/theme"
-
-data-route="marketing/ad"
-
-data-route="marketing/ad/social-media-ad"
-
-data-route="marketing/ad/social-media-ad/instagram"
-
-No individual click handler is required.
-
-==================================================
-*/
-
-document.addEventListener(
-    "click",
-    event => {
-
-        const routeElement =
-            event.target.closest(
-                "[data-route]"
-            );
-
-
-        /*
-        Click was not on a route element.
-        */
-
-        if (!routeElement) {
-
-            return;
-
+            navigateTo(parts.length > 1 ? parts.slice(0, -1) : ["billing"]);
         }
-
-
-        const route =
-            routeElement.dataset.route;
-
-
-        /*
-        No route specified.
-        */
-
-        if (!route) {
-
-            return;
-
-        }
-
-
-        /*
-        Prevent normal link behavior
-        if this is an <a> element.
-        */
-
-        if (
-            routeElement.tagName === "A"
-        ) {
-
-            event.preventDefault();
-
-        }
-
-
-        /*
-        Navigate.
-        */
-
-        navigateTo(
-            route
-        );
-
-    }
-);
-
-
-/*
-==================================================
-BROWSER BACK / FORWARD
-==================================================
-*/
-
-window.addEventListener(
-    "popstate",
-    () => {
-
-        navigateTo(
-            getRouteFromURL(),
-            false
-        );
-
-
-        /*
-        Refresh universal tabs
-        after route navigation.
-        */
-
-        setTimeout(() => {
-
-            if (window.POSTabs) {
-
-                window.POSTabs.refresh();
-
-            }
-
-        }, 0);
-
-    }
-);
-
-
-/*
-==================================================
-UNIVERSAL APPLICATION BACK BUTTON
-==================================================
-
-The application has one universal Back button.
-
-It uses the browser history, so it works with:
-
-Settings → Theme
-Marketing → AD
-Marketing → AD → Social Media AD
-etc.
-
-Individual pages do not need their own
-Back button.
-
-==================================================
-*/
-
-function initializeAppBackButton() {
-
-    const backButton =
-        document.getElementById(
-            "app-back-button"
-        );
-
-
-    if (!backButton) {
 
         return;
-
     }
 
+    const routeElement = event.target.closest("[data-route]");
+    if (!routeElement) return;
 
-    backButton.addEventListener(
-        "click",
-        () => {
+    const route = routeElement.dataset.route;
+    if (!route) return;
 
-            history.back();
+    if (routeElement.tagName === "A") event.preventDefault();
+    navigateTo(route);
+});
 
-        }
-    );
+// Restore the route when browser Back/Forward is used.
+window.addEventListener("popstate", () => {
+    navigateTo(getRouteFromURL(), false);
+});
 
-}
-
-
-/*
-==================================================
-INITIALIZE UNIVERSAL BACK BUTTON
-==================================================
-*/
-
-initializeAppBackButton();
-
-
-/*
-==================================================
-INITIAL APPLICATION ROUTE
-==================================================
-*/
-
-navigateTo(
-    getRouteFromURL(),
-    false
-);
-
-
-/*
-==================================================
-PUBLIC ROUTER API
-==================================================
-*/
+// Start the application on the URL's current route.
+navigateTo(getRouteFromURL(), false);
 
 window.POSRouter = {
-
-    navigate:
-        navigateTo,
-
-    getCurrentRoute:
-        getRouteFromURL
-
+    navigate: navigateTo,
+    getCurrentRoute: getRouteFromURL
 };
