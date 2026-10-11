@@ -18,17 +18,21 @@
 ================================================== */
 
 .main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 235px;
     min-width: 235px;
-    height: calc(100vh - 0px);
+    height: 100vh;
     padding: 22px 12px;
     display: flex;
     flex-direction: column;
     background: var(--sidebar);
     color: var(--sidebar-text);
-    position: relative;
-    overflow: scroll;
-    box-shadow: 7px 0px 50px 1px rgba(0, 0, 0, 0.10);
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 7px 0 50px 1px rgba(0, 0, 0, 0.10);
+    z-index: 1000;
 }
 
 /* ==================================================
@@ -54,17 +58,6 @@
     background: linear-gradient(145deg, #ff5c5c, #c51f2c);
     box-shadow: 0 12px 28px rgba(197, 31, 44, 0.3);
 }
-
-
-/* ==================================================
-   Main Content
-================================================== */
-
-
-
-
-
-
 
 /* =====================================================
    MAIN CONTENT
