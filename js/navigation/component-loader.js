@@ -1,20 +1,18 @@
 
 /* =====================================================
-   COMPONENT LOADER
-   Loads pages, reusable HTML components and page scripts.
-   All HTML paths are relative to the project root.
+   UNIVERSAL HTML LOADER
+   Loads pages and components using the same function.
 ===================================================== */
 
-// Track loaded scripts and cache HTML requests.
 const loadedScripts = new Map();
 const htmlCache = new Map();
 
-// Resolve paths relative to index.html.
+// Resolve paths from the project root (index.html).
 function resolveProjectPath(path) {
     return new URL(path.replace(/^\/+/, ""), document.baseURI).href;
 }
 
-// Fetch HTML and reuse cached requests.
+// Fetch and cache HTML files.
 async function fetchHTML(path) {
     const url = resolveProjectPath(path);
 
@@ -31,59 +29,88 @@ async function fetchHTML(path) {
     return htmlCache.get(url);
 }
 
-// Load one component and any components nested inside it.
-async function loadComponent(element, parentPaths = []) {
-    if (!element?.dataset.include || element.dataset.componentLoaded === "true") return;
+// The one universal function: loads any HTML into any target.
+async function loadHTML(target, path, options = {}) {
+    if (!target || !path) return;
 
-    const filePath = element.dataset.include.trim();
-    const componentURL = resolveProjectPath(filePath);
+    const url = resolveProjectPath(path);
+    const ancestors = options.ancestors || [];
 
-    // Stop only if this file already exists in its ancestor chain.
-    if (parentPaths.includes(componentURL)) {
-        console.error(`Circular component include detected: ${filePath}`, parentPaths);
+    // Stop only genuine circular includes in this component's ancestry.
+    if (ancestors.includes(url)) {
+        console.error(`Circular HTML include: ${path}`, ancestors);
         return;
     }
 
-    // Prevent simultaneous duplicate loads on this element.
-    if (element._componentPromise) return element._componentPromise;
+    // Avoid duplicate concurrent loads of the same file into this target.
+    if (target._htmlLoadPromise?.url === url) return target._htmlLoadPromise.promise;
 
-    element._componentPromise = (async () => {
-        element.dataset.componentLoading = "true";
-
+    const promise = (async () => {
         try {
-            element.innerHTML = await fetchHTML(filePath);
+            target.innerHTML = await fetchHTML(path);
 
-            // Only inspect descendants here. Do not reload this element.
-            await loadComponents(element, [...parentPaths, componentURL]);
+            // Recursively load nested components with the same function.
+            const nestedTargets = [...target.querySelectorAll("[data-load]")];
 
-            element.dataset.componentLoaded = "true";
+            await Promise.all(nestedTargets.map(child =>
+                loadHTML(child, child.dataset.load, {
+                    ancestors: [...ancestors, url]
+                })
+            ));
 
-            element.dispatchEvent(new CustomEvent("pos:component-loaded", {
+            target.dataset.loadedPath = url;
+
+            target.dispatchEvent(new CustomEvent("pos:component-loaded", {
                 bubbles: true,
-                detail: { path: filePath }
+                detail: { path }
             }));
+
+            // Page-specific work runs only when a page configuration is supplied.
+            const pageConfig = options.pageConfig;
+
+            if (pageConfig) {
+                for (const scriptPath of pageConfig.scripts || []) {
+                    await loadScript(scriptPath);
+                }
+
+                for (const scriptPath of pageConfig.scripts || []) {
+                    const initializer = window.POSPageInitializers?.[scriptPath];
+                    if (typeof initializer === "function") await initializer();
+                }
+
+                if (typeof window.POSTabs?.initialize === "function") {
+                    window.POSTabs.initialize();
+                }
+
+                document.dispatchEvent(new CustomEvent("pos:page-loaded", {
+                    detail: { page: pageConfig.page, config: pageConfig }
+                }));
+            }
         } catch (error) {
-            console.error(`Component loading failed: ${filePath}`, error);
-            element.innerHTML = `<!-- Failed to load ${filePath} -->`;
-        } finally {
-            delete element.dataset.componentLoading;
-            delete element._componentPromise;
+            console.error(`HTML loading failed: ${path}`, error);
+
+            if (options.pageConfig) {
+                target.innerHTML = `<div class="page-load-error"><h3>Unable to load this page</h3><p>Check the file path and try again.</p></div>`;
+            } else {
+                target.innerHTML = `<!-- Failed to load ${path} -->`;
+            }
         }
     })();
 
-    return element._componentPromise;
+    target._htmlLoadPromise = { url, promise };
+
+    try {
+        await promise;
+    } finally {
+        if (target._htmlLoadPromise?.promise === promise) {
+            delete target._htmlLoadPromise;
+        }
+    }
 }
 
-// Load all include elements inside a container.
-async function loadComponents(container = document, parentPaths = []) {
-    const components = [...container.querySelectorAll("[data-include]")];
-
-    await Promise.all(components.map(element => loadComponent(element, parentPaths)));
-}
-
-// Load a JavaScript file once.
-function loadScript(scriptPath) {
-    const url = resolveProjectPath(scriptPath);
+// Load each JavaScript file once.
+function loadScript(path) {
+    const url = resolveProjectPath(path);
 
     if (loadedScripts.has(url)) return loadedScripts.get(url);
 
@@ -93,64 +120,24 @@ function loadScript(scriptPath) {
         script.onload = resolve;
         script.onerror = () => {
             script.remove();
-            reject(new Error(`Could not load script: ${scriptPath}`));
+            reject(new Error(`Could not load script: ${path}`));
         };
         document.body.appendChild(script);
     });
 
     loadedScripts.set(url, promise);
     promise.catch(() => loadedScripts.delete(url));
-
     return promise;
 }
 
-// Load a page, its components, scripts and initializers.
-async function loadPage(pageConfig) {
-    const container = document.getElementById("page-container");
-
-    if (!container || !pageConfig?.page) {
-        console.error("Page container or page configuration is missing.");
-        return;
-    }
-
-    try {
-        if (window.POSShellReady) await window.POSShellReady;
-
-        container.innerHTML = await fetchHTML(`pages/${pageConfig.page}.html`);
-        await loadComponents(container);
-
-        for (const scriptPath of pageConfig.scripts || []) {
-            await loadScript(scriptPath);
-        }
-
-        for (const scriptPath of pageConfig.scripts || []) {
-            const init = window.POSPageInitializers?.[scriptPath];
-            if (typeof init === "function") await init();
-        }
-
-        if (typeof window.POSTabs?.initialize === "function") {
-            window.POSTabs.initialize();
-        }
-
-        document.dispatchEvent(new CustomEvent("pos:page-loaded", {
-            detail: { page: pageConfig.page, config: pageConfig }
-        }));
-    } catch (error) {
-        console.error(`Page loading failed: ${pageConfig.page}`, error);
-        container.innerHTML = `<div class="page-load-error"><h3>Unable to load this page</h3><p>Check the file paths and try again.</p></div>`;
-    }
-}
-
-// Load the global sidebar and header from index.html.
-window.POSShellReady = loadComponents(document).then(() => {
-    const route = new URLSearchParams(location.search).get("route") || "billing";
-    const topRoute = route.split("/").filter(Boolean)[0];
-
-    document.querySelectorAll(".nav-btn").forEach(button => {
-        button.classList.toggle("active", button.dataset.route === topRoute);
-    });
-});
+// Load global components from index.html before routing starts.
+window.POSShellReady = Promise.all(
+    [...document.querySelectorAll("body > .app [data-load]")].map(target =>
+        loadHTML(target, target.dataset.load)
+    )
+);
 
 // Public API.
-window.POSComponents = { load: loadComponent, loadAll: loadComponents };
-window.loadPage = loadPage;
+window.POSComponents = { load: loadHTML };
+window.loadHTML = loadHTML;
+window.loadScript = loadScript;
