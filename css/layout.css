@@ -1,3 +1,18 @@
+
+/* =====================================================
+   APP LAYOUT
+   Main menu + main content workspace
+===================================================== */
+
+.app {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    overflow: hidden;
+}
+
 /* ==================================================
    Main Menu - Left Sidebar (Constant in every pages)
 ================================================== */
@@ -45,42 +60,11 @@
    Main Content
 ================================================== */
 
-.main-content {
-    flex: 1;
-    padding: 25px;
-    background: var(--background);
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.header #page-title {
-    color: var(--text);
-}
 
 
-.header #page-description {
-    color: var(--muted);
-}
 
 
-/* =====================================================
-   APP LAYOUT
-   Main menu + main content workspace
-===================================================== */
 
-.app {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    background: var(--background);
-    color: var(--text);
-    overflow: hidden;
-}
 
 /* =====================================================
    MAIN CONTENT
@@ -101,6 +85,12 @@
    HEADER CONTAINER
    Holds the reusable header component
 ===================================================== */
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+} */
 
 .header {
     flex: 0 0 auto;
@@ -109,6 +99,15 @@
     z-index: 100;
     background: var(--surface, var(--background));
 }
+
+.header #page-title {
+    color: var(--text);
+}
+
+.header #page-description {
+    color: var(--muted);
+}
+
 
 /* =====================================================
    PAGE CONTAINER
@@ -162,7 +161,7 @@
 
 /* =====================================================
    RESPONSIVE LAYOUT
-===================================================== */
+===================================================== 
 
 @media (max-width: 1024px) {
     .page-container {
@@ -193,3 +192,4 @@
         padding: 12px;
     }
 }
+*/
