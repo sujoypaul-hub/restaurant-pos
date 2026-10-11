@@ -73,6 +73,7 @@
     min-height: 100vh;
     overflow: hidden;
     background: var(--background);
+    margin-left: 235px;
 }
 
 /* =====================================================
