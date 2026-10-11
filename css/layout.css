@@ -1,3 +1,7 @@
+/* ==================================================
+   Main Menu - Left Sidebar (Constant in every pages)
+================================================== */
+
 .main-menu {
     width: 235px;
     min-width: 235px;
@@ -10,4 +14,28 @@
     position: relative;
     overflow: scroll;
     box-shadow: 7px 0px 50px 1px rgba(0, 0, 0, 0.10);
+}
+
+/* ==================================================
+   LOGO
+================================================== */
+
+.main-menu-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    padding: 8px 0 16px;
+}
+
+.main-menu-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 29px;
+    background: linear-gradient(145deg, #ff5c5c, #c51f2c);
+    box-shadow: 0 12px 28px rgba(197, 31, 44, 0.3);
 }
