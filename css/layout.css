@@ -1,0 +1,36 @@
+.main-menu {
+
+    width: 235px;
+
+    min-width: 235px;
+
+    height:
+        calc(100vh - 28px);
+
+    margin:
+        14px 0 14px 14px;
+
+    padding:
+        22px 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        var(--sidebar);
+
+    color:
+        var(--sidebar-text);
+
+    border-radius: 28px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 18px 50px
+        rgba(0, 0, 0, 0.10);
+
+}
