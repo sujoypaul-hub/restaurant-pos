@@ -69,37 +69,7 @@ const appRoutes = {
             "View and manage restaurant orders"
 
     },
-    
 
-    /*
-    ==============================================
-    History
-    ==============================================
-    */
-    
-    history: {
-    page: "history",
-    title: "History",
-    description: "View complete order history"
-    },
-
-    
-    /*
-    ==============================================
-    CUSTOMERS
-    ==============================================
-    */
-
-    customers: {
-
-        page: "customers",
-
-        title: "Customers",
-
-        description:
-            "Manage customers and order history"
-
-    },
 
 
     /*
@@ -423,6 +393,37 @@ const appRoutes = {
 
         }
 
-    }
+    },
+
+    
+    /*
+    ==============================================
+    CUSTOMERS
+    ==============================================
+    */
+
+    customers: {
+
+        page: "customers",
+
+        title: "Customers",
+
+        description:
+            "Manage customers and order history"
+
+    },
+
+    
+    /*
+    ==============================================
+    History
+    ==============================================
+    */
+    
+    history: {
+    page: "history",
+    title: "History",
+    description: "View complete order history"
+    },
 
 };
