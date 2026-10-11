@@ -1,12 +1,14 @@
 <!-- ==========================================
-     Requirement List
+     INVENTORY REQUIREMENT LIST
 ========================================== -->
 
 <div class="requirement-list-layout">
 
-    <main class="requirement-list-main">
+    <!-- ======================================
+         MAIN CONTENT
+    ======================================= -->
 
-        <!-- Header -->
+    <main class="requirement-list-main">
 
         <div class="requirement-list-header">
 
@@ -16,226 +18,223 @@
                 </h2>
 
                 <p class="requirement-list-description">
-                    Plan purchases, track expected deliveries and record received goods.
+                    Plan purchases, track deliveries and receive stock.
                 </p>
             </div>
 
         </div>
 
 
-        <!-- Create Requirement List -->
+        <div
+            id="requirement-message"
+            class="requirement-message"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- ==================================
+             CREATE REQUIREMENT
+        =================================== -->
 
         <section class="inventory-purchase-section">
 
-            <div class="requirement-list-section-header">
+            <div class="requirement-section-header">
+                <h3>Create Requirement</h3>
 
-                <div>
-                    <h3>New Requirement List</h3>
-
-                    <p>
-                        Creating an order does not increase inventory.
-                    </p>
-                </div>
-
+                <span class="requirement-draft-badge">
+                    New List
+                </span>
             </div>
 
 
-            <form id="requirement-list-form">
+            <div class="requirement-details-grid">
 
-                <div class="requirement-list-details-grid">
+                <label class="purchase-history-field">
 
-                    <label class="purchase-field">
-                        <span>Supplier</span>
+                    <span>Requirement Date</span>
 
-                        <select id="requirement-list-supplier" required>
-                            <option value="">Select supplier</option>
-                            <option value="ABC Foods">ABC Foods</option>
-                            <option value="Fresh Chicken Supplier">Fresh Chicken Supplier</option>
-                            <option value="Local Wholesale">Local Wholesale</option>
-                        </select>
-                    </label>
-
-
-                    <label class="purchase-field">
-                        <span>Order Date</span>
-
-                        <input
-                            type="date"
-                            id="requirement-list-date"
-                            required
-                        >
-                    </label>
-
-
-                    <label class="purchase-field">
-                        <span>Expected Delivery</span>
-
-                        <input
-                            type="date"
-                            id="requirement-list-expected-date"
-                            required
-                        >
-                    </label>
-
-                </div>
-
-
-                <div class="requirement-list-items-header">
-
-                    <div>
-                        <h4>Order Items</h4>
-
-                        <p>
-                            Add the quantities you want to order.
-                        </p>
-                    </div>
-
-                    <button
-                        type="button"
-                        id="requirement-list-add-item"
-                        class="purchase-add-item-btn"
+                    <input
+                        type="date"
+                        id="requirement-date"
+                        required
                     >
-                        + Add Item
-                    </button>
-
-                </div>
-
-
-                <div class="purchase-items-table requirement-list-items-table">
-
-                    <div class="purchase-table-head">
-
-                        <span>Item</span>
-                        <span>Quantity</span>
-                        <span>Unit</span>
-                        <span>Est. Rate</span>
-                        <span>Total</span>
-                        <span></span>
-
-                    </div>
-
-                    <div
-                        id="requirement-list-items"
-                        class="purchase-items"
-                    ></div>
-
-                </div>
-
-
-                <label class="purchase-field requirement-list-notes-field">
-
-                    <span>Notes (Optional)</span>
-
-                    <textarea
-                        id="requirement-list-notes"
-                        rows="2"
-                        placeholder="Delivery instructions or other notes..."
-                    ></textarea>
 
                 </label>
 
 
-                <div
-                    id="requirement-list-form-message"
-                    class="requirement-list-form-message"
-                    aria-live="polite"
-                ></div>
+                <label class="purchase-history-field">
+
+                    <span>Supplier</span>
+
+                    <select id="requirement-supplier" required>
+
+                        <option value="">
+                            Select supplier
+                        </option>
+
+                        <option value="ABC Foods">
+                            ABC Foods
+                        </option>
+
+                        <option value="Fresh Chicken Supplier">
+                            Fresh Chicken Supplier
+                        </option>
+
+                        <option value="Local Wholesale">
+                            Local Wholesale
+                        </option>
+
+                    </select>
+
+                </label>
 
 
-                <div class="requirement-list-form-actions">
+                <label class="purchase-history-field">
 
-                    <strong>
-                        Estimated Total:
-                        <span id="requirement-list-estimated-total">₹0</span>
-                    </strong>
+                    <span>Expected Delivery</span>
 
-                    <div>
-                        <button
-                            type="button"
-                            id="requirement-list-save-draft"
-                            class="requirement-list-draft-btn"
-                        >
-                            Save Draft
-                        </button>
+                    <input
+                        type="date"
+                        id="requirement-expected-date"
+                    >
 
-                        <button
-                            type="button"
-                            id="requirement-list-place"
-                            class="requirement-list-place-btn"
-                        >
-                            Place Order
-                        </button>
-                    </div>
+                </label>
+
+            </div>
+
+
+            <!-- ==================================
+                 ITEMS REQUIRED
+            =================================== -->
+
+            <div class="requirement-items-header">
+
+                <div>
+                    <h3>Items Required</h3>
+
+                    <p>
+                        Add the items and quantities you plan to buy.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="requirement-add-item-btn"
+                    id="requirement-add-item"
+                >
+                    + Add Item
+                </button>
+
+            </div>
+
+
+            <div class="requirement-items-table">
+
+                <div class="requirement-table-head">
+
+                    <span>Item</span>
+                    <span>Quantity</span>
+                    <span>Unit</span>
+                    <span>Est. Rate</span>
+                    <span>Est. Total</span>
+                    <span></span>
 
                 </div>
 
-            </form>
 
-        </section>
-
-
-        <!-- Existing Orders -->
-
-        <section class="inventory-purchase-section requirement-list-list-section">
-
-            <div class="requirement-list-section-header">
-
-                <div>
-                    <h3>Requirement List List</h3>
-
-                    <p>
-                        Follow orders from preparation to delivery.
-                    </p>
+                <div
+                    id="requirement-items"
+                    class="requirement-items"
+                >
+                    <!-- Rows generated by JavaScript -->
                 </div>
 
             </div>
 
 
-            <div class="requirement-list-filters">
+            <label class="purchase-history-field requirement-notes-field">
 
-                <input
-                    type="search"
-                    id="requirement-list-search"
-                    placeholder="Search order or supplier..."
-                    aria-label="Search Requirement List"
+                <span>Notes (Optional)</span>
+
+                <textarea
+                    id="requirement-notes"
+                    rows="2"
+                    placeholder="Items to prioritize, quality requirements, etc."
+                ></textarea>
+
+            </label>
+
+
+            <div class="requirement-form-actions">
+
+                <button
+                    type="button"
+                    class="requirement-save-btn"
+                    id="save-requirement"
                 >
+                    Save Requirement List
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             SAVED REQUIREMENTS
+        =================================== -->
+
+        <section class="inventory-purchase-section">
+
+            <div class="requirement-section-header">
+
+                <div>
+                    <h3>Saved Requirements</h3>
+
+                    <p>
+                        Mark lists as ordered and record deliveries when goods arrive.
+                    </p>
+                </div>
 
                 <select
-                    id="requirement-list-status-filter"
-                    aria-label="Filter Requirement List"
+                    id="requirement-status-filter"
+                    class="requirement-status-filter"
+                    aria-label="Filter requirement lists"
                 >
-                    <option value="all">All Orders</option>
+                    <option value="all">All Lists</option>
                     <option value="draft">Draft</option>
                     <option value="ordered">Ordered</option>
                     <option value="partially-received">Partially Received</option>
                     <option value="received">Received</option>
+                    <option value="cancelled">Cancelled</option>
                 </select>
 
             </div>
 
 
-            <div class="requirement-list-table-wrap">
+            <div class="requirement-history-table-wrap">
 
-                <table class="requirement-list-table">
+                <table class="requirement-history-table">
 
                     <thead>
                         <tr>
-                            <th>Order</th>
+                            <th>Requirement</th>
                             <th>Supplier</th>
-                            <th>Expected</th>
                             <th>Items</th>
-                            <th>Estimated Total</th>
+                            <th>Expected</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                    <tbody id="requirement-list-tbody">
+                    <tbody id="requirement-history-tbody">
+
                         <tr>
-                            <td colspan="7">
-                                Loading Requirement List...
+                            <td colspan="6">
+                                No requirement lists yet.
                             </td>
                         </tr>
+
                     </tbody>
 
                 </table>
@@ -243,24 +242,10 @@
             </div>
 
 
-            <div
-                id="requirement-list-empty"
-                class="requirement-list-empty"
-                hidden
-            >
-                <div>📦</div>
+            <div class="requirement-history-footer">
 
-                <strong>No Requirement List found</strong>
-
-                <p>Create a draft or place your first Requirement List.</p>
-
-            </div>
-
-
-            <div class="requirement-list-table-footer">
-
-                <span id="requirement-list-count">
-                    0 orders
+                <span id="requirement-history-count">
+                    0 lists
                 </span>
 
             </div>
@@ -270,99 +255,111 @@
     </main>
 
 
-    <!-- ==========================================
+    <!-- ======================================
          RIGHT SIDEBAR
-    ========================================== -->
+    ======================================= -->
 
     <aside class="right-sidebar requirement-list-sidebar">
 
-        <section class="right-sidebar-section">
-
-            <h3 class="right-sidebar-title">
-                Delivery Overview
-            </h3>
-
-            <div class="right-sidebar-content">
-
-                <div class="requirement-list-summary-main">
-                    <span>Awaiting Delivery</span>
-
-                    <strong id="requirement-list-awaiting">
-                        0
-                    </strong>
-                </div>
-
-                <div class="requirement-list-summary-row">
-                    <span>Partially Received</span>
-
-                    <strong id="requirement-list-partial">
-                        0
-                    </strong>
-                </div>
-
-                <div class="requirement-list-summary-row">
-                    <span>Overdue Deliveries</span>
-
-                    <strong
-                        id="requirement-list-overdue"
-                        class="requirement-list-overdue-value"
-                    >
-                        0
-                    </strong>
-                </div>
-
-            </div>
-
-        </section>
-
+        <!-- Requirement Summary -->
 
         <section class="right-sidebar-section">
 
             <h3 class="right-sidebar-title">
-                Incoming Stock Value
+                Requirement Summary
             </h3>
 
             <div class="right-sidebar-content">
 
-                <div class="requirement-list-summary-main">
-                    <span>Outstanding Ordered Value</span>
+                <div class="requirement-summary-total">
 
-                    <strong id="requirement-list-incoming-value">
+                    <span>Estimated Purchase Value</span>
+
+                    <strong id="requirement-estimated-total">
                         ₹0
                     </strong>
+
                 </div>
 
-                <p class="requirement-list-sidebar-note">
-                    Estimated value of quantities ordered but not yet received.
-                </p>
+
+                <div class="requirement-summary-row">
+
+                    <span>Items Selected</span>
+
+                    <strong id="requirement-item-count">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="requirement-summary-row">
+
+                    <span>Total Quantity</span>
+
+                    <strong id="requirement-total-quantity">
+                        0
+                    </strong>
+
+                </div>
 
             </div>
 
         </section>
 
 
+        <!-- Receiving Workflow -->
+
         <section class="right-sidebar-section">
 
             <h3 class="right-sidebar-title">
-                How It Works
+                Receiving Workflow
             </h3>
 
-            <div class="right-sidebar-content requirement-list-guide">
+            <div class="right-sidebar-content requirement-workflow">
 
-                <div>
-                    <strong>1. Place Order</strong>
-                    <small>Record what you want to buy.</small>
+                <div class="requirement-workflow-step">
+                    <span class="requirement-step-number">1</span>
+
+                    <div>
+                        <strong>Prepare</strong>
+
+                        <small>
+                            Create and save your requirement list.
+                        </small>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>2. Receive Delivery</strong>
-                    <small>Enter the quantities actually delivered.</small>
+
+                <div class="requirement-workflow-step">
+                    <span class="requirement-step-number">2</span>
+
+                    <div>
+                        <strong>Order</strong>
+
+                        <small>
+                            Mark it as ordered when you place the order.
+                        </small>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>3. Stock Updates</strong>
-                    <small>Received quantities are added to inventory.</small>
+
+                <div class="requirement-workflow-step">
+                    <span class="requirement-step-number">3</span>
+
+                    <div>
+                        <strong>Receive</strong>
+
+                        <small>
+                            Enter actual quantities when goods arrive.
+                        </small>
+                    </div>
                 </div>
+
+
+                <p class="requirement-workflow-note">
+                    Only received quantities increase inventory. Partial deliveries can be received separately.
+                </p>
 
             </div>
 
@@ -378,39 +375,39 @@
 ========================================== -->
 
 <div
-    class="requirement-list-modal pos-modal"
-    id="requirement-list-receive-modal"
+    class="purchase-history-modal pos-modal"
+    id="requirement-receive-modal"
     aria-hidden="true"
 >
 
     <div
-        class="requirement-list-modal-overlay"
+        class="purchase-history-modal-overlay"
         data-popup-close
     ></div>
 
 
     <div
-        class="requirement-list-modal-content"
+        class="purchase-history-modal-content requirement-receive-modal-content"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="requirement-list-receive-title"
+        aria-labelledby="requirement-receive-title"
     >
 
-        <div class="requirement-list-modal-header">
+        <div class="purchase-history-modal-header">
 
             <div>
-                <h3 id="requirement-list-receive-title">
-                    Record Delivery
+                <h3 id="requirement-receive-title">
+                    Receive Delivery
                 </h3>
 
-                <p id="requirement-list-receive-description">
-                    Enter the quantities actually received.
+                <p id="requirement-receive-description">
+                    Record what actually arrived.
                 </p>
             </div>
 
             <button
                 type="button"
-                class="requirement-list-modal-close"
+                class="purchase-history-modal-close"
                 data-popup-close
                 aria-label="Close receive delivery popup"
             >
@@ -420,55 +417,64 @@
         </div>
 
 
-        <form id="requirement-list-receive-form">
+        <form id="requirement-receive-form">
 
             <input
                 type="hidden"
-                id="requirement-list-receive-id"
+                id="requirement-receive-id"
             >
 
 
-            <label class="purchase-field supplier-receipt-field">
+            <div class="requirement-receive-details-grid">
 
-                <span>Actual Receipt Date</span>
+                <label class="purchase-history-field">
 
-                <input
-                    type="date"
-                    id="supplier-receipt-date"
-                    required
-                >
+                    <span>Received Date</span>
 
-            </label>
+                    <input
+                        type="date"
+                        id="requirement-received-date"
+                        required
+                    >
 
-
-            <label class="purchase-field supplier-receipt-field">
-
-                <span>Supplier Invoice / Bill Number</span>
-
-                <input
-                    type="text"
-                    id="supplier-receipt-invoice"
-                    placeholder="Enter invoice number if available"
-                >
-
-            </label>
+                </label>
 
 
-            <div class="supplier-receipt-items-wrap">
+                <label class="purchase-history-field">
 
-                <table class="supplier-receipt-items-table">
+                    <span>Supplier Invoice Number</span>
+
+                    <input
+                        type="text"
+                        id="requirement-receive-invoice"
+                        placeholder="Optional"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <p class="requirement-receive-hint">
+                Enter the actual quantity received for each item. Leave unreceived items at zero.
+            </p>
+
+
+            <div class="requirement-receive-table-wrap">
+
+                <table class="requirement-receive-table">
 
                     <thead>
                         <tr>
                             <th>Item</th>
                             <th>Remaining</th>
-                            <th>Received Now</th>
+                            <th>Received</th>
                             <th>Actual Rate</th>
                             <th>Total</th>
                         </tr>
                     </thead>
 
-                    <tbody id="supplier-receipt-items">
+                    <tbody id="requirement-receive-items">
                         <!-- Generated by JavaScript -->
                     </tbody>
 
@@ -477,132 +483,130 @@
             </div>
 
 
-            <div class="supplier-receipt-total">
+            <div class="requirement-receive-total">
 
-                <span>Value of Goods Received</span>
+                <span>Actual Receipt Value</span>
 
-                <strong id="supplier-receipt-total">
+                <strong id="requirement-receive-total">
                     ₹0
                 </strong>
 
             </div>
 
 
-            <div class="supplier-receipt-payment">
+            <div class="requirement-receive-payment-grid">
 
-                <h4>Payment for This Receipt</h4>
+                <label class="purchase-history-field">
 
-                <div class="supplier-receipt-payment-grid">
+                    <span>Payment Status</span>
 
-                    <label class="purchase-field">
+                    <select id="requirement-receive-payment-status">
 
-                        <span>Payment Status</span>
+                        <option value="paid">Paid</option>
 
-                        <select id="supplier-receipt-payment-status">
+                        <option value="partially-paid">
+                            Partially Paid
+                        </option>
 
-                            <option value="due">Due</option>
-                            <option value="paid">Paid</option>
-                            <option value="partially-paid">Partially Paid</option>
+                        <option value="due">Due</option>
 
-                        </select>
+                    </select>
 
-                    </label>
-
-
-                    <label class="purchase-field">
-
-                        <span>Payment Method</span>
-
-                        <select id="supplier-receipt-payment-method">
-
-                            <option value="cash">Cash</option>
-                            <option value="upi">UPI</option>
-                            <option value="card">Card</option>
-                            <option value="bank">Bank Transfer</option>
-
-                        </select>
-
-                    </label>
-
-                </div>
+                </label>
 
 
-                <div
-                    id="supplier-receipt-payment-details"
-                    class="supplier-receipt-payment-details"
-                    hidden
-                >
+                <label class="purchase-history-field">
 
-                    <label class="purchase-field">
+                    <span>Payment Method</span>
 
-                        <span>Paid Amount (₹)</span>
+                    <select id="requirement-receive-payment-method">
 
-                        <input
-                            type="number"
-                            id="supplier-receipt-paid"
-                            min="0"
-                            step="0.01"
-                            value="0"
-                        >
+                        <option value="cash">Cash</option>
+                        <option value="upi">UPI</option>
+                        <option value="card">Card</option>
+                        <option value="bank">Bank Transfer</option>
 
-                    </label>
+                    </select>
 
-
-                    <label class="purchase-field">
-
-                        <span>Remaining Due (₹)</span>
-
-                        <input
-                            type="number"
-                            id="supplier-receipt-due"
-                            readonly
-                            value="0"
-                        >
-
-                    </label>
-
-
-                    <label class="purchase-field">
-
-                        <span>Payment Due Date</span>
-
-                        <input
-                            type="date"
-                            id="supplier-receipt-due-date"
-                        >
-
-                    </label>
-
-                </div>
+                </label>
 
             </div>
 
 
-            <label class="purchase-field supplier-receipt-field">
+            <div
+                id="requirement-receive-payment-details"
+                class="requirement-receive-payment-details"
+                hidden
+            >
 
-                <span>Receipt Notes (Optional)</span>
+                <label class="purchase-history-field">
+
+                    <span>Paid Amount (₹)</span>
+
+                    <input
+                        type="number"
+                        id="requirement-receive-paid"
+                        min="0"
+                        step="0.01"
+                        value="0"
+                    >
+
+                </label>
+
+
+                <label class="purchase-history-field">
+
+                    <span>Remaining Due (₹)</span>
+
+                    <input
+                        type="number"
+                        id="requirement-receive-due"
+                        value="0"
+                        readonly
+                    >
+
+                </label>
+
+
+                <label class="purchase-history-field">
+
+                    <span>Payment Due Date</span>
+
+                    <input
+                        type="date"
+                        id="requirement-receive-due-date"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label class="purchase-history-field">
+
+                <span>Receiving Notes (Optional)</span>
 
                 <textarea
-                    id="supplier-receipt-notes"
+                    id="requirement-receive-notes"
                     rows="2"
-                    placeholder="Damaged items, invoice notes, etc."
+                    placeholder="Damaged quantities, shortages or other notes..."
                 ></textarea>
 
             </label>
 
 
             <div
-                id="supplier-receipt-error"
-                class="requirement-list-form-message"
+                id="requirement-receive-error"
+                class="supplier-payment-error"
                 aria-live="polite"
             ></div>
 
 
-            <div class="requirement-list-modal-actions">
+            <div class="supplier-payment-actions">
 
                 <button
                     type="button"
-                    class="requirement-list-draft-btn"
+                    class="supplier-payment-cancel"
                     data-popup-close
                 >
                     Cancel
@@ -610,9 +614,10 @@
 
                 <button
                     type="submit"
-                    class="requirement-list-place-btn"
+                    class="supplier-payment-save"
+                    id="requirement-receive-save"
                 >
-                    Save Receipt & Update Stock
+                    Confirm Receipt
                 </button>
 
             </div>
