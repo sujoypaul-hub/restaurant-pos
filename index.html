@@ -7,50 +7,51 @@
     <title>Restaurant POS</title>
         <link rel="stylesheet" href="css/themes.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/sidebar.css">
+<!--    <link rel="stylesheet" href="css/sidebar.css">
         <link  rel="stylesheet" href="css/cart.css" >
-<!--    <link  rel="stylesheet" href="css/orders.css" >
+        <link  rel="stylesheet" href="css/orders.css" >
         <link  rel="stylesheet" href="css/inventory.css" >     -->
 </head>
     
 <body>
 
-<div class="app">
+    <div class="app">
+    
+        <!-- SIDEBAR: Loads the reusable sidebar from a separate HTML file -->
+        <div class= "main-menu" data-load="html/layout/main-menu.html" ></div>
+    
+        <!-- MAIN CONTENT: Contains the header and dynamically loaded pages -->
+        <main class="main-content">
+    
+            <!-- HEADER: Loads the reusable page header and connection controls -->
+            <div data-load="html/layout/header.html"></div>
+    
+            <!-- PAGE CONTAINER: Router injects the selected page here -->
+            <div id="page-container"></div>
+    
+        </main>
+    </div>
 
-    <!-- SIDEBAR: Loads the reusable sidebar from a separate HTML file -->
-    <div class= "main-sidebar" data-load="html/layout/sidebar.html" ></div>
-
-    <!-- MAIN CONTENT: Contains the header and dynamically loaded pages -->
-    <main class="main-content">
-
-        <!-- HEADER: Loads the reusable page header and connection controls -->
-        <div data-load="html/layout/header.html"></div>
-
-        <!-- PAGE CONTAINER: Router injects the selected page here -->
-        <div id="page-container"></div>
-
-    </main>
-</div>
-
-<!-- JAVASCRIPT: Shared navigation utilities and tab management -->
-<script src="js/navigation/popup.js"></script>
-<script src="js/navigation/tabs.js"></script>
-
-<!-- PAGE CONFIGURATION: Defines routes, page titles, descriptions and scripts -->
-<script src="js/navigation/pages.js"></script>
-
-<!-- COMPONENT LOADER: Loads pages and reusable HTML components from any folder -->
-<script src="js/navigation/component-loader.js"></script>
-
-<!-- ROUTER: Handles navigation, nested routes, browser history and active sidebar state -->
-<script src="js/navigation/router.js"></script>
-
-<!-- FEATURE SCRIPTS: Settings and product functionality -->
-<script src="js/settings/settings.js"></script>
-<script src="js/products/products.js"></script>
-
-<!-- APPLICATION ENTRY POINT: Initializes the POS application -->
-<script src="js/app.js"></script>
+<!-- JAVASCRIPT: Shared navigation utilities and tab management 
+    ============================================================= -->
+    <script src="js/navigation/popup.js"></script>
+    <script src="js/navigation/tabs.js"></script>
+    
+    <!-- PAGE CONFIGURATION: Defines routes, page titles, descriptions and scripts -->
+    <script src="js/navigation/pages.js"></script>
+    
+    <!-- COMPONENT LOADER: Loads pages and reusable HTML components from any folder -->
+    <script src="js/navigation/component-loader.js"></script>
+    
+    <!-- ROUTER: Handles navigation, nested routes, browser history and active sidebar state -->
+    <script src="js/navigation/router.js"></script>
+    
+    <!-- FEATURE SCRIPTS: Settings and product functionality -->
+    <script src="js/settings/settings.js"></script>
+    <script src="js/products/products.js"></script>
+    
+    <!-- APPLICATION ENTRY POINT: Initializes the POS application -->
+    <script src="js/app.js"></script>
 
 </body>
 </html>
