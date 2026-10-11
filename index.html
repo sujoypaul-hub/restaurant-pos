@@ -1,278 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant POS</title>
-
-    <link rel="stylesheet"  href="css/themes.css">
-
-    <link  rel="stylesheet" href="css/style.css" >
-
-    <link rel="stylesheet"  href="css/sidebar.css">
-
-<!--    <link  rel="stylesheet" href="css/cart.css" >
-    <link  rel="stylesheet" href="css/orders.css" >
-    <link  rel="stylesheet" href="css/inventory.css" >     -->
-    
+        <link rel="stylesheet" href="css/themes.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/sidebar.css">
+        <link  rel="stylesheet" href="css/cart.css" >
+<!--    <link  rel="stylesheet" href="css/orders.css" >
+        <link  rel="stylesheet" href="css/inventory.css" >     -->
 </head>
-
-
+    
 <body>
 
 <div class="app">
 
+    <!-- SIDEBAR: Loads the reusable sidebar from a separate HTML file -->
+    <div class= "main-sidebar" data-include="layout/sidebar.html" ></div>
 
-<!-- ==================================================
-     SIDEBAR
-================================================== -->
-
-<aside class="sidebar">
-
-    <div class="sidebar-brand">
-
-        <div class="sidebar-logo">
-            🍗
-        </div>
-
-    </div>
-
-
-    <nav class="sidebar-nav">
-
-
-        <button
-            class="nav-btn"
-            data-route="billing"
-        >
-
-            <span class="nav-icon">
-                🧾
-            </span>
-
-            <span class="nav-label">
-                Billing
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-btn"
-            data-route="orders"
-        >
-
-            <span class="nav-icon">
-                📦
-            </span>
-
-            <span class="nav-label">
-                Orders
-            </span>
-
-        </button>
-
-
-        
-        <button class="nav-btn" data-route="history">
-            <span class="nav-icon">🕘</span>
-            <span class="nav-level">History</span>
-        </button>
-
-
-        
-        <button
-            class="nav-btn"
-            data-route="customers"
-        >
-
-            <span class="nav-icon">
-                👥
-            </span>
-
-            <span class="nav-label">
-                Customers
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-btn"
-            data-route="products"
-        >
-
-            <span class="nav-icon">
-                🍔
-            </span>
-
-            <span class="nav-label">
-                Products
-            </span>
-
-        </button>
-
-        <button
-            class="nav-btn"
-            data-route="inventory"
-        >
-            <span class="nav-icon">
-                📦
-            </span>
-        
-            <span class="nav-label">
-                Inventory
-            </span>
-        </button>
-        
-
-        <button
-            class="nav-btn"
-            data-route="reports"
-        >
-
-            <span class="nav-icon">
-                📊
-            </span>
-
-            <span class="nav-label">
-                Reports
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-btn"
-            data-route="marketing"
-        >
-
-            <span class="nav-icon">
-                📢
-            </span>
-
-            <span class="nav-label">
-                Marketing
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-btn"
-            data-route="coming-soon"
-        >
-
-            <span class="nav-icon">
-                🚀
-            </span>
-
-            <span class="nav-label">
-                Coming Soon
-            </span>
-
-        </button>
-
-
-        <button
-            class="nav-btn"
-            data-route="settings"
-        >
-
-            <span class="nav-icon">
-                ⚙️
-            </span>
-
-            <span class="nav-label">
-                Settings
-            </span>
-
-        </button>
-
-
-    </nav>
-
-
-</aside>
-
-
-
-<!-- =========================
-         MAIN CONTENT
-========================== -->
-
+    <!-- MAIN CONTENT: Contains the header and dynamically loaded pages -->
     <main class="main-content">
 
+        <!-- HEADER: Loads the reusable page header and connection controls -->
+        <div data-include="layout/header.html"></div>
 
-        <header class="topbar">
-
-            <button id="app-back-button" class="app-back-button" type="button" aria-label="Go back"> ← Back </button>
-
-            <div>
-
-                <h1 id="page-title">
-                    Billing
-                </h1>
-
-                <p id="page-description">
-                    Create a new order
-                </p>
-
-            </div>
-
-
-            <div class="topbar-actions">
-
-            
-                <div class="connection-status">  🟢 Online </div>
-            
-            </div>
-
-        </header>
-
-
-
-<!-- ==================================
-            PAGE CONTAINER
-=================================== -->
-
+        <!-- PAGE CONTAINER: Router injects the selected page here -->
         <div id="page-container"></div>
 
-
-
     </main>
-
 </div>
 
-
-<!-- JavaScript -->
+<!-- JAVASCRIPT: Shared navigation utilities and tab management -->
 <script src="js/navigation/popup.js"></script>
 <script src="js/navigation/tabs.js"></script>
 
-<!-- 1. Page and route configuration -->
-<script src="./js/navigation/pages.js"></script>
-    
-<!-- 2. Page + component loading functions -->
-<script src="./js/navigation/component-loader.js"></script>
+<!-- PAGE CONFIGURATION: Defines routes, page titles, descriptions and scripts -->
+<script src="js/navigation/pages.js"></script>
 
-<!-- 3. Navigation engine -->
-<script src="./js/navigation/router.js"></script>
+<!-- COMPONENT LOADER: Loads pages and reusable HTML components from any folder -->
+<script src="js/navigation/component-loader.js"></script>
 
-    
+<!-- ROUTER: Handles navigation, nested routes, browser history and active sidebar state -->
+<script src="js/navigation/router.js"></script>
+
+<!-- FEATURE SCRIPTS: Settings and product functionality -->
 <script src="js/settings/settings.js"></script>
-
 <script src="js/products/products.js"></script>
 
+<!-- APPLICATION ENTRY POINT: Initializes the POS application -->
 <script src="js/app.js"></script>
 
-
 </body>
-
 </html>
