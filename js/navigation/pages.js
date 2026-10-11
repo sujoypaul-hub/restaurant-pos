@@ -66,7 +66,31 @@ const appRoutes = {
         title: "Orders",
 
         description:
-            "View and manage restaurant orders"
+            "View and manage restaurant orders",
+        
+        children: {
+
+            /*
+            ======================================
+            THEME
+            ======================================
+            */
+
+            theme: {
+
+                page: "order-history",
+
+                title: "Order History",
+
+                description:
+                    "Your order history appears here"",
+                
+                scripts: [ "" ],
+
+
+            }
+
+        }
 
     },
 
