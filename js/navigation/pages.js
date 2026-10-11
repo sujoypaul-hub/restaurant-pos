@@ -78,7 +78,7 @@ const appRoutes = {
 
             "order-history": {
 
-                page: "order-history",
+                page: "orders/order-history",
 
                 title: "Order History",
 
@@ -363,7 +363,7 @@ const appRoutes = {
 
             theme: {
 
-                page: "theme",
+                page: "settings/theme",
 
                 title: "Appearance",
 
