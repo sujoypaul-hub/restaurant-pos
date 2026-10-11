@@ -62,7 +62,7 @@
     font-size: 29px;
     background: linear-gradient(145deg, #ff5c5c, #c51f2c);
     box-shadow: 0 12px 28px rgba(197, 31, 44, 0.3);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 /* =====================================================
@@ -92,11 +92,15 @@
 } */
 
 .header {
-    flex: 0 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 100;
-    background: var(--surface, var(--background));
+   flex: 0 0 auto;
+   width: 100%;
+   position: relative;
+   z-index: 100;
+   background: var(--surface, var(--background));
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 18px;
 }
 
 .header #page-title {
