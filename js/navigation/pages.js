@@ -76,7 +76,7 @@ const appRoutes = {
             ======================================
             */
 
-            order-history: {
+            "order-history": {
 
                 page: "order-history",
 
