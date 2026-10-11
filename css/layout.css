@@ -84,12 +84,6 @@
    HEADER CONTAINER
    Holds the reusable header component
 ===================================================== */
-/* .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-} */
 
 .header {
    flex: 0 0 auto;
