@@ -49,15 +49,19 @@
 }
 
 .main-menu-logo {
-    width: 58px;
-    height: 58px;
-    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 29px;
-    background: linear-gradient(145deg, #ff5c5c, #c51f2c);
-    box-shadow: 0 12px 28px rgba(197, 31, 44, 0.3);
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.main-menu-logo img {
+    display: block;
+    width: 100%;
+    max-width: 160px;
+    height: 60px;
+    object-fit: contain;
 }
 
 /* =====================================================
