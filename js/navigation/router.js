@@ -59,7 +59,7 @@ async function navigateTo(route, updateURL = true) {
     const container = document.getElementById("page-container");
     if (!container) return;
 
-    await loadHTML(container, `pages/${config.page}.html`, {
+    await loadHTML(container, `html/pages/${config.page}.html`, {
         pageConfig: config
     });
 }
