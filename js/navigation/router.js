@@ -243,7 +243,10 @@ async function navigateTo(
         );
 
     }
-
+    
+    if (window.POSShellReady) {
+        await window.POSShellReady;
+    }
 
     /*
     ==============================================
