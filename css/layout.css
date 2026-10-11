@@ -35,16 +35,21 @@
     z-index: 1000;
 }
 
-/* ==================================================
-   LOGO
-================================================== */
 
-.main-menu-brand {
+/* =====================================================
+   MAIN CONTENT
+   Offset by the width of the fixed main menu.
+===================================================== */
+
+.main-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 28px;
-    padding: 8px 0 16px;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    margin-left: 235px;
+    overflow: hidden;
+    background: var(--background);
 }
 
 .main-menu-logo {
