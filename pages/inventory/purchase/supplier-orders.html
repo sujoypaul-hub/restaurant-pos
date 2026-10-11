@@ -1,0 +1,624 @@
+<!-- ==========================================
+     SUPPLIER ORDERS
+========================================== -->
+
+<div class="supplier-orders-layout">
+
+    <main class="supplier-orders-main">
+
+        <!-- Header -->
+
+        <div class="supplier-orders-header">
+
+            <div>
+                <h2 class="supplier-orders-title">
+                    Supplier Orders
+                </h2>
+
+                <p class="supplier-orders-description">
+                    Plan purchases, track expected deliveries and record received goods.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Create Supplier Order -->
+
+        <section class="inventory-purchase-section">
+
+            <div class="supplier-orders-section-header">
+
+                <div>
+                    <h3>New Supplier Order</h3>
+
+                    <p>
+                        Creating an order does not increase inventory.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="supplier-order-form">
+
+                <div class="supplier-order-details-grid">
+
+                    <label class="purchase-field">
+                        <span>Supplier</span>
+
+                        <select id="supplier-order-supplier" required>
+                            <option value="">Select supplier</option>
+                            <option value="ABC Foods">ABC Foods</option>
+                            <option value="Fresh Chicken Supplier">Fresh Chicken Supplier</option>
+                            <option value="Local Wholesale">Local Wholesale</option>
+                        </select>
+                    </label>
+
+
+                    <label class="purchase-field">
+                        <span>Order Date</span>
+
+                        <input
+                            type="date"
+                            id="supplier-order-date"
+                            required
+                        >
+                    </label>
+
+
+                    <label class="purchase-field">
+                        <span>Expected Delivery</span>
+
+                        <input
+                            type="date"
+                            id="supplier-order-expected-date"
+                            required
+                        >
+                    </label>
+
+                </div>
+
+
+                <div class="supplier-orders-items-header">
+
+                    <div>
+                        <h4>Order Items</h4>
+
+                        <p>
+                            Add the quantities you want to order.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="supplier-order-add-item"
+                        class="purchase-add-item-btn"
+                    >
+                        + Add Item
+                    </button>
+
+                </div>
+
+
+                <div class="purchase-items-table supplier-order-items-table">
+
+                    <div class="purchase-table-head">
+
+                        <span>Item</span>
+                        <span>Quantity</span>
+                        <span>Unit</span>
+                        <span>Est. Rate</span>
+                        <span>Total</span>
+                        <span></span>
+
+                    </div>
+
+                    <div
+                        id="supplier-order-items"
+                        class="purchase-items"
+                    ></div>
+
+                </div>
+
+
+                <label class="purchase-field supplier-order-notes-field">
+
+                    <span>Notes (Optional)</span>
+
+                    <textarea
+                        id="supplier-order-notes"
+                        rows="2"
+                        placeholder="Delivery instructions or other notes..."
+                    ></textarea>
+
+                </label>
+
+
+                <div
+                    id="supplier-order-form-message"
+                    class="supplier-order-form-message"
+                    aria-live="polite"
+                ></div>
+
+
+                <div class="supplier-order-form-actions">
+
+                    <strong>
+                        Estimated Total:
+                        <span id="supplier-order-estimated-total">₹0</span>
+                    </strong>
+
+                    <div>
+                        <button
+                            type="button"
+                            id="supplier-order-save-draft"
+                            class="supplier-order-draft-btn"
+                        >
+                            Save Draft
+                        </button>
+
+                        <button
+                            type="button"
+                            id="supplier-order-place"
+                            class="supplier-order-place-btn"
+                        >
+                            Place Order
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Existing Orders -->
+
+        <section class="inventory-purchase-section supplier-orders-list-section">
+
+            <div class="supplier-orders-section-header">
+
+                <div>
+                    <h3>Supplier Order List</h3>
+
+                    <p>
+                        Follow orders from preparation to delivery.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="supplier-orders-filters">
+
+                <input
+                    type="search"
+                    id="supplier-order-search"
+                    placeholder="Search order or supplier..."
+                    aria-label="Search supplier orders"
+                >
+
+                <select
+                    id="supplier-order-status-filter"
+                    aria-label="Filter supplier orders"
+                >
+                    <option value="all">All Orders</option>
+                    <option value="draft">Draft</option>
+                    <option value="ordered">Ordered</option>
+                    <option value="partially-received">Partially Received</option>
+                    <option value="received">Received</option>
+                </select>
+
+            </div>
+
+
+            <div class="supplier-orders-table-wrap">
+
+                <table class="supplier-orders-table">
+
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Supplier</th>
+                            <th>Expected</th>
+                            <th>Items</th>
+                            <th>Estimated Total</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="supplier-orders-tbody">
+                        <tr>
+                            <td colspan="7">
+                                Loading supplier orders...
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                id="supplier-orders-empty"
+                class="supplier-orders-empty"
+                hidden
+            >
+                <div>📦</div>
+
+                <strong>No supplier orders found</strong>
+
+                <p>Create a draft or place your first supplier order.</p>
+
+            </div>
+
+
+            <div class="supplier-orders-table-footer">
+
+                <span id="supplier-orders-count">
+                    0 orders
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         RIGHT SIDEBAR
+    ========================================== -->
+
+    <aside class="right-sidebar supplier-orders-sidebar">
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Delivery Overview
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="supplier-orders-summary-main">
+                    <span>Awaiting Delivery</span>
+
+                    <strong id="supplier-orders-awaiting">
+                        0
+                    </strong>
+                </div>
+
+                <div class="supplier-orders-summary-row">
+                    <span>Partially Received</span>
+
+                    <strong id="supplier-orders-partial">
+                        0
+                    </strong>
+                </div>
+
+                <div class="supplier-orders-summary-row">
+                    <span>Overdue Deliveries</span>
+
+                    <strong
+                        id="supplier-orders-overdue"
+                        class="supplier-orders-overdue-value"
+                    >
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                Incoming Stock Value
+            </h3>
+
+            <div class="right-sidebar-content">
+
+                <div class="supplier-orders-summary-main">
+                    <span>Outstanding Ordered Value</span>
+
+                    <strong id="supplier-orders-incoming-value">
+                        ₹0
+                    </strong>
+                </div>
+
+                <p class="supplier-orders-sidebar-note">
+                    Estimated value of quantities ordered but not yet received.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="right-sidebar-section">
+
+            <h3 class="right-sidebar-title">
+                How It Works
+            </h3>
+
+            <div class="right-sidebar-content supplier-orders-guide">
+
+                <div>
+                    <strong>1. Place Order</strong>
+                    <small>Record what you want to buy.</small>
+                </div>
+
+                <div>
+                    <strong>2. Receive Delivery</strong>
+                    <small>Enter the quantities actually delivered.</small>
+                </div>
+
+                <div>
+                    <strong>3. Stock Updates</strong>
+                    <small>Received quantities are added to inventory.</small>
+                </div>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
+
+
+<!-- ==========================================
+     RECEIVE DELIVERY POPUP
+========================================== -->
+
+<div
+    class="supplier-orders-modal pos-modal"
+    id="supplier-order-receive-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="supplier-orders-modal-overlay"
+        data-popup-close
+    ></div>
+
+
+    <div
+        class="supplier-orders-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="supplier-order-receive-title"
+    >
+
+        <div class="supplier-orders-modal-header">
+
+            <div>
+                <h3 id="supplier-order-receive-title">
+                    Record Delivery
+                </h3>
+
+                <p id="supplier-order-receive-description">
+                    Enter the quantities actually received.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="supplier-orders-modal-close"
+                data-popup-close
+                aria-label="Close receive delivery popup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="supplier-order-receive-form">
+
+            <input
+                type="hidden"
+                id="supplier-order-receive-id"
+            >
+
+
+            <label class="purchase-field supplier-receipt-field">
+
+                <span>Actual Receipt Date</span>
+
+                <input
+                    type="date"
+                    id="supplier-receipt-date"
+                    required
+                >
+
+            </label>
+
+
+            <label class="purchase-field supplier-receipt-field">
+
+                <span>Supplier Invoice / Bill Number</span>
+
+                <input
+                    type="text"
+                    id="supplier-receipt-invoice"
+                    placeholder="Enter invoice number if available"
+                >
+
+            </label>
+
+
+            <div class="supplier-receipt-items-wrap">
+
+                <table class="supplier-receipt-items-table">
+
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Remaining</th>
+                            <th>Received Now</th>
+                            <th>Actual Rate</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="supplier-receipt-items">
+                        <!-- Generated by JavaScript -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="supplier-receipt-total">
+
+                <span>Value of Goods Received</span>
+
+                <strong id="supplier-receipt-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="supplier-receipt-payment">
+
+                <h4>Payment for This Receipt</h4>
+
+                <div class="supplier-receipt-payment-grid">
+
+                    <label class="purchase-field">
+
+                        <span>Payment Status</span>
+
+                        <select id="supplier-receipt-payment-status">
+
+                            <option value="due">Due</option>
+                            <option value="paid">Paid</option>
+                            <option value="partially-paid">Partially Paid</option>
+
+                        </select>
+
+                    </label>
+
+
+                    <label class="purchase-field">
+
+                        <span>Payment Method</span>
+
+                        <select id="supplier-receipt-payment-method">
+
+                            <option value="cash">Cash</option>
+                            <option value="upi">UPI</option>
+                            <option value="card">Card</option>
+                            <option value="bank">Bank Transfer</option>
+
+                        </select>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="supplier-receipt-payment-details"
+                    class="supplier-receipt-payment-details"
+                    hidden
+                >
+
+                    <label class="purchase-field">
+
+                        <span>Paid Amount (₹)</span>
+
+                        <input
+                            type="number"
+                            id="supplier-receipt-paid"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                        >
+
+                    </label>
+
+
+                    <label class="purchase-field">
+
+                        <span>Remaining Due (₹)</span>
+
+                        <input
+                            type="number"
+                            id="supplier-receipt-due"
+                            readonly
+                            value="0"
+                        >
+
+                    </label>
+
+
+                    <label class="purchase-field">
+
+                        <span>Payment Due Date</span>
+
+                        <input
+                            type="date"
+                            id="supplier-receipt-due-date"
+                        >
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <label class="purchase-field supplier-receipt-field">
+
+                <span>Receipt Notes (Optional)</span>
+
+                <textarea
+                    id="supplier-receipt-notes"
+                    rows="2"
+                    placeholder="Damaged items, invoice notes, etc."
+                ></textarea>
+
+            </label>
+
+
+            <div
+                id="supplier-receipt-error"
+                class="supplier-order-form-message"
+                aria-live="polite"
+            ></div>
+
+
+            <div class="supplier-orders-modal-actions">
+
+                <button
+                    type="button"
+                    class="supplier-order-draft-btn"
+                    data-popup-close
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="supplier-order-place-btn"
+                >
+                    Save Receipt & Update Stock
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
