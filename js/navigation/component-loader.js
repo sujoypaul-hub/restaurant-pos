@@ -112,19 +112,19 @@ async function loadComponent(element, parentPaths = []) {
         return;
     }
 
-    const componentURL = resolveProjectPath(filePath);
+    const componentURL = new URL(
+    filePath.replace(/^\/+/, ""),
+    document.baseURI ).pathname;
 
-    // Prevent an accidental circular include.
-    if (parentPaths.includes(componentURL)) {
-        console.error(
-            `Circular component include detected: ${filePath}`
-        );
 
-        element.innerHTML =
-            `<!-- Circular include prevented: ${filePath} -->`;
+// Prevent a component from including itself recursively.
+const normalizedPath = new URL(filePath.replace(/^\/+/, ""), document.baseURI).pathname;
 
-        return;
-    }
+if (parentPaths.includes(normalizedPath)) {
+    console.error(`Circular component include detected: ${filePath}`);
+    element.innerHTML = `<!-- Circular include prevented: ${filePath} -->`;
+    return;
+}
 
     // Mark the element as loading.
     element.dataset.componentLoading = "true";
