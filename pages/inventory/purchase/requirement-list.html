@@ -1,21 +1,21 @@
 <!-- ==========================================
-     SUPPLIER ORDERS
+     Requirement List
 ========================================== -->
 
-<div class="supplier-orders-layout">
+<div class="requirement-list-layout">
 
-    <main class="supplier-orders-main">
+    <main class="requirement-list-main">
 
         <!-- Header -->
 
-        <div class="supplier-orders-header">
+        <div class="requirement-list-header">
 
             <div>
-                <h2 class="supplier-orders-title">
-                    Supplier Orders
+                <h2 class="requirement-list-title">
+                    Requirement List
                 </h2>
 
-                <p class="supplier-orders-description">
+                <p class="requirement-list-description">
                     Plan purchases, track expected deliveries and record received goods.
                 </p>
             </div>
@@ -23,14 +23,14 @@
         </div>
 
 
-        <!-- Create Supplier Order -->
+        <!-- Create Requirement List -->
 
         <section class="inventory-purchase-section">
 
-            <div class="supplier-orders-section-header">
+            <div class="requirement-list-section-header">
 
                 <div>
-                    <h3>New Supplier Order</h3>
+                    <h3>New Requirement List</h3>
 
                     <p>
                         Creating an order does not increase inventory.
@@ -40,14 +40,14 @@
             </div>
 
 
-            <form id="supplier-order-form">
+            <form id="requirement-list-form">
 
-                <div class="supplier-order-details-grid">
+                <div class="requirement-list-details-grid">
 
                     <label class="purchase-field">
                         <span>Supplier</span>
 
-                        <select id="supplier-order-supplier" required>
+                        <select id="requirement-list-supplier" required>
                             <option value="">Select supplier</option>
                             <option value="ABC Foods">ABC Foods</option>
                             <option value="Fresh Chicken Supplier">Fresh Chicken Supplier</option>
@@ -61,7 +61,7 @@
 
                         <input
                             type="date"
-                            id="supplier-order-date"
+                            id="requirement-list-date"
                             required
                         >
                     </label>
@@ -72,7 +72,7 @@
 
                         <input
                             type="date"
-                            id="supplier-order-expected-date"
+                            id="requirement-list-expected-date"
                             required
                         >
                     </label>
@@ -80,7 +80,7 @@
                 </div>
 
 
-                <div class="supplier-orders-items-header">
+                <div class="requirement-list-items-header">
 
                     <div>
                         <h4>Order Items</h4>
@@ -92,7 +92,7 @@
 
                     <button
                         type="button"
-                        id="supplier-order-add-item"
+                        id="requirement-list-add-item"
                         class="purchase-add-item-btn"
                     >
                         + Add Item
@@ -101,7 +101,7 @@
                 </div>
 
 
-                <div class="purchase-items-table supplier-order-items-table">
+                <div class="purchase-items-table requirement-list-items-table">
 
                     <div class="purchase-table-head">
 
@@ -115,19 +115,19 @@
                     </div>
 
                     <div
-                        id="supplier-order-items"
+                        id="requirement-list-items"
                         class="purchase-items"
                     ></div>
 
                 </div>
 
 
-                <label class="purchase-field supplier-order-notes-field">
+                <label class="purchase-field requirement-list-notes-field">
 
                     <span>Notes (Optional)</span>
 
                     <textarea
-                        id="supplier-order-notes"
+                        id="requirement-list-notes"
                         rows="2"
                         placeholder="Delivery instructions or other notes..."
                     ></textarea>
@@ -136,32 +136,32 @@
 
 
                 <div
-                    id="supplier-order-form-message"
-                    class="supplier-order-form-message"
+                    id="requirement-list-form-message"
+                    class="requirement-list-form-message"
                     aria-live="polite"
                 ></div>
 
 
-                <div class="supplier-order-form-actions">
+                <div class="requirement-list-form-actions">
 
                     <strong>
                         Estimated Total:
-                        <span id="supplier-order-estimated-total">₹0</span>
+                        <span id="requirement-list-estimated-total">₹0</span>
                     </strong>
 
                     <div>
                         <button
                             type="button"
-                            id="supplier-order-save-draft"
-                            class="supplier-order-draft-btn"
+                            id="requirement-list-save-draft"
+                            class="requirement-list-draft-btn"
                         >
                             Save Draft
                         </button>
 
                         <button
                             type="button"
-                            id="supplier-order-place"
-                            class="supplier-order-place-btn"
+                            id="requirement-list-place"
+                            class="requirement-list-place-btn"
                         >
                             Place Order
                         </button>
@@ -176,12 +176,12 @@
 
         <!-- Existing Orders -->
 
-        <section class="inventory-purchase-section supplier-orders-list-section">
+        <section class="inventory-purchase-section requirement-list-list-section">
 
-            <div class="supplier-orders-section-header">
+            <div class="requirement-list-section-header">
 
                 <div>
-                    <h3>Supplier Order List</h3>
+                    <h3>Requirement List List</h3>
 
                     <p>
                         Follow orders from preparation to delivery.
@@ -191,18 +191,18 @@
             </div>
 
 
-            <div class="supplier-orders-filters">
+            <div class="requirement-list-filters">
 
                 <input
                     type="search"
-                    id="supplier-order-search"
+                    id="requirement-list-search"
                     placeholder="Search order or supplier..."
-                    aria-label="Search supplier orders"
+                    aria-label="Search Requirement List"
                 >
 
                 <select
-                    id="supplier-order-status-filter"
-                    aria-label="Filter supplier orders"
+                    id="requirement-list-status-filter"
+                    aria-label="Filter Requirement List"
                 >
                     <option value="all">All Orders</option>
                     <option value="draft">Draft</option>
@@ -214,9 +214,9 @@
             </div>
 
 
-            <div class="supplier-orders-table-wrap">
+            <div class="requirement-list-table-wrap">
 
-                <table class="supplier-orders-table">
+                <table class="requirement-list-table">
 
                     <thead>
                         <tr>
@@ -230,10 +230,10 @@
                         </tr>
                     </thead>
 
-                    <tbody id="supplier-orders-tbody">
+                    <tbody id="requirement-list-tbody">
                         <tr>
                             <td colspan="7">
-                                Loading supplier orders...
+                                Loading Requirement List...
                             </td>
                         </tr>
                     </tbody>
@@ -244,22 +244,22 @@
 
 
             <div
-                id="supplier-orders-empty"
-                class="supplier-orders-empty"
+                id="requirement-list-empty"
+                class="requirement-list-empty"
                 hidden
             >
                 <div>📦</div>
 
-                <strong>No supplier orders found</strong>
+                <strong>No Requirement List found</strong>
 
-                <p>Create a draft or place your first supplier order.</p>
+                <p>Create a draft or place your first Requirement List.</p>
 
             </div>
 
 
-            <div class="supplier-orders-table-footer">
+            <div class="requirement-list-table-footer">
 
-                <span id="supplier-orders-count">
+                <span id="requirement-list-count">
                     0 orders
                 </span>
 
@@ -274,7 +274,7 @@
          RIGHT SIDEBAR
     ========================================== -->
 
-    <aside class="right-sidebar supplier-orders-sidebar">
+    <aside class="right-sidebar requirement-list-sidebar">
 
         <section class="right-sidebar-section">
 
@@ -284,28 +284,28 @@
 
             <div class="right-sidebar-content">
 
-                <div class="supplier-orders-summary-main">
+                <div class="requirement-list-summary-main">
                     <span>Awaiting Delivery</span>
 
-                    <strong id="supplier-orders-awaiting">
+                    <strong id="requirement-list-awaiting">
                         0
                     </strong>
                 </div>
 
-                <div class="supplier-orders-summary-row">
+                <div class="requirement-list-summary-row">
                     <span>Partially Received</span>
 
-                    <strong id="supplier-orders-partial">
+                    <strong id="requirement-list-partial">
                         0
                     </strong>
                 </div>
 
-                <div class="supplier-orders-summary-row">
+                <div class="requirement-list-summary-row">
                     <span>Overdue Deliveries</span>
 
                     <strong
-                        id="supplier-orders-overdue"
-                        class="supplier-orders-overdue-value"
+                        id="requirement-list-overdue"
+                        class="requirement-list-overdue-value"
                     >
                         0
                     </strong>
@@ -324,15 +324,15 @@
 
             <div class="right-sidebar-content">
 
-                <div class="supplier-orders-summary-main">
+                <div class="requirement-list-summary-main">
                     <span>Outstanding Ordered Value</span>
 
-                    <strong id="supplier-orders-incoming-value">
+                    <strong id="requirement-list-incoming-value">
                         ₹0
                     </strong>
                 </div>
 
-                <p class="supplier-orders-sidebar-note">
+                <p class="requirement-list-sidebar-note">
                     Estimated value of quantities ordered but not yet received.
                 </p>
 
@@ -347,7 +347,7 @@
                 How It Works
             </h3>
 
-            <div class="right-sidebar-content supplier-orders-guide">
+            <div class="right-sidebar-content requirement-list-guide">
 
                 <div>
                     <strong>1. Place Order</strong>
@@ -378,39 +378,39 @@
 ========================================== -->
 
 <div
-    class="supplier-orders-modal pos-modal"
-    id="supplier-order-receive-modal"
+    class="requirement-list-modal pos-modal"
+    id="requirement-list-receive-modal"
     aria-hidden="true"
 >
 
     <div
-        class="supplier-orders-modal-overlay"
+        class="requirement-list-modal-overlay"
         data-popup-close
     ></div>
 
 
     <div
-        class="supplier-orders-modal-content"
+        class="requirement-list-modal-content"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="supplier-order-receive-title"
+        aria-labelledby="requirement-list-receive-title"
     >
 
-        <div class="supplier-orders-modal-header">
+        <div class="requirement-list-modal-header">
 
             <div>
-                <h3 id="supplier-order-receive-title">
+                <h3 id="requirement-list-receive-title">
                     Record Delivery
                 </h3>
 
-                <p id="supplier-order-receive-description">
+                <p id="requirement-list-receive-description">
                     Enter the quantities actually received.
                 </p>
             </div>
 
             <button
                 type="button"
-                class="supplier-orders-modal-close"
+                class="requirement-list-modal-close"
                 data-popup-close
                 aria-label="Close receive delivery popup"
             >
@@ -420,11 +420,11 @@
         </div>
 
 
-        <form id="supplier-order-receive-form">
+        <form id="requirement-list-receive-form">
 
             <input
                 type="hidden"
-                id="supplier-order-receive-id"
+                id="requirement-list-receive-id"
             >
 
 
@@ -593,16 +593,16 @@
 
             <div
                 id="supplier-receipt-error"
-                class="supplier-order-form-message"
+                class="requirement-list-form-message"
                 aria-live="polite"
             ></div>
 
 
-            <div class="supplier-orders-modal-actions">
+            <div class="requirement-list-modal-actions">
 
                 <button
                     type="button"
-                    class="supplier-order-draft-btn"
+                    class="requirement-list-draft-btn"
                     data-popup-close
                 >
                     Cancel
@@ -610,7 +610,7 @@
 
                 <button
                     type="submit"
-                    class="supplier-order-place-btn"
+                    class="requirement-list-place-btn"
                 >
                     Save Receipt & Update Stock
                 </button>
