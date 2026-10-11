@@ -39,3 +39,30 @@
     background: linear-gradient(145deg, #ff5c5c, #c51f2c);
     box-shadow: 0 12px 28px rgba(197, 31, 44, 0.3);
 }
+
+
+/* ==================================================
+   Main Content
+================================================== */
+
+.main-content {
+    flex: 1;
+    padding: 25px;
+    background: var(--background);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.header #page-title {
+    color: var(--text);
+}
+
+
+.header #page-description {
+    color: var(--muted);
+}
