@@ -72,22 +72,18 @@ const appRoutes = {
 
             /*
             ======================================
-            THEME
+            Order History
             ======================================
             */
 
-            theme: {
+            order-history: {
 
                 page: "order-history",
 
                 title: "Order History",
 
                 description:
-                    "Your order history appears here"",
-                
-                scripts: [ "" ],
-
-
+                    "Your order history appears here",
             }
 
         }
