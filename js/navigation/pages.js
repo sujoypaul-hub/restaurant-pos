@@ -74,24 +74,6 @@ const appRoutes = {
 
     /*
     ==============================================
-    PRODUCTS
-    ==============================================
-    */
-
-    products: {
-
-        page: "products",
-
-        title: "Products",
-
-        description:
-            "Manage restaurant products"
-
-    },
-
-
-    /*
-    ==============================================
     INVENTORY
     ==============================================
     */
@@ -335,25 +317,7 @@ const appRoutes = {
 
     },
 
-
-    /*
-    ==============================================
-    COMING SOON
-    ==============================================
-    */
-
-    "coming-soon": {
-
-        page: "coming-soon",
-
-        title: "Coming Soon",
-
-        description:
-            "New features are coming soon"
-
-    },
-
-
+    
     /*
     ==============================================
     SETTINGS
@@ -396,6 +360,26 @@ const appRoutes = {
     },
 
     
+
+    /*
+    ==============================================
+    PRODUCTS
+    ==============================================
+    */
+
+    products: {
+
+        page: "products",
+
+        title: "Products",
+
+        description:
+            "Manage restaurant products"
+
+    },
+    
+
+    
     /*
     ==============================================
     CUSTOMERS
@@ -413,17 +397,24 @@ const appRoutes = {
 
     },
 
-    
+
     /*
     ==============================================
-    History
+    COMING SOON
     ==============================================
     */
-    
-    history: {
-    page: "history",
-    title: "History",
-    description: "View complete order history"
+
+    "coming-soon": {
+
+        page: "coming-soon",
+
+        title: "Coming Soon",
+
+        description:
+            "New features are coming soon"
+
     },
 
+
+    
 };
