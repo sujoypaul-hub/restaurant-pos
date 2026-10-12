@@ -1,95 +1,160 @@
-/* ==========================================================
-   RESTAURANT POS — GLOBAL HTML ELEMENT STYLES
-   Styles standard HTML elements across the whole application.
-   Use a class or ID only when a particular element needs an
-   intentional exception to these defaults.
-   Keep theme color variables in theme.css.
-   ========================================================== */
-
-/* 1. Theme-aware design tokens */
-:root {
-    --ui-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --ui-background: var(--background-color, #f5f6f8);
-    --ui-surface: var(--card-background, #ffffff);
-    --ui-text: var(--text-color, #202124);
-    --ui-muted: var(--muted-text-color, #6b7280);
-    --ui-border: var(--border-color, #d9dee7);
-    --ui-accent: var(--theme-color, #dc2626);
-    --ui-radius: 9px;
-    --ui-shadow: 0 1px 2px rgb(16 24 40 / 5%);
-}
-
-/* 2. Document defaults */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html {
-    min-width: 320px;
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    min-height: 100vh;
-    margin: 0;
-    color: var(--ui-text);
-    background: var(--ui-background);
-    font-family: var(--ui-font);
+    background: var(--ui-accent);
+    border: 1px solid var(--ui-accent);
+    border-radius: var(--ui-radius);
+    box-shadow: var(--ui-shadow);
     font-size: 14px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-/* 3. Headings and text */
-h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 0.6em;
-    color: var(--ui-text);
-    font-weight: 650;
-    line-height: 1.25;
-}
-
-h1 { font-size: clamp(1.5rem, 2vw, 2rem); }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.2rem; }
-h4 { font-size: 1.05rem; }
-h5 { font-size: 0.95rem; }
-h6 { font-size: 0.85rem; }
-
-p {
-    margin: 0 0 1em;
-}
-
-small {
-    color: var(--ui-muted);
-    font-size: 0.85em;
-}
-
-strong, b {
-    font-weight: 650;
-}
-
-hr {
-    height: 1px;
-    margin: 1.25rem 0;
-    background: var(--ui-border);
-    border: 0;
-}
-
-/* 4. Links and media */
-a {
-    color: var(--ui-accent);
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
     text-decoration: none;
-    text-underline-offset: 3px;
+    white-space: normal;
+    transition: background-color 160ms ease, border-color 160ms ease,
+                box-shadow 160ms ease, transform 160ms ease;
 }
 
-a:hover {
-    text-decoration: underline;
+button:hover:not(:disabled),
+input[type="button"]:hover:not(:disabled),
+input[type="submit"]:hover:not(:disabled),
+input[type="reset"]:hover:not(:disabled) {
+    filter: brightness(0.94);
 }
 
-img, svg, video, canvas {
+button:active:not(:disabled),
+input[type="button"]:active:not(:disabled),
+input[type="submit"]:active:not(:disabled),
+input[type="reset"]:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="submit"]:disabled,
+input[type="reset"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: none;
+}
+
+/* 7. Text inputs, number/date inputs, dropdowns and textareas */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([type="hidden"]),
+select,
+textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 10px 12px;
+    color: var(--ui-text);
+    background: var(--ui-surface);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+    box-shadow: 0 1px 2px rgb(16 24 40 / 3%);
+    line-height: 1.4;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+textarea {
+    min-height: 104px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+select {
+    padding-right: 34px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--ui-muted);
+    opacity: 0.85;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([type="hidden"]):hover,
+select:hover,
+textarea:hover {
+    border-color: color-mix(in srgb, var(--ui-border) 55%, var(--ui-text));
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([type="hidden"]):focus,
+select:focus,
+textarea:focus {
+    border-color: var(--ui-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-accent) 16%, transparent);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    color: var(--ui-muted);
+    background: var(--ui-background);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+input[readonly],
+textarea[readonly] {
+    background: var(--ui-background);
+}
+
+/* 8. Labels and form grouping elements */
+form {
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: var(--ui-text);
+    font-size: 13px;
+    font-weight: 550;
+}
+
+fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 16px;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+}
+
+legend {
+    padding: 0 6px;
+    font-weight: 650;
+}
+
+/* 9. Checkbox, radio, slider, color and file inputs */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    margin: 0 6px 0 0;
+    accent-color: var(--ui-accent);
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled,
+input[type="range"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--ui-accent);
+}
+
+input[type="color"] {
+    width: 44px;
+    height: 42px;
+    padding: 4px;
+    background: var(--ui-surface);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+}
+
+input[type="file"] {
     max-width: 100%;
-}
+    color: var(--ui-text);
+    font: inherit;
