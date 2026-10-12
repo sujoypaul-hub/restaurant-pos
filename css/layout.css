@@ -24,7 +24,6 @@
     width: 235px;
     min-width: 235px;
     height: 100vh;
-    padding: 22px 12px;
     display: flex;
     flex-direction: column;
     background: var(--sidebar);
