@@ -1,22 +1,25 @@
-/* =====================================================
+/* ==========================================================
    RESTAURANT POS — GLOBAL HTML ELEMENT STYLES
-   Only HTML elements and their attributes/states are styled here.
-   Keep app layout and component classes in separate CSS files.
-   Theme variables come from theme.css when available.
-   ===================================================== */
+   Styles standard HTML elements across the whole application.
+   Use a class or ID only when a particular element needs an
+   intentional exception to these defaults.
+   Keep theme color variables in theme.css.
+   ========================================================== */
 
-/* Basic document defaults */
+/* 1. Theme-aware design tokens */
 :root {
-    --global-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --global-background: var(--background-color, #f5f6f8);
-    --global-surface: var(--card-background, #ffffff);
-    --global-text: var(--text-color, #202124);
-    --global-muted: var(--muted-text-color, #6b7280);
-    --global-border: var(--border-color, #d1d5db);
-    --global-accent: var(--theme-color, #dc2626);
-    --global-radius: 8px;
+    --ui-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --ui-background: var(--background-color, #f5f6f8);
+    --ui-surface: var(--card-background, #ffffff);
+    --ui-text: var(--text-color, #202124);
+    --ui-muted: var(--muted-text-color, #6b7280);
+    --ui-border: var(--border-color, #d9dee7);
+    --ui-accent: var(--theme-color, #dc2626);
+    --ui-radius: 9px;
+    --ui-shadow: 0 1px 2px rgb(16 24 40 / 5%);
 }
 
+/* 2. Document defaults */
 *,
 *::before,
 *::after {
@@ -24,73 +27,69 @@
 }
 
 html {
-    font-family: var(--global-font);
+    min-width: 320px;
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
 }
 
 body {
+    min-height: 100vh;
     margin: 0;
-    color: var(--global-text);
-    background: var(--global-background);
-    font-family: var(--global-font);
+    color: var(--ui-text);
+    background: var(--ui-background);
+    font-family: var(--ui-font);
     font-size: 14px;
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-/* Text elements */
+/* 3. Headings and text */
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    color: var(--global-text);
+    margin: 0 0 0.6em;
+    color: var(--ui-text);
     font-weight: 650;
-    line-height: 1.3;
+    line-height: 1.25;
 }
+
+h1 { font-size: clamp(1.5rem, 2vw, 2rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.05rem; }
+h5 { font-size: 0.95rem; }
+h6 { font-size: 0.85rem; }
 
 p {
-    margin-top: 0;
+    margin: 0 0 1em;
 }
 
 small {
-    color: var(--global-muted);
-    font-size: 0.875em;
+    color: var(--ui-muted);
+    font-size: 0.85em;
 }
 
 strong, b {
-    font-weight: 700;
+    font-weight: 650;
 }
 
-/* Links and images */
+hr {
+    height: 1px;
+    margin: 1.25rem 0;
+    background: var(--ui-border);
+    border: 0;
+}
+
+/* 4. Links and media */
 a {
-    color: var(--global-accent);
+    color: var(--ui-accent);
     text-decoration: none;
+    text-underline-offset: 3px;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-a:focus-visible {
-    outline: 2px solid var(--global-accent);
-    outline-offset: 2px;
-}
-
 img, svg, video, canvas {
     max-width: 100%;
 }
-
-img {
-    height: auto;
-}
-
-/* Shared font for native form controls */
-button,
-input,
-select,
-textarea {
-    font: inherit;
-}
-
-/* Text-like inputs */
-input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="button"]):not([type="submit"]):not([type="reset"]),
-select,
-textarea {
