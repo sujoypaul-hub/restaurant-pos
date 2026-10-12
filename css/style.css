@@ -1,52 +1,88 @@
-
 /* =====================================================
-   RESTAURANT POS — GLOBAL DESIGN SYSTEM
-   Shared styles for the entire application.
-   Keep theme-specific variables in theme.css.
-===================================================== */
+   RESTAURANT POS — GLOBAL HTML ELEMENT STYLES
+   Only HTML elements and their attributes/states are styled here.
+   Keep app layout and component classes in separate CSS files.
+   Theme variables come from theme.css when available.
+   ===================================================== */
 
-/* 1. Global design tokens */
+/* Basic document defaults */
 :root {
-    --ui-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --ui-radius-sm: 6px;
-    --ui-radius-md: 10px;
-    --ui-radius-lg: 14px;
-    --ui-radius-pill: 999px;
-    --ui-space-1: 4px;
-    --ui-space-2: 8px;
-    --ui-space-3: 12px;
-    --ui-space-4: 16px;
-    --ui-space-5: 20px;
-    --ui-space-6: 24px;
-    --ui-border: var(--border-color, #e5e7eb);
-    --ui-surface: var(--card-background, #ffffff);
-    --ui-background: var(--background-color, #f5f6f8);
-    --ui-text: var(--text-color, #202124);
-    --ui-muted: var(--muted-text-color, #6b7280);
-    --ui-accent: var(--theme-color, #dc2626);
-    --ui-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    --global-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --global-background: var(--background-color, #f5f6f8);
+    --global-surface: var(--card-background, #ffffff);
+    --global-text: var(--text-color, #202124);
+    --global-muted: var(--muted-text-color, #6b7280);
+    --global-border: var(--border-color, #d1d5db);
+    --global-accent: var(--theme-color, #dc2626);
+    --global-radius: 8px;
 }
 
-/* 2. Consistent sizing and document defaults */
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
+html {
+    font-family: var(--global-font);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
-    font-family: var(--ui-font);
+    margin: 0;
+    color: var(--global-text);
+    background: var(--global-background);
+    font-family: var(--global-font);
     font-size: 14px;
     line-height: 1.5;
-    color: var(--ui-text);
-    background: var(--ui-background);
 }
 
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    color: var(--global-text);
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+p {
+    margin-top: 0;
+}
+
+small {
+    color: var(--global-muted);
+    font-size: 0.875em;
+}
+
+strong, b {
+    font-weight: 700;
+}
+
+/* Links and images */
+a {
+    color: var(--global-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--global-accent);
+    outline-offset: 2px;
+}
+
+img, svg, video, canvas {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+/* Shared font for native form controls */
 button,
 input,
 select,
@@ -54,692 +90,7 @@ textarea {
     font: inherit;
 }
 
-button {
-    cursor: pointer;
-}
-
-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.55;
-}
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 2px solid var(--ui-accent);
-    outline-offset: 2px;
-}
-
-a {
-    color: var(--ui-accent);
-    text-decoration: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-/* ======================================================================================
-GLOBAL CLASS DESIGN
-========================================================================================*/
-
-
-/* 3. Application shell */
-.app-shell {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    background: var(--ui-background);
-}
-
-.app-sidebar {
-    flex: 0 0 240px;
-    width: 240px;
-    min-height: 100vh;
-}
-
-.app-main {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-width: 0;
-    min-height: 100vh;
-}
-
-.app-header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    flex: 0 0 auto;
-}
-
-.app-page-container {
-    flex: 1;
-    min-width: 0;
-    padding: var(--ui-space-6);
-}
-
-.ui-loading {
-    padding: 40px 20px;
-    color: var(--ui-muted);
-    text-align: center;
-}
-
-/* 4. Main menu */
-.menu-panel {
-    display: flex;
-    position: sticky;
-    top: 0;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    min-height: 500px;
-    padding: var(--ui-space-4) var(--ui-space-3);
-    overflow-y: auto;
-    color: var(--ui-text);
-    background: var(--ui-surface);
-    border-right: 1px solid var(--ui-border);
-}
-
-.menu-brand {
-    display: flex;
-    align-items: center;
-    gap: var(--ui-space-3);
-    padding: var(--ui-space-3) var(--ui-space-2) var(--ui-space-5);
-}
-
-.menu-brand-icon {
-    display: grid;
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    place-items: center;
-    background: var(--ui-background);
-    border-radius: var(--ui-radius-md);
-    font-size: 23px;
-}
-
-.menu-brand-text,
-.profile-details {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-.menu-brand-title {
-    font-size: 15px;
-    font-weight: 750;
-}
-
-.menu-brand-subtitle,
-.profile-role {
-    color: var(--ui-muted);
-    font-size: 11px;
-}
-
-.menu-section-heading {
-    padding: var(--ui-space-3) var(--ui-space-3);
-    color: var(--ui-muted);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.menu-navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 42px;
-    gap: var(--ui-space-3);
-    padding: 10px 12px;
-    color: var(--ui-text);
-    text-align: left;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: var(--ui-radius-md);
-    transition: background 0.15s ease, color 0.15s ease;
-}
-
-.menu-item:hover {
-    background: var(--ui-background);
-}
-
-.menu-item.active {
-    color: var(--ui-accent);
-    background: var(--ui-background);
-    border-color: var(--ui-border);
-    font-weight: 650;
-}
-
-.menu-item-icon {
-    display: inline-grid;
-    flex: 0 0 22px;
-    width: 22px;
-    place-items: center;
-    font-size: 17px;
-}
-
-.menu-item-label {
-    flex: 1;
-}
-
-.menu-bottom {
-    margin-top: auto;
-    padding-top: var(--ui-space-4);
-}
-
-.menu-footer {
-    display: flex;
-    align-items: center;
-    gap: var(--ui-space-2);
-    padding: var(--ui-space-4) var(--ui-space-3) 0;
-    color: var(--ui-muted);
-    font-size: 11px;
-}
-
-.menu-footer-indicator,
-.status-indicator {
-    display: inline-block;
-    flex: 0 0 8px;
-    width: 8px;
-    height: 8px;
-    background: #16a34a;
-    border-radius: 50%;
-}
-
-/* 5. Global header */
-.header-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 78px;
-    gap: var(--ui-space-4);
-    padding: var(--ui-space-4) var(--ui-space-6);
-    background: var(--ui-surface);
-    border-bottom: 1px solid var(--ui-border);
-}
-
-.header-page-info,
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--ui-space-4);
-}
-
-.header-page-info {
-    min-width: 0;
-}
-
-.header-page-text {
-    min-width: 0;
-}
-
-.header-title {
-    margin: 0;
-    font-size: 21px;
-    font-weight: 750;
-    line-height: 1.3;
-}
-
-.header-description {
-    margin: 4px 0 0;
-    color: var(--ui-muted);
-    font-size: 12px;
-}
-
-.header-actions {
-    justify-content: flex-end;
-}
-
-/* 6. Reusable buttons */
-.ui-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 38px;
-    gap: var(--ui-space-2);
-    padding: 8px 13px;
-    color: var(--ui-text);
-    background: var(--ui-surface);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-md);
-    font-weight: 600;
-    white-space: nowrap;
-    transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.ui-button:hover {
-    background: var(--ui-background);
-}
-
-.ui-button-primary {
-    color: #ffffff;
-    background: var(--ui-accent);
-    border-color: var(--ui-accent);
-}
-
-.ui-button-primary:hover {
-    filter: brightness(0.95);
-}
-
-.ui-button-secondary {
-    color: var(--ui-text);
-    background: var(--ui-surface);
-}
-
-.header-back-button {
-    min-height: 34px;
-    padding: 6px 10px;
-}
-
-/* 7. Online/offline control and platform dropdown */
-.connection-control {
-    position: relative;
-}
-
-.ui-button-status {
-    gap: 8px;
-}
-
-.connection-chevron,
-.profile-chevron {
-    color: var(--ui-muted);
-}
-
-.connection-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    z-index: 50;
-    width: 230px;
-    padding: var(--ui-space-3);
-    background: var(--ui-surface);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-lg);
-    box-shadow: var(--ui-shadow);
-}
-
-.connection-control:hover .connection-dropdown,
-.connection-control:focus-within .connection-dropdown {
-    display: block;
-}
-
-.connection-dropdown-heading {
-    padding: 4px 4px 10px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.platform-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 4px;
-    border-top: 1px solid var(--ui-border);
-    cursor: pointer;
-}
-
-.platform-name {
-    font-weight: 500;
-}
-
-/* Native checkbox styled as a simple switch */
-.ui-switch {
-    width: 34px;
-    height: 18px;
-    margin: 0;
-    accent-color: var(--ui-accent);
-    cursor: pointer;
-}
-
-/* 8. User profile */
-.header-profile {
-    display: flex;
-    align-items: center;
-    gap: var(--ui-space-2);
-    padding: 4px 0 4px 8px;
-    color: var(--ui-text);
-    text-align: left;
-    background: transparent;
-    border: 0;
-}
-
-.profile-avatar {
-    display: grid;
-    flex: 0 0 36px;
-    width: 36px;
-    height: 36px;
-    place-items: center;
-    color: #ffffff;
-    background: var(--ui-accent);
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 750;
-}
-
-.profile-name {
-    font-size: 12px;
-    font-weight: 700;
-}
-
-/* 9. Reusable page layouts */
-.page-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ui-space-5);
-    width: 100%;
-    min-width: 0;
-}
-
-.page-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--ui-space-3);
-}
-
-.page-toolbar-actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--ui-space-2);
-}
-
-.page-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--ui-space-4);
-}
-
-.layout-stack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ui-space-4);
-}
-
-.layout-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--ui-space-3);
-}
-
-.layout-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--ui-space-2);
-    min-width: 0;
-}
-
-.grid-span-3 { grid-column: span 3; }
-.grid-span-4 { grid-column: span 4; }
-.grid-span-6 { grid-column: span 6; }
-.grid-span-8 { grid-column: span 8; }
-.grid-span-12 { grid-column: span 12; }
-
-/* 10. Reusable cards and panels */
-.ui-card,
-.ui-panel {
-    min-width: 0;
-    padding: var(--ui-space-5);
-    background: var(--ui-surface);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-lg);
-}
-
-.ui-card {
-    box-shadow: var(--ui-shadow);
-}
-
-.ui-card-title {
-    margin: 0 0 var(--ui-space-3);
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.ui-card-description {
-    margin: 0;
-    color: var(--ui-muted);
-    font-size: 12px;
-}
-
-/* 11. Reusable form controls */
-.ui-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 0;
-}
-
-.ui-label {
-    color: var(--ui-text);
-    font-size: 12px;
-    font-weight: 650;
-}
-
-.ui-input,
-.ui-select,
-.ui-textarea {
-    width: 100%;
-    min-height: 40px;
-    padding: 9px 11px;
-    color: var(--ui-text);
-    background: var(--ui-surface);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-md);
-}
-
-.ui-textarea {
-    min-height: 90px;
-    resize: vertical;
-}
-
-.ui-input::placeholder,
-.ui-textarea::placeholder {
-    color: var(--ui-muted);
-}
-
-.ui-input:focus,
-.ui-select:focus,
-.ui-textarea:focus {
-    border-color: var(--ui-accent);
-}
-
-/* 12. Reusable tables */
-.ui-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    background: var(--ui-surface);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-lg);
-}
-
-.ui-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-}
-
-.ui-table th,
-.ui-table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--ui-border);
-    white-space: nowrap;
-}
-
-.ui-table th {
-    color: var(--ui-muted);
-    background: var(--ui-background);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.ui-table tbody tr:hover {
-    background: var(--ui-background);
-}
-
-.ui-table tbody tr:last-child td {
-    border-bottom: 0;
-}
-
-/* 13. Status badges */
-.ui-badge {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    padding: 3px 9px;
-    color: var(--ui-text);
-    background: var(--ui-background);
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-pill);
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.ui-badge-success {
-    color: #15803d;
-    background: #f0fdf4;
-    border-color: #bbf7d0;
-}
-
-.ui-badge-warning {
-    color: #a16207;
-    background: #fefce8;
-    border-color: #fde68a;
-}
-
-.ui-badge-danger {
-    color: #b91c1c;
-    background: #fef2f2;
-    border-color: #fecaca;
-}
-
-/* 14. Shared utilities */
-.ui-muted { color: var(--ui-muted); }
-.ui-text-small { font-size: 12px; }
-.ui-text-bold { font-weight: 700; }
-.ui-text-right { text-align: right; }
-.ui-full-width { width: 100%; }
-.ui-hidden { display: none !important; }
-.ui-divider { height: 1px; background: var(--ui-border); border: 0; }
-.ui-empty-state { padding: 32px 16px; color: var(--ui-muted); text-align: center; }
-
-/* 15. Responsive layout */
-@media (max-width: 1000px) {
-    .app-sidebar {
-        flex-basis: 210px;
-        width: 210px;
-    }
-
-    .app-page-container {
-        padding: var(--ui-space-4);
-    }
-
-    .header-bar {
-        padding: var(--ui-space-3) var(--ui-space-4);
-    }
-
-    .grid-span-3,
-    .grid-span-4 {
-        grid-column: span 6;
-    }
-}
-
-@media (max-width: 700px) {
-    .app-shell {
-        flex-direction: column;
-    }
-
-    .app-sidebar {
-        position: relative;
-        flex: 0 0 auto;
-        width: 100%;
-        min-height: auto;
-    }
-
-    .menu-panel {
-        position: relative;
-        height: auto;
-        min-height: auto;
-        padding: 10px;
-        border-right: 0;
-        border-bottom: 1px solid var(--ui-border);
-    }
-
-    .menu-brand {
-        padding: 6px;
-    }
-
-    .menu-section-heading,
-    .menu-footer,
-    .menu-bottom {
-        display: none;
-    }
-
-    .menu-navigation {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 4px 0;
-    }
-
-    .menu-item {
-        flex: 0 0 auto;
-        width: auto;
-        min-height: 40px;
-    }
-
-    .menu-item-label {
-        white-space: nowrap;
-    }
-
-    .app-main {
-        min-height: auto;
-    }
-
-    .header-bar {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .header-actions {
-        justify-content: space-between;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .header-title {
-        font-size: 18px;
-    }
-
-    .app-page-container {
-        padding: 12px;
-    }
-
-    .grid-span-3,
-    .grid-span-4,
-    .grid-span-6,
-    .grid-span-8 {
-        grid-column: span 12;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
-}
+/* Text-like inputs */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="button"]):not([type="submit"]):not([type="reset"]),
+select,
+textarea {
