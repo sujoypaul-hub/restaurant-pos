@@ -87,7 +87,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 20px 12px;
+    padding: 20px 12px 0 12px;
     background: transparent;
     border: none;
     border-bottom: none;
@@ -157,7 +157,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
-    padding-top: 25px 0 0 25px;
+    padding: 25px 0 0 25px;
 }
 
 
