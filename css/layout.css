@@ -115,6 +115,7 @@
 ================================================== */
 
 .main-menu-nav .nav-btn {
+    position: relative;
     flex: 0 0 auto;
     width: 100%;
     min-width: 0;
@@ -127,36 +128,81 @@
     color: var(--button-text);
 
     border-radius: var(--radius-md, 8px);
-    text-align: left;
-}
 
-
-/* Hover */
-
-.main-menu-nav .nav-btn:hover {
-    background: var(--accent-light);
-    color: var(--text);
+    transition: box-shadow 200ms ease;
 }
 
 
 /* ==================================================
-   ACTIVE MENU — CONTRASTING ROUNDED PILL
+   HOVER — GLOW ONLY
+   No background or text colour change.
+================================================== */
+
+.main-menu-nav .nav-btn:hover {
+    background: transparent;
+    color: var(--button-text);
+
+    box-shadow: 0 0 12px var(--accent-light);
+}
+
+
+/* ==================================================
+   ACTIVE — WHITE PILL
 ================================================== */
 
 .main-menu-nav .nav-btn.active {
+    z-index: 1;
+
     background: var(--surface);
-    border-color: transparent;
     color: var(--accent);
 
+    border-color: transparent;
+    border-radius: 12px 24px 24px 12px;
+
+    box-shadow: none;
     font-weight: 600;
 }
 
 
-/* Keyboard focus */
+/* Keep active item unchanged on hover */
 
-.main-menu-nav .nav-btn:focus-visible {
-    outline: 2px solid var(--button-text);
-    outline-offset: -3px;
+.main-menu-nav .nav-btn.active:hover {
+    background: var(--surface);
+    color: var(--accent);
+
+    box-shadow: none;
+}
+
+
+/* ==================================================
+   ACTIVE — CURVED SIDEBAR CUTOUTS
+================================================== */
+
+.main-menu-nav .nav-btn.active::before,
+.main-menu-nav .nav-btn.active::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+
+    width: 20px;
+    height: 20px;
+
+    pointer-events: none;
+    background: transparent;
+}
+
+.main-menu-nav .nav-btn.active::before {
+    top: -20px;
+    border-radius: 0 0 20px 0;
+
+    box-shadow: 10px 10px 0 0 var(--surface);
+}
+
+.main-menu-nav .nav-btn.active::after {
+    bottom: -20px;
+    border-radius: 0 20px 0 0;
+
+    box-shadow: 10px -10px 0 0 var(--surface);
 }
 
 
