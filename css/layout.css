@@ -77,13 +77,10 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-
     min-height: 0;
     padding: 16px 0px 12px 10px;
-
     background: var(--accent);
     overflow: hidden;
-
     border-radius: 0 var(--radius-lg, 12px) 0 0;
 }
 
@@ -98,14 +95,12 @@
     flex-direction: column;
     align-items: stretch;
     gap: 6px;
-
     min-height: 0;
-
     overflow-x: hidden;
     overflow-y: auto;
-
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
+    padding-top: 25px;
 }
 
 
@@ -151,13 +146,13 @@
 .main-menu-nav .nav-btn.active::before {
     content: "";
     position: absolute;
-    right: 0;
-    top: -30px;
-    width: 24px;
-    height: 30px;
+    right: -1px;
+    top: -50px;
+    width: 50px;
+    height: 50px;
     background: transparent;
-    border-radius: 0 0 24px 0;
-    box-shadow: 0 15px 0 var(--background);
+    border-radius: 0 0 17px 0;
+    box-shadow: 0 20px 0 var(--background);
     pointer-events: none;
 }
 
@@ -166,14 +161,15 @@
 .main-menu-nav .nav-btn.active::after {
     content: "";
     position: absolute;
-    right: 0;
-    bottom: -30px;
-    width: 24px;
-    height: 30px;
+    right: -1px;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
     background: transparent;
-    border-radius: 0 24px 0 0;
-    box-shadow: 0 -15px 0 var(--background);;
+    border-radius: 0 17px 0 0;
+    box-shadow: 0 -20px 0 var(--background);
     pointer-events: none;
+   
 }
 
 /* Keep active item unchanged on hover */
