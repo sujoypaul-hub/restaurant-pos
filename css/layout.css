@@ -79,7 +79,7 @@
     flex-direction: column;
 
     min-height: 0;
-    padding: 16px 10px 12px;
+    padding: 16px 0px 12px 10px;
 
     background: var(--accent);
     overflow: hidden;
@@ -157,7 +157,7 @@
     color: var(--accent);
 
     border-color: transparent;
-    border-radius: 12px 24px 24px 12px;
+    border-radius: 24px 0px 0px 24px;
 
     box-shadow: none;
     font-weight: 600;
