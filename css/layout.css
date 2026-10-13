@@ -17,11 +17,6 @@
    Main Menu - Left Sidebar (Constant in every pages)
 ================================================== */
 
-```css
-/* ==================================================
-   SIDEBAR — FIXED FULL-HEIGHT LAYOUT
-================================================== */
-
 .menu-container {
     position: fixed;
     inset: 0 auto 0 0;
