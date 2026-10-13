@@ -643,5 +643,105 @@
     --accent-light: #3D2A20;
 }
 
+/* ==================================================
+   GLOBAL THEME COMPATIBILITY TOKENS
+   Map existing theme variables to shared component
+   variables. Components should use these tokens
+   instead of hardcoding colors.
+================================================== */
+
+:root {
+    --sidebar-width: 240px;
+    --sidebar-width-mobile: 76px;
+
+    /* Shared aliases used by global and component CSS */
+    --background-color: var(--background);
+    --surface-color: var(--surface);
+    --surface-secondary-color: var(--surface-secondary);
+    --text-color: var(--text);
+    --muted-color: var(--muted);
+    --border-color: var(--border);
+
+    --sidebar-bg: var(--sidebar);
+    --sidebar-hover: var(--nav-hover);
+    --sidebar-active-bg: var(--nav-active);
+    --sidebar-active-text: var(--nav-active-text);
+
+    --primary-color: var(--accent);
+    --primary-light: var(--accent-light);
+    --hover-bg: var(--nav-hover);
+
+    --button-background: var(--button);
+    --button-foreground: var(--button-text);
+    --input-bg: var(--input-background);
+    --input-border-color: var(--input-border);
+
+    /* Shared semantic colors */
+    --success-color: #198754;
+    --warning-color: #D9A400;
+    --danger-color: #D9363E;
+    --info-color: #2563EB;
+
+    /* Shared design tokens */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-pill: 999px;
+
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 8%);
+    --shadow-md: 0 4px 12px rgb(0 0 0 / 10%);
+    --shadow-lg: 0 12px 28px rgb(0 0 0 / 14%);
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 200ms ease;
+}
 
 
+/* ==================================================
+   THEME-AWARE BASE COLORS
+   Visual styling for shared HTML elements belongs
+   in global.css; this file supplies their colors.
+================================================== */
+
+html {
+    color-scheme: light;
+}
+
+:root[data-theme^="dark"] {
+    color-scheme: dark;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+button {
+    color: var(--button-text);
+}
+
+input,
+textarea,
+select {
+    color: var(--text);
+    background-color: var(--input-background);
+    border-color: var(--input-border);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+}
+
+hr {
+    border-color: var(--border);
+}
+
+
+/* ==================================================
+   THEME TOKEN USAGE NOTES
+   Keep these mappings centralized. Do not define
+   separate hardcoded colors in component stylesheets.
+================================================== */
