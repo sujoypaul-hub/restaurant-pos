@@ -21,14 +21,11 @@
     position: fixed;
     inset: 0 auto 0 0;
     z-index: 1000;
-
     display: flex;
     flex-direction: column;
-
     width: var(--sidebar-width, 240px);
     height: 100vh;
     height: 100dvh;
-
     background: var(--background);
     overflow: hidden;
 }
@@ -42,10 +39,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex: 0 0 80px;
     padding: 12px 20px;
-
     background: var(--background);
 }
 
@@ -53,18 +48,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     height: 100%;
 }
 
 .main-menu-logo img {
     display: block;
-
     width: auto;
     max-width: 100%;
     max-height: 52px;
-
     object-fit: contain;
 }
 
@@ -78,7 +70,7 @@
     flex: 1;
     flex-direction: column;
     min-height: 0;
-    padding: 16px 0px 12px 10px;
+    padding: 0px 0px 12px 0px;
     background: var(--accent);
     overflow: hidden;
     border-radius: 0 25px 0 0;
@@ -94,10 +86,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     padding: 20px 12px;
-
     background: transparent;
     border: none;
     border-bottom: none;
@@ -110,10 +100,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     gap: 10px;
     width: 100%;
-
     border: none;
     background: transparent;
 }
@@ -123,11 +111,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 64px;
     height: 64px;
     overflow: hidden;
-
     border: none;
     border-radius: 50%;
     background: var(--surface);
@@ -137,7 +123,6 @@
     display: block;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     border: none;
     border-radius: 50%;
@@ -147,14 +132,11 @@
 .user-profile-container .username {
     display: block;
     width: 100%;
-
     text-align: center;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.4;
-
     color: var(--button-text);
-
     border: none;
     background: transparent;
     box-shadow: none;
@@ -175,7 +157,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
-    padding-top: 25px;
+    padding-top: 25px 0 0 25px;
 }
 
 
@@ -189,16 +171,12 @@
     flex: 0 0 auto;
     width: 100%;
     min-width: 0;
-
     justify-content: flex-start;
     gap: 12px;
-
     background: transparent;
     border-color: transparent;
     color: var(--button-text);
-
     border-radius: var(--radius-md, 8px);
-
     transition: box-shadow 200ms ease;
 }
 
@@ -259,10 +237,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     flex: 0 0 24px;
     width: 24px;
-
     font-size: 18px;
     line-height: 1;
 }
@@ -270,7 +246,6 @@
 .nav-label {
     flex: 1;
     min-width: 0;
-
     overflow: hidden;
     text-overflow: ellipsis;
 }
