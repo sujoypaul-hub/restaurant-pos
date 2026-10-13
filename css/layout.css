@@ -147,24 +147,24 @@
 }
 
 .nav-btn.active::before {
-   content: "";
-   Position: absolute;
-   right: 0;
-   top: -30px;
-   width: 30px;
-   height: 30px;
-   background: transparent;
-   border-radius: 0 0 30px 0;
-   box-shadow: 10px 10px 0 10px #f8f7fc;
-   pointer-events: none;
+    content: "";
+    Position: absolute;
+    right: -1px;
+    top: -31px;
+    width: 20px;
+    height: 30px;
+    background: transparent;
+    border-radius: 0 0 30px 0;
+    box-shadow: 10px 10px 0 10px #f8f7fc;
+    pointer-events: none;
 }
 
 .nav-btn.active::after {
    content: "";
    Position: absolute;
-   right: 0;
-   bottom: -30px;
-   width: 30px;
+   right: -1px;
+   bottom: -31px;
+   width: 20px;
    height: 30px;
    background: transparent;
    border-radius: 0 30px 0 0;
