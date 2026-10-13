@@ -87,7 +87,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 20px 12px 0 12px;
+    padding: 20px 12px;
     background: transparent;
     border: none;
     border-bottom: none;
@@ -128,13 +128,12 @@
     border-radius: 50%;
 }
 
-/* Username */
 .user-profile-container .username {
     display: block;
     width: 100%;
     text-align: center;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.4;
     color: var(--button-text);
     border: none;
