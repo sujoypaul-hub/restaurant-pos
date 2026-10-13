@@ -246,7 +246,9 @@
     pointer-events: none;
    
 }
-
+.main-menu-nav .nav-btn.active:hover {
+    filter: brightness(1);
+}
 
 
 /* ==================================================
