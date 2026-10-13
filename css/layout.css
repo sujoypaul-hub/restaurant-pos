@@ -146,7 +146,7 @@
     font-weight: 600;
 }
 
-.nav-btn.active:before {
+.nav-btn.active::before {
    content: "";
    Position: absolute;
    right: 0;
@@ -159,7 +159,7 @@
    pointer-events: none;
 }
 
-.nav-btn.active:after {
+.nav-btn.active::after {
    content: "";
    Position: absolute;
    right: 0;
@@ -168,7 +168,7 @@
    height: 30px;
    background: transparent;
    border-radius: 0 30px 0 0;
-   box-shadow: 10px 1-0px 0 10px #f8f7fc;
+   box-shadow: 10px -10px 0 10px #f8f7fc;
    pointer-events: none;
 }
 
