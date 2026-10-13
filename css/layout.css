@@ -17,50 +17,280 @@
    Main Menu - Left Sidebar (Constant in every pages)
 ================================================== */
 
-.main-menu {
+```css
+/* ==================================================
+   SIDEBAR — FIXED FULL-HEIGHT LAYOUT
+================================================== */
+
+.menu-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 235px;
-    min-width: 235px;
-    height: 100vh;
+    inset: 0 auto 0 0;
+    z-index: 1000;
+
     display: flex;
     flex-direction: column;
-    background: var(--sidebar);
-    color: var(--sidebar-text);
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-shadow: 7px 0 50px 1px rgba(0, 0, 0, 0.10);
-    z-index: 1000;
+
+    width: var(--sidebar-width, 240px);
+    height: 100vh;
+    height: 100dvh;
+
+    background: var(--background);
+    overflow: hidden;
 }
 
 
-/* =====================================================
-   LOGO - MAIN MENU
-===================================================== */
+/* ==================================================
+   TOP — FIXED LOGO AREA
+================================================== */
 
 .main-menu-brand {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    height: 100px;
+
+    flex: 0 0 80px;
+    padding: 12px 20px;
+
+    background: var(--background);
 }
 
 .main-menu-logo {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
+
     width: 100%;
+    height: 100%;
 }
 
 .main-menu-logo img {
     display: block;
-    width: 100%;
+
+    width: auto;
+    max-width: 100%;
+    max-height: 52px;
+
     object-fit: contain;
-    max-height: 100px;
-    margin-left: -20px;
+}
+
+
+/* ==================================================
+   COLOURED NAVIGATION PANEL
+================================================== */
+
+.main-menu {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-height: 0;
+    padding: 16px 10px 12px;
+
+    background: var(--accent);
+    overflow: hidden;
+
+    border-radius: 0 var(--radius-lg, 12px) 0 0;
+}
+
+
+/* ==================================================
+   SCROLLABLE NAVIGATION
+================================================== */
+
+.main-menu-nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+
+    min-height: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-light) transparent;
+}
+
+
+/* ==================================================
+   MENU BUTTONS
+   Inherit typography and base styling globally.
+================================================== */
+
+.main-menu-nav .nav-btn {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+
+    justify-content: flex-start;
+    gap: 12px;
+
+    background: transparent;
+    border-color: transparent;
+    color: var(--button-text);
+
+    border-radius: var(--radius-md, 8px);
+    text-align: left;
+}
+
+
+/* Hover */
+
+.main-menu-nav .nav-btn:hover {
+    background: var(--accent-light);
+    color: var(--text);
+}
+
+
+/* ==================================================
+   ACTIVE MENU — CONTRASTING ROUNDED PILL
+================================================== */
+
+.main-menu-nav .nav-btn.active {
+    background: var(--surface);
+    border-color: transparent;
+    color: var(--accent);
+
+    font-weight: 600;
+}
+
+
+/* Keyboard focus */
+
+.main-menu-nav .nav-btn:focus-visible {
+    outline: 2px solid var(--button-text);
+    outline-offset: -3px;
+}
+
+
+/* ==================================================
+   ICONS AND LABELS
+================================================== */
+
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 24px;
+    width: 24px;
+
+    font-size: 18px;
+    line-height: 1;
+}
+
+.nav-label {
+    flex: 1;
+    min-width: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ==================================================
+   BOTTOM — FIXED USER PROFILE
+================================================== */
+
+.user-profile-button {
+    flex: 0 0 auto;
+    padding-top: 12px;
+    margin-top: 12px;
+
+    border-top: 1px solid var(--accent-light);
+}
+
+.user-profile-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+    padding: 8px;
+}
+
+.user-profile-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+
+    overflow: hidden;
+    border-radius: var(--radius-pill, 999px);
+
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+}
+
+.user-profile-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.username {
+    flex: 1;
+    min-width: 0;
+
+    color: var(--button-text);
+    font-weight: 600;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ==================================================
+   RESPONSIVE SIDEBAR
+================================================== */
+
+@media (max-width: 768px) {
+    .menu-container {
+        width: var(--sidebar-width-mobile, 76px);
+    }
+
+    .main-menu-brand {
+        flex-basis: 68px;
+        padding: 8px;
+    }
+
+    .main-menu-logo img {
+        max-width: 100%;
+        max-height: 42px;
+    }
+
+    .main-menu {
+        padding: 12px 7px;
+    }
+
+    .main-menu-nav .nav-btn {
+        justify-content: center;
+        gap: 0;
+        padding-inline: 6px;
+    }
+
+    .nav-label,
+    .username {
+        display: none;
+    }
+
+    .user-profile-container {
+        justify-content: center;
+        padding-inline: 0;
+    }
+
+    .user-profile-button {
+        padding-top: 10px;
+    }
 }
 
 /* =====================================================
