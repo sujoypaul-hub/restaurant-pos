@@ -146,7 +146,7 @@
     font-weight: 600;
 }
 
-.main-menu-nav .nav-btn.active::before {
+.main-menu-nav .nav-btn.active:before {
    content: "";
    Position: absolute;
    right: 0;
@@ -159,7 +159,7 @@
    pointer-events: none;
 }
 
-.main-menu-nav .nav-btn.active::after {
+.main-menu-nav .nav-btn.active:after {
    content: "";
    Position: absolute;
    right: 0;
