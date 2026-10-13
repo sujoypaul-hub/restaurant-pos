@@ -247,14 +247,6 @@
    
 }
 
-/* Keep active item unchanged on hover */
-
-.main-menu-nav .nav-btn.active:hover {
-    background: var(--surface);
-    color: var(--accent);
-    box-shadow: none;
-}
-
 
 
 /* ==================================================
