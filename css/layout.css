@@ -132,6 +132,20 @@
     transition: box-shadow 200ms ease;
 }
 
+/* ==================================================
+   ACTIVE — WHITE PILL
+================================================== */
+
+.main-menu-nav .nav-btn.active {
+    z-index: 1;
+    background: var(--surface);
+    color: var(--accent);
+    border-color: transparent;
+    border-radius: 24px 0px 0px 24px;
+    box-shadow: none;
+    font-weight: 600;
+}
+
 .main-menu-nav .nav-btn.active::before {
    content: "";
    Position: absolute;
@@ -157,38 +171,6 @@
    box-shadow: 10px 1-0px 0 10px #f8f7fc;
    pointer-events: none;
 }
-
-
-/* ==================================================
-   HOVER — GLOW ONLY
-   No background or text colour change.
-================================================== */
-
-.main-menu-nav .nav-btn:hover {
-    background: transparent;
-    color: var(--button-text);
-
-    box-shadow: 0 0 12px var(--accent-light);
-}
-
-
-/* ==================================================
-   ACTIVE — WHITE PILL
-================================================== */
-
-.main-menu-nav .nav-btn.active {
-    z-index: 1;
-
-    background: var(--surface);
-    color: var(--accent);
-
-    border-color: transparent;
-    border-radius: 24px 0px 0px 24px;
-
-    box-shadow: none;
-    font-weight: 600;
-}
-
 
 /* Keep active item unchanged on hover */
 
