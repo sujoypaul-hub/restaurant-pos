@@ -207,62 +207,79 @@
 }
 
 
-/* ==================================================
-   BOTTOM — FIXED USER PROFILE
-================================================== */
+/* =========================================
+   USER PROFILE — TOP OF SIDEBAR
+========================================= */
 
 .user-profile-button {
-    flex: 0 0 auto;
-    padding-top: 12px;
-    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    border-top: 1px solid var(--accent-light);
+    width: 100%;
+    padding: 20px 12px;
+
+    background: transparent;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
 }
 
+/* Image and username stacked vertically */
 .user-profile-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
 
-    min-width: 0;
-    padding: 8px;
+    gap: 10px;
+    width: 100%;
+
+    border: none;
+    background: transparent;
 }
 
+/* Profile image */
 .user-profile-image {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    flex: 0 0 38px;
-    width: 38px;
-    height: 38px;
-
+    width: 64px;
+    height: 64px;
     overflow: hidden;
-    border-radius: var(--radius-pill, 999px);
 
-    background: var(--surface-secondary);
-    border: 1px solid var(--border);
+    border: none;
+    border-radius: 50%;
+    background: var(--surface);
 }
 
 .user-profile-image img {
     display: block;
-
     width: 100%;
     height: 100%;
 
     object-fit: cover;
+    border: none;
+    border-radius: 50%;
 }
 
-.username {
-    flex: 1;
-    min-width: 0;
+/* Username */
+.user-profile-container .username {
+    display: block;
+    width: 100%;
 
-    color: var(--button-text);
+    text-align: center;
+    font-size: 14px;
     font-weight: 600;
+    line-height: 1.4;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    color: var(--text-primary);
+
+    border: none;
+    background: transparent;
+    box-shadow: none;
 }
 
 
