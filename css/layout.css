@@ -233,14 +233,19 @@
    ICONS AND LABELS
 ================================================== */
 
-.nav-icon {
+.main-menu-nav .nav-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 24px;
-    width: 24px;
-    font-size: 18px;
-    line-height: 1;
+    flex-shrink: 0;
+}
+
+.main-menu-nav .nav-icon svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+    color: inherit;
+    fill: none;
 }
 
 .nav-label {
