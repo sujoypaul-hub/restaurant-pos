@@ -70,10 +70,10 @@
     flex: 1;
     flex-direction: column;
     min-height: 0;
-    padding: 0px 0px 12px 0px;
+    padding: 0px;
     background: var(--accent);
     overflow: hidden;
-    border-radius: 0 0 0 0;
+    border-radius: 0 25px 0 0;
 }
 
 
