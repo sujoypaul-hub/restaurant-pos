@@ -180,6 +180,7 @@
     transition: box-shadow 200ms ease;
     border: none;
     box-shadow: none;
+    margin-bottom: 9px;
 }
 
 /* ==================================================
@@ -243,8 +244,8 @@
 }
 
 .main-menu-nav .nav-icon svg {
-    width: 21px;
-    height: 21px;
+    width: 16px;
+    height: 16px;
     display: block;
     color: inherit;
     fill: none;
@@ -255,6 +256,7 @@
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 12px;
 }
 
 
