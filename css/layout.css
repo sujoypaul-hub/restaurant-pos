@@ -178,6 +178,8 @@
     color: var(--button-text);
     border-radius: var(--radius-md, 8px);
     transition: box-shadow 200ms ease;
+    border: none;
+    box-shadow: none;
 }
 
 /* ==================================================
