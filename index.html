@@ -17,7 +17,7 @@
 
     <div class="app">
     
-        <!-- MENU CONTAINER: Loads the reusable sidebar from a separate HTML file -->
+        <!-- MENU CONTAINER: Loads the reusable left sidebar from a separate HTML file -->
         <div class="menu-container" data-load="html/layout/main-menu.html" ></div>
     
         <!-- MAIN CONTENT: Contains the header and dynamically loaded pages -->
@@ -28,6 +28,9 @@
     
             <!-- PAGE CONTAINER: Router injects the selected page here -->
             <div class="page-container" id="page-container"></div>
+
+            <!-- SIDEBAR CONTAINER: Loads the reusable right sidebar and connection controls -->
+            <div class="sidebar-container" id="sidebar-container"></div>
     
         </main>
     </div>
