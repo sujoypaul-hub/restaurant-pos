@@ -4,65 +4,26 @@
 
 <div class="orders-layout page-layout">
 
-    <!-- ==========================================
-         ORDERS MAIN AREA
-         ========================================== -->
+  <!-- ==================================
+             HEADER TAB - Loads the dynamic page header and connection controls 
+  ===================================  -->  
+   <div class="header-container page-header" id="header-container" data-load="html/layout/header.html"></div>
 
-    <div
-        class="orders-main"
-        data-tabs="orders"
-        data-default-tab="new"
-    >
+  <!-- =========================================
+         ORDERS MAIN AREA
+  ========================================== -->
+
+    <div class="orders-main Page-main"  data-tabs="orders"  data-default-tab="new">
 
         <!-- ==========================================
              ORDER STATUS TABS
-             ========================================== -->
+        ========================================== -->
 
         <div class="orders-tabs">
-
-            <button
-                class="orders-tab"
-                type="button"
-                data-tab="new"
-                data-tab-page="orders/new"
-                aria-selected="false"
-            >
-                New
-            </button>
-
-
-            <button
-                class="orders-tab"
-                type="button"
-                data-tab="ongoing"
-                data-tab-page="orders/ongoing"
-                aria-selected="false"
-            >
-                On going
-            </button>
-
-
-            <button
-                class="orders-tab"
-                type="button"
-                data-tab="ready"
-                data-tab-page="orders/ready"
-                aria-selected="false"
-            >
-                Ready
-            </button>
-
-
-            <button
-                class="orders-tab"
-                type="button"
-                data-tab="closed"
-                data-tab-page="orders/closed"
-                aria-selected="false"
-            >
-                Closed
-            </button>
-
+            <button class="orders-tab" type="button" data-tab="new" data-tab-page="orders/new" aria-selected="false" > New </button> 
+            <button class="orders-tab" type="button" data-tab="ongoing" data-tab-page="orders/ongoing" aria-selected="false"> On going </button>
+            <button class="orders-tab" type="button" data-tab="ready" data-tab-page="orders/ready" aria-selected="false"> Ready </button>
+            <button class="orders-tab" type="button" data-tab="closed" data-tab-page="orders/closed"  aria-selected="false"> Closed </button>
         </div>
 
 
@@ -91,6 +52,7 @@
         </div>
 
     </div>
+</div>
 
 
     <!-- ==========================================
@@ -98,35 +60,17 @@
          ========================================== -->
 
     <aside class="right-sidebar">
-
-        <!-- Section 1 -->
-
+        
+      <!-- Section 1 -->
         <section class="right-sidebar-section">
-
-            <h3 class="right-sidebar-title">
-                Unpaid Orders
-            </h3>
-
-            <div class="right-sidebar-content">
-                <!-- Reserved for future use -->
-            </div>
-
+            <h3 class="right-sidebar-title"> Unpaid Orders </h3>
+            <div class="right-sidebar-content"> <!-- Reserved for future use --> </div>
         </section>
-
 
         <!-- Section 2 -->
-
         <section class="right-sidebar-section">
-
-            <h3 class="right-sidebar-title">
-                Right sidebar content 2
-            </h3>
-
-            <div class="right-sidebar-content orders-sidebar-content">
-                <!-- Reserved for future use -->
-            </div>
+            <h3 class="right-sidebar-title"> Right sidebar content 2 </h3>
+            <div class="right-sidebar-content orders-sidebar-content"> <!-- Reserved for future use --> </div>
         </section>
       
-    </aside>
-
-</div>
+     </aside>
