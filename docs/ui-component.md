@@ -1,6 +1,32 @@
+# Restaurant POS — PAGE LAYOUT
+
+## 1. Page Layout with header and right sidebar
+
+<!-- MAIN PAGE LAYOUT -->
+
+    <div class="orders-layout page-layout">
+    
+        <!-- PAGE HEADER -->
+                    <div class="page-header" id="header-container" data-load="html/layout/header.html"> </div>
+    
+        <!-- MAIN CONTENT -->
+                    <div class="orders-main Page-main" data-tabs="orders" data-default-tab="new"> </div>
+    
+    </div>
+
+
+<!-- RIGHT SIDEBAR: Outside page layout -->
+            
+        <aside class="page-sidebar page-sidebar-2 right-sidebar">
+                <!-- Right sidebar content -->
+        </aside>
+
+
+
+
 # Restaurant POS — UI Components
 
-## 1. List Type Layout 
+## 2. List Type Layout 
 
 .list-type-layout
 │
