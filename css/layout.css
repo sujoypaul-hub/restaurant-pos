@@ -275,6 +275,7 @@
     height: 100vh;
     overflow: hidden;
     box-sizing: border-box;
+    margin-left: 240px;
 }
 
 /* Page container scrollbar — Chrome, Edge and Safari */
