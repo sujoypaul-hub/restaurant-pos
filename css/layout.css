@@ -317,11 +317,14 @@
 
 /* Page Header Container */
 .page-header{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    flex: 0 0 auto;
-    width: 100%;
+    position: static;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    width: auto;
+    margin: 0;
 }
 
 
