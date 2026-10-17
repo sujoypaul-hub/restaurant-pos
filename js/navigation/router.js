@@ -190,3 +190,11 @@ window.POSRouter = {
     navigate: navigateTo,
     getCurrentRoute: getRouteFromURL
 };
+
+window.addEventListener("pos:page-loaded", () => {
+    const title = document.querySelector(".page-title");
+    const description = document.querySelector(".page-description");
+
+    if (title) title.textContent = window.pageTitle;
+    if (description) description.textContent = window.pageDescription;
+});
