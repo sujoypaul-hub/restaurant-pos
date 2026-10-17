@@ -41,10 +41,8 @@ function findRoute(routeParts) {
 
 function updateMainMenu(topLevelRoute) {
     document.querySelectorAll(".nav-btn").forEach(button => {
-        button.classList.toggle(
-            "active",
-            button.dataset.route === topLevelRoute
-        );
+        const isActive = button.dataset.route === topLevelRoute;
+        button.classList.toggle("active", isActive);
     });
 }
 
