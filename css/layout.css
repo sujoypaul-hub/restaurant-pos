@@ -353,19 +353,10 @@
     background: transparent;
     box-shadow: none;
     color: var(--text-color);
-    font-size: 0;
     cursor: pointer;
     flex-shrink: 0;
 }
 
-/* Hide the Back text, keep the arrow */
-.header .app-back-button {
-    font-size: 0;
-}
-
-.header .app-back-button::first-letter {
-    font-size: 0;
-}
 
 /* PAGE TITLE + DESCRIPTION */
 .header .page-header {
