@@ -1,7 +1,7 @@
 
 /* =====================================================
    APPLICATION ROUTER
-   Handles routes, navigation, history and page information.
+   Handles routes, navigation and browser history.
 ===================================================== */
 
 
@@ -12,15 +12,12 @@
 function getRouteFromURL() {
     const route = new URLSearchParams(location.search).get("route");
 
-    return route
-        ? route.split("/").filter(Boolean)
-        : ["billing"];
+    return route ? route.split("/").filter(Boolean) : ["billing"];
 }
 
 
 /* =====================================================
    FIND ROUTE CONFIGURATION
-   Reads page information from pages.js.
 ===================================================== */
 
 function findRoute(routeParts) {
@@ -40,7 +37,6 @@ function findRoute(routeParts) {
 
 /* =====================================================
    UPDATE LEFT MAIN MENU
-   Highlights the active top-level navigation item.
 ===================================================== */
 
 function updateMainMenu(topLevelRoute) {
@@ -51,15 +47,6 @@ function updateMainMenu(topLevelRoute) {
         );
     });
 }
-
-
-/* =====================================================
-   GLOBAL PAGE INFORMATION
-   Available to scripts throughout the application.
-===================================================== */
-
-window.pageTitle = "";
-window.pageDescription = "";
 
 
 /* =====================================================
@@ -78,13 +65,12 @@ async function navigateTo(route, updateURL = true) {
         return navigateTo(["billing"], false);
     }
 
-    // Update global page information from pages.js.
-    window.pageTitle = config.title || "";
-    window.pageDescription = config.description || "";
+    // Update global page information.
+    window.setPageVariables(config);
 
     const routeString = parts.join("/");
 
-    // Update the URL and browser history.
+    // Update URL and browser history.
     if (updateURL) {
         const url = new URL(location.href);
 
@@ -92,43 +78,29 @@ async function navigateTo(route, updateURL = true) {
         url.searchParams.set("route", routeString);
 
         history.pushState(
-            {
-                posRoute: routeString,
-                posInternal: true
-            },
+            { posRoute: routeString, posInternal: true },
             "",
             url
         );
     }
 
-    // Update the active item in the left main menu.
     updateMainMenu(parts[0]);
 
-    // Find the main page content container.
     const container = document.getElementById("page-container");
-
     if (!container) return;
 
-    await loadHTML(
-    container,
-    `html/pages/${config.page}.html`,
-    {
+    // Load the selected page and its configured scripts.
+    await loadHTML(container, `html/pages/${config.page}.html`, {
         pageConfig: config
-    }
-);
+    });
 
-// Update the header after the page and its components have loaded.
-const title = document.querySelector(".page-title");
-const description = document.querySelector(".page-description");
-
-if (title) title.textContent = window.pageTitle;
-if (description) description.textContent = window.pageDescription;
+    // Print variables into the newly loaded page.
+    window.printAppVariables(container);
 }
 
 
 /* =====================================================
-   GLOBAL CLICK HANDLING
-   Supports dynamically loaded navigation elements.
+   CLICK HANDLING
 ===================================================== */
 
 document.addEventListener("click", event => {
@@ -142,26 +114,21 @@ document.addEventListener("click", event => {
         if (history.state?.posInternal) {
             history.back();
         } else {
-            // Fall back to the parent route when possible.
             const parts = getRouteFromURL();
 
             navigateTo(
-                parts.length > 1
-                    ? parts.slice(0, -1)
-                    : ["billing"]
+                parts.length > 1 ? parts.slice(0, -1) : ["billing"]
             );
         }
 
         return;
     }
 
-    // Main menu or other route navigation elements.
+    // Navigation links and buttons.
     const routeElement = event.target.closest("[data-route]");
-
     if (!routeElement) return;
 
     const route = routeElement.dataset.route;
-
     if (!route) return;
 
     if (routeElement.tagName === "A") {
@@ -182,14 +149,7 @@ window.addEventListener("popstate", () => {
 
 
 /* =====================================================
-   APPLICATION INITIALIZATION
-===================================================== */
-
-navigateTo(getRouteFromURL(), false);
-
-
-/* =====================================================
-   PUBLIC ROUTER API
+   INITIALIZE APPLICATION
 ===================================================== */
 
 window.POSRouter = {
@@ -197,10 +157,4 @@ window.POSRouter = {
     getCurrentRoute: getRouteFromURL
 };
 
-window.addEventListener("pos:page-loaded", () => {
-    const title = document.querySelector(".page-title");
-    const description = document.querySelector(".page-description");
-
-    if (title) title.textContent = window.pageTitle;
-    if (description) description.textContent = window.pageDescription;
-});
+navigateTo(getRouteFromURL(), false);
