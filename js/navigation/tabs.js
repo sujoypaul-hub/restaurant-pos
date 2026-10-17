@@ -290,7 +290,7 @@ async function activateTab(
         selectedTab.dataset.tabPage
     ) {
 
-        await loadTabContent(
+        await window.loadHTML(
             contentTarget,
             selectedTab.dataset.tabPage
         );
@@ -332,82 +332,6 @@ async function activateTab(
             "",
             url
         );
-
-    }
-
-}
-
-
-/*
-==================================================
-LOAD TAB CONTENT
-==================================================
-*/
-
-async function loadTabContent(
-    target,
-    pagePath
-) {
-
-    if (
-        !target ||
-        !pagePath
-    ) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const response =
-            await fetch(
-                `pages/${pagePath}.html`
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                `Tab page not found: ${pagePath}`
-            );
-
-        }
-
-
-        const html =
-            await response.text();
-
-
-        /*
-        Insert tab page.
-        */
-
-        target.innerHTML =
-            html;
-
-
-    } catch (error) {
-
-        console.error(
-            "Tab loading error:",
-            error
-        );
-
-
-        target.innerHTML =
-            `
-            <div class="orders-empty-state">
-                <div class="orders-empty-title">
-                    Unable to load content
-                </div>
-
-                <div class="orders-empty-description">
-                    Please try again.
-                </div>
-            </div>
-            `;
 
     }
 
