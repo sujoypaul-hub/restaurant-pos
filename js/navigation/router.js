@@ -109,14 +109,20 @@ async function navigateTo(route, updateURL = true) {
 
     if (!container) return;
 
-    // Load the page and its configured scripts.
     await loadHTML(
-        container,
-        `html/pages/${config.page}.html`,
-        {
-            pageConfig: config
-        }
-    );
+    container,
+    `html/pages/${config.page}.html`,
+    {
+        pageConfig: config
+    }
+);
+
+// Update the header after the page and its components have loaded.
+const title = document.querySelector(".page-title");
+const description = document.querySelector(".page-description");
+
+if (title) title.textContent = window.pageTitle;
+if (description) description.textContent = window.pageDescription;
 }
 
 
