@@ -28,9 +28,17 @@ function updateSidebar(topLevelRoute) {
     });
 }
 
+// Global information about the currently active page.
+window.pageTitle = "";
+window.pageDescription = "";
+
 async function navigateTo(route, updateURL = true) {
     const parts = Array.isArray(route) ? route : route.split("/").filter(Boolean);
     const config = findRoute(parts);
+   
+   // Update global page information from pages.js.
+   window.pageTitle = config.title || "";
+   window.pageDescription = config.description || "";
 
     if (!config) {
         return navigateTo(["billing"], false);
@@ -45,14 +53,6 @@ async function navigateTo(route, updateURL = true) {
         history.pushState({ posRoute: routeString, posInternal: true }, "", url);
     }
 
-    // Wait for the dynamically loaded header and sidebar.
-    if (window.POSShellReady) await window.POSShellReady;
-
-    const title = document.getElementById("page-title");
-    const description = document.getElementById("page-description");
-
-    if (title) title.textContent = config.title || "";
-    if (description) description.textContent = config.description || "";
 
     updateSidebar(parts[0]);
 
