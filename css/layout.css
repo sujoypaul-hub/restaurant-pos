@@ -316,7 +316,7 @@
 ===================================================== */
 
 /* Page Header Container */
-.page-header{
+.header-container{
     position: static;
     display: flex;
     flex: 1 1 auto;
