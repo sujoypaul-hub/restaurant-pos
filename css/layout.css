@@ -5,17 +5,117 @@
 ===================================================== */
 
 .app {
-    display: flex;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
     width: 100%;
     min-height: 100vh;
-    background: var(--background);
-    color: var(--text);
-    overflow: hidden;
+    margin: 0;
 }
+
+
+/* =====================================================
+   HEADER CONTAINER
+   Holds the reusable header component
+===================================================== */
+
+/* Page Header Container */
+.header-container{
+   grid-column: 1 / -1;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+
+/* HEADER LAYOUT */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 64px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: var(--page-background);
+    border-bottom: 1px solid var(--border);
+}
+
+/* BACK BUTTON — icon only */
+.header .app-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: var(--radius-md, 8px);
+    background: transparent;
+    box-shadow: none;
+    color: var(--text-color);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+
+/* PAGE TITLE + DESCRIPTION */
+.header .page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+    margin: 0;
+}
+
+.header .page-title {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 17px;
+    font-weight: 650;
+    line-height: 1.25;
+}
+
+.header .page-description {
+    margin: 0;
+    color: var(--text-color);
+    opacity: 0.6;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* ONLINE STATUS — RIGHT SIDE */
+.header .restaurant-status-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.header .connection-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+
 
 /* ==================================================
    Main Menu - Left Sidebar (Constant in every pages)
-================================================== */
+================================================== 
 
 .menu-container {
     position: fixed;
@@ -28,8 +128,14 @@
     height: 100dvh;
     background: var(--background);
     overflow: hidden;
+} */
+.menu-container {
+    grid-column: 1;
+    grid-row: 2;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
 }
-
 
 /* ==================================================
    TOP — FIXED LOGO AREA
@@ -295,7 +401,7 @@
 /* =====================================================
    PAGE CONTAINER
    Router injects the active page into this element
-===================================================== */
+===================================================== 
 
 .page-container {
     display: grid;
@@ -308,6 +414,15 @@
     overflow: hidden;
     box-sizing: border-box;
     margin-left: 240px;
+} */
+
+.page-container {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+    min-height: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Page container scrollbar — Chrome, Edge and Safari */
@@ -339,106 +454,6 @@
     overflow: scroll;
     box-sizing: border-box;
 }
-
-/* =====================================================
-   HEADER CONTAINER
-   Holds the reusable header component
-===================================================== */
-
-/* Page Header Container */
-.header-container{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: block;
-    flex: 0 0 auto;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-}
-
-
-/* HEADER LAYOUT */
-.header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    width: 100%;
-    min-height: 64px;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    background: var(--page-background);
-    border-bottom: 1px solid var(--border);
-}
-
-/* BACK BUTTON — icon only */
-.header .app-back-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    min-height: 34px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: var(--radius-md, 8px);
-    background: transparent;
-    box-shadow: none;
-    color: var(--text-color);
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-
-/* PAGE TITLE + DESCRIPTION */
-.header .page-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    min-width: 0;
-    margin: 0;
-}
-
-.header .page-title {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 17px;
-    font-weight: 650;
-    line-height: 1.25;
-}
-
-.header .page-description {
-    margin: 0;
-    color: var(--text-color);
-    opacity: 0.6;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.3;
-}
-
-/* ONLINE STATUS — RIGHT SIDE */
-.header .restaurant-status-actions {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    flex-shrink: 0;
-}
-
-.header .connection-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    color: var(--text-color);
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
 
 
 /* =========================================
