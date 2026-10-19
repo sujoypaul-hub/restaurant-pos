@@ -35,15 +35,15 @@
 
 /* HEADER LAYOUT */
 .header {
-     position: relative;
+    position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
     height: var(--header-height, 64px);
-    padding: 0 20px 0 0;
-    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
     border: none;
-    gap: 16px;
+    background: transparent;
+    box-sizing: border-box;
     z-index: 100;
     background: var(--page-background);
 }
@@ -54,31 +54,32 @@
 
 .header-brand {
     position: absolute;
-    top: 10px;
-    left: 30px;
+    top: 0;
+    left: 20px;
     width: 100px;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 120;
     overflow: visible;
+    z-index: 120;
+    pointer-events: none;
 }
 
 .header-logo {
     width: 90px;
     height: 90px;
     flex: 0 0 90px;
-    border-radius: 50%;
     overflow: hidden;
-    background: #fff;
+    border-radius: 50%;
     border: 5px solid #fff;
+    background: #fff;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
     box-sizing: border-box;
 }
 
 .header-logo img {
-    display: block !important;
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -107,17 +108,18 @@
 /* BACK BUTTON — icon only */
 .header .app-back-button {
     display: flex;
+    flex: 0 0 36px;
     align-items: center;
     justify-content: center;
-    margin-left: 200px;
+    width: 36px;
+    height: 36px;
+    margin: 0;
     padding: 0;
     border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: none;
+    border-radius: 10px;
+    background: transparent;
     color: #222;
-    font-size: 20px;
-    line-height: 1;
+    font-size: 26px;
     cursor: pointer;
 }
 
@@ -129,16 +131,16 @@
     flex-direction: column;
     justify-content: center;
     min-width: 0;
-    overflow: hidden;
     gap: 3px;
+    overflow: hidden;
 }
 
 .header .page-title {
     margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.2;
     color: #202124;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -146,10 +148,9 @@
 
 .header .page-description {
     margin: 0;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.3;
     color: #6b7280;
+    font-size: 12px;
+    line-height: 1.2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -166,16 +167,14 @@
 }
 
 .header .connection-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 12px;
+    padding: 6px 10px;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
     background: #fff;
     color: #374151;
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 
