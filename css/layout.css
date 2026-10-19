@@ -7,7 +7,7 @@
 .app {
     --header-height: 64px;
     --left-sidebar-width: 180px;
-    --right-sidebar-width: 200px;
+    --right-sidebar-width: 300px;
 
     width: 100%;
     height: 100vh;
