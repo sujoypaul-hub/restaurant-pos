@@ -54,8 +54,8 @@
 
 .header-brand {
     position: absolute;
-    top: 0;
-    left: 20px;
+    top: 10px;
+    left: 30px;
     width: 100px;
     height: 100px;
     display: flex;
@@ -103,6 +103,7 @@
     border-radius: 14px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
     z-index: 110;
+    width: calc(100% - 210px);
 }
 
 /* BACK BUTTON — icon only */
