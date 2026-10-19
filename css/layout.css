@@ -164,20 +164,8 @@
 
 /* ==================================================
    Main Menu - Left Sidebar (Constant in every pages)
-================================================== 
+================================================== */
 
-.menu-container {
-    position: fixed;
-    inset: 0 auto 0 0;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    width: 180px;
-    height: 100vh;
-    height: 100dvh;
-    background: var(--background);
-    overflow: hidden;
-} */
 .menu-container {
     position: fixed;
     top: var(--header-height);
@@ -185,8 +173,10 @@
     bottom: 0;
     width: var(--left-sidebar-width);
     box-sizing: border-box;
+    overflow: hidden;
     overflow-y: auto;
     z-index: 90;
+    background: var(--background);
 }
 
 /* ==================================================
@@ -220,7 +210,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
-    padding: 50px 0 0 25px;
+    padding: 55px 0 0 25px;
 }
 
 
@@ -423,20 +413,7 @@
 /* =====================================================
    PAGE CONTAINER
    Router injects the active page into this element
-===================================================== 
-
-.page-container {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    flex: 1;
-    width: calc(100% - 240px);
-    min-width: 0;
-    min-height: 0;
-    height: 100vh;
-    overflow: hidden;
-    box-sizing: border-box;
-    margin-left: 240px;
-} */
+===================================================== */
 
 .page-container {
     position: fixed;
