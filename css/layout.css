@@ -210,7 +210,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
-    padding: 55px 0 0 25px;
+    padding: 55px 0 0 15px;
 }
 
 
