@@ -85,6 +85,24 @@
     border-radius: 50%;
 }
 
+/* Floating container: back button, page heading and status */
+.header-content {
+    position: absolute;
+    top: 8px;
+    left: 190px;
+    right: calc(var(--right-sidebar-width, 200px) + 12px);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    z-index: 110;
+}
 
 /* BACK BUTTON — icon only */
 .header .app-back-button {
