@@ -489,4 +489,5 @@
     box-sizing: border-box;
     overflow-y: auto;
     z-index: 200;
+    background: var(--surface-secondary-color);
 }
