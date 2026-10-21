@@ -4,15 +4,11 @@
 
 <!-- MAIN PAGE LAYOUT -->
 
-    <div class="orders-layout page-layout">
+    <main class="orders-layout page-layout">
     
-        <!-- PAGE HEADER -->
-                    <div class="page-header" id="header-container" data-load="html/layout/header.html"> </div>
-    
-        <!-- MAIN CONTENT -->
-                    <div class="orders-main Page-main" data-tabs="orders" data-default-tab="new"> </div>
-    
-    </div>
+        <!-- MAIN CONTENT -->         
+        <div class="page-content" > </div>    
+    </main>
 
 
 <!-- RIGHT SIDEBAR: Outside page layout -->
