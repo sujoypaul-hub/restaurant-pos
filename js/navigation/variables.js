@@ -1,16 +1,16 @@
-
 /* =====================================================
    GLOBAL APPLICATION VARIABLES
 ===================================================== */
 
 window.appVariables = {
-
     // Current page
     pageTitle: "",
     pageDescription: "",
+    pageName: "",
+    currentRoute: "billing",
 
-    // Restaurant
-    restaurantName: "",
+    // Restaurant identity (static for now; can be populated by the backend later)
+    restaurantName: "Restaurant POS",
     activeOutletId: null,
 
     // User and permissions
@@ -26,44 +26,32 @@ window.appVariables = {
     isOnline: navigator.onLine,
     isSyncing: false,
     lastSyncTime: null
-
 };
 
-
-/* =====================================================
-   UPDATE CURRENT PAGE VARIABLES
-===================================================== */
-
-window.setPageVariables = function (config) {
+window.setPageVariables = function (config, route = "") {
+    const routeParts = route.split("/").filter(Boolean);
     window.appVariables.pageTitle = config.title || "";
     window.appVariables.pageDescription = config.description || "";
+    window.appVariables.currentRoute = route || config.page || "";
+    window.appVariables.pageName = config.pageName || routeParts.join("-") || config.page || "";
 
-    // Refresh any matching elements already in the DOM.
     window.printAppVariables();
 };
 
-
-/* =====================================================
-   PRINT GLOBAL VARIABLES INTO HTML
-===================================================== */
-
 window.printAppVariables = function (container = document) {
+    if (!container || typeof container.querySelectorAll !== "function") return;
 
-    container.querySelectorAll("[data-app-variable]").forEach(element => {
+    // Include the container itself when it is a variable-bound element.
+    const elements = [];
+    if (container.matches?.("[data-app-variable]")) elements.push(container);
+    elements.push(...container.querySelectorAll("[data-app-variable]"));
 
+    elements.forEach(element => {
         const variable = element.dataset.appVariable;
         const value = window.appVariables[variable];
-
         element.textContent = value ?? "";
-
     });
-
 };
-
-
-/* =====================================================
-   REFRESH VARIABLES WHEN HTML COMPONENTS LOAD
-===================================================== */
 
 document.addEventListener("pos:component-loaded", event => {
     window.printAppVariables(event.target);
