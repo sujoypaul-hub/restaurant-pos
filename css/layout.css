@@ -23,7 +23,7 @@
 /* Page Header Container */
 .header-container{
     position: fixed;
-    top: 0;
+    top: 10px;
     left: 0;
     right: var(--right-sidebar-width);
     height: var(--header-height);
@@ -229,7 +229,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-light) transparent;
-    padding: 55px 0 0 15px;
+    padding: 75px 0 0 15px;
 }
 
 
@@ -253,6 +253,7 @@
     border: none;
     box-shadow: none;
     margin-bottom: 9px;
+    padding-left: 20px;
 }
 
 /* ==================================================
