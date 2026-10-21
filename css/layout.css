@@ -437,7 +437,7 @@
 
 .page-container {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + 10px);
     left: var(--left-sidebar-width);
     right: var(--right-sidebar-width);
     bottom: 0;
@@ -446,6 +446,7 @@
     box-sizing: border-box;
     overflow: auto;
     z-index: 1;
+    padding: 20px 30px 20px 30px;
 }
 
 /* Page container scrollbar — Chrome, Edge and Safari */
@@ -475,7 +476,6 @@
     height: 100%;
     overflow: scroll;
     box-sizing: border-box;
-    padding: 30px;
 }
 
 
