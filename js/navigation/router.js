@@ -1,32 +1,20 @@
-
 /* =====================================================
    APPLICATION ROUTER
-   Handles routes, navigation and browser history.
-===================================================== */
-
-
-/* =====================================================
-   GET CURRENT ROUTE FROM URL
+   Owns page navigation, route history, page classes,
+   menu active state, and document metadata.
 ===================================================== */
 
 function getRouteFromURL() {
-    const route = new URLSearchParams(location.search).get("route");
-
+    const route = new URLSearchParams(window.location.search).get("route");
     return route ? route.split("/").filter(Boolean) : ["billing"];
 }
-
-
-/* =====================================================
-   FIND ROUTE CONFIGURATION
-===================================================== */
 
 function findRoute(routeParts) {
     let routes = appRoutes;
     let config = null;
 
     for (const part of routeParts) {
-        if (!routes[part]) return null;
-
+        if (!routes || !routes[part]) return null;
         config = routes[part];
         routes = config.children || {};
     }
@@ -34,125 +22,184 @@ function findRoute(routeParts) {
     return config;
 }
 
+function routeToString(route) {
+    return (Array.isArray(route) ? route : String(route).split("/"))
+        .filter(Boolean)
+        .join("/");
+}
 
-/* =====================================================
-   UPDATE LEFT MAIN MENU
-===================================================== */
+function getAppElement() {
+    return document.querySelector(".app");
+}
 
-function updateMainMenu(topLevelRoute) {
-    document.querySelectorAll(".nav-btn").forEach(button => {
-        const isActive = button.dataset.route === topLevelRoute;
+/* Keep app classes managed by the router separate from unrelated classes. */
+function updateAppClasses(routeParts, config) {
+    const app = getAppElement();
+    const configuredPageName = config.pageName || routeParts.join("-");
+    const safePageName = String(configuredPageName)
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    const pageClass = `page-${safePageName || "unknown"}`;
+
+    // Keep the .app class in sync while preserving unrelated application classes.
+    if (app) {
+        const previousPageClass = app.dataset.posPageClass;
+        if (previousPageClass) app.classList.remove(previousPageClass);
+        app.classList.add(pageClass);
+        app.dataset.posPageClass = pageClass;
+        // `fullwidth` is opt-in and is removed automatically on other pages.
+        app.classList.toggle("fullwidth", config.fullwidth === true);
+    }
+
+    // Also keep the existing body page-* class in sync for legacy page-level CSS.
+    const body = document.body;
+    if (body) {
+        const previousBodyPageClass = body.dataset.posPageClass;
+        if (previousBodyPageClass) body.classList.remove(previousBodyPageClass);
+        body.classList.add(pageClass);
+        body.dataset.posPageClass = pageClass;
+    }
+}
+
+function updateMainMenu(routeParts) {
+    const topLevelRoute = routeParts[0];
+    const buttons = document.querySelectorAll(".main-menu [data-route], .menu-container [data-route], .nav-btn[data-route]");
+
+    buttons.forEach(button => {
+        const buttonRoute = routeToString(button.dataset.route);
+        const isActive = buttonRoute === topLevelRoute;
         button.classList.toggle("active", isActive);
+        if (isActive) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
     });
 }
 
+function ensureMeta(selector, attributes) {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+        element = document.createElement("meta");
+        Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+        document.head.appendChild(element);
+    }
+    return element;
+}
 
-/* =====================================================
-   NAVIGATE TO PAGE
-===================================================== */
+function updateDocumentMetadata(config) {
+    const restaurantName = window.appVariables?.restaurantName || "Restaurant POS";
+    const pageTitle = config.title || "Restaurant POS";
+    const fullTitle = pageTitle === restaurantName ? pageTitle : `${pageTitle} | ${restaurantName}`;
+    const description = config.description || `${pageTitle} for ${restaurantName}.`;
+
+    document.title = fullTitle;
+
+    ensureMeta('meta[name="application-name"]', { name: "application-name" })
+        .setAttribute("content", restaurantName);
+    ensureMeta('meta[name="page-name"]', { name: "page-name" })
+        .setAttribute("content", pageTitle);
+    ensureMeta('meta[name="description"]', { name: "description" })
+        .setAttribute("content", description);
+    ensureMeta('meta[property="og:title"]', { property: "og:title" })
+        .setAttribute("content", fullTitle);
+    ensureMeta('meta[property="og:description"]', { property: "og:description" })
+        .setAttribute("content", description);
+    ensureMeta('meta[property="og:site_name"]', { property: "og:site_name" })
+        .setAttribute("content", restaurantName);
+    ensureMeta('meta[name="twitter:title"]', { name: "twitter:title" })
+        .setAttribute("content", fullTitle);
+    ensureMeta('meta[name="twitter:description"]', { name: "twitter:description" })
+        .setAttribute("content", description);
+}
 
 async function navigateTo(route, updateURL = true) {
     const parts = Array.isArray(route)
-        ? route
-        : route.split("/").filter(Boolean);
+        ? route.filter(Boolean)
+        : String(route).split("/").filter(Boolean);
 
     const config = findRoute(parts);
-
-    // Fall back to Billing if the route is invalid.
     if (!config) {
-        return navigateTo(["billing"], false);
+        if (parts.join("/") !== "billing") return navigateTo(["billing"], updateURL);
+        console.error("The fallback Billing route is not configured.");
+        return;
     }
-
-    // Update global page information.
-    window.setPageVariables(config);
 
     const routeString = parts.join("/");
 
-    // Update URL and browser history.
     if (updateURL) {
-        const url = new URL(location.href);
-
-        url.searchParams.delete("tab");
+        const url = new URL(window.location.href);
         url.searchParams.set("route", routeString);
-
-        history.pushState(
-            { posRoute: routeString, posInternal: true },
-            "",
-            url
-        );
+        // A page navigation starts with its own configured/default tab.
+        url.searchParams.delete("tab");
+        history.pushState({ posRoute: routeString, posInternal: true }, "", url);
     }
 
-    updateMainMenu(parts[0]);
+    window.setPageVariables(config, routeString);
+    updateAppClasses(parts, config);
+    updateDocumentMetadata(config);
+
+    // The shell must be loaded before we set menu active state. On first load,
+    // the menu buttons are injected asynchronously by component-loader.js.
+    if (window.POSShellReady) {
+        try { await window.POSShellReady; }
+        catch (error) { console.error("Application shell failed to load:", error); }
+    }
+
+    updateMainMenu(parts);
 
     const container = document.getElementById("page-container");
     if (!container) return;
 
-    // Load the selected page and its configured scripts.
-    await loadHTML(container, `html/pages/${config.page}.html`, {
+    await window.loadHTML(container, `html/pages/${config.page}.html`, {
         pageConfig: config
     });
 
-    // Print variables into the newly loaded page.
     window.printAppVariables(container);
+    // Re-apply after asynchronous page/shell loads so reloads and nested routes
+    // always leave the correct menu button active.
+    updateMainMenu(parts);
 }
 
-
-/* =====================================================
-   CLICK HANDLING
-===================================================== */
-
+// Delegate clicks so dynamically loaded menu/page buttons work too.
 document.addEventListener("click", event => {
-
-    // Application Back button.
     const backButton = event.target.closest("#app-back-button");
-
     if (backButton) {
         event.preventDefault();
-
         if (history.state?.posInternal) {
             history.back();
         } else {
             const parts = getRouteFromURL();
-
-            navigateTo(
-                parts.length > 1 ? parts.slice(0, -1) : ["billing"]
-            );
+            navigateTo(parts.length > 1 ? parts.slice(0, -1) : ["billing"]);
         }
-
         return;
     }
 
-    // Navigation links and buttons.
     const routeElement = event.target.closest("[data-route]");
     if (!routeElement) return;
 
     const route = routeElement.dataset.route;
     if (!route) return;
 
-    if (routeElement.tagName === "A") {
-        event.preventDefault();
-    }
-
+    if (routeElement.tagName === "A") event.preventDefault();
     navigateTo(route);
 });
-
-
-/* =====================================================
-   BROWSER BACK / FORWARD
-===================================================== */
 
 window.addEventListener("popstate", () => {
     navigateTo(getRouteFromURL(), false);
 });
 
-
-/* =====================================================
-   INITIALIZE APPLICATION
-===================================================== */
-
 window.POSRouter = {
     navigate: navigateTo,
-    getCurrentRoute: getRouteFromURL
+    getCurrentRoute: getRouteFromURL,
+    findRoute
 };
 
-navigateTo(getRouteFromURL(), false);
+// Initialize only after the global HTML shell has finished loading. This fixes
+// the initial-load race that previously left the menu without an active button.
+(async function initializeRouter() {
+    if (window.POSShellReady) {
+        try { await window.POSShellReady; }
+        catch (error) { console.error("Application shell failed to load:", error); }
+    }
+    await navigateTo(getRouteFromURL(), false);
+})();
