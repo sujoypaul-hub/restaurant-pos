@@ -1,0 +1,9 @@
+/* =====================================================
+   BILLING PAGE
+===================================================== */
+.page-billing .header-container, .page-billing .page-container {
+   right: 450px;
+}
+.page-billing .right-sidebar {
+   width:450px;
+}
