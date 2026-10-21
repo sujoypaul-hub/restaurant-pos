@@ -9,6 +9,10 @@ entire application.
 The router reads this file to determine:
 
 - URL
+- Optional pageName (CSS class name without the `page-` prefix)
+- Optional fullwidth: true adds `.fullwidth` to `.app`
+- Restaurant/page document title and metadata
+- URL
 - HTML page
 - Page title
 - Page description
@@ -37,6 +41,9 @@ const appRoutes = {
         title: "Billing",
 
         description: "Create a new order",
+
+        // Optional: pageName: "billing",
+        // Optional: fullwidth: true,
 
         scripts: [
 
