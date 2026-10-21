@@ -2,13 +2,13 @@
 <!-- ==================================
              BILLING TAB
 =================================== -->
-
-
-<section class="tab-content active" data-tab-content="billing">
-    <div class="billing-layout">
+<main class="page-layout billing-page-layout">
+    
+  <!-- MAIN CONTENT -->
+    <div class="page-content">
       
         <!-- ==========================================
-             PRODUCTS
+             PRODUCTS TAB HEADER
         ========================================== -->
 
         <div class="products-section">
@@ -19,21 +19,18 @@
                 <button class="category"> Fries </button>
                 <button class="category"> Drinks </button>
             </div>
-
-            <div class="products-grid">
+          
+        <!-- ==========================================
+             PRODUCTS GRID (PRODUCTS TAB CONTENT)
+        ========================================== -->
+          
+        <div class="products-grid">
+          
                 <div class="product-card">
                     <div class="product-image"> 🍔 </div>
-
-                    <h3>
-                        Classic Chicken Burger
-                    </h3>
-
+                    <h3> Classic Chicken Burger </h3>
                     <p>₹99</p>
-
-                    <button class="add-btn">
-                        Add
-                    </button>
-
+                    <button class="add-btn"> Add </button>
                 </div>
 
 
@@ -99,12 +96,18 @@
             </div>
 
         </div>
+    </div>
+</main>
 
 
 
-        <!-- ==================================================
+<!-- RIGHT SIDEBAR: Outside page layout -->
+
+<aside class="page-sidebar page-sidebar-2 right-sidebar">
+  
+<!-- ==================================================
              CART
-        ================================================== -->
+================================================== -->
 
         <div class="cart-section">
 
@@ -480,11 +483,6 @@
 
 
         </div>
-
-
-    </div>
-
-</section>
 
 
 
@@ -1005,3 +1003,5 @@
     </div>
 
 </div>
+
+</aside>
