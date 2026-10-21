@@ -20,82 +20,42 @@
                 <button class="category"> Drinks </button>
             </div>
           
-        <!-- ==========================================
-             PRODUCTS GRID (PRODUCTS TAB CONTENT)
-        ========================================== -->
-          
-        <div class="products-grid">
-          
-                <div class="product-card">
-                    <div class="product-image"> 🍔 </div>
-                    <h3> Classic Chicken Burger </h3>
-                    <p>₹99</p>
-                    <button class="add-btn"> Add </button>
-                </div>
-
-
-
-                <div class="product-card">
-
-                    <div class="product-image">
-                        🍔
+            <!-- ==========================================
+                 PRODUCTS GRID (PRODUCTS TAB CONTENT)
+            ========================================== -->
+              
+            <div class="products-grid">
+              
+                    <div class="product-card">
+                        <div class="product-image"> 🍔 </div>
+                        <h3> Classic Chicken Burger </h3>
+                        <p>₹99</p>
+                        <button class="add-btn"> Add </button>
                     </div>
-
-                    <h3>
-                        Classic Veg Burger
-                    </h3>
-
-                    <p>₹99</p>
-
-                    <button class="add-btn">
-                        Add
-                    </button>
-
-                </div>
-
-
-
-                <div class="product-card">
-
-                    <div class="product-image">
-                        🍗
+    
+                    <div class="product-card">
+                        <div class="product-image">  🍔  </div>
+                        <h3> Classic Veg Burger </h3>
+                        <p>₹99</p>
+                        <button class="add-btn"> Add </button>
                     </div>
-
-                    <h3>
-                        4 Pc Fried Chicken
-                    </h3>
-
-                    <p>₹99</p>
-
-                    <button class="add-btn">
-                        Add
-                    </button>
-
-                </div>
-
-
-
-                <div class="product-card">
-
-                    <div class="product-image">
-                        🍟
+    
+                    <div class="product-card">
+                        <div class="product-image"> 🍗 </div>
+                        <h3> 4 Pc Fried Chicken </h3>
+                        <p>₹99</p>
+                        <button class="add-btn"> Add </button>
                     </div>
-
-                    <h3>
-                        Peri Peri Fries
-                    </h3>
-
-                    <p>₹99</p>
-
-                    <button class="add-btn">
-                        Add
-                    </button>
-
-                </div>
-
+    
+                    <div class="product-card"> 
+                        <div class="product-image"> 🍟 </div>
+                        <h3> Peri Peri Fries </h3>
+                        <p>₹99</p>
+                        <button class="add-btn"> Add </button>
+                    </div>
             </div>
 
-        </div>
+      </div>
     </div>
 </main>
 
@@ -108,168 +68,57 @@
 <!-- ==================================================
              CART
 ================================================== -->
-
         <div class="cart-section">
-
-
+          
             <div class="cart-header">
-
-                <h2>
-                    Current Order 1
-                </h2>
-
-                <span>
-                    Order #0001
-                </span>
-
+                <h2> Current Order 1 </h2>
+                <span> Order #0001 </span>
             </div>
-
-
-
-            <!-- ==================================================
-                 CUSTOMER
-            ================================================== -->
-
+          
+            <!-- ==========================================
+              CUSTOMER DETAILS SELECTION
+            ========================================== -->
             <div class="customer-section">
-
-
+              
                 <!-- Customer Phone -->
-
-                <input
-                    type="tel"
-                    id="customer-phone"
-                    placeholder="Enter customer phone number"
-                    inputmode="numeric"
-                    maxlength="10"
-                >
-
+                <input type="tel" id="customer-phone" placeholder="Enter customer phone number"  inputmode="numeric" maxlength="10" >
 
                 <!-- Continue Without Phone -->
-
                 <label class="no-phone-option">
-
-                    <input
-                        type="checkbox"
-                        id="no-phone-checkbox"
-                    >
-
-                    <span>
-                        Continue without phone number
-                    </span>
-
+                    <input type="checkbox" id="no-phone-checkbox" >
+                    <span> Continue without phone number </span>
                 </label>
 
-
                 <!-- Customer Name -->
-
-                <input
-                    type="text"
-                    id="customer-name"
-                    class="customer-name-input"
-                    placeholder="Enter customer name"
-                    autocomplete="name"
-                >
-
+                <input type="text" id="customer-name"  class="customer-name-input" placeholder="Enter customer name" autocomplete="name" >
 
                 <!-- Order Type -->
-
                 <div class="order-type">
-
-                    <button
-                        class="order-type-btn"
-                        type="button"
-                        data-order-type="delivery"
-                    >
-                        Delivery
-                    </button>
-
-
-                    <button
-                        class="order-type-btn"
-                        type="button"
-                        data-order-type="dine-in"
-                    >
-                        Dine In
-                    </button>
-
-
-                    <button
-                        class="order-type-btn active"
-                        type="button"
-                        data-order-type="takeaway"
-                    >
-                        Takeaway
-                    </button>
-
+                    <button class="order-type-btn" type="button" data-order-type="delivery" > Delivery </button>
+                    <button class="order-type-btn" type="button" data-order-type="dine-in" > Dine In </button>
+                    <button class="order-type-btn active" type="button" data-order-type="takeaway" > Takeaway </button>
                 </div>
-
 
                 <!-- ==========================================
                      TABLE SELECTION
-                     ========================================== -->
-
-                <div
-                    class="table-selection"
-                    id="table-selection"
-                >
-
-                    <button
-                        class="table-selection-btn"
-                        id="table-selection-btn"
-                        type="button"
-                    >
-
-                        <span>
-                            Select Table
-                        </span>
-
-                        <span>
-                            →
-                        </span>
-
-                    </button>
-
+                ========================================== -->
+                <div class="table-selection" id="table-selection" >
+                    <button class="table-selection-btn" id="table-selection-btn" type="button" > Select Table →  </button>
                 </div>
 
               <!-- ==========================================
                    DELIVERY ADDRESS SELECTION
               ========================================== -->
               
-              <div
-                  class="delivery-address-selection"
-                  id="delivery-address-selection"
-              >
-              
-                  <button
-                      class="delivery-address-btn"
-                      id="delivery-address-btn"
-                      type="button"
-                      disabled
-                  >
-              
-                      <span
-                          class="delivery-address-button-text"
-                      >
-              
-                          <strong>
-                              Select Delivery Address
-                          </strong>
-              
-                          <small>
-                              Enter customer phone number first
-                          </small>
-              
+              <div class="delivery-address-selection" id="delivery-address-selection" >
+                  <button class="delivery-address-btn" id="delivery-address-btn" type="button" disabled >
+                      <span class="delivery-address-button-text" >
+                          <strong> Select Delivery Address </strong>
+                          <small> Enter customer phone number first </small>
                       </span>
-              
-                      <span>
-                          →
-                      </span>
-              
-                  </button>
-              
+                      <span>  →  </span>
+                  </button> 
               </div>
-
-
             </div>
 
 
