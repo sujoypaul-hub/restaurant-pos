@@ -509,3 +509,186 @@
     z-index: 200;
     background: var(--surface-secondary-color);
 }
+
+```css
+/* ========================================
+   LIST ITEMS
+======================================== */
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Individual item */
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+
+    color: var(--text);
+    text-align: left;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    box-shadow: 0 1px 2px rgb(0 0 0 / 3%);
+
+    cursor: pointer;
+
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+}
+
+/* Hover */
+
+.list-item:hover {
+    background: var(--surface-secondary);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
+}
+
+/* Press */
+
+.list-item:active {
+    transform: scale(0.99);
+}
+
+/* Keyboard accessibility */
+
+.list-item:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   ICON
+======================================== */
+
+.list-item-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+    line-height: 1;
+
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+/* ========================================
+   TEXT CONTENT
+======================================== */
+
+.list-item-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+
+    min-width: 0;
+}
+
+.list-item-title {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
+}
+
+.list-item-description {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+
+    overflow-wrap: anywhere;
+}
+
+/* ========================================
+   RIGHT SIDE
+======================================== */
+
+.list-item-right {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-left: auto;
+    color: var(--muted);
+}
+
+/* Default arrow when the right side is empty */
+
+.list-item-right:empty::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+
+    transform: rotate(45deg);
+    transition:
+        transform 160ms ease,
+        color 160ms ease;
+}
+
+.list-item:hover .list-item-right:empty {
+    color: var(--accent);
+}
+
+.list-item:hover .list-item-right:empty::after {
+    transform: translateX(2px) rotate(45deg);
+}
+
+/* ========================================
+   DISABLED STATE
+======================================== */
+
+.list-item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.list-item:disabled:hover {
+    background: var(--surface);
+    border-color: var(--border);
+    transform: none;
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .list-item,
+    .list-item-right:empty::after {
+        transition: none;
+    }
+
+    .list-item:active {
+        transform: none;
+    }
+}
