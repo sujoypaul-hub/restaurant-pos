@@ -510,6 +510,7 @@
     overflow-y: auto;
     z-index: 200;
     background: var(--surface-secondary-color);
+    padding: 20px;
 }
 
 ```css
