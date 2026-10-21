@@ -441,7 +441,6 @@
     bottom: 0;
     min-width: 0;
     min-height: 0;
-    padding: 20px;
     box-sizing: border-box;
     overflow: auto;
     z-index: 1;
@@ -474,6 +473,7 @@
     height: 100%;
     overflow: scroll;
     box-sizing: border-box;
+    padding: 30px;
 }
 
 
