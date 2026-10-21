@@ -343,7 +343,6 @@
     cursor: pointer;
 }
 
-```css
 /* Hidden until the relevant action is triggered */
 #table-selection,
 #delivery-address-selection {
