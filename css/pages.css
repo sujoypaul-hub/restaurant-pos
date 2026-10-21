@@ -343,3 +343,24 @@
     cursor: pointer;
 }
 
+```css
+/* Hidden until the relevant action is triggered */
+#table-selection,
+#delivery-address-selection {
+    display: none;
+}
+
+/* Keep the cart content from overlapping the payment button */
+.cart-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.payment-btn {
+    position: static;
+    flex-shrink: 0;
+    margin-top: auto;
+}
