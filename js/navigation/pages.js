@@ -380,7 +380,7 @@ const appRoutes = {
                 description:
                     "Choose your application theme",
                 
-                scripts: [ "js/settings/theme.js" ]
+                //scripts: [ "js/settings/theme.js" ]
 
 
             }
