@@ -47,13 +47,13 @@ const appRoutes = {
 
         scripts: [
 
-            "js/billing/cart.js",
-            "js/billing/customer-input.js",
-            "js/billing/promo.js",
-            "js/billing/table.js",
-            "js/orders/order-type.js",
-            "js/billing/address.js",
-            "js/billing/billing.js"
+          //  "js/billing/cart.js",
+          //  "js/billing/customer-input.js",
+          //  "js/billing/promo.js",
+          //  "js/billing/table.js",
+          //  "js/orders/order-type.js",
+         //   "js/billing/address.js",
+         //   "js/billing/billing.js"
 
         ]
 
