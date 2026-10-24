@@ -1,6 +1,6 @@
-# Restaurant POS — PAGE LAYOUT
+# 1. Restaurant POS — PAGE LAYOUT
 
-## 1. Page Layout with header and right sidebar
+## Page Layout with header and right sidebar
 
 <!-- MAIN PAGE LAYOUT -->
 
@@ -20,9 +20,9 @@
 
 
 
-# Restaurant POS — UI Components
+# 2. Restaurant POS — List Type Components
 
-## 2. List Type Layout 
+## List Type Layout 
 
 .list-type-layout
 │
@@ -68,4 +68,88 @@
 </div>
 
 __________________________________________________________________________________________________________________________________________
+
+
+
+# 3. Restaurant POS — POP-UP Layout
+
+## 1.  Pop up Trigger button
+    
+    <button type="button" data-popup-target="edit-order">
+        Edit Order
+    </button>
+    
+    <button type="button" data-popup-target="promotion">
+        Add Promotion
+    </button>
+    
+    <button type="button" data-popup-target="payment">
+        Payment
+    </button>
+    
+## 2. Pop up Container 
+    
+    <!-- POPUP CONTAINERS -->
+    
+    <div class="pos-modal" data-popup="edit-order" aria-hidden="true">
+        <div class="popup-backdrop"></div>
+    
+        <div class="popup-container" role="dialog" aria-modal="true" aria-label="Edit Order">
+            <div class="popup-header">
+                <h2>Edit Order</h2>
+                <button type="button" data-popup-close aria-label="Close">×</button>
+            </div>
+    
+            <div class="popup-content">
+                <!-- Edit order content -->
+            </div>
+    
+            <div class="popup-footer">
+                <!-- Edit order actions -->
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- PROMOTION POPUP -->
+    <div class="pos-modal" data-popup="promotion" aria-hidden="true">
+        <div class="popup-backdrop"></div>
+    
+        <div class="popup-container" role="dialog" aria-modal="true" aria-label="Promotion">
+            <div class="popup-header">
+                <h2>Promotion</h2>
+                <button type="button" data-popup-close aria-label="Close">×</button>
+            </div>
+    
+            <div class="popup-content">
+                <!-- Promotion content -->
+            </div>
+    
+            <div class="popup-footer">
+                <!-- Promotion actions -->
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- PAYMENT POPUP -->
+    <div class="pos-modal" data-popup="payment" aria-hidden="true">
+        <div class="popup-backdrop"></div>
+    
+        <div class="popup-container" role="dialog" aria-modal="true" aria-label="Payment">
+            <div class="popup-header">
+                <h2>Payment</h2>
+                <button type="button" data-popup-close aria-label="Close">×</button>
+            </div>
+    
+            <div class="popup-content">
+                <!-- Payment content -->
+            </div>
+    
+            <div class="popup-footer">
+                <!-- Payment actions -->
+            </div>
+        </div>
+    </div>
+    <!-- END POPUP CONTAINERS -->
 
