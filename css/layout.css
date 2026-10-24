@@ -681,6 +681,17 @@
     transform: none;
 }
 
+.pos-modal {
+    position: fixed;
+    inset: 0;
+    overflow: auto;
+    pointer-events: none;
+}
+
+.pos-modal.active {
+    pointer-events: auto;
+}
+
 /* ========================================
    REDUCED MOTION
 ======================================== */
