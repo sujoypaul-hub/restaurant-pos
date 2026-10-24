@@ -74,9 +74,6 @@ const appRoutes = {
 
         description:
             "View and manage restaurant orders",
-        scripts: [ 
-            
-                 ]
         
         children: {
 
