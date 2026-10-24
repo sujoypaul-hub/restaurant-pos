@@ -1,384 +1,190 @@
-/*
-==================================================
-SETTINGS
-==================================================
 
-Currently handles:
+/* =====================================================
+   GLOBAL APPLICATION SETTINGS
+   Runs on every page.
 
-- Light theme
-- Dark theme
-- Theme persistence
+   Responsibilities:
+   - Apply and persist the selected theme
+   - Handle theme changes from dynamically loaded UI
+   - Handle application refresh
+===================================================== */
 
-The selected theme is stored locally in the
-browser so it remains after refresh.
+(() => {
+    "use strict";
 
-==================================================
-*/
+    // Prevent duplicate global initialization.
+    if (window.POSSettingsInitialized) return;
+    window.POSSettingsInitialized = true;
 
+    /* ==========================================
+       THEME CONFIGURATION
+    ========================================== */
 
-/*
-==================================================
-THEME
-==================================================
-*/
+    const THEME_STORAGE_KEY = "restaurant_pos_theme";
 
-function setTheme(theme) {
+    const AVAILABLE_THEMES = [
+        "light-default",
+        "light-blue",
+        "light-green",
+        "light-red",
+        "light-purple",
+        "light-yellow",
+        "light-orange",
+        "light-pink",
+        "light-gold",
+        "light-brown",
 
-    document.documentElement.dataset.theme =
-        theme;
+        "dark-default",
+        "dark-blue",
+        "dark-green",
+        "dark-red",
+        "dark-purple",
+        "dark-yellow",
+        "dark-orange",
+        "dark-pink",
+        "dark-gold",
+        "dark-brown"
+    ];
 
+    function getSavedTheme() {
+        try {
+            const saved = localStorage.getItem(THEME_STORAGE_KEY);
 
-    /*
-    Save user's preference.
-
-    localStorage works even when the internet
-    is unavailable.
-    */
-
-    localStorage.setItem(
-        "restaurant_pos_theme",
-        theme
-    );
-
-
-    updateThemeSwitch(theme);
-
-}
-
-
-/*
-==================================================
-GET SAVED THEME
-==================================================
-*/
-
-function getSavedTheme() {
-
-    return localStorage.getItem(
-        "restaurant_pos_theme"
-    ) || "light";
-
-}
-
-
-/*
-==================================================
-UPDATE SWITCH UI
-==================================================
-*/
-
-function updateThemeSwitch(theme) {
-
-    const toggle =
-        document.getElementById(
-            "theme-toggle"
-        );
-
-    const label =
-        document.getElementById(
-            "theme-label"
-        );
-
-
-    if (!toggle) {
-        return;
-    }
-
-
-    toggle.checked =
-        theme === "dark";
-
-
-    if (label) {
-
-        label.textContent =
-            theme === "dark"
-                ? "Dark Mode"
-                : "Light Mode";
-
-    }
-
-}
-
-
-/*
-==================================================
-INITIALIZE THEME
-==================================================
-*/
-
-function initializeTheme() {
-
-    const savedTheme =
-        getSavedTheme();
-
-    setTheme(savedTheme);
-
-
-    const toggle =
-        document.getElementById(
-            "theme-toggle"
-        );
-
-
-    if (!toggle) {
-        return;
-    }
-
-
-    toggle.addEventListener(
-        "change",
-        () => {
-
-            setTheme(
-                toggle.checked
-                    ? "dark"
-                    : "light"
-            );
-
+            return AVAILABLE_THEMES.includes(saved)
+                ? saved
+                : "light-default";
+        } catch (error) {
+            console.warn("Unable to read saved theme:", error);
+            return "light-default";
         }
-    );
-
-}
-
-
-initializeTheme();
-
-/*
-==================================================
-FORCE REFRESH
-==================================================
-
-This refresh system:
-
-1. Clears Cache Storage
-2. Removes old Service Workers
-3. Keeps the current tab
-4. Adds a cache-busting URL parameter
-5. Reloads the application
-
-It does NOT erase:
-- Theme preference
-- Customer data
-- Orders
-- Products
-- Local application data
-
-==================================================
-*/
-
-
-/*
-==================================================
-CLEAR CACHE STORAGE
-==================================================
-*/
-
-async function clearAppCaches() {
-
-    if (!("caches" in window)) {
-
-        return;
-
     }
 
+    function updateThemeUI(theme) {
+        document
+            .querySelectorAll('input[name="theme"]')
+            .forEach(input => {
+                input.checked = input.value === theme;
+            });
 
-    try {
+        const label = document.getElementById("theme-label");
 
-        const cacheNames =
-            await caches.keys();
-
-
-        await Promise.all(
-
-            cacheNames.map(
-                cacheName =>
-                    caches.delete(
-                        cacheName
-                    )
-            )
-
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Unable to clear Cache Storage:",
-            error
-        );
-
+        if (label) {
+            label.textContent = theme;
+        }
     }
 
-}
+    function setTheme(theme) {
+        if (!AVAILABLE_THEMES.includes(theme)) {
+            theme = "light-default";
+        }
 
+        document.documentElement.setAttribute("data-theme", theme);
 
-/*
-==================================================
-REMOVE SERVICE WORKERS
-==================================================
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch (error) {
+            console.warn("Unable to save theme preference:", error);
+        }
 
-We are not using an offline service worker yet,
-but this makes the refresh button ready for
-the offline system we will add later.
-==================================================
-*/
+        updateThemeUI(theme);
 
-async function removeServiceWorkers() {
+        window.appVariables &&
+            (window.appVariables.activeTheme = theme);
 
-    if (!("serviceWorker" in navigator)) {
-
-        return;
-
+        return theme;
     }
 
+    function initializeTheme() {
+        const theme = getSavedTheme();
 
-    try {
+        document.documentElement.setAttribute("data-theme", theme);
 
-        const registrations =
-            await navigator
-                .serviceWorker
-                .getRegistrations();
+        if (window.appVariables) {
+            window.appVariables.activeTheme = theme;
+        }
 
-
-        await Promise.all(
-
-            registrations.map(
-                registration =>
-                    registration.unregister()
-            )
-
-        );
-
-    } catch (error) {
-
-        console.warn(
-            "Unable to remove Service Workers:",
-            error
-        );
-
+        updateThemeUI(theme);
     }
 
-}
+    // Delegate the event because Appearance controls may load later.
+    document.addEventListener("change", event => {
+        const input = event.target;
 
+        if (
+            input instanceof HTMLInputElement &&
+            input.matches('input[name="theme"]') &&
+            input.checked
+        ) {
+            setTheme(input.value);
+        }
+    });
 
-/*
-==================================================
-FORCE REFRESH APPLICATION
-==================================================
-*/
+    /* ==========================================
+       APPLICATION REFRESH
+    ========================================== */
 
-async function forceRefreshApplication() {
+    async function refreshApplication(button) {
+        if (button?.disabled) return;
 
-    const button =
-        document.getElementById(
-            "force-refresh"
-        );
+        const originalText = button?.textContent;
 
+        if (button) {
+            button.disabled = true;
+            button.textContent = "Refreshing...";
+        }
 
-    /*
-    Prevent multiple clicks.
-    */
+        try {
+            // Preserve the current route, tab, and other URL parameters.
+            const url = new URL(window.location.href);
 
-    if (button) {
+            url.searchParams.set("refresh", Date.now().toString());
 
-        button.disabled = true;
+            // Replace the current history entry rather than adding one.
+            window.location.replace(url.toString());
+        } catch (error) {
+            console.error("Unable to refresh application:", error);
 
-        button.textContent =
-            "Refreshing...";
+            if (button) {
+                button.disabled = false;
+                button.textContent = originalText || "Refresh";
+            }
 
+            window.location.reload();
+        }
     }
 
-
-    /*
-    Remember current URL.
-
-    This preserves:
-
-    ?tab=billing
-    ?tab=orders
-    ?tab=marketing
-
-    etc.
-    */
-
-    const url =
-        new URL(
-            window.location.href
+    // Delegate clicks so dynamically loaded Settings UI works too.
+    document.addEventListener("click", event => {
+        const button = event.target.closest(
+            "#force-refresh-button, #force-refresh"
         );
 
+        if (!button) return;
 
-    /*
-    Clear application caches.
-    */
+        event.preventDefault();
+        refreshApplication(button);
+    });
 
-    await clearAppCaches();
+    /* ==========================================
+       INITIALIZATION
+    ========================================== */
 
+    initializeTheme();
 
-    /*
-    Remove service workers.
-    */
+    /* ==========================================
+       PUBLIC API
+    ========================================== */
 
-    await removeServiceWorkers();
+    window.POSSettings = {
+        getTheme: getSavedTheme,
+        setTheme,
+        availableThemes: [...AVAILABLE_THEMES],
+        refresh: () => refreshApplication()
+    };
 
-
-    /*
-    Add a unique refresh value.
-
-    Example:
-
-    ?tab=marketing&refresh=1791041234567
-
-    Every click creates a new URL, making the
-    browser request a fresh document.
-    */
-
-    url.searchParams.set(
-        "refresh",
-        Date.now().toString()
-    );
-
-
-    /*
-    Replace the current history entry.
-
-    We don't want every refresh click to create
-    another browser-history entry.
-    */
-
-    window.location.replace(
-        url.toString()
-    );
-
-}
-
-
-/*
-==================================================
-INITIALIZE FORCE REFRESH BUTTON
-==================================================
-*/
-
-function initializeForceRefresh() {
-
-    const button =
-        document.getElementById(
-            "force-refresh"
-        );
-
-
-    if (!button) {
-
-        return;
-
-    }
-
-
-    button.addEventListener(
-        "click",
-        forceRefreshApplication
-    );
-
-}
-
-
-initializeForceRefresh();
+    // Temporary compatibility for existing theme.js callers.
+    window.POSTheme = {
+        get: getSavedTheme,
+        set: setTheme
+    };
+})();
