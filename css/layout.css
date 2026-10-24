@@ -681,6 +681,11 @@
     transform: none;
 }
 
+
+/* ========================================
+   POP UP CONTAINER
+======================================== */
+
 .pos-modal {
     position: fixed;
     inset: 0;
