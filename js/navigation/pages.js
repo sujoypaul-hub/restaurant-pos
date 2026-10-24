@@ -361,27 +361,11 @@ const appRoutes = {
             "Manage application settings",
 
         children: {
-
-            /*
-            ======================================
-            THEME
-            ======================================
-            */
-
-            theme: {
-
-                page: "settings/theme",
-
-                title: "Appearance",
-
-                description:
-                    "Choose your application theme",
-                
-                //scripts: [ "js/settings/theme.js" ]
-
-
-            }
-
+            appearance: { page: "settings/appearance", title: "Appearance", description: "Customize application appearance", scripts: [] },
+            billing: { page: "settings/billing", title: "Billing & Payments", description: "Configure billing and payments", scripts: [] },
+            orders: { page: "settings/orders", title: "Order & Restaurant Operations", description: "Configure order workflows", scripts: [] },
+            tables: { page: "settings/tables", title: "Table Management", description: "Configure tables and dine-in sessions", scripts: [] },
+            kitchen: { page: "settings/kitchen", title: "Kitchen", description: "Configure kitchen operations", scripts: [] }
         }
 
     },
