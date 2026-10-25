@@ -233,7 +233,7 @@ const appRoutes = {
             fullwidth: true,
             scripts: []
         },
-        billing: {
+        "billing-and-Payment": {
             page: "settings/billing-and-payment",
             title: "Billing & Payments",
             description: "Configure billing and payments",
@@ -241,7 +241,7 @@ const appRoutes = {
             fullwidth: true,
             scripts: []
         },
-        orders: {
+        "order-and-restaurant-operations": {
             page: "settings/order-and-restaurant-operations",
             title: "Order & Restaurant Operations",
             description: "Configure order workflows",
@@ -249,7 +249,7 @@ const appRoutes = {
             fullwidth: true,
             scripts: []
         },
-        tables: {
+        "table-management": {
             page: "settings/table-management",
             title: "Table Management",
             description: "Configure tables and dine-in sessions",
@@ -257,7 +257,7 @@ const appRoutes = {
             fullwidth: true,
             scripts: []
         },
-        kitchen: {
+        "kitchen-configuration": {
             page: "settings/kitchen-configuration",
             title: "Kitchen",
             description: "Configure kitchen operations",
