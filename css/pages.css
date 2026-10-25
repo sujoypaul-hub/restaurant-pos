@@ -1191,7 +1191,7 @@
    Add this class through your rendering logic. */
 
 .order-card:not(.is-dine-in-postpaid) .order-rounds {
-    display: none;
+    /* display: none; */
 }
 
 .order-card:not(.is-dine-in-postpaid) .order-items-list {
