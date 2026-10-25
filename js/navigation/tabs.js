@@ -189,6 +189,14 @@ function initializeTabContainer(
         }
     );
 
+    // Toggle existing panels when using in-page tabs
+const panels = container.querySelectorAll("[data-tab-panel]");
+
+panels.forEach(panel => {
+    const isActive = panel.dataset.tabPanel === tabName;
+    panel.hidden = !isActive;
+});
+
 }
 
 
