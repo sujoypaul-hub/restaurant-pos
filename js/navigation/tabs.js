@@ -1,379 +1,212 @@
-/*
-==================================================
-UNIVERSAL TAB SYSTEM
-==================================================
+/* =========================================================
+   UNIVERSAL TAB SYSTEM
+   Supports:
+   1. Preloaded panels using data-tab-panel
+   2. Dynamically loaded pages using data-tab-page
+   ========================================================= */
 
-This file handles all tab-based interfaces.
+(function () {
+    "use strict";
 
-Features:
+    const TAB_CONTAINER_SELECTOR = "[data-tabs]";
+    const TAB_BUTTON_SELECTOR = "[data-tab]";
 
-- Universal tab initialization
-- Default tab
-- URL-based tab state
-- Browser Back / Forward support
-- Loads tab content dynamically
-- No page-specific IDs required
-- No page-specific tab logic
-
-Required HTML structure:
-
-<div data-tabs="example" data-default-tab="first">
-
-    <div class="tabs">
-        <button data-tab="first" data-tab-page="example/first">
-            First
-        </button>
-
-        <button data-tab="second" data-tab-page="example/second">
-            Second
-        </button>
-    </div>
-
-    <div class="tab-content">
-        <!-- Dynamic content loads here -->
-    </div>
-
-</div>
-
-==================================================
-*/
-
-
-/*
-==================================================
-INITIALIZE ALL TAB CONTAINERS
-==================================================
-*/
-
-function initializeTabs() {
-
-    const tabContainers =
-        document.querySelectorAll(
-            "[data-tabs]"
-        );
-
-
-    tabContainers.forEach(
-        initializeTabContainer
-    );
-
-}
-
-
-/*
-==================================================
-INITIALIZE ONE TAB CONTAINER
-==================================================
-*/
-
-function initializeTabContainer(
-    container
-) {
-
-    const tabs =
-        container.querySelectorAll(
-            "[data-tab]"
-        );
-
-
-    /*
-    No tabs found.
-    */
-
-    if (!tabs.length) {
-
-        return;
-
+    /**
+     * Initialize every tab container on the page.
+     */
+    function initialize() {
+        document.querySelectorAll(TAB_CONTAINER_SELECTOR).forEach(container => {
+            initializeTabContainer(container);
+        });
     }
 
+    /**
+     * Initialize one tab container.
+     */
+    function initializeTabContainer(container) {
+        if (container.dataset.tabsInitialized === "true") {
+            return;
+        }
 
-    /*
-    Find default tab.
-
-    If data-default-tab is not provided,
-    use the first tab.
-    */
-
-    const defaultTab =
-        container.dataset.defaultTab ||
-        tabs[0].dataset.tab;
-
-
-    /*
-    Read tab from URL.
-    */
-
-    const params =
-        new URLSearchParams(
-            window.location.search
+        const tabs = Array.from(
+            container.querySelectorAll(TAB_BUTTON_SELECTOR)
         );
 
+        if (!tabs.length) {
+            return;
+        }
 
-    const urlTab =
-        params.get("tab");
-
-
-    /*
-    Check whether URL tab exists
-    inside this tab group.
-    */
-
-    const validUrlTab =
-        Array.from(tabs).some(
-            tab =>
-                tab.dataset.tab ===
-                urlTab
+        // Only use buttons belonging to this tab container,
+        // not buttons inside a nested tab container.
+        const ownTabs = tabs.filter(tab =>
+            tab.closest(TAB_CONTAINER_SELECTOR) === container
         );
 
+        if (!ownTabs.length) {
+            return;
+        }
 
-    /*
-    Use URL tab if valid.
-    Otherwise use default tab.
-    */
+        container.dataset.tabsInitialized = "true";
 
-    const activeTab =
-        validUrlTab
-            ? urlTab
-            : defaultTab;
+        // Determine the tab requested by the URL.
+        const params = new URLSearchParams(window.location.search);
+        const requestedTab = params.get("tab");
 
+        // Determine the configured default tab.
+        const defaultTab = container.dataset.defaultTab;
 
-    /*
-    Activate initial tab.
-    */
+        // Prefer a valid URL tab, then the configured default,
+        // then the first available tab.
+        const initialTab =
+            ownTabs.find(tab => tab.dataset.tab === requestedTab) ||
+            ownTabs.find(tab => tab.dataset.tab === defaultTab) ||
+            ownTabs[0];
 
-    activateTab(
-        container,
-        activeTab,
-        false
-    );
+        // Bind click events.
+        ownTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                activateTab(container, tab.dataset.tab);
+            });
+        });
 
+        // Activate the initial tab without changing the URL.
+        activateTab(container, initialTab.dataset.tab, false);
+    }
 
-    /*
-    Add click listeners.
-    */
+    /**
+     * Activate a tab and update its content.
+     *
+     * Preloaded tabs:
+     *   Uses data-tab-panel.
+     *
+     * Dynamic tabs:
+     *   Uses data-tab-page and window.loadHTML().
+     */
+    function activateTab(container, tabName, updateURL = true) {
+        if (!container || !tabName) {
+            return;
+        }
 
-    tabs.forEach(
-        tab => {
+        const tabs = Array.from(
+            container.querySelectorAll(TAB_BUTTON_SELECTOR)
+        ).filter(tab =>
+            tab.closest(TAB_CONTAINER_SELECTOR) === container
+        );
 
-            /*
-            Prevent duplicate listeners.
-            */
+        const selectedTab = tabs.find(
+            tab => tab.dataset.tab === tabName
+        );
 
-            if (
-                tab.dataset.tabListenerInitialized ===
-                "true"
-            ) {
+        // Ignore unknown tab names.
+        if (!selectedTab) {
+            return;
+        }
 
+        // Update button states.
+        tabs.forEach(tab => {
+            const isActive = tab === selectedTab;
+
+            tab.classList.toggle("active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+            tab.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+
+        // Update preloaded panels, if this container has any.
+        const panels = Array.from(
+            container.querySelectorAll("[data-tab-panel]")
+        ).filter(panel =>
+            panel.closest(TAB_CONTAINER_SELECTOR) === container
+        );
+
+        panels.forEach(panel => {
+            const isActive = panel.dataset.tabPanel === tabName;
+
+            panel.hidden = !isActive;
+            panel.classList.toggle("active", isActive);
+        });
+
+        // Preserve support for dynamically loaded tab pages.
+        const pagePath = selectedTab.dataset.tabPage;
+
+        if (pagePath) {
+            const contentTarget = container.querySelector(".tab-content");
+
+            if (contentTarget && typeof window.loadHTML === "function") {
+                window.loadHTML(contentTarget, pagePath);
+            } else if (contentTarget) {
+                console.warn(
+                    "Tab page could not be loaded. Check window.loadHTML() and the .tab-content element.",
+                    pagePath
+                );
+            }
+        }
+
+        // Update the URL only when requested.
+        if (updateURL) {
+            const url = new URL(window.location.href);
+
+            url.searchParams.set("tab", tabName);
+
+            window.history.pushState(
+                { tab: tabName },
+                "",
+                url.pathname + url.search + url.hash
+            );
+        }
+    }
+
+    /**
+     * Refresh tab initialization after dynamically inserting HTML.
+     */
+    function refresh() {
+        document.querySelectorAll(TAB_CONTAINER_SELECTOR).forEach(container => {
+            if (container.dataset.tabsInitialized === "true") {
                 return;
-
             }
 
+            initializeTabContainer(container);
+        });
+    }
 
-            tab.addEventListener(
-                "click",
-                () => {
+    /**
+     * Handle browser Back and Forward navigation.
+     */
+    window.addEventListener("popstate", () => {
+        const params = new URLSearchParams(window.location.search);
+        const requestedTab = params.get("tab");
 
-                    activateTab(
-                        container,
-                        tab.dataset.tab,
-                        true
-                    );
-
-                }
-            );
-
-
-            tab.dataset.tabListenerInitialized =
-                "true";
-
+        if (!requestedTab) {
+            return;
         }
-    );
 
-    // Toggle existing panels when using in-page tabs
-const panels = container.querySelectorAll("[data-tab-panel]");
-
-panels.forEach(panel => {
-    const isActive = panel.dataset.tabPanel === tabName;
-    panel.hidden = !isActive;
-});
-
-}
-
-
-/*
-==================================================
-ACTIVATE TAB
-==================================================
-*/
-
-async function activateTab(
-    container,
-    tabName,
-    updateURL = true
-) {
-
-    const tabs =
-        container.querySelectorAll(
-            "[data-tab]"
-        );
-
-
-    /*
-    Find selected tab.
-    */
-
-    const selectedTab =
-        Array.from(tabs).find(
-            tab =>
-                tab.dataset.tab ===
-                tabName
-        );
-
-
-    /*
-    Invalid tab.
-    */
-
-    if (!selectedTab) {
-
-        return;
-
-    }
-
-
-    /*
-    Update tab visual state.
-    */
-
-    tabs.forEach(
-        tab => {
-
-            const isActive =
-                tab === selectedTab;
-
-
-            tab.classList.toggle(
-                "active",
-                isActive
+        document.querySelectorAll(TAB_CONTAINER_SELECTOR).forEach(container => {
+            const tabs = Array.from(
+                container.querySelectorAll(TAB_BUTTON_SELECTOR)
+            ).filter(tab =>
+                tab.closest(TAB_CONTAINER_SELECTOR) === container
             );
 
-
-            tab.setAttribute(
-                "aria-selected",
-                isActive
-                    ? "true"
-                    : "false"
+            const matchingTab = tabs.find(
+                tab => tab.dataset.tab === requestedTab
             );
 
-        }
-    );
+            if (matchingTab) {
+                activateTab(container, requestedTab, false);
+            }
+        });
+    });
 
+    // Expose the public API.
+    window.POSTabs = {
+        initialize,
+        activate: activateTab,
+        refresh
+    };
 
-    /*
-    Find tab content automatically.
-
-    IMPORTANT:
-
-    No ID is required.
-
-    The system simply looks for:
-
-        .tab-content
-
-    inside the current tab container.
-    */
-
-    const contentTarget =
-        container.querySelector(
-            ".tab-content"
-        );
-
-
-    /*
-    Load tab page.
-    */
-
-    if (
-        contentTarget &&
-        selectedTab.dataset.tabPage
-    ) {
-
-        await window.loadHTML(
-            contentTarget,
-            selectedTab.dataset.tabPage
-        );
-
+    // Initialize when the DOM is ready.
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initialize);
+    } else {
+        initialize();
     }
-
-
-    /*
-    Update URL.
-    */
-
-    if (updateURL) {
-
-        const url =
-            new URL(
-                window.location.href
-            );
-
-
-        url.searchParams.set(
-            "tab",
-            tabName
-        );
-
-
-        /*
-        Add browser history entry.
-        */
-
-        history.pushState(
-            {
-                route:
-                    window.POSRouter
-                        ?.getCurrentRoute(),
-
-                tab:
-                    tabName
-            },
-            "",
-            url
-        );
-
-    }
-
-}
-
-
-/*
-==================================================
-REFRESH TABS
-==================================================
-*/
-
-function refreshCurrentTabs() {
-
-    initializeTabs();
-
-}
-
-
-/*
-==================================================
-PUBLIC TAB API
-==================================================
-*/
-
-window.POSTabs = {
-
-    initialize:
-        initializeTabs,
-
-    activate:
-        activateTab,
-
-    refresh:
-        refreshCurrentTabs
-
-};
+})();
