@@ -1,337 +1,512 @@
-<!-- MAIN PAGE LAYOUT -->
-<main class="page-layout orders-page-layout">
-    <section class="page-content orders-content">
+```html
+<!-- ORDERS PAGE -->
 
-        <header class="orders-header">
+<main class="page-layout orders-page-layout">
+
+    <!-- MAIN CONTENT -->
+    <section class="page-content orders-content"
+             data-tabs="orders"
+             data-default-tab="ongoing">
+
+        <!-- PAGE HEADER -->
+        <header class="orders-page-header">
             <div>
                 <h1>Orders</h1>
-                <p>Manage preparation, handover and completed orders.</p>
+                <p>Manage orders and track their progress.</p>
             </div>
-            <span class="live-indicator">● Live updates</span>
         </header>
 
-        <!-- TABS -->
-        <nav class="orders-tabs" role="tablist" data-tab-group="orders">
-            <button class="orders-tab is-active" data-tab-target="ongoing" role="tab">
-                Ongoing <span id="orders-count-ongoing">3</span>
+        <!-- ORDER TABS -->
+        <nav class="orders-tabs tabs" aria-label="Order status tabs">
+            <button type="button" data-tab="ongoing" class="active" aria-selected="true">
+                Ongoing
             </button>
-            <button class="orders-tab" data-tab-target="ready" role="tab">
-                Ready <span id="orders-count-ready">2</span>
+            <button type="button" data-tab="ready" aria-selected="false">
+                Ready
             </button>
-            <button class="orders-tab" data-tab-target="picked-up" role="tab">
-                Picked up <span id="orders-count-picked-up">2</span>
+            <button type="button" data-tab="picked-up" aria-selected="false">
+                Picked up
             </button>
-            <button class="orders-tab" data-tab-target="closed" role="tab">
-                Closed <span id="orders-count-closed">2</span>
+            <button type="button" data-tab="closed" aria-selected="false">
+                Closed
             </button>
         </nav>
 
-        <!-- ONGOING -->
-        <section class="orders-tab-panel is-active" id="orders-panel-ongoing"
-                 data-tab-panel="ongoing">
-            <div class="orders-list" id="orders-list-ongoing">
+        <!-- ALL TAB CONTENT REMAINS ON THIS PAGE -->
+        <div class="tab-content orders-tab-content">
 
-                <article class="order-card" data-order-id="1048" data-order-status="ongoing"
-                         data-order-type="dine-in" data-payment-status="unpaid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1048</h3><p>Today, 1:42 PM</p></div>
-                        <span class="status-pill status-preparing">Preparing · Round 2</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Ananya Sharma</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>06</strong></div>
-                        <div><small>Type</small><strong>Dine-in · Postpaid</strong></div>
-                        <div><small>Kitchen</small><strong>Preparing</strong></div>
-                        <div><small>Payment</small><strong>Unpaid</strong></div>
-                    </div>
-                    <div class="order-rounds">
-                        <section class="order-round">
-                            <header><strong>Round 1</strong><span>Served</span></header>
-                            <div class="order-items-scroll">
-                                <div class="order-item"><div><strong>Paneer Tikka × 2</strong><small>Extra cheese</small></div><span>₹480</span></div>
-                                <div class="order-item"><div><strong>Masala Dosa × 1</strong><small>Extra chutney</small></div><span>₹160</span></div>
+            <!-- ======================================
+                 ONGOING
+            ======================================= -->
+            <section class="orders-panel" data-tab-panel="ongoing">
+                <div class="orders-list">
+
+                    <article class="order-card" data-order-id="ORD-1042" data-order-status="ongoing" data-order-type="dine-in" data-payment-status="unpaid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1042</h3>
+                                <span class="order-date-time">25 Oct 2026 · 12:35 PM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
                             </div>
-                        </section>
-                        <section class="order-round">
-                            <header><strong>Round 2</strong><span>Preparing</span></header>
-                            <div class="order-items-scroll">
-                                <div class="order-item"><div><strong>Butter Naan × 3</strong><small>Light butter</small></div><span>₹165</span></div>
-                                <div class="order-item"><div><strong>Dal Makhani × 1</strong><small>Extra cream</small></div><span>₹220</span></div>
+                            <span class="order-status order-status-ongoing">Preparing</span>
+                        </header>
+
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Rahul Sharma</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">T-04</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Dine-in</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-unpaid">Unpaid</span></span></div>
+                        </div>
+
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">3 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Paneer Tikka</span><span class="order-item-addons">Extra cheese</span></div>
+                                    <span class="order-item-qty">× 2</span>
+                                    <span class="order-item-price">₹360.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Butter Naan</span><span class="order-item-addons">No add-ons</span></div>
+                                    <span class="order-item-qty">× 4</span>
+                                    <span class="order-item-price">₹160.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Masala Soda</span><span class="order-item-addons">Less ice</span></div>
+                                    <span class="order-item-qty">× 2</span>
+                                    <span class="order-item-price">₹120.00</span>
+                                </div>
                             </div>
-                        </section>
-                    </div>
-                    <div class="order-summary">
-                        <div><span>Subtotal</span><span>₹1,025.00</span></div>
-                        <div><span>Coupon SPICE10</span><span>−₹102.50</span></div>
-                        <div><span>CGST + SGST</span><span>₹46.13</span></div>
-                        <div class="order-summary-total"><strong>Total</strong><strong>₹968.63</strong></div>
-                    </div>
-                    <footer class="order-card-actions">
-                        <button data-order-action="details" data-order-id="1048">See details</button>
-                        <button data-order-action="mark-ready" data-order-id="1048">Mark as ready</button>
-                    </footer>
-                </article>
+                        </div>
 
-                <article class="order-card" data-order-id="1050" data-order-status="ongoing"
-                         data-order-type="delivery" data-payment-status="paid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1050</h3><p>Today, 1:51 PM</p></div>
-                        <span class="status-pill status-preparing">Preparing</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Rahul Mehta</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Delivery</strong></div>
-                        <div><small>Kitchen</small><strong>Preparing</strong></div>
-                        <div><small>Payment</small><strong>Paid online</strong></div>
-                    </div>
-                    <div class="order-items-scroll">
-                        <div class="order-item"><div><strong>Chicken Biryani × 1</strong><small>Boiled egg, raita</small></div><span>₹320</span></div>
-                        <div class="order-item"><div><strong>Chicken 65 × 1</strong><small>Medium spicy</small></div><span>₹280</span></div>
-                        <div class="order-item"><div><strong>Gulab Jamun × 1</strong><small>Two pieces</small></div><span>₹90</span></div>
-                    </div>
-                    <div class="order-summary">
-                        <div><span>Subtotal</span><span>₹690</span></div>
-                        <div><span>Coupon WELCOME50</span><span>−₹50</span></div>
-                        <div><span>Tax + packaging</span><span>₹145</span></div>
-                        <div class="order-summary-total"><strong>Total</strong><strong>₹785</strong></div>
-                    </div>
-                    <footer class="order-card-actions">
-                        <button data-order-action="details" data-order-id="1050">See details</button>
-                        <button data-order-action="mark-ready" data-order-id="1050">Mark as ready</button>
-                    </footer>
-                </article>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹640.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹32.00</span></div>
+                            <div class="order-summary-row order-discount"><span class="order-summary-label">Discount (WELCOME10)</span><span class="order-summary-value">−₹50.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹622.00</span></div>
+                        </div>
 
-                <article class="order-card" data-order-id="1051" data-order-status="ongoing"
-                         data-order-type="takeaway" data-payment-status="unpaid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1051</h3><p>Today, 1:57 PM</p></div>
-                        <span class="status-pill">Not started</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Priya Kumar</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Takeaway</strong></div>
-                        <div><small>Kitchen</small><strong>Not started</strong></div>
-                        <div><small>Payment</small><strong>Unpaid · Pay later</strong></div>
-                    </div>
-                    <div class="order-items-scroll">
-                        <div class="order-item"><div><strong>Veg Fried Rice × 2</strong><small>Extra vegetables</small></div><span>₹360</span></div>
-                    </div>
-                    <div class="order-summary">
-                        <div><span>Subtotal</span><span>₹360</span></div>
-                        <div><span>Tax</span><span>₹60</span></div>
-                        <div class="order-summary-total"><strong>Total</strong><strong>₹420</strong></div>
-                    </div>
-                    <footer class="order-card-actions">
-                        <button data-order-action="details" data-order-id="1051">See details</button>
-                        <button data-order-action="mark-ready" data-order-id="1051">Mark as ready</button>
-                    </footer>
-                </article>
-            </div>
-        </section>
+                        <div class="order-rounds">
+                            <div class="order-round">
+                                <div class="order-round-header"><h4 class="order-round-title">Round 1</h4><span class="order-round-total">₹622.00</span></div>
+                                <span class="order-info-label">Submitted · Preparing</span>
+                            </div>
+                        </div>
 
-        <!-- READY -->
-        <section class="orders-tab-panel" id="orders-panel-ready"
-                 data-tab-panel="ready" hidden>
-            <div class="orders-list" id="orders-list-ready">
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left">
+                                <button type="button" data-order-action="details">See details</button>
+                            </div>
+                            <div class="order-card-actions-right">
+                                <button type="button" class="order-primary-action" data-order-action="mark-ready">Mark as ready</button>
+                            </div>
+                        </footer>
+                    </article>
 
-                <article class="order-card" data-order-id="1046" data-order-status="ready"
-                         data-order-type="delivery" data-payment-status="paid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1046</h3><p>Today, 1:31 PM</p></div>
-                        <span class="status-pill status-ready">Ready for dispatch</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Vikram Nair</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Delivery</strong></div>
-                        <div><small>Kitchen</small><strong>Ready</strong></div>
-                        <div><small>Payment</small><strong>Paid online</strong></div>
-                    </div>
-                    <div class="order-items-scroll">
-                        <div class="order-item"><div><strong>Paneer Butter Masala × 1</strong><small>Extra gravy</small></div><span>₹290</span></div>
-                        <div class="order-item"><div><strong>Garlic Naan × 2</strong></div><span>₹130</span></div>
-                    </div>
-                    <div class="order-summary">
-                        <div><span>Subtotal</span><span>₹420</span></div>
-                        <div><span>Coupon NAAN20</span><span>−₹20</span></div>
-                        <div><span>Tax + packaging</span><span>₹242</span></div>
-                        <div class="order-summary-total"><strong>Total</strong><strong>₹642</strong></div>
-                    </div>
-                    <footer class="order-card-actions">
-                        <button data-order-action="details" data-order-id="1046">See details</button>
-                        <button data-order-action="handover-delivery" data-order-id="1046">Handover to delivery partner</button>
-                    </footer>
-                </article>
+                    <article class="order-card" data-order-id="ORD-1043" data-order-status="ongoing" data-order-type="delivery" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1043</h3>
+                                <span class="order-date-time">25 Oct 2026 · 12:42 PM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-ongoing">Preparing</span>
+                        </header>
 
-                <article class="order-card" data-order-id="1047" data-order-status="ready"
-                         data-order-type="dine-in" data-payment-status="unpaid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1047</h3><p>Today, 1:35 PM</p></div>
-                        <span class="status-pill status-ready">Round 2 ready</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Arjun Iyer</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>Table 03</strong></div>
-                        <div><small>Type</small><strong>Dine-in · Postpaid</strong></div>
-                        <div><small>Kitchen</small><strong>Ready</strong></div>
-                        <div><small>Payment</small><strong>Unpaid</strong></div>
-                    </div>
-                    <div class="order-rounds">
-                        <section class="order-round"><header><strong>Round 1</strong><span>Served</span></header><div class="order-items-scroll"><div class="order-item"><div><strong>Tomato Soup × 2</strong></div><span>₹220</span></div></div></section>
-                        <section class="order-round"><header><strong>Round 2</strong><span>Ready</span></header><div class="order-items-scroll"><div class="order-item"><div><strong>Margherita Pizza × 1</strong><small>Extra mozzarella</small></div><span>₹260</span></div></div></section>
-                    </div>
-                    <div class="order-summary"><div><span>Subtotal</span><span>₹480</span></div><div><span>Tax</span><span>₹55.50</span></div><div class="order-summary-total"><strong>Total</strong><strong>₹535.50</strong></div></div>
-                    <footer class="order-card-actions">
-                        <button data-order-action="details" data-order-id="1047">See details</button>
-                        <button data-order-action="serve-table" data-order-id="1047">Deliver to table</button>
-                    </footer>
-                </article>
-            </div>
-        </section>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Priya Patel</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">Delivery</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Delivery</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
 
-        <!-- PICKED UP -->
-        <section class="orders-tab-panel" id="orders-panel-picked-up"
-                 data-tab-panel="picked-up" hidden>
-            <div class="orders-list" id="orders-list-picked-up">
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Chicken Biryani</span><span class="order-item-addons">Extra raita</span></div>
+                                    <span class="order-item-qty">× 2</span>
+                                    <span class="order-item-price">₹500.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Gulab Jamun</span><span class="order-item-addons">No add-ons</span></div>
+                                    <span class="order-item-qty">× 2</span>
+                                    <span class="order-item-price">₹100.00</span>
+                                </div>
+                            </div>
+                        </div>
 
-                <article class="order-card" data-order-id="1042" data-order-status="picked-up"
-                         data-order-type="takeaway" data-payment-status="unpaid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1042</h3><p>Today, 1:05 PM</p></div>
-                        <span class="status-pill">Picked up</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Meera Das</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Takeaway</strong></div>
-                        <div><small>Kitchen</small><strong>Completed</strong></div>
-                        <div><small>Payment</small><strong>Unpaid</strong></div>
-                    </div>
-                    <div class="order-items-scroll">
-                        <div class="order-item"><div><strong>Chole Bhature × 1</strong></div><span>₹220</span></div>
-                        <div class="order-item"><div><strong>Sweet Lassi × 1</strong></div><span>₹70</span></div>
-                    </div>
-                    <div class="order-summary"><div><span>Subtotal</span><span>₹290</span></div><div><span>Tax</span><span>₹25</span></div><div class="order-summary-total"><strong>Total due</strong><strong>₹315</strong></div></div>
-                    <footer class="order-card-actions"><button data-order-action="details" data-order-id="1042">See details</button><button data-order-action="close-order" data-order-id="1042">Close order</button></footer>
-                </article>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹600.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹30.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Delivery fee</span><span class="order-summary-value">₹40.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹670.00</span></div>
+                        </div>
 
-                <article class="order-card" data-order-id="1043" data-order-status="picked-up"
-                         data-order-type="delivery" data-payment-status="paid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1043</h3><p>Today, 1:09 PM</p></div>
-                        <span class="status-pill">Handed to partner</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Karthik Rao</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Delivery</strong></div>
-                        <div><small>Kitchen</small><strong>Completed</strong></div>
-                        <div><small>Payment</small><strong>Paid online</strong></div>
-                    </div>
-                    <div class="order-items-scroll"><div class="order-item"><div><strong>Mutton Biryani × 2</strong><small>Boiled egg, raita</small></div><span>₹780</span></div></div>
-                    <div class="order-summary"><div><span>Subtotal</span><span>₹780</span></div><div><span>Tax + packaging</span><span>₹110</span></div><div class="order-summary-total"><strong>Total</strong><strong>₹890</strong></div></div>
-                    <footer class="order-card-actions"><button data-order-action="details" data-order-id="1043">See details</button><button data-order-action="close-order" data-order-id="1043">Mark delivered & close</button></footer>
-                </article>
-            </div>
-        </section>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="mark-ready">Mark as ready</button></div>
+                        </footer>
+                    </article>
 
-        <!-- CLOSED -->
-        <section class="orders-tab-panel" id="orders-panel-closed"
-                 data-tab-panel="closed" hidden>
-            <div class="orders-list" id="orders-list-closed">
+                    <article class="order-card" data-order-id="ORD-1044" data-order-status="ongoing" data-order-type="takeaway" data-payment-status="unpaid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1044</h3>
+                                <span class="order-date-time">25 Oct 2026 · 12:48 PM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-ongoing">Preparing</span>
+                        </header>
 
-                <article class="order-card" data-order-id="1038" data-order-status="closed"
-                         data-order-type="dine-in" data-payment-status="paid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1038</h3><p>Today, 12:42 PM · Closed 1:18 PM</p></div>
-                        <span class="status-pill status-completed">Closed · Paid</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Sneha Menon</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>Table 08</strong></div>
-                        <div><small>Type</small><strong>Dine-in · Postpaid</strong></div>
-                        <div><small>Kitchen</small><strong>All rounds served</strong></div>
-                        <div><small>Payment</small><strong>Paid in full</strong></div>
-                    </div>
-                    <div class="order-rounds">
-                        <section class="order-round"><header><strong>Round 1</strong><span>Served</span></header><div class="order-items-scroll"><div class="order-item"><div><strong>Veg Thali × 2</strong></div><span>₹840</span></div></div></section>
-                        <section class="order-round"><header><strong>Round 2</strong><span>Served</span></header><div class="order-items-scroll"><div class="order-item"><div><strong>Filter Coffee × 4</strong></div><span>₹240</span></div></div></section>
-                    </div>
-                    <div class="order-summary"><div><span>Subtotal</span><span>₹1,080</span></div><div><span>Coupon THALI10</span><span>−₹108</span></div><div><span>Tax / adjustments</span><span>₹288</span></div><div class="order-summary-total"><strong>Total paid</strong><strong>₹1,260</strong></div></div>
-                    <footer class="order-card-actions"><button data-order-action="details" data-order-id="1038">See details</button><span>Session closed</span></footer>
-                </article>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Amit Verma</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">—</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Takeaway</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-unpaid">Unpaid</span></span></div>
+                        </div>
 
-                <article class="order-card" data-order-id="1039" data-order-status="closed"
-                         data-order-type="delivery" data-payment-status="paid">
-                    <header class="order-card-header">
-                        <div><h3>Order #1039</h3><p>Today, 12:37 PM · Closed 1:02 PM</p></div>
-                        <span class="status-pill status-completed">Delivered · Closed</span>
-                    </header>
-                    <div class="order-meta-grid">
-                        <div><small>Customer</small><strong>Dev Patel</strong></div>
-                        <div><small>Restaurant</small><strong>Spice Route</strong></div>
-                        <div><small>Table</small><strong>—</strong></div>
-                        <div><small>Type</small><strong>Delivery</strong></div>
-                        <div><small>Kitchen</small><strong>Completed</strong></div>
-                        <div><small>Payment</small><strong>Paid online</strong></div>
-                    </div>
-                    <div class="order-items-scroll"><div class="order-item"><div><strong>Veg Pulao × 2</strong><small>Extra raita</small></div><span>₹440</span></div></div>
-                    <div class="order-summary"><div><span>Subtotal</span><span>₹440</span></div><div><span>Tax + packaging</span><span>₹120</span></div><div class="order-summary-total"><strong>Total</strong><strong>₹560</strong></div></div>
-                    <footer class="order-card-actions"><button data-order-action="details" data-order-id="1039">See details</button><span>Order completed</span></footer>
-                </article>
-            </div>
-        </section>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Veg Hakka Noodles</span><span class="order-item-addons">Extra spicy</span></div>
+                                    <span class="order-item-qty">× 1</span>
+                                    <span class="order-item-price">₹180.00</span>
+                                </div>
+                                <div class="order-item">
+                                    <div class="order-item-details"><span class="order-item-name">Cold Coffee</span><span class="order-item-addons">Less sugar</span></div>
+                                    <span class="order-item-qty">× 1</span>
+                                    <span class="order-item-price">₹120.00</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹300.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹15.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹315.00</span></div>
+                        </div>
+
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="mark-ready">Mark as ready</button></div>
+                        </footer>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ======================================
+                 READY
+            ======================================= -->
+            <section class="orders-panel" data-tab-panel="ready" hidden>
+                <div class="orders-list">
+
+                    <article class="order-card" data-order-id="ORD-1038" data-order-status="ready" data-order-type="delivery" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1038</h3>
+                                <span class="order-date-time">25 Oct 2026 · 12:10 PM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-ready">Ready</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Neha Singh</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">Delivery</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Delivery</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Margherita Pizza</span><span class="order-item-addons">Extra cheese</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹320.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Garlic Bread</span><span class="order-item-addons">No add-ons</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹120.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹440.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹22.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹462.00</span></div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="handover">Handover to partner</button></div>
+                        </footer>
+                    </article>
+
+                    <article class="order-card" data-order-id="ORD-1039" data-order-status="ready" data-order-type="dine-in" data-payment-status="unpaid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1039</h3>
+                                <span class="order-date-time">25 Oct 2026 · 12:16 PM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-ready">Ready</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Karan Mehta</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">T-08</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Dine-in</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-unpaid">Unpaid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Dal Makhani</span><span class="order-item-addons">No add-ons</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹240.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Jeera Rice</span><span class="order-item-addons">No add-ons</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹160.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹400.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹20.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹420.00</span></div>
+                        </div>
+                        <div class="order-rounds">
+                            <div class="order-round">
+                                <div class="order-round-header"><h4 class="order-round-title">Round 1</h4><span class="order-round-total">₹420.00</span></div>
+                                <span class="order-info-label">Ready to serve · Payment due after meal</span>
+                            </div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="deliver-table">Deliver to table</button></div>
+                        </footer>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ======================================
+                 PICKED UP
+            ======================================= -->
+            <section class="orders-panel" data-tab-panel="picked-up" hidden>
+                <div class="orders-list">
+
+                    <article class="order-card" data-order-id="ORD-1032" data-order-status="picked-up" data-order-type="takeaway" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1032</h3>
+                                <span class="order-date-time">25 Oct 2026 · 11:45 AM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-completed">Picked up</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Arjun Rao</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">—</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Takeaway</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Veg Burger</span><span class="order-item-addons">Extra patty</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹220.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">French Fries</span><span class="order-item-addons">Peri-peri seasoning</span></div><span class="order-item-qty">× 1</span><span class="order-item-price">₹120.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹340.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹17.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹357.00</span></div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="close">Close order</button></div>
+                        </footer>
+                    </article>
+
+                    <article class="order-card" data-order-id="ORD-1033" data-order-status="picked-up" data-order-type="delivery" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1033</h3>
+                                <span class="order-date-time">25 Oct 2026 · 11:52 AM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-completed">Handed over</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Sneha Kapoor</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">Delivery</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Delivery</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Chicken Wrap</span><span class="order-item-addons">Extra sauce</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹360.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Lemon Soda</span><span class="order-item-addons">No sugar</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹160.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹520.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹26.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹546.00</span></div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                            <div class="order-card-actions-right"><button type="button" class="order-primary-action" data-order-action="close">Close order</button></div>
+                        </footer>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ======================================
+                 CLOSED
+            ======================================= -->
+            <section class="orders-panel" data-tab-panel="closed" hidden>
+                <div class="orders-list">
+
+                    <article class="order-card" data-order-id="ORD-1025" data-order-status="closed" data-order-type="dine-in" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1025</h3>
+                                <span class="order-date-time">25 Oct 2026 · 10:35 AM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-closed">Closed</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Vikram Joshi</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">T-02</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Dine-in</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Veg Thali</span><span class="order-item-addons">Standard</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹500.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Sweet Lassi</span><span class="order-item-addons">No add-ons</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹160.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹660.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹33.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹693.00</span></div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                        </footer>
+                    </article>
+
+                    <article class="order-card" data-order-id="ORD-1026" data-order-status="closed" data-order-type="takeaway" data-payment-status="paid">
+                        <header class="order-card-header">
+                            <div class="order-card-title">
+                                <h3 class="order-id">#ORD-1026</h3>
+                                <span class="order-date-time">25 Oct 2026 · 10:42 AM</span>
+                                <span class="order-restaurant-name">The Urban Kitchen</span>
+                            </div>
+                            <span class="order-status order-status-closed">Closed</span>
+                        </header>
+                        <div class="order-info-grid">
+                            <div class="order-info-item"><span class="order-info-label">Customer</span><span class="order-info-value">Meera Nair</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Table</span><span class="order-info-value">—</span></div>
+                            <div class="order-info-item"><span class="order-info-label">Order type</span><span class="order-info-value"><span class="order-type">Takeaway</span></span></div>
+                            <div class="order-info-item"><span class="order-info-label">Payment</span><span class="order-info-value"><span class="payment-status payment-status-paid">Paid</span></span></div>
+                        </div>
+                        <div class="order-items-section">
+                            <h4 class="order-section-heading">Items <span class="order-items-count">2 items</span></h4>
+                            <div class="order-items-list">
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Masala Dosa</span><span class="order-item-addons">Extra chutney</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹240.00</span></div>
+                                <div class="order-item"><div class="order-item-details"><span class="order-item-name">Filter Coffee</span><span class="order-item-addons">Less sugar</span></div><span class="order-item-qty">× 2</span><span class="order-item-price">₹100.00</span></div>
+                            </div>
+                        </div>
+                        <div class="order-summary">
+                            <div class="order-summary-row"><span class="order-summary-label">Subtotal</span><span class="order-summary-value">₹340.00</span></div>
+                            <div class="order-summary-row"><span class="order-summary-label">Tax</span><span class="order-summary-value">₹17.00</span></div>
+                            <div class="order-summary-row order-summary-total"><span>Total</span><span class="order-summary-value">₹357.00</span></div>
+                        </div>
+                        <footer class="order-card-actions">
+                            <div class="order-card-actions-left"><button type="button" data-order-action="details">See details</button></div>
+                        </footer>
+                    </article>
+
+                </div>
+            </section>
+
+        </div>
     </section>
+
 </main>
 
-<!-- RIGHT SIDEBAR: OUTSIDE MAIN LAYOUT -->
+<!-- RIGHT SIDEBAR: OUTSIDE PAGE LAYOUT -->
 <aside class="page-sidebar page-sidebar-2 right-sidebar orders-live-sidebar">
-    <header class="live-sidebar-header">
-        <div><h2>New live orders <span id="new-live-orders-count">2</span></h2><p>Incoming online orders</p></div>
-        <span class="live-indicator">● Live</span>
+
+    <header class="orders-live-header">
+        <div>
+            <h2 class="orders-live-heading">Incoming orders</h2>
+            <p class="orders-live-subtitle">New online orders awaiting your decision.</p>
+        </div>
+        <span class="orders-live-count">2</span>
     </header>
 
-    <div class="live-orders-list" id="new-live-orders-list">
-        <article class="live-order-card" data-live-order-id="1052">
-            <header><h3>Order #1052</h3><span class="status-pill status-new">New</span></header>
-            <p><strong>Rahul Mehta</strong> · Delivery · Online</p>
-            <div class="live-order-items">
-                <div><span>Chicken Biryani × 2</span><strong>₹640</strong></div>
-                <div><span>Chicken 65 × 1</span><strong>₹280</strong></div>
-                <div><span>Packaging</span><strong>₹30</strong></div>
+    <div class="orders-live-list">
+
+        <article class="live-order-card" data-live-order-id="WEB-2051">
+            <header class="live-order-card-header">
+                <div>
+                    <h3 class="live-order-id">#WEB-2051</h3>
+                    <span class="live-order-time">Received · 12:51 PM</span>
+                </div>
+                <span class="order-status order-status-pending">New</span>
+            </header>
+
+            <div class="live-order-customer">
+                <span class="live-order-customer-name">Ananya Gupta</span>
+                <span class="live-order-meta">Online delivery · Paid</span>
+                <span class="live-order-meta">ETA requested: 35 minutes</span>
             </div>
-            <div class="order-summary-total"><strong>Total</strong><strong>₹950</strong></div>
-            <p><small>Note: Pack raita separately.</small></p>
+
+            <div class="live-order-items">
+                <div class="live-order-item"><span class="live-order-item-name">Chicken Biryani</span><span class="live-order-item-qty">× 1</span></div>
+                <div class="live-order-item"><span class="live-order-item-name">Paneer Roll</span><span class="live-order-item-qty">× 2</span></div>
+            </div>
+
+            <div class="live-order-total"><span>Order total</span><span>₹515.00</span></div>
+
             <footer class="live-order-actions">
-                <button data-live-order-action="reject" data-live-order-id="1052">Reject</button>
-                <button data-live-order-action="accept" data-live-order-id="1052">Accept order</button>
+                <button type="button" class="accept-order" data-live-order-action="accept">Accept</button>
+                <button type="button" class="reject-order" data-live-order-action="reject">Reject</button>
             </footer>
         </article>
 
-        <article class="live-order-card" data-live-order-id="1053">
-            <header><h3>Order #1053</h3><span class="status-pill status-new">New</span></header>
-            <p><strong>Divya Krishnan</strong> · Takeaway · Online</p>
-            <div class="live-order-items">
-                <div><span>Paneer Wrap × 2</span><strong>₹360</strong></div>
-                <div><span>Cold Coffee × 1</span><strong>₹140</strong></div>
+        <article class="live-order-card" data-live-order-id="WEB-2052">
+            <header class="live-order-card-header">
+                <div>
+                    <h3 class="live-order-id">#WEB-2052</h3>
+                    <span class="live-order-time">Received · 12:54 PM</span>
+                </div>
+                <span class="order-status order-status-pending">New</span>
+            </header>
+
+            <div class="live-order-customer">
+                <span class="live-order-customer-name">Rohan Iyer</span>
+                <span class="live-order-meta">Online takeaway · Unpaid</span>
+                <span class="live-order-meta">Customer pickup · 1:20 PM</span>
             </div>
-            <div class="order-summary-total"><strong>Total</strong><strong>₹500</strong></div>
-            <p><small>Note: No cutlery, please.</small></p>
+
+            <div class="live-order-items">
+                <div class="live-order-item"><span class="live-order-item-name">Margherita Pizza</span><span class="live-order-item-qty">× 1</span></div>
+                <div class="live-order-item"><span class="live-order-item-name">Cold Coffee</span><span class="live-order-item-qty">× 1</span></div>
+                <div class="live-order-item"><span class="live-order-item-name">Garlic Bread</span><span class="live-order-item-qty">× 1</span></div>
+            </div>
+
+            <div class="live-order-total"><span>Order total</span><span>₹485.00</span></div>
+
             <footer class="live-order-actions">
-                <button data-live-order-action="reject" data-live-order-id="1053">Reject</button>
-                <button data-live-order-action="accept" data-live-order-id="1053">Accept order</button>
+                <button type="button" class="accept-order" data-live-order-action="accept">Accept</button>
+                <button type="button" class="reject-order" data-live-order-action="reject">Reject</button>
             </footer>
         </article>
+
     </div>
+
+    <div class="orders-live-empty" hidden>
+        <h3>No new orders</h3>
+        <p>Incoming online orders will appear here.</p>
+    </div>
+
 </aside>
+```
