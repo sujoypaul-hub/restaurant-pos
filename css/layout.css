@@ -719,22 +719,19 @@
    Sticky header + independently scrolling body
    ========================================== */
 
-.tabs-layout {
+.tabs-layout, .filter-tab-layout {
     --tabs-primary: var(--primary-color, #2563eb);
     --tabs-text: var(--text-color, #17243a);
     --tabs-muted: var(--text-muted, #64748b);
     --tabs-border: var(--border-color, #e2e8f0);
     --tabs-surface: var(--surface, #ffffff);
-
     display: flex;
     flex-direction: column;
-
     /* Must have a constrained height for internal scrolling */
     height: 100%;
     min-height: 0;
     min-width: 0;
     overflow: hidden;
-
     color: var(--tabs-text);
     background: var(--tabs-surface);
 }
@@ -743,7 +740,7 @@
    HEADER — DOES NOT SCROLL WITH CONTENT
    ========================================== */
 
-.tabs-header {
+.tabs-header, .filter-tabs-header {
     position: relative;
     z-index: 5;
     flex: 0 0 auto;
@@ -752,31 +749,11 @@
     border-bottom: 1px solid var(--tabs-border);
 }
 
-/* Optional page heading */
-
-.tabs-page-heading {
-    padding: 12px 16px 10px;
-}
-
-.tabs-page-heading h2 {
-    margin: 0;
-    color: var(--tabs-text);
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.tabs-page-heading p {
-    margin: 3px 0 0;
-    color: var(--tabs-muted);
-    font-size: 0.8rem;
-}
-
 /* ==========================================
    TAB NAVIGATION
    ========================================== */
 
-.tabs {
+.tabs, .filter-tabs {
     display: flex;
     align-items: stretch;
     gap: 4px;
@@ -792,40 +769,33 @@
     scrollbar-width: none;
 }
 
-.tabs::-webkit-scrollbar {
+.tabs::-webkit-scrollbar .filter-tabs::-webkit-scrollbar {
     display: none;
 }
 
 /* Tab button */
 
-.tabs > [data-tab] {
+.tab-header-button, .filter-tab-header-button{
     position: relative;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
-
     flex: 0 0 auto;
     min-height: 42px;
     padding: 10px 12px;
-
     margin: 0;
     border: 0;
     border-bottom: 2px solid transparent;
     border-radius: 0;
-
     background: transparent;
     color: var(--tabs-muted);
-
     font: inherit;
     font-size: 0.82rem;
     font-weight: 500;
     line-height: 1.2;
     white-space: nowrap;
-
     cursor: pointer;
-
     transition:
         color 160ms ease,
         background-color 160ms ease,
@@ -834,14 +804,14 @@
 
 /* Hover */
 
-.tabs > [data-tab]:hover {
+.tab-header-button:hover, .filter-tab-header-button:hover {
     color: var(--tabs-text);
     background: var(--hover-bg, #f8fafc);
 }
 
 /* Active tab */
 
-.tabs > [data-tab].active {
+.tab-header-button.active,  .filter-tab-header-button.active {
     color: var(--tabs-primary);
     border-bottom-color: var(--tabs-primary);
     font-weight: 650;
@@ -849,30 +819,28 @@
 
 /* Keyboard focus */
 
-.tabs > [data-tab]:focus-visible {
+.tab-header-button:focus-visible, .filter-tab-header-button:focus-visible {
     outline: 2px solid var(--tabs-primary);
     outline-offset: -3px;
 }
 
 /* Disabled tab */
 
-.tabs > [data-tab]:disabled {
+.tab-header-button:disabled, .filter-tab-header-button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
 }
 
 /* Optional count badge */
 
-.tab-count {
+.tab-count, .filter-tab-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-width: 18px;
     height: 18px;
     padding: 0 5px;
     box-sizing: border-box;
-
     border-radius: 999px;
     background: var(--surface-secondary, #edf2f8);
     color: var(--tabs-muted);
@@ -881,7 +849,7 @@
     font-weight: 650;
 }
 
-.tabs > [data-tab].active .tab-count {
+.tab-header-button.active .tab-count, .filter-tab-header-button.active .tab-count {
     background: var(--tabs-primary);
     color: #fff;
 }
@@ -890,42 +858,38 @@
    CONTENT — THE ONLY VERTICAL SCROLL AREA
    ========================================== */
 
-.tab-content {
+.tab-content, .filter-tab-content {
     flex: 1 1 auto;
-
     min-height: 0;
     min-width: 0;
-
     padding: 12px 16px;
-
     overflow-x: hidden;
     overflow-y: auto;
-
     overscroll-behavior-y: contain;
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 transparent;
 }
 
-.tab-content::-webkit-scrollbar {
+.tab-content::-webkit-scrollbar, .filter-tab-content::-webkit-scrollbar {
     width: 6px;
 }
 
-.tab-content::-webkit-scrollbar-thumb {
+.tab-content::-webkit-scrollbar-thumb, .filter-tab-content::-webkit-scrollbar-thumb {
     border-radius: 6px;
     background: #cbd5e1;
 }
 
-.tab-content::-webkit-scrollbar-track {
+.tab-content::-webkit-scrollbar-track, .filter-tab-content::-webkit-scrollbar-track {
     background: transparent;
 }
 
 /* Panels */
 
-.tab-content [data-tab-panel] {
+.tab-content [data-tab-panel], .filter-tab-content [data-tab-panel]  {
     min-width: 0;
 }
 
-.tab-content [data-tab-panel][hidden] {
+.tab-content [data-tab-panel][hidden], .filter-tab-content [data-tab-panel][hidden] {
     display: none !important;
 }
 
