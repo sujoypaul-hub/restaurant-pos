@@ -359,6 +359,14 @@
    ORDER PAGE
 ===================================================== */
 
+.page-order .page-container {
+   overflow: unset;
+   padding: 35px 0 0 0;
+}
+.orders-page-layout, .page-order .orders-content {
+   overflow: hidden;
+}
+
 
 /* =========================================
    ORDERS PAGE — COMPACT DESIGN
