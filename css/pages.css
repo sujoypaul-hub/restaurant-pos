@@ -363,8 +363,9 @@
    overflow: unset;
    padding: 0;
 }
-.orders-page-layout {
+.page-orders .page-layout {
    overflow: unset;
+   padding: 20px 0;
 }
 .page-orders .orders-content { 
    padding: 20px;
