@@ -370,7 +370,13 @@
    padding: 20px;
    overflow: scroll;
 }
-
+.page-orders .filter-tab-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 12px;
+    min-width: 0;
+}
 /* =========================================
    ORDERS PAGE — COMPACT DESIGN
    ========================================= */
