@@ -359,14 +359,14 @@
    ORDER PAGE
 ===================================================== */
 
-.page-order .page-container {
+.page-orders .page-container {
    overflow: unset;
    padding: 0;
 }
 .orders-page-layout {
    overflow: unset;
 }
-.page-order .orders-content { 
+.page-orders .orders-content { 
    padding: 20px;
    overflow: scroll;
 }
