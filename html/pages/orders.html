@@ -5,69 +5,39 @@
 
   <!-- MAIN CONTENT -->              
   
-<section class="filter-tabs" data-filter-tabs="orders"
-         data-filter-default="all">
+<section class="filter-tab-layout page-content" data-filter-tabs="orders" data-filter-default="all">
 
     <!-- Filter header -->
     <header class="filter-tabs-header">
-        <nav class="tabs" aria-label="Filter orders">
-            <button type="button" class="active"
-                    data-filter-value="all"
-                    aria-pressed="true">
-                All <span class="tab-count">8</span>
+        <nav class="filter-tabs" aria-label="Filter orders">
+          
+            <button type="button" class="filter-tab-header-button active" data-filter-value="all" aria-pressed="true"> All 
+              <span class="filter-tab-count"> 8 </span>
             </button>
 
-            <button type="button"
-                    data-filter-value="ongoing"
-                    aria-pressed="false">
-                Ongoing <span class="tab-count">3</span>
+            <button type="button"  class="filter-tab-header-button" data-filter-value="ongoing" aria-pressed="false"> Ongoing 
+              <span class="filter-tab-count">3</span>
             </button>
 
-            <button type="button"
-                    data-filter-value="ready"
-                    aria-pressed="false">
-                Ready <span class="tab-count">2</span>
+            <button type="button" class="filter-tab-header-button" data-filter-value="ready" aria-pressed="false"> Ready 
+              <span class="filter-tab-count">2</span>
             </button>
 
-            <button type="button"
-                    data-filter-value="completed"
-                    aria-pressed="false">
-                Completed <span class="tab-count">3</span>
+            <button type="button" class="filter-tab-header-button" data-filter-value="completed" aria-pressed="false"> Completed 
+              <span class="filter-tab-count">3</span>
             </button>
         </nav>
     </header>
 
     <!-- ONE shared scrollable content container -->
-    <div class="filter-tabs-content">
+    <div class="filter-tab-content">
+        <div class="filter-tab-results">
 
-        <div class="filter-results">
+            <article data-filter-item data-filter-category="ongoing" class="order-card"> DEMO 1 </article>
 
-            <article data-filter-item
-                     data-filter-category="ongoing"
-                     class="order-card">
-                <strong>#ORD-1001</strong>
-                <p>Aarav Sharma</p>
-                <span>Ongoing</span>
-                <strong>₹680</strong>
-            </article>
+            <article data-filter-item  data-filter-category="ready" class="order-card"> DEMO 2 </article>
 
-            <article data-filter-item
-                     data-filter-category="ready"
-                     class="order-card">
-                <strong>#ORD-1002</strong>
-                <p>Priya Mehta</p>
-                <span>Ready</span>
-                <strong>₹420</strong>
-            </article>
-
-            <article data-filter-item
-                     data-filter-category="completed"
-                     class="order-card">
-                <strong>#ORD-1003</strong>
-                <p>Rohan Shah</p>
-                <span>Completed</span>
-                <strong>₹350</strong>
-            </article>
+            <article data-filter-item data-filter-category="completed" class="order-card"> DEMO 3 </article>
 
         </div>
 
