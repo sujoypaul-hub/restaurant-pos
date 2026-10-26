@@ -711,3 +711,265 @@
         transform: none;
     }
 }
+
+
+
+/* ==========================================
+   UNIVERSAL TABS LAYOUT
+   Sticky header + independently scrolling body
+   ========================================== */
+
+.tabs-layout {
+    --tabs-primary: var(--primary-color, #2563eb);
+    --tabs-text: var(--text-color, #17243a);
+    --tabs-muted: var(--text-muted, #64748b);
+    --tabs-border: var(--border-color, #e2e8f0);
+    --tabs-surface: var(--surface, #ffffff);
+
+    display: flex;
+    flex-direction: column;
+
+    /* Must have a constrained height for internal scrolling */
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+
+    color: var(--tabs-text);
+    background: var(--tabs-surface);
+}
+
+/* ==========================================
+   HEADER — DOES NOT SCROLL WITH CONTENT
+   ========================================== */
+
+.tabs-header {
+    position: relative;
+    z-index: 5;
+    flex: 0 0 auto;
+    min-width: 0;
+    background: var(--tabs-surface);
+    border-bottom: 1px solid var(--tabs-border);
+}
+
+/* Optional page heading */
+
+.tabs-page-heading {
+    padding: 12px 16px 10px;
+}
+
+.tabs-page-heading h2 {
+    margin: 0;
+    color: var(--tabs-text);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.tabs-page-heading p {
+    margin: 3px 0 0;
+    color: var(--tabs-muted);
+    font-size: 0.8rem;
+}
+
+/* ==========================================
+   TAB NAVIGATION
+   ========================================== */
+
+.tabs {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border-bottom: 0;
+    scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tab button */
+
+.tabs > [data-tab] {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: 10px 12px;
+
+    margin: 0;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+
+    background: transparent;
+    color: var(--tabs-muted);
+
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        color 160ms ease,
+        background-color 160ms ease,
+        border-color 160ms ease;
+}
+
+/* Hover */
+
+.tabs > [data-tab]:hover {
+    color: var(--tabs-text);
+    background: var(--hover-bg, #f8fafc);
+}
+
+/* Active tab */
+
+.tabs > [data-tab].active {
+    color: var(--tabs-primary);
+    border-bottom-color: var(--tabs-primary);
+    font-weight: 650;
+}
+
+/* Keyboard focus */
+
+.tabs > [data-tab]:focus-visible {
+    outline: 2px solid var(--tabs-primary);
+    outline-offset: -3px;
+}
+
+/* Disabled tab */
+
+.tabs > [data-tab]:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Optional count badge */
+
+.tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    box-sizing: border-box;
+
+    border-radius: 999px;
+    background: var(--surface-secondary, #edf2f8);
+    color: var(--tabs-muted);
+
+    font-size: 0.68rem;
+    font-weight: 650;
+}
+
+.tabs > [data-tab].active .tab-count {
+    background: var(--tabs-primary);
+    color: #fff;
+}
+
+/* ==========================================
+   CONTENT — THE ONLY VERTICAL SCROLL AREA
+   ========================================== */
+
+.tab-content {
+    flex: 1 1 auto;
+
+    min-height: 0;
+    min-width: 0;
+
+    padding: 12px 16px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.tab-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: #cbd5e1;
+}
+
+.tab-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Panels */
+
+.tab-content [data-tab-panel] {
+    min-width: 0;
+}
+
+.tab-content [data-tab-panel][hidden] {
+    display: none !important;
+}
+
+/* ==========================================
+   OPTIONAL VARIANTS
+   ========================================== */
+
+/* Compact tabs */
+
+.tabs.tabs-compact > [data-tab] {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+}
+
+/* Equal-width tabs */
+
+.tabs.tabs-equal > [data-tab] {
+    flex: 1 1 0;
+}
+
+/* Pill tabs */
+
+.tabs.tabs-pills {
+    gap: 5px;
+    padding: 6px 12px;
+    border: 0;
+    background: var(--surface-secondary, #f1f5f9);
+}
+
+.tabs.tabs-pills > [data-tab] {
+    min-height: 34px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 6px;
+}
+
+.tabs.tabs-pills > [data-tab].active {
+    background: var(--tabs-surface);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+/* Content with no extra padding */
+
+.tab-content.tab-content-flush {
+    padding: 0;
+}
