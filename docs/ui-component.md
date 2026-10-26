@@ -165,7 +165,7 @@ ________________________________________________________________________________
                 <span class="tab-count">20</span> 
             </button>
 
-            <button type="button" class="tab-header-button active"  data-tab="ongoing" role="tab" aria-selected="false"> Ongoing 
+            <button type="button" class="tab-header-button"  data-tab="ongoing" role="tab" aria-selected="false"> Ongoing 
                 <span class="tab-count">6</span> 
             </button>
 
