@@ -69,8 +69,6 @@
 
 __________________________________________________________________________________________________________________________________________
 
-
-
 # 3. Restaurant POS — POP-UP Layout
 
 ## 1.  Pop up Trigger button
@@ -153,3 +151,72 @@ ________________________________________________________________________________
     </div>
     <!-- END POPUP CONTAINERS -->
 
+__________________________________________________________________________________________________________________________________________
+
+# 4. Restaurant POS — Tab Layout
+
+<section class="tabs-layout page-content" data-tabs="orders" data-default-tab="all">
+
+     <!-- STICKY TAB HEADER -->
+     <header class="tabs-header">        
+        <nav class="tabs" role="tablist" aria-label="Order status">
+
+            <button type="button" class="tab-header-button active"  data-tab="all" role="tab" aria-selected="true"> All 
+                <span class="tab-count">20</span> 
+            </button>
+
+            <button type="button" class="tab-header-button active"  data-tab="ongoing" role="tab" aria-selected="false"> Ongoing 
+                <span class="tab-count">6</span> 
+            </button>
+
+            <button type="button" class="tab-header-button" data-tab="ready" role="tab" aria-selected="false"> Ready 
+                <span class="tab-count">4</span>
+            </button>
+
+            <button type="button" class="tab-header-button" data-tab="dispatched" role="tab" aria-selected="false"> Dispatched 
+                <span class="tab-count">3</span>
+            </button>
+
+            <button type="button" class="tab-header-button" data-tab="completed" role="tab" aria-selected="false"> Completed 
+                <span class="tab-count">12</span>
+            </button>
+            
+        </nav>
+     </header>
+
+     <!-- ONLY THIS AREA SCROLLS -->
+     <div class="tab-content">
+
+        <section class="tab-content-section" data-tab-panel="all" role="tabpanel" >
+            <div class="orders-list" data-load="html/pages/orders/all-orders.html">
+                 All order cards go here
+            </div>
+        </section>
+         
+        <section class="tab-content-section" data-tab-panel="ongoing" role="tabpanel" hidden>
+            <div class="orders-list">
+                Ongoing order cards go here
+            </div>
+        </section>
+
+        <section class="tab-content-section" data-tab-panel="ready" role="tabpanel" hidden>
+            <div class="orders-list">
+                 Ready order cards go here
+            </div>
+        </section>
+
+         <section class="tab-content-section" data-tab-panel="dispatched" role="tabpanel" hidden>
+            <div class="orders-list">
+                 Dispatched order cards go here
+            </div>
+        </section>
+
+        <section class="tab-content-section" data-tab-panel="completed" role="tabpanel" hidden>
+            <div class="orders-list">
+                Completed order cards go here
+            </div>
+        </section>
+
+      </div>
+      
+  </section>  
