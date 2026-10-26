@@ -361,12 +361,15 @@
 
 .page-order .page-container {
    overflow: unset;
-   padding: 35px 0 0 0;
+   padding: 0;
 }
-.orders-page-layout, .page-order .orders-content {
-   overflow: hidden;
+.orders-page-layout {
+   overflow: unset;
 }
-
+.page-order .orders-content { 
+   padding: 20px;
+   overflow: scroll;
+}
 
 /* =========================================
    ORDERS PAGE — COMPACT DESIGN
