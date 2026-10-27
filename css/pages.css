@@ -975,13 +975,15 @@
     border-bottom: 1px solid var(--border-color, #edf0f5);
 }
 
-.order-meta-primary {
+.order-meta-primary, .order-meta-secondary {
     display: flex;
     flex-direction: column;
     gap: 3px;
     min-width: 0;
 }
-
+.order-meta-secondary{
+   align-items: end;
+}
 .order-table {
     font-size: 11px;
 }
