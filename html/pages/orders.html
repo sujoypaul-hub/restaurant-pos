@@ -36,6 +36,141 @@
 
     <!-- ONE shared scrollable content container -->
     <div class="filter-tab-content">
+
+          <!-- Search and additional filters -->
+            <div class="orders-toolbar">
+
+                <label class="orders-search" for="orders-search-input">
+                    <svg
+                        class="orders-search-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m16 16 4 4"></path>
+                    </svg>
+
+                    <input
+                        type="search"
+                        id="orders-search-input"
+                        placeholder="Search orders..."
+                        autocomplete="off"
+                    >
+                </label>
+
+                <div class="orders-filter-wrapper">
+
+                    <button
+                        type="button"
+                        class="orders-filter-button"
+                        id="orders-filter-toggle"
+                        aria-expanded="false"
+                        aria-controls="orders-filter-panel"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M4 7h16M7 12h10m-7 5h4"></path>
+                        </svg>
+
+                        <span>Filters</span>
+
+                        <span
+                            class="orders-filter-badge"
+                            id="orders-filter-count"
+                            hidden
+                        >0</span>
+                    </button>
+
+                    <!-- Additional filter options -->
+                    <div
+                        class="orders-filter-panel"
+                        id="orders-filter-panel"
+                        hidden
+                    >
+
+                        <div class="orders-filter-panel-header">
+                            <h3>Filter orders</h3>
+
+                            <button
+                                type="button"
+                                class="orders-filter-close"
+                                id="orders-filter-close"
+                                aria-label="Close filters"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div class="orders-filter-field">
+                            <label for="orders-type-filter">Order type</label>
+
+                            <select id="orders-type-filter">
+                                <option value="all">All types</option>
+                                <option value="dine-in">Dine-in</option>
+                                <option value="takeaway">Takeaway</option>
+                                <option value="delivery">Delivery</option>
+                            </select>
+                        </div>
+
+                        <div class="orders-filter-field">
+                            <label for="orders-payment-filter">Payment status</label>
+
+                            <select id="orders-payment-filter">
+                                <option value="all">All payments</option>
+                                <option value="paid">Paid</option>
+                                <option value="unpaid">Unpaid</option>
+                                <option value="partial">Partially paid</option>
+                                <option value="refunded">Refunded</option>
+                            </select>
+                        </div>
+
+                        <div class="orders-filter-field">
+                            <label for="orders-date-filter">Order date</label>
+
+                            <select id="orders-date-filter">
+                                <option value="all">Any date</option>
+                                <option value="today">Today</option>
+                                <option value="yesterday">Yesterday</option>
+                                <option value="7-days">Last 7 days</option>
+                                <option value="30-days">Last 30 days</option>
+                            </select>
+                        </div>
+
+                        <div class="orders-filter-field">
+                            <label for="orders-sort-filter">Sort by</label>
+
+                            <select id="orders-sort-filter">
+                                <option value="newest">Newest first</option>
+                                <option value="oldest">Oldest first</option>
+                                <option value="amount-high">Highest amount</option>
+                                <option value="amount-low">Lowest amount</option>
+                            </select>
+                        </div>
+
+                        <div class="orders-filter-actions">
+                            <button
+                                type="button"
+                                id="orders-filter-reset"
+                                class="orders-filter-reset"
+                            >
+                                Reset
+                            </button>
+
+                            <button
+                                type="button"
+                                id="orders-filter-apply"
+                                class="orders-filter-apply"
+                            >
+                                Apply filters
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+      
         <div class="filter-tab-results" data-load="html/pages/orders/all-orders.html" > </div>
         <div class="filter-empty" hidden> No matching orders found. </div>
     </div>
