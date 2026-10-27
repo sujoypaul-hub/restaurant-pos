@@ -1215,3 +1215,261 @@
 .order-card:not(.is-dine-in-postpaid) .order-items-list {
     display: block;
 }
+
+
+
+/* =========================================
+   ORDERS SEARCH & FILTER TOOLBAR
+========================================= */
+
+.orders-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.orders-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    background: var(--surface-color, #fff);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.orders-search:focus-within {
+    border-color: var(--primary-color, #6366f1);
+    box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--primary-color, #6366f1) 12%, transparent);
+}
+
+.orders-search-icon {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--text-muted, #888);
+}
+
+.orders-search input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-color, #222);
+    font: inherit;
+    box-shadow: none;
+}
+
+.orders-search input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.orders-search input::placeholder {
+    color: var(--text-muted, #999);
+}
+
+.orders-search input::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+
+/* Filter button */
+
+.orders-filter-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.orders-filter-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    background: var(--surface-color, #fff);
+    color: var(--text-color, #333);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.orders-filter-button:hover,
+.orders-filter-button[aria-expanded="true"] {
+    border-color: var(--primary-color, #6366f1);
+}
+
+.orders-filter-button svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.orders-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 10px;
+    background: var(--primary-color, #6366f1);
+    color: #fff;
+    font-size: 11px;
+}
+
+/* Filter popover */
+
+.orders-filter-panel {
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 8px);
+    right: 0;
+    width: min(320px, calc(100vw - 32px));
+    padding: 18px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 14px;
+    background: var(--surface-color, #fff);
+    color: var(--text-color, #222);
+    box-shadow: 0 12px 35px rgb(0 0 0 / 12%);
+}
+
+.orders-filter-panel[hidden],
+.orders-filter-badge[hidden] {
+    display: none !important;
+}
+
+.orders-filter-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.orders-filter-panel-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.orders-filter-close {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.orders-filter-close:hover {
+    background: var(--hover-color, #f3f4f6);
+}
+
+.orders-filter-field {
+    display: grid;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.orders-filter-field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted, #666);
+}
+
+.orders-filter-field select {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 9px;
+    background: var(--surface-color, #fff);
+    color: inherit;
+    font: inherit;
+}
+
+.orders-filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.orders-filter-reset,
+.orders-filter-apply {
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.orders-filter-reset {
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: transparent;
+    color: inherit;
+}
+
+.orders-filter-apply {
+    border: 1px solid var(--primary-color, #6366f1);
+    background: var(--primary-color, #6366f1);
+    color: #fff;
+}
+
+/* Narrow screens */
+
+@media (max-width: 480px) {
+    .orders-toolbar {
+        gap: 8px;
+    }
+
+    .orders-search {
+        padding: 0 10px;
+    }
+
+    .orders-filter-button {
+        gap: 6px;
+        padding: 0 10px;
+    }
+
+    .orders-filter-panel {
+        position: fixed;
+        top: auto;
+        right: 16px;
+        left: 16px;
+        bottom: 16px;
+        width: auto;
+        max-height: min(75vh, 560px);
+        overflow-y: auto;
+    }
+}
