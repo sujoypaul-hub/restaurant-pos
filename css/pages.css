@@ -359,19 +359,19 @@
    ORDER PAGE
 ===================================================== */
 
-.page-orders .page-container {
+.orders-page .page-container {
    overflow: unset;
    padding: 0;
 }
-.page-orders .page-layout {
+.orders-page .page-layout {
    overflow: unset;
    padding: 20px 0;
 }
-.page-orders .orders-content { 
+.orders-page .orders-content { 
    padding: 20px;
    overflow: scroll;
 }
-.page-orders .filter-tab-results {
+.orders-page .filter-tab-results {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
