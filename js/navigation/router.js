@@ -275,27 +275,12 @@ async function navigateTo(route, updateURL = true) {
 
     // Load the selected page and its configured scripts.
     await window.loadHTML(
-        // container,
-        // `html/pages/${config.page}.html`,
-        // {
-         //   pageConfig: config
-       // }
+         container,
+         `html/pages/${config.page}.html`,
+         {
+            pageConfig: config
+        }
 
-       target.innerHTML = await fetchHTML(path);
-
-         const nestedTargets = [
-             ...target.querySelectorAll("[data-load]")
-         ];
-         
-         await Promise.all(
-             nestedTargets.map(child =>
-                 loadHTML(child, child.dataset.load, {
-                     ancestors: [...ancestors, url]
-                 })
-             )
-         );
-   
-    );
 
     // Print updated application variables into the loaded page.
     window.printAppVariables(container);
