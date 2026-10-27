@@ -280,7 +280,7 @@ async function navigateTo(route, updateURL = true) {
          {
             pageConfig: config
         }
-
+      );
 
     // Print updated application variables into the loaded page.
     window.printAppVariables(container);
