@@ -166,7 +166,18 @@ input[type="reset"]:disabled {
 }
 
 /* 7. Text inputs, number/date inputs, dropdowns and textareas */
-input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]):not([type="hidden"]),
+input:where(
+    :not([type="checkbox"]),
+    :not([type="radio"]),
+    :not([type="range"]),
+    :not([type="color"]),
+    :not([type="file"]),
+    :not([type="button"]),
+    :not([type="submit"]),
+    :not([type="reset"]),
+    :not([type="image"]),
+    :not([type="hidden"])
+),
 select,
 textarea {
     display: block;
@@ -180,7 +191,9 @@ textarea {
     border-radius: var(--ui-radius);
     box-shadow: 0 1px 2px rgb(16 24 40 / 3%);
     line-height: 1.4;
-    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    transition: border-color 160ms ease,
+                box-shadow 160ms ease,
+                background-color 160ms ease;
 }
 
 textarea {
